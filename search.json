@@ -1,5 +1,12 @@
 [
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Slides",
+    "section": "",
+    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nDec 19, 2024\n\n\nFURAX: a modular JAX toolbox for solving inverse problems in science\n\n\nSimon Biquard, Pierre Chanial, Wassim Kabalan\n\n\n\n\n\nNo matching items"
+  },
+  {
     "objectID": "2024-cmb-france-6/index.html#furax-library",
     "href": "2024-cmb-france-6/index.html#furax-library",
     "title": "FURAX: a modular JAX toolbox for solving inverse problems in science",
