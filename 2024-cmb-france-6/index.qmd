@@ -7,7 +7,7 @@ author:
 format:
   revealjs:
     theme: [default, css/custom.scss]
-    incremental: false   
+    incremental: false
     transition: slide
     background-transition: slide
     presentation-size: max-scale
@@ -72,7 +72,7 @@ logo1 : '
 - Modularity, extensibility, simplicity: Easy to experiment new ideas, Fail fast approach
 - JAX: Differentiation, Just In Time (JIT) compilation, run the same code anywhere — on CPUs and GPUs, laptops and super-computers
 - Framework for robust B-mode analysis
-- Able to handle SO- and S4-like data sets volumes, Compatibility with TOAST 
+- Able to handle SO- and S4-like data sets volumes, Compatibility with TOAST
 - Non-ideal optical components
 - 1st steps: “max-L” and “template” map-making (following MAPPRAISER’s formalism)
 - Multi-GPU parallelization (soon)
@@ -581,7 +581,7 @@ Credits: SciPol Ph.D students
 :::
 
 
-## Maximum-Likelihood Map-Making{style="font-size: 20px;"} 
+## Maximum-Likelihood Map-Making{style="font-size: 20px;"}
 
 <br>
 
@@ -923,8 +923,8 @@ import jax
 
 @jax.jit
 def negative_log_prob(params, d):
-  A = make_A(params['TEMP_D'], 
-             params['BETA_D'], 
+  A = make_A(params['TEMP_D'],
+             params['BETA_D'],
              params['BETA_S'])
 
   x = (A.T @ invN)(d)
@@ -1022,7 +1022,7 @@ $
 $\mathbf{P} =
 \begin{bmatrix}
     P_{1} \\
-    P_{2} 
+    P_{2}
 \end{bmatrix}$
 
 - Atmospheric template: $s_{\text{atm}}$
@@ -1034,7 +1034,7 @@ $\mathbf{P} =
 \end{bmatrix}$
 
 
-### Spectral Likelihood 
+### Spectral Likelihood
 
 $$
 \boxed{
@@ -1131,7 +1131,7 @@ Credit: Amalia Villarrubia Aguilar
 :::{.solutionbox-body style="font-size: 18px;"}
 
 ➜ This spectral likelihood is minimised through gridding: we compute
-$\langle \delta \mathcal{S}_\text{spec}(w_x, w_y \mid \text{PWV}_{\text{sim}}) \rangle$  
+$\langle \delta \mathcal{S}_\text{spec}(w_x, w_y \mid \text{PWV}_{\text{sim}}) \rangle$
 for 22,500 different combinations of $(w_x, w_y)$.
 
 :::
