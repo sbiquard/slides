@@ -1,8 +1,9 @@
 ---
 title: "FURAX: a modular JAX toolbox for solving inverse problems in science "
+date: 2024-12-19
 
 author:
-  - "Pierre Chanial, Wassim Kabalan, Simon Biquart"
+  - "Simon Biquard, Pierre Chanial, Wassim Kabalan"
 
 format:
   revealjs:
