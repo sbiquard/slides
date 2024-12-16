@@ -1,0 +1,9 @@
+---
+title: "My slides and presentations"
+author: "Simon Biquard"
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+---

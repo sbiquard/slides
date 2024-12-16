@@ -1,0 +1,12 @@
+project:
+  type: website
+  output-dir: .
+
+website:
+  title: "FURAX: a modular JAX toolbox for solving inverse problems in science "
+  navbar:
+    left:
+      - href: index.qmd
+
+
+

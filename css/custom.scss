@@ -1,0 +1,93 @@
+/*-- scss:defaults --*/
+
+$body-bg: #FFFFFF;  // Background color set to light grey
+$body-color: #333;  // Text color set to dark grey for better readability on light background
+$link-color: #007acc;  // Link color with a blue shade that stands out on a light background
+$body-font-size: 26px;  // Adjust this value to make the font size smaller or larger
+$solution-header-font-size: 26px;  // Adjust this value to make the font size smaller or larger
+$solution-body-font-size: 24px;
+
+/*-- scss:rules --*/
+
+.reveal {
+  background-color: $body-bg;
+  color: $body-color;
+  font-size: $body-font-size;  // Set the body font size
+
+  .slides {
+    .slide {
+      color: $body-color;
+    }
+  }
+
+  /* Customizing links */
+  // a {
+  //   color: $link-color;
+
+  //   &:hover {
+  //     color: lighten($link-color, 20%);
+  //   }
+  // }
+}
+
+/* Continue with your existing custom styles below */
+.solutionbox {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  border-radius: 5px;
+  border: 2px solid #521463;  // Add a light grey border around the body
+  background-color: #e8e8e8;  // Light grey background for the solution box
+}
+
+.solutionbox-icon {
+  height: 0.9rem;
+  width: 0.9rem;
+  display: inline-block;
+  content: "";
+  background-repeat: no-repeat;
+  background-size: 0.9rem 0.9rem;
+  margin-top: .5rem;
+  padding-right: 1.25rem;
+  background-image: url('screwdriver-wrench-solid.png');
+}
+
+.solutionbox-header {
+  margin-top: 0.1em;
+  vertical-align: middle;
+  text-align: center;
+  margin-bottom: 0.1em;
+  border-bottom: none;
+  font-weight: 600;
+  opacity: 100%;
+  font-size: $solution-header-font-size;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  display: flex;
+  background-color: #d3b4f0;  // Light purple background for the header
+  height: 2em;
+  overflow: hidden;
+  align-items: center;  // Align items vertically in the center
+  justify-content: center;  // Align items horizontally in the center
+}
+
+.solutionbox-header p {
+  padding-top: 0.2em;
+}
+
+.solutionbox-body {
+  font-size: $solution-body-font-size;
+  font-weight: 400;
+  background-color: #f4f4f4;  // Match the body background or slightly darker
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
+.solutionbox-body > :last-child {
+  padding-bottom: 0.5rem;
+  margin-bottom: 0;
+}
+
+figcaption {
+  margin: auto;
+  text-align: center;
+}

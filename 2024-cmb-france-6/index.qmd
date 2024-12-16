@@ -1,0 +1,1147 @@
+---
+title: "FURAX: a modular JAX toolbox for solving inverse problems in science "
+
+author:
+  - "Pierre Chanial, Wassim Kabalan, Simon Biquart"
+
+format:
+  revealjs:
+    theme: [default, css/custom.scss]
+    incremental: false   
+    transition: slide
+    background-transition: slide
+    presentation-size: max-scale
+    highlight-style: github
+    slide-number: true
+    template-partials:
+      - css/title-slide.html
+output: revealjs
+
+title-slide-attributes:
+  data-background-image: "assets/Wallpaper-datacenter-tetris.png"
+  data-background-size: fill
+  data-background-opacity: "0.2"
+
+
+logo1 : '
+<div style="display: flex; justify-content: space-around; align-items: center; layout-valign="middle">
+  <img src="assets/Logos/Furax_logo_transparent.png" style="width: 25%;"/>
+  <img src="assets/Logos/JaxLogo.png" style="width: 15%;"/>
+  <img src="assets/Logos/Python.png" style="width: 20%;"/>
+</div>
+<div style="display: flex; justify-content: space-around; align-items: center; layout-valign="middle">
+  <img src="assets/Logos/APC.png" style="width: 15%;"/>
+  <img src="assets/Logos/scipol.png" style="width: 15%;"/>
+  <img src="assets/Logos/ERC.svg" style="width: 15%;"/>
+  <img src="assets/Logos/CNRS.svg" style="width: 15%;"/>
+</div>
+'
+---
+
+## FURAX Library
+
+<br>
+<br>
+
+:::{.solutionbox}
+
+::::{.solutionbox-body style="font-size: 22px; border-radius: 10px; border: 2px solid #521463;"}
+
+- <span style="color:#521463; font-size: 28px;">**Motivations and Goals**</span>: Why and for what FURAX ?
+<br />
+<br />
+- <span style="color:#521463; font-size: 28px;">**FURAX Bulding Blocks**</span>: Presentation of the FURAX PyTrees and Operators.
+<br />
+<br />
+- <span style="color:#521463; font-size: 28px;">**Optimizations**</span>: High-level algebraic reductions with FURAX.
+<br />
+<br />
+- <span style="color:#521463; font-size: 28px;">**CMB Applications**</span>: From map-making to component separation.
+::::
+
+:::
+
+
+## Motivations and Goals
+
+- Inverse problems
+- Open source: [https://github.com/CMBSciPol/furax](https://github.com/CMBSciPol/furax)
+
+<br>
+
+- Modularity, extensibility, simplicity: Easy to experiment new ideas, Fail fast approach
+- JAX: Differentiation, Just In Time (JIT) compilation, run the same code anywhere — on CPUs and GPUs, laptops and super-computers
+- Framework for robust B-mode analysis
+- Able to handle SO- and S4-like data sets volumes, Compatibility with TOAST 
+- Non-ideal optical components
+- 1st steps: “max-L” and “template” map-making (following MAPPRAISER’s formalism)
+- Multi-GPU parallelization (soon)
+
+You can try it: `pip install furax`, bearing in mind that the library is actively developed and currently in a refactoring phase.
+
+
+
+# FURAX Building Blocks {style="font-size: 35px; align=center;"}
+
+
+## FURAX PyTrees
+
+
+<br>
+<br>
+
+FURAX relies on PyTrees to represent the data. For example, for component separation analysis, we can write the generalized sky as a nested PyTree
+
+```python
+sky = {
+  'cmb': HealpixLandscape(NSIDE, 'IQU').normal(key1),
+  'dust': HealpixLandscape(NSIDE, 'IQU').normal(key2),
+  'synchrotron': HealpixLandscape(NSIDE, 'IQU').normal(key3),
+}
+```
+
+`HealpixLandscape(NSIDE, 'IQU')` returns an instance of `StokesIQUPyTree`, which has the attributes `i`, `q` and `u` that store the JAX arrays of the Stokes components.
+
+Also available are `StokesIPyTree`, `StokesQUPyTree` and `StokesIQUVPyTree`.
+
+<br>
+
+PyTree are then used by the FURAX Operators:
+
+```python
+# Given an acquisition H:
+tod = H(sky)
+```
+
+
+## FURAX Operators
+
+<br>
+
+The base class `AbstractLinearOperator` provides a default implementation for the usual linear algebra operations.
+
+<br>
+
+::: {style="font-size: 18px;"}
+
+| Operation   | FURAX | Comment |
+|-------------|-------|---------|
+| Addition    | `A + B` |   |
+| Composition | `A @ B` |   |
+| Multiplication by scalar | `k * A` | Returns the composition of a HomothetyOperator and A|
+| Transpose   | `A.T`  |  Through JAX autodiff, but can be overriden |
+| Inverse     | `A.I` | By default, the CG solver is used, but it can be overriden or configured using a context manager |
+| Block Assembly | `BlockColumnOperator([A, B])` `BlockDiagonalOperator([A, B])` `BlockRowOperator([A, B])` | Handle any PyTree of Operators: `Block*Operator({'a': A, 'b': B})`|
+| Flattened dense matrix | `A.as_matrix()` | |
+| Algebraic reduction | `A.reduce()` | |
+
+: {tbl-colwidths="[25,35,40]"}
+
+:::
+
+## FURAX Operators {style="font-size: 18px;"}
+
+<br/>
+<br/>
+
+::: {.columns}
+
+::: {.column width="60%"}
+
+::: {.solutionbox}
+
+:::{.solutionbox-body style="font-size: 17px;"}
+
+| Generic Operator                | Description |
+|---------------------------------|-------------|
+| `IdentityOperator`              |             |
+| `HomothetyOperator`             |             |
+| `DiagonalOperator`              |             |
+| `BroadcastDiagonalOperator`     | Non-square operator for broadcasting |
+| `TensorOperator`    | For dense matrix operations |
+| `IndexOperator`                 | Can be used for projecting skies onto time-ordered series|
+| `MoveAxisOperator`              |             |
+| `ReshapeOperator`               |             |
+| `RavelOperator`                 |             |
+| `SymmetricBandToeplitzOperator` | Methods: direct, FFT, overlap and save |
+| `Block*Operator` | Block assembly operators (column, diagonal, row)|
+
+:::
+
+:::
+
+
+:::
+
+::: {.column width="40%"}
+
+::: {.solutionbox}
+
+:::{.solutionbox-body style="font-size: 17px;"}
+
+
+| Applied Operator          | Description |
+|---------------------------|-------------|
+| `QURotationOperator`      |             |
+| `HWPOperator`             | Ideal HWP   |
+| `LinearPolarizerOperator` | Ideal linear polarizer |
+| `CMBOperator`             | Parametrized CMB SED |
+| `DustOperator`            | Parametrized dust SED |
+| `SynchrotronOperator`     | Parametrized synchrotron SED |
+
+:::
+
+:::
+
+:::
+
+:::
+
+
+# Multi-level Optimizations {style="font-size: 35px;"}
+
+
+## JAX GPU Compilation Chain
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+![From the Python code to the GPU-native code](assets/jax-compilation-chain.png){.nostrech fig-align="center" width="100%"}
+
+## XLA simplifications
+
+<br>
+
+::::: {.columns}
+
+:::: {.column width="50%"}
+
+
+::: {.solutionbox}
+
+::: {.solutionbox-header}
+
+**Mathematical identities**
+
+:::
+
+:::{.solutionbox-body style="font-size: 20px;"}
+
+- $a\times 0 = a - a = 0$
+- $a - 0 = a\times 1 = a / 1 = a^1 = a$
+- $a^{-1} = 1/a$, $a^{1/2} = \sqrt{a}$
+- $-(-x) = x$
+- $(-a)(-b) = ab$
+- $ac + bc = (a+b)c$
+- $a / const = a \times (1 / const)$
+- $(a + c1) + (b + c2) =  a + b + (c1 + c2)$
+- $(a / b) / (c / d) = ad / bc$
+- $\ln e^x = x$
+- $\exp a \exp b = \exp(a+b)$
+- $a / \exp b = a \exp(-b)$
+
+:::
+
+:::
+
+::::
+
+:::: {.column width="50%"}
+
+::: {.solutionbox}
+
+:::{.solutionbox-header}
+
+**Array manipulations**
+
+:::
+
+:::{.solutionbox-body style="font-size: 20px;"}
+
+- slicing
+- reshaping
+- broadcasting
+- transposition
+- bitcast
+- copies
+
+:::
+
+:::
+
+
+:::{.solutionbox}
+
+:::{.solutionbox-header}
+
+**Ol' Digger's tricks**
+
+:::
+
+:::{.solutionbox-body style="font-size: 20px;"}
+
+- $a^2 = a \times a$, $a^3 = a \times a \times a$
+- $a / b = a$>>$\log_2 b$ if b is a power of 2
+- $a \mod b = a \& (b - 1)$ if b is a power of 2
+
+:::
+
+:::
+
+::::
+
+:::::
+
+and many more (see [xla/hlo/transforms/simplifiers/algebraic_simplifier.cc](xla/hlo/transforms/simplifiers/algebraic_simplifier.cc))
+
+
+## Dead Code Elimination (DCE)
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```python
+import jax
+import jax.numpy as jnp
+
+@jax.jit
+def func_dce(x):
+    unused = jnp.sin(x)
+    y = jnp.exp(x)
+    return y[0]
+```
+
+::: {.fragment fragment-index=1}
+
+![Compiled StableHLO representation](assets/hlo/hlo-func-dce.png){fig-align="center" width="60%"}
+
+:::
+
+:::
+
+::: {.column width="50%"}
+
+::: {.fragment fragment-index=2}
+
+```python
+import jax
+import jax.numpy as jnp
+
+@jax.jit
+def func_full(x):
+    return jnp.exp(x)
+
+
+
+```
+
+:::
+
+::: {.fragment fragment-index=3}
+
+![Full computation vs DCE](assets/hlo/bench-dce.png){fig-align="center" width="190%"}
+
+:::
+
+:::
+
+::::
+
+
+## XLA Common Subexpression Elimination (CSE)
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```python
+import jax
+import jax.numpy as jnp
+
+@jax.jit
+def func_cse(theta):
+    a = jnp.sin(theta)
+    b = jnp.sin(theta) + 1
+    return a + b
+ ```
+
+:::{.fragment fragment-index=2}
+
+:::{.solutionbox}
+
+:::{.solutionbox-header style="font-size: 22px;"}
+
+**XLA Common Subexpression Elimination (CSE)**
+
+:::
+
+::::{.solutionbox-body style="font-size: 20px;"}
+
+- **Definition**: CSE identifies and eliminates duplicate computations within a function to optimize performance.
+
+- **Example in Code**:
+  - Without CSE: `jnp.sin(theta)` computed twice.
+  - After CSE: Shared computation across `a` and `b`.
+
+- **Benefits**:
+  - Reduces redundant computation.
+  - Enhances runtime efficiency and memory usage.
+
+::::
+
+:::
+
+:::
+
+:::
+
+::: {.column width="50%"}
+
+::: {.fragment fragment-index=1}
+
+![Compiled StableHLO representation](assets/hlo/hlo-func-cse.png){fig-align="center" width="60%" style="border: 2px solid #000000;"}
+
+:::
+
+:::
+
+::::
+
+
+## JAX GPU Compilation Chain with FURAX
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+![From the Python code to the GPU-native code](assets/jax-compilation-chain-with-furax.png){fig-align="center" width="120%"}
+
+
+## FURAX Algebraic Reductions: Composition of Rotations
+
+
+```python
+import jax
+import jax.numpy as jnp
+
+def rot(x, y, theta):
+    rotated_x = x * jnp.cos(theta) - y * jnp.sin(theta)
+    rotated_y = x * jnp.sin(theta) + y * jnp.cos(theta)
+    return rotated_x, rotated_y
+
+@jax.jit
+def func(x, y, theta1, theta2):
+    return rot(x, y, theta=theta1 + theta2)
+  ```
+
+::: {.fragment fragment-index=1}
+
+![Compiled StableHLO representation](assets/hlo/hlo-rot-furax.png){fig-align="center" width="60%"}
+
+:::
+
+
+## FURAX Algebraic Reductions: Composition of Rotations
+
+
+```python
+import jax
+import jax.numpy as jnp
+
+def rot(x, y, theta):
+    rotated_x = x * jnp.cos(theta) - y * jnp.sin(theta)
+    rotated_y = x * jnp.sin(theta) + y * jnp.cos(theta)
+    return rotated_x, rotated_y
+
+@jax.jit
+def func(x, y, theta1, theta2):
+    x, y = rot(x, y, theta=theta1)
+    return rot(x, y, theta=theta2)
+  ```
+
+::: {.fragment fragment-index=1}
+
+![Compiled StableHLO representation](assets/hlo/hlo-rot.png){fig-align="center" width="60%"}
+
+:::
+
+
+## FURAX Algebraic Reductions: Instrument Acquisition
+
+<br>
+
+Given this modeling of the acquisition, using an ideal linear polarizer and an ideal half wave plate:
+$$
+\mathbf{H} = \mathbf{C}_{\textrm{LP}} \, \mathbf{R}_{2\theta} \, \mathbf{R}_{-2\phi} \, \mathbf{C}_{\textrm{HWP}} \, \mathbf{R}_{2\phi} \, \mathbf{R}_{2\psi} \, \mathbf{P}
+$$
+with
+
+- $\theta$: detector polarization angle
+- $\phi$: HWP rotation angle
+- $\psi$: telescope rotation angle
+
+FURAX reduces this expression to:
+
+$$
+\mathbf{H} = \mathbf{C}_{\textrm{LP}} \, \mathbf{R}_{-2\theta + 4\phi + 2\psi}\, \mathbf{P}
+$$
+
+
+## FURAX Algebraic Reductions: Pointing Matrix
+
+<br>
+
+::: {style="font-size: 20px;"}
+
+When the time-time noise covariance matrix $\mathbf{N}$ is diagonal and $\mathbf{P}$ is a "one-to-one" intensity projection matrix:
+
+$$
+\mathbf{P} =
+\begin{bmatrix}
+0 & \cdots & 0 & 1 & 0 & \cdots & 0 \\
+0 & 1 & 0 & \cdots & 0 & 0 & \cdots & 0 \\
+\vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots \\
+1 & 0 & \cdots & 0 & 0 & \cdots & 0 \\
+\vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots \\
+0 & 0 & \cdots & 0 & 1 & 0 & \cdots & 0 \\
+\end{bmatrix},
+$$
+
+<br/>
+<br/>
+
+ - the product $\mathbf{P}^\top \mathbf{N}^{-1} \mathbf{P}$ is diagonal and can therefore be easily inverted (for pixel-pixel covariance matrix or preconditioning).
+ - Each term is related to the number of noise-weighted times a pixel of the map has been observed.
+
+ - For IQU maps, the product is block diagonal, with 3x3 blocks that can also be easily inverted.
+
+ - By adding a **rule** for this operation, we've seen an performance improvement by more than a **factor of 10** in the forward application (WIP, currently only for $\mathbf{N}$ scalar).
+
+:::
+
+
+## FURAX Algebraic Reductions: Block Assembly
+
+::: {style="font-size: 15px;"}
+
+<br>
+<br>
+
+| Operation | Reduction |
+|---------------------------------|-------------|
+| `BlockDiagonalOperator([D1, D2]) @ BlockColumnOperator([C1, C2])`              | `BlockColumnOperator([D1 @ C1, D2 @ C2])`|
+| `BlockRowOperator([R1, R2]) @ BlockDiagonalOperator([D1, D2])`              | `BlockRowOperator([R1 @ D1, R2 @ D2])`|
+| `BlockRowOperator([R1, R2]) @ BlockColumnOperator([C1, C2])`              | `R1 @ C1 + R2 @ C2`|
+
+: {tbl-colwidths="[60,40]"}
+
+:::
+
+<br>
+<br>
+
+#### Practical use case:
+
+Given two observations
+
+$$
+\mathbf{P} =
+\begin{bmatrix}
+\mathbf{P}_1 \\
+\mathbf{P}_2
+\end{bmatrix}, \quad
+\mathbf{N}^{-1} =
+\begin{bmatrix}
+\mathbf{N}_1^{-1} & 0 \\
+0 & \mathbf{N}_2^{-1}
+\end{bmatrix},
+$$
+
+The combination is reduced to
+$$
+\mathbf{P}^\top \mathbf{N}^{-1} \mathbf{P} = \mathbf{P}_1^\top \mathbf{N}_1^{-1} \mathbf{P}_1^{\,} + \mathbf{P}_2^\top \mathbf{N}_2^{-1} \mathbf{P}_2^{\,}.
+$$
+
+
+# CMB Applications {style="font-size: 35px; align=center;"}
+
+::: {style="color: gray; font-size: 16px"}
+
+<br>
+<br>
+<br>
+<br>
+Credits: SciPol Ph.D students
+:::
+
+
+## Maximum-Likelihood Map-Making{style="font-size: 20px;"} 
+
+<br>
+
+::::: {.columns}
+
+::: {.column width="45%"}
+
+#### Classic data model
+
+$$
+d = \mathbf{P}s + n
+$$
+
+- $d$: time-ordered data
+- $\mathbf{P}$: pointing matrix ( telescope scanning)
+- $s$: discretized sky signal
+- $n$: stochastic contribution (noise)
+
+<br>
+
+#### Optimal (GLS) solution:
+
+$$
+\widehat{s} = (\mathbf{P}^\top \mathbf{N}^{-1} \mathbf{P})^{-1} \mathbf{P}^\top \mathbf{N}^{-1} d
+$$
+:::
+
+::: {.column width="55%"}
+
+#### Generalized parametric data model
+
+![](assets/mapmaking/instrument-foregrounds.png){fig-align="center"}
+
+$$
+d_{\nu, i, t} = \int_{\textrm{BP}_\nu} d\nu' \mathbf{M}^{(\gamma)}_{\nu', i, t, p} \mathbf{A}^{(\beta)}_{\nu', t, c, p} s_{c, p} + n_{\nu, i, t}
+$$
+
+- $\mathbf{M}$ includes HWP parameters, band passes, beam properties, gains, ...
+- $\mathbf{A}$ includes the frequency modeling of CMB, astrophysical foregrounds, atmosphere, ground
+- $\mathbf{H} = \mathbf{MA}$ is the generalized pointing operator
+:::
+
+:::::
+
+::: {style="color: gray; font-size: 16px"}
+Credit: Simon Biquart
+:::
+
+
+## Maximum-Likelihood Map-Making
+
+<br>
+
+::::: {.columns}
+::: {.column}
+![$N^{-1}$ Block symmetric band Toeplitz](assets/mapmaking/block-toeplitz.png){fig-align="center" width="50%"}
+:::
+::: {.column}
+![](assets/mapmaking/gap-filling.png){fig-align="center" width="65%"}
+:::
+:::::
+
+### Furax example
+
+```python
+h = bandpass @ pol @ rot @ hwp @ proj @ mixing
+tod = h(sky)
+solution = ((h.T @ invN @ h).I @ h.T @ invN)(gap_fill(key, tod))
+```
+
+::: {style="color: gray; font-size: 16px"}
+Credit: Simon Biquart
+:::
+
+## Writing this with FURAX tools
+
+::::: {.columns}
+
+:::: {.column width="60%"}
+
+<br/>
+
+```python
+polarizer = LinearPolarizerOperator.create(detector_angles)
+hwp = HWPOperator.create(hwp_angles)
+rotation = QURotationOperator.create(telescope_angle)
+sampling = SamplingOperator(pixel_indices)
+h = polarizer @ hwp @ rotation @ sampling
+invN = SymmetricBandToeplitzOperator(noise_correlations)
+L = (h.T @ invN @ h).I @ h.T @ invN
+estimate = L(data)
+```
+
+<br/>
+<br/>
+<br/>
+
+
+:::{.solutionbox}
+
+:::{.solutionbox-header style="font-size: 22px;"}
+
+**FURAX Map-Making**
+
+:::
+
+::::{.solutionbox-body style="font-size: 20px;"}
+
+Can be extended & complexified easily!.
+- non-ideal components
+- parametric data model
+
+
+::::
+
+:::
+
+::: {style="color: gray; font-size: 16px"}
+Credit: Simon Biquart
+:::
+
+
+::::
+
+:::: {.column width="40%"}
+
+
+::: {layout="[[3],[1],[3]]"}
+
+![](assets/CMB/input.png){fig-align="center" width="70%"}
+
+![](assets/Symboles/down_arrow.svg){fig-align="center" width="5%"}
+
+![](assets/CMB/output.png){fig-align="center" width="70%"}
+
+
+:::
+
+
+::::
+
+:::::
+
+## Quantifying Biases from Non-Ideal Half Wave Plates
+
+<br>
+
+![](assets/hwp/hwp-ema.png){fig-align="center" width="100%"}
+
+#### Non-ideal Half Wave Plate
+- Made of several stacked layers
+- Takes into account the transmission and reflection of the incident electromagnetic field at the layers boundaries
+
+#### Furax modeling
+
+```python
+h = pol @ bandpass @ hwp @ mixing_matrix @ projection
+sol = ((h.T @ h).I @ h.T)(tod)
+```
+
+::: {style="color: gray; font-size: 16px"}
+Credit: Ema Tsang King Sang
+:::
+
+
+## Component Separation {style="font-size: 22px;"}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+![](assets/CMB/CMB-Planck.png){.nostretch fig-align="center" width="35%"}
+
+::: {.fragment fragment-index=1}
+
+![](assets/CMB/Plus_symbol.svg){.nostretch fig-align="center" width="10%"}
+
+![](assets/CMB/dust_planck.png){.nostretch fig-align="center" width="35%"}
+
+:::
+
+::: {.fragment fragment-index=2}
+
+![](assets/CMB/Plus_symbol.svg){.nostretch fig-align="center" width="10%"}
+
+![](assets/CMB/synch-planck.png){.nostretch fig-align="center" width="35%"}
+
+:::
+
+:::
+
+::: {.column width="50%"}
+
+  - The **Cosmic Microwave Background (CMB)** signal is obscured by various **foregrounds**, making it challenging to detect the true cosmological information.
+
+::: {.fragment fragment-index=1}
+
+  - **Dust**: Emission from galactic dust adds significant noise to the CMB, particularly affecting polarization measurements.
+
+:::
+
+::: {.fragment fragment-index=2}
+
+  - **Synchrotron Radiation**: Electrons spiraling in the galaxy's magnetic fields produce synchrotron radiation, another major contaminant.
+
+:::
+
+::: {.fragment fragment-index=3}
+
+::: {.solutionbox}
+
+::: {.solutionbox-header style="font-size: 22px;"}
+
+**Component separation methods**
+
+:::
+
+::::{.solutionbox-body style="font-size: 2Opx;"}
+
+- **Blind Methods**: Like **SMICA** (Spectral Matching Independent Component Analysis)
+- **Parametric Methods**: Like **FGbuster** (Foreground Buster)
+
+::::
+
+:::
+
+:::
+
+:::
+
+::::
+
+::: {.notes}
+
+Le signal du fond diffus cosmologique, ou CMB, est en réalité obscurci par plusieurs avant-plans, ce qui rend difficile l'extraction des informations cosmologiques réelles.
+
+L'un des contaminants principaux est la poussière galactique. Cette poussière émet du rayonnement qui ajoute un bruit significatif au CMB, affectant particulièrement les mesures de polarisation.
+
+**NEXT**
+
+Un autre contaminant majeur est la radiation synchrotron. Elle est produite par des électrons en spirale dans les champs magnétiques de notre galaxie, ce qui vient encore plus brouiller le signal cosmologique que l'on souhaite observer.
+
+**AFTER**
+
+Pour pouvoir extraire une valeur fiable du rapport $r$, il est crucial de séparer ou de "démixer" ces composants. Le signal du CMB est mêlé à diverses émissions parasites.
+
+ Il existe différentes méthodes pour cela, principalement des méthodes aveugles comme SMICA, qui fonctionnent sans connaissances préalables des avant-plans, et des méthodes paramétriques comme FGbuster, qui reposent sur la modélisation explicite des avant-plans.
+
+Dans cette présentation, nous allons nous concentrer sur les méthodes paramétriques. Celles-ci nous permettent d'utiliser des modèles pour les avant-plans et d'améliorer la précision du processus de séparation.
+
+:::
+
+::: {style="color: gray; font-size: 16px"}
+Credit: Wassim Kabalan
+:::
+
+
+## On-going development of parametric component separation within the FURAX framework
+
+::: {.columns}
+
+::: {.column width="50%"}
+
+#### Does everything fgbuster does but “better"
+ - Uses FURAX linear algebra operators to efficiently represent the mixing matrix
+ - Is written in JAX, is hardware accelerated
+ - Provides easy access to gradients
+
+:::{.fragment fragment-index=1}
+
+![](assets/CMB/Log_Like_bench.png){.nostretch fig-align="center" width="80%" style="border: 2px solid #000000;"}
+
+:::
+
+:::
+
+::: {.column width="50%"}
+
+#### Beyond fgbuster
+ - Automatic cluster detection for spectral index parameters
+  - Flexible likelihood model (can be extended to include more components and different objective functions)
+
+:::{.fragment fragment-index=1}
+
+![](assets/CMB/Comp-sep-patches.png){.nostretch fig-align="center" width="80%" style="border: 2px solid #000000;"}
+
+:::
+
+:::
+
+:::
+
+::: {style="color: gray; font-size: 16px"}
+Credit: Wassim Kabalan
+:::
+
+
+##  On-going development of parametric component separation within the FURAX framework {style="font-size: 22px;"}
+
+<br>
+
+:::{.columns}
+
+:::{.column width="50%"}
+
+:::{.fragment fragment-index=1}
+
+#### Creating a Mixing Matrix Operator for SED evaluation
+
+```python
+from furax.seds import \
+  CMBOperator,DustOperator, SynchrotronOperator
+
+def make_A(TEMP_D , BETA_D , BETA_S):
+  cmb = CMBOperator(nu, in_structure)
+  dust = DustOperator(nu , TEMP_D , BETA_D)
+  synchrotron = SynchrotronOperator(nu , BETA_S)
+
+  mixed_sed = BlockRowOperator({
+          'cmb': cmb,
+          'dust': dust,
+          'synchrotron': synchrotron,
+      })
+  return mixed_sed
+```
+
+:::
+
+:::
+
+:::{.column width="50%"}
+
+:::{.fragment fragment-index=2}
+
+#### Trivial construction of a spectral likelihood functions
+
+```python
+import jax
+
+@jax.jit
+def negative_log_prob(params, d):
+  A = make_A(params['TEMP_D'], 
+             params['BETA_D'], 
+             params['BETA_S'])
+
+  x = (A.T @ invN)(d)
+  l = jax.tree.map(lambda a, b: a @ b, x, (A.T @ invN @ A).I(x))\
+                       S
+  summed_log_prob = jax.tree.reduce(operator.add, l)
+
+  return -summed_log_prob
+
+
+```
+
+:::
+
+:::
+
+:::
+
+<br>
+
+:::{.fragment fragment-index=3}
+
+:::{.solutionbox}
+
+:::{.solutionbox-header style="font-size: 22px;"}
+
+Easy to evaluate and extend
+
+:::
+
+::::{.solutionbox-body style="font-size: 20px;"}
+
+- The likelihood function is readily available and can be easily extended to include more components or different objective functions.
+- Easy access to gradients and hessians for optimization.
+
+::::
+
+:::
+
+:::
+
+::: {style="color: gray; font-size: 16px"}
+Credit: Wassim Kabalan
+:::
+
+
+## Atmosphere Decontamination Using Time-Domain Component Separation {style="font-size: 18px;"}
+
+### Science Goal
+For the Simons Observatory, characterize the observed atmospheric template from the recorded time-ordered data to separate the atmosphere from the sky signal we are after.
+
+::::: {.columns}
+
+:::: {.column width="40%"}
+![](assets/atm/atm-template.png){fig-align="center" width="100%"}
+
+### Data Model
+$$
+d_{\text{atm}} = \mathbf{A}(\text{PWV}) \mathbf{P}(w_x, w_y) s_{\text{atm}} + n
+$$
+
+::::
+
+:::: {.column width="60%"}
+
+:::{.solutionbox}
+
+:::{.solutionbox-header style="font-size: 19px;"}
+
+**Model Parameters**
+
+:::
+
+:::{.solutionbox-body style="font-size: 17px;"}
+
+- **Wind velocity**: $\vec{w} = (w_x, w_y)$
+- **Precipitable Water Vapour (PWV)**: ~Amplitude of atmospheric fluctuations.
+- Estimate parameters by minimizing the spectral likelihood.
+
+:::
+
+:::
+
+- Atmospheric time-ordered data recorded by our telescope at two frequencies: $d_{\text{atm}}$
+
+- Mixing matrix
+$\mathbf{A} =
+\begin{bmatrix}
+    a(\text{PWV}_{1}) & 0 \\
+    0 & a(\text{PWV}_{2})
+\end{bmatrix}
+$
+
+- Pointing matrix
+$\mathbf{P} =
+\begin{bmatrix}
+    P_{1} \\
+    P_{2} 
+\end{bmatrix}$
+
+- Atmospheric template: $s_{\text{atm}}$
+
+- Noise: $n$, of covariance matrix $\mathbf{N} =
+\begin{bmatrix}
+    \sigma_{1}^{2} & 0 \\
+    0 & \sigma_{2}^{2}
+\end{bmatrix}$
+
+
+### Spectral Likelihood 
+
+$$
+\boxed{
+\langle \delta \mathcal{S}_\text{spec}(w_x, w_y, \text{PWV} \mid \vec{d}_{\text{atm}}) \rangle
+= \vec{d}_{\text{atm}}^\top \cdot \mathbf{AP}
+\Big[ (\mathbf{AP})^\top \mathbf{N}^{-1} (\mathbf{AP}) \Big]^{-1}
+(\mathbf{AP})^\top \mathbf{N}^{-1} d_{\text{atm}}
+}
+$$
+
+
+::::
+
+:::::
+
+
+::: {style="color: gray; font-size: 16px"}
+Credit: Amalia Villarrubia Aguilar
+:::
+
+
+## Atmosphere Decontamination Using Time-Domain Component Separation
+
+### Spectral likelihood computation using FURAX
+
+```{.python code-line-numbers="|17-21"}
+def average_spectral_likelihood_noise(d_atm, w_vec, PWV):
+    # POINTING matrix (shape: (n_detectors * N_obs * n_freq) x N_pix)
+    P_single_freq = pointing_matrix_single_freq(detector_pointings_t, t_obs, n_detectors, z_atm, d_pix_sim, N_pix_sim, w_vec)
+    P = BlockColumnOperator({‘93’: P_single_freq, ‘145’: P_single_freq})
+    # MIXING matrix: (shape: (n_detectors * N_obs * n_freq) x (n_detectors * N_obs * n_freq))
+    A_block_structure = StokesIPyTree.structure_for((n_detectors,N_obs))
+    A_93 = HomothetyOperator(atm_emission(PWV, mu_93)/atm_emission(PWV, mu_93), in_structure=A_block_structure)
+    A_145 = HomothetyOperator(atm_emission(PWV, mu_145)/atm_emission(PWV, mu_93), in_structure=A_block_structure)
+    A = BlockDiagonalOperator({‘93’: A_93, ‘145’: A_145})
+    # COMPOSITION matrix: mixing matrix @ pointing matrix (shape: (n_detectors * N_obs * n_freq) x N_pix)
+    C = A @ P
+    # NOISE covariance matrix (shape: (n_det x N_obs x n_freq) x (n_det x N_obs x n_freq))
+    N_block_structure = StokesIPyTree.structure_for((n_detectors,N_obs))
+    N_93 = HomothetyOperator(noise_variance_93, in_structure=N_block_structure)
+    N_145 = HomothetyOperator(noise_variance_145, in_structure=N_block_structure)
+    N = BlockDiagonalOperator({‘93’: N_93, ‘145’: N_145})
+    # Spectral likelihood computation:
+    core_op = (C.T @ N.I @ C).I
+    full_op = N.I @ C @ core_op @ C.T @ N.I
+    S = - StokesIPyTree(d_atm) @ StokesIPyTree(full_op(d_atm))
+    return S
+```
+
+:::{.solutionbox}
+
+:::{.solutionbox-body style="font-size: 18px;"}
+
+- Easily extensible
+- Easy access to gradients
+
+:::
+
+:::
+
+::: {style="color: gray; font-size: 16px"}
+Credit: Amalia Villarrubia Aguilar
+:::
+
+
+## Atmosphere Decontamination Using Time-Domain Component Separation {style="font-size: 20px;"}
+
+<br>
+
+### Spectral likelihood minimization
+
+
+:::::{.columns}
+
+::::{.column width="60%"}
+
+![Spectral likelihood gridding](assets/CMB/Spec-likelihood-gridding.png){.nostretch fig-align="center" width="100%" style="border: 2px solid #000000;"}
+
+::::
+
+::::{.column width="40%"}
+
+<br />
+<br />
+
+:::{.solutionbox}
+
+:::{.solutionbox-header style="font-size: 20px;"}
+
+**Gridding process**
+
+:::
+
+:::{.solutionbox-body style="font-size: 18px;"}
+
+➜ This spectral likelihood is minimised through gridding: we compute
+$\langle \delta \mathcal{S}_\text{spec}(w_x, w_y \mid \text{PWV}_{\text{sim}}) \rangle$  
+for 22,500 different combinations of $(w_x, w_y)$.
+
+:::
+
+:::
+
+::::
+
+:::::
+
+::: {style="color: gray; font-size: 16px"}
+Credit: Amalia Villarrubia Aguilar
+:::
