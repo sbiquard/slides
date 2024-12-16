@@ -1018,8 +1018,8 @@ d_{\nu, i, t} = \int_{\textrm{BP}_\nu} d\nu' \mathbf{M}^{(\gamma)}_{\nu', i, t, 
 <span id="cb12-2"><a></a></span>
 <span id="cb12-3"><a></a><span class="at">@jax.jit</span></span>
 <span id="cb12-4"><a></a><span class="kw">def</span> negative_log_prob(params, d):</span>
-<span id="cb12-5"><a></a>  A <span class="op">=</span> make_A(params[<span class="st">'TEMP_D'</span>], </span>
-<span id="cb12-6"><a></a>             params[<span class="st">'BETA_D'</span>], </span>
+<span id="cb12-5"><a></a>  A <span class="op">=</span> make_A(params[<span class="st">'TEMP_D'</span>],</span>
+<span id="cb12-6"><a></a>             params[<span class="st">'BETA_D'</span>],</span>
 <span id="cb12-7"><a></a>             params[<span class="st">'BETA_S'</span>])</span>
 <span id="cb12-8"><a></a></span>
 <span id="cb12-9"><a></a>  x <span class="op">=</span> (A.T <span class="op">@</span> invN)(d)</span>
@@ -1165,8 +1165,7 @@ d_{\text{atm}} = \mathbf{A}(\text{PWV}) \mathbf{P}(w_x, w_y) s_{\text{atm}} + n
 <p><strong>Gridding process</strong></p>
 </div>
 <div class="solutionbox-body" style="font-size: 18px;">
-<p>➜ This spectral likelihood is minimised through gridding: we compute <span class="math inline">\(\langle \delta \mathcal{S}_\text{spec}(w_x, w_y \mid \text{PWV}_{\text{sim}}) \rangle\)</span><br>
-for 22,500 different combinations of <span class="math inline">\((w_x, w_y)\)</span>.</p>
+<p>➜ This spectral likelihood is minimised through gridding: we compute <span class="math inline">\(\langle \delta \mathcal{S}_\text{spec}(w_x, w_y \mid \text{PWV}_{\text{sim}}) \rangle\)</span> for 22,500 different combinations of <span class="math inline">\((w_x, w_y)\)</span>.</p>
 </div>
 </div>
 </div></div>
