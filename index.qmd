@@ -1,9 +1,14 @@
 ---
-title: "My slides and presentations"
-author: "Simon Biquard"
+title: 'Slides'
+author: 'Simon Biquard'
 
 format:
   html:
     theme: cosmo
     toc: true
+
+listing:
+  type: table
+  contents: '.'
+  sort: 'date desc'
 ---
