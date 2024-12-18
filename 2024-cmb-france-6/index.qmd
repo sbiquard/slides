@@ -1,5 +1,5 @@
 ---
-title: "FURAX: a modular JAX toolbox for solving inverse problems in science "
+title: "FURAX: a modular JAX toolbox for solving inverse problems in science"
 date: 2024-12-19
 
 author:
@@ -23,7 +23,6 @@ title-slide-attributes:
   data-background-size: fill
   data-background-opacity: "0.2"
 
-
 logo1 : '
 <div style="display: flex; justify-content: space-around; align-items: center; layout-valign="middle">
   <img src="assets/Logos/Furax_logo_transparent.png" style="width: 25%;"/>
@@ -46,17 +45,17 @@ logo1 : '
 
 - Inverse problems: assuming data $d_{obs} = F(p)$, find the parameters $p$
 - Pure Python, open source: [https://github.com/CMBSciPol/furax](https://github.com/CMBSciPol/furax)
-    - `pip install furax` (_work in progress!_)
+  - `pip install furax` (_work in progress!_)
 - Modular & extensible: Easy to experiment new ideas
 - High-performance: `JAX` (see next slide)
 
 <br>
 
-- Maximum likelihood and “template” map-making
-- Non-ideal optical components
-- Able to handle SO- and S4-like data sets
-    - Interfaces with `TOAST`, `sotodlib`
-    - Multi-GPU parallelization (soon)
+- Maximum likelihood and template map-making as in [El Bouhargani et al. 2021](https://arxiv.org/abs/2112.03370)
+- Non-ideal, frequency-dependent optical components
+- Provide tools for next generation experiments (SO, CMB-S4, LiteBIRD)
+  - Interfaces with `TOAST`, `sotodlib`
+  - Large data sets: multi-GPU parallelization is underway
 
 
 ## What is JAX {.smaller}
@@ -183,11 +182,11 @@ The base class `AbstractLinearOperator` provides a default implementation for th
 
 ## Algebraic reductions: Rotations {.smaller}
 
-Given this modeling of the acquisition, using an ideal linear polarizer and an ideal half wave plate:
+Classic acquisition model with ideal linear polarizer, ideal half wave plate, rotations, pointing matrix
 
 $$
-\mathbf{H} = \mathbf{C}_{\textrm{LP}} \, \mathbf{R}_{2\theta} \, \mathbf{R}_{-2\phi} \,
-\mathbf{C}_{\textrm{HWP}} \, \mathbf{R}_{2\phi} \, \mathbf{R}_{2\psi} \, \mathbf{P}
+\mathbf{H} = \mathbf{M}_{\textrm{LP}} \, \mathbf{R}_{2\theta} \, \mathbf{R}_{-2\phi} \,
+\mathbf{M}_{\textrm{HWP}} \, \mathbf{R}_{2\phi} \, \mathbf{R}_{2\psi} \, \mathbf{P}
 $$
 
 with
@@ -196,89 +195,11 @@ with
 - $\phi$: half-wave plate angle
 - $\psi$: telescope angle
 
-FURAX reduces this expression to:
+is reduced automatically to the much simpler
 
 $$
-\mathbf{H} = \mathbf{C}_{\textrm{LP}} \, \mathbf{R}_{-2\theta + 4\phi + 2\psi}\, \mathbf{P}
+\mathbf{H} = \mathbf{M}_{\textrm{LP}} \, \mathbf{R}_{-2\theta + 4\phi + 2\psi}\, \mathbf{P}
 $$
-
-
-<!---
-## FURAX Algebraic Reductions: Pointing Matrix
-
-<br>
-
-::: {style="font-size: 20px;"}
-
-When the time-time noise covariance matrix $\mathbf{N}$ is diagonal and $\mathbf{P}$ is a "one-to-one" intensity projection matrix:
-
-$$
-\mathbf{P} =
-\begin{bmatrix}
-0 & \cdots & 0 & 1 & 0 & \cdots & 0 \\
-0 & 1 & 0 & \cdots & 0 & 0 & \cdots & 0 \\
-\vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots \\
-1 & 0 & \cdots & 0 & 0 & \cdots & 0 \\
-\vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots \\
-0 & 0 & \cdots & 0 & 1 & 0 & \cdots & 0 \\
-\end{bmatrix},
-$$
-
-<br/>
-<br/>
-
- - the product $\mathbf{P}^\top \mathbf{N}^{-1} \mathbf{P}$ is diagonal and can therefore be easily inverted (for pixel-pixel covariance matrix or preconditioning).
- - Each term is related to the number of noise-weighted times a pixel of the map has been observed.
-
- - For IQU maps, the product is block diagonal, with 3x3 blocks that can also be easily inverted.
-
- - By adding a **rule** for this operation, we've seen an performance improvement by more than a **factor of 10** in the forward application (WIP, currently only for $\mathbf{N}$ scalar).
-
-:::
-
-
-## FURAX Algebraic Reductions: Block Assembly
-
-::: {style="font-size: 15px;"}
-
-<br>
-<br>
-
-| Operation | Reduction |
-|---------------------------------|-------------|
-| `BlockDiagonalOperator([D1, D2]) @ BlockColumnOperator([C1, C2])`              | `BlockColumnOperator([D1 @ C1, D2 @ C2])`|
-| `BlockRowOperator([R1, R2]) @ BlockDiagonalOperator([D1, D2])`              | `BlockRowOperator([R1 @ D1, R2 @ D2])`|
-| `BlockRowOperator([R1, R2]) @ BlockColumnOperator([C1, C2])`              | `R1 @ C1 + R2 @ C2`|
-
-: {tbl-colwidths="[60,40]"}
-
-:::
-
-<br>
-<br>
-
-#### Practical use case:
-
-Given two observations
-
-$$
-\mathbf{P} =
-\begin{bmatrix}
-\mathbf{P}_1 \\
-\mathbf{P}_2
-\end{bmatrix}, \quad
-\mathbf{N}^{-1} =
-\begin{bmatrix}
-\mathbf{N}_1^{-1} & 0 \\
-0 & \mathbf{N}_2^{-1}
-\end{bmatrix},
-$$
-
-The combination is reduced to
-$$
-\mathbf{P}^\top \mathbf{N}^{-1} \mathbf{P} = \mathbf{P}_1^\top \mathbf{N}_1^{-1} \mathbf{P}_1^{\,} + \mathbf{P}_2^\top \mathbf{N}_2^{-1} \mathbf{P}_2^{\,}.
-$$
---->
 
 
 # CMB Applications
@@ -344,22 +265,25 @@ $$
 
 Noise correlations in a _stationary_ period correspond to a symmetric Toeplitz matrix structure.
 
-Furax has the `SymmetricBandToeplitzOperator` with optimized matrix-vector operations in $\mathcal O(n \log \lambda)$ (overlap-and-add method).
+`SymmetricBandToeplitzOperator` with optimized matrix-vector operations in $\mathcal O(n \log \lambda)$ (overlap-and-add method).
 
+::: {.fragment}
 ![Impact of gaps. Credits: B3DCMB](assets/mapmaking/fig_gstbmm.png){width="75%"}
-
+:::
 :::
 
 ::: {.column}
-
+::: {.fragment}
 **Restoring stationarity**
 
 To work around this problem, one solution is to fill the gaps with synthetic samples consistent with noise.
 
 Furax's `GapFillingOperator` computes a _constrained noise realization_ from an estimate of the noise correlations.
+:::
 
-![Toy example with a few detectors](assets/mapmaking/gap_filling_example.png)
-
+::: {.fragment}
+![Toy example. Only gaps are modified.](assets/mapmaking/gap_filling_example.png)
+:::
 :::
 
 ::::
@@ -444,10 +368,12 @@ Realistic HWP operator
 
 - several layers stacked
 - transmission + reflection of incident EM field at the boundaries
+
+Cf. great presentation by Miguel Gomes yesterday!
 :::
 
 :::{.column width="60%"}
-![Mueller matrix coefficients in angle-frequency space](assets/hwp/transfer_matrix.png)
+![Mueller matrix coefficients in angle-frequency space for the SO mid-frequency SAT](assets/hwp/transfer_matrix.png)
 :::
 
 ::::
@@ -459,233 +385,42 @@ Realistic HWP operator
 :::
 
 
-## Component Separation {style="font-size: 22px;"}
-
-:::: {.columns}
-
-::: {.column width="50%"}
-
-![](assets/CMB/CMB-Planck.png){.nostretch fig-align="center" width="35%"}
-
-::: {.fragment fragment-index=1}
-
-![](assets/CMB/Plus_symbol.svg){.nostretch fig-align="center" width="10%"}
-
-![](assets/CMB/dust_planck.png){.nostretch fig-align="center" width="35%"}
-
-:::
-
-::: {.fragment fragment-index=2}
-
-![](assets/CMB/Plus_symbol.svg){.nostretch fig-align="center" width="10%"}
-
-![](assets/CMB/synch-planck.png){.nostretch fig-align="center" width="35%"}
-
-:::
-
-:::
-
-::: {.column width="50%"}
-
-  - The **Cosmic Microwave Background (CMB)** signal is obscured by various **foregrounds**, making it challenging to detect the true cosmological information.
-
-::: {.fragment fragment-index=1}
-
-  - **Dust**: Emission from galactic dust adds significant noise to the CMB, particularly affecting polarization measurements.
-
-:::
-
-::: {.fragment fragment-index=2}
-
-  - **Synchrotron Radiation**: Electrons spiraling in the galaxy's magnetic fields produce synchrotron radiation, another major contaminant.
-
-:::
-
-::: {.fragment fragment-index=3}
-
-::: {.solutionbox}
-
-::: {.solutionbox-header style="font-size: 22px;"}
-
-**Component separation methods**
-
-:::
-
-::::{.solutionbox-body style="font-size: 2Opx;"}
-
-- **Blind Methods**: Like **SMICA** (Spectral Matching Independent Component Analysis)
-- **Parametric Methods**: Like **FGbuster** (Foreground Buster)
-
-::::
-
-:::
-
-:::
-
-:::
-
-::::
-
-::: {.notes}
-
-Le signal du fond diffus cosmologique, ou CMB, est en réalité obscurci par plusieurs avant-plans, ce qui rend difficile l'extraction des informations cosmologiques réelles.
-
-L'un des contaminants principaux est la poussière galactique. Cette poussière émet du rayonnement qui ajoute un bruit significatif au CMB, affectant particulièrement les mesures de polarisation.
-
-**NEXT**
-
-Un autre contaminant majeur est la radiation synchrotron. Elle est produite par des électrons en spirale dans les champs magnétiques de notre galaxie, ce qui vient encore plus brouiller le signal cosmologique que l'on souhaite observer.
-
-**AFTER**
-
-Pour pouvoir extraire une valeur fiable du rapport $r$, il est crucial de séparer ou de "démixer" ces composants. Le signal du CMB est mêlé à diverses émissions parasites.
-
- Il existe différentes méthodes pour cela, principalement des méthodes aveugles comme SMICA, qui fonctionnent sans connaissances préalables des avant-plans, et des méthodes paramétriques comme FGbuster, qui reposent sur la modélisation explicite des avant-plans.
-
-Dans cette présentation, nous allons nous concentrer sur les méthodes paramétriques. Celles-ci nous permettent d'utiliser des modèles pour les avant-plans et d'améliorer la précision du processus de séparation.
-
-:::
-
-::: {style="color: gray; font-size: 16px"}
-Credit: Wassim Kabalan
-:::
-
-
-## On-going development of parametric component separation within the FURAX framework
+## Component separation (credits: Wassim Kabalan) {style="font-size: 20pt;"}
 
 ::: {.columns}
 
-::: {.column width="50%"}
+::: {.column width="40%"}
+**tldr: Does everything `fgbuster` does, but better**
 
-#### Does everything fgbuster does but “better"
- - Uses FURAX linear algebra operators to efficiently represent the mixing matrix
- - Is written in JAX, is hardware accelerated
- - Provides easy access to gradients
+ - Furax operators efficiently represent the mixing matrix
+ - hardware accelerated
+ - easy access to gradients and hessians
 
-:::{.fragment fragment-index=1}
+**Beyond fgbuster**
 
-![](assets/CMB/Log_Like_bench.png){.nostretch fig-align="center" width="80%" style="border: 2px solid #000000;"}
+- Automatic cluster detection for spectral index parameters
+- Very flexible model: straigt-forward extensions to other sky components, different objective functions, etc.
+:::
 
+::: {.column width="60%"}
+
+::: {.fragment}
+Cost of evaluating the likelihood function is reduced by a factor 10 for $\textrm{nside} \geq 64$.
+![](assets/CMB/Log_Like_bench.png)
+:::
+
+::: {.fragment}
+This will power the map-based pipeline for $r$ estimation in SO (cf. presentation by Baptiste Jost earlier today).
 :::
 
 :::
 
-::: {.column width="50%"}
-
-#### Beyond fgbuster
- - Automatic cluster detection for spectral index parameters
-  - Flexible likelihood model (can be extended to include more components and different objective functions)
-
-:::{.fragment fragment-index=1}
-
-![](assets/CMB/Comp-sep-patches.png){.nostretch fig-align="center" width="80%" style="border: 2px solid #000000;"}
-
-:::
-
-:::
-
-:::
-
-::: {style="color: gray; font-size: 16px"}
-Credit: Wassim Kabalan
-:::
-
-
-##  On-going development of parametric component separation within the FURAX framework {style="font-size: 22px;"}
-
-<br>
-
-:::{.columns}
-
-:::{.column width="50%"}
-
-:::{.fragment fragment-index=1}
-
-#### Creating a Mixing Matrix Operator for SED evaluation
-
-```python
-from furax.seds import \
-  CMBOperator,DustOperator, SynchrotronOperator
-
-def make_A(TEMP_D , BETA_D , BETA_S):
-  cmb = CMBOperator(nu, in_structure)
-  dust = DustOperator(nu , TEMP_D , BETA_D)
-  synchrotron = SynchrotronOperator(nu , BETA_S)
-
-  mixed_sed = BlockRowOperator({
-          'cmb': cmb,
-          'dust': dust,
-          'synchrotron': synchrotron,
-      })
-  return mixed_sed
-```
-
-:::
-
-:::
-
-:::{.column width="50%"}
-
-:::{.fragment fragment-index=2}
-
-#### Trivial construction of a spectral likelihood functions
-
-```python
-import jax
-
-@jax.jit
-def negative_log_prob(params, d):
-  A = make_A(params['TEMP_D'],
-             params['BETA_D'],
-             params['BETA_S'])
-
-  x = (A.T @ invN)(d)
-  l = jax.tree.map(lambda a, b: a @ b, x, (A.T @ invN @ A).I(x))\
-                       S
-  summed_log_prob = jax.tree.reduce(operator.add, l)
-
-  return -summed_log_prob
-
-
-```
-
-:::
-
-:::
-
-:::
-
-<br>
-
-:::{.fragment fragment-index=3}
-
-:::{.solutionbox}
-
-:::{.solutionbox-header style="font-size: 22px;"}
-
-Easy to evaluate and extend
-
-:::
-
-::::{.solutionbox-body style="font-size: 20px;"}
-
-- The likelihood function is readily available and can be easily extended to include more components or different objective functions.
-- Easy access to gradients and hessians for optimization.
-
-::::
-
-:::
-
-:::
-
-::: {style="color: gray; font-size: 16px"}
-Credit: Wassim Kabalan
 :::
 
 
 ## Atmosphere Decontamination Using Time-Domain Component Separation {style="font-size: 18px;"}
 
-### Science Goal
+**Goal**:
 For the Simons Observatory, characterize the observed atmospheric template from the recorded time-ordered data to separate the atmosphere from the sky signal we are after.
 
 ::::: {.columns}
