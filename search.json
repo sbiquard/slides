@@ -56,6 +56,13 @@
     "text": "Algebraic reductions: Rotations\nClassic acquisition model with ideal linear polarizer, ideal half wave plate, rotations, pointing matrix\n\\[\n\\mathbf{H} = \\mathbf{M}_{\\textrm{LP}} \\, \\mathbf{R}_{2\\theta} \\, \\mathbf{R}_{-2\\phi} \\,\n\\mathbf{M}_{\\textrm{HWP}} \\, \\mathbf{R}_{2\\phi} \\, \\mathbf{R}_{2\\psi} \\, \\mathbf{P}\n\\]\nwith\n\n\\(\\theta\\): polarizer angle\n\\(\\phi\\): half-wave plate angle\n\\(\\psi\\): telescope angle\n\nis reduced automatically to the much simpler\n\\[\n\\mathbf{H} = \\mathbf{M}_{\\textrm{LP}} \\, \\mathbf{R}_{-2\\theta + 4\\phi + 2\\psi}\\, \\mathbf{P}\n\\]"
   },
   {
+    "objectID": "2024-cmb-france-6/index.html#cmb-applications",
+    "href": "2024-cmb-france-6/index.html#cmb-applications",
+    "title": "",
+    "section": "CMB Applications",
+    "text": "CMB Applications\n\n Credits: Ema Tsang, Wassim Kabalan, Amalia Villarrubia & the whole SciPol team"
+  },
+  {
     "objectID": "2024-cmb-france-6/index.html#generalized-map-making",
     "href": "2024-cmb-france-6/index.html#generalized-map-making",
     "title": "",
@@ -67,41 +74,41 @@
     "href": "2024-cmb-france-6/index.html#time-domain-noise-correlations",
     "title": "",
     "section": "Time-domain noise correlations",
-    "text": "Time-domain noise correlations\n\n\nNoise correlations in a stationary period correspond to a symmetric Toeplitz matrix structure.\nSymmetricBandToeplitzOperator with optimized matrix-vector operations in \\(\\mathcal O(n \\log \\lambda)\\) (overlap-and-add method).\n\n\n\n\nImpact of gaps. Credits: B3DCMB\n\n\n\n\n\nRestoring stationarity\nTo work around this problem, one solution is to fill the gaps with synthetic samples consistent with noise.\nFurax’s GapFillingOperator computes a constrained noise realization from an estimate of the noise correlations.\n\n\n\n\n\nToy example. Only gaps are modified."
+    "text": "Time-domain noise correlations\n\n\nNoise correlations in a stationary period correspond to a symmetric Toeplitz matrix structure.\nSymmetricBandToeplitzOperator with optimized matrix-vector operations in \\(\\mathcal O(n \\log \\lambda)\\) (overlap-and-save method).\n\n\n\n\nImpact of gaps. Credits: B3DCMB\n\n\n\n\n\nRestoring stationarity\nTo work around this problem, one solution is to fill the gaps with synthetic samples consistent with noise.\nFurax’s GapFillingOperator computes a constrained noise realization from an estimate of the noise correlations.\n\n\n\n\n\nToy example. Only gaps are modified."
   },
   {
-    "objectID": "2024-cmb-france-6/index.html#non-ideal-hwp-credits-ema-tsang",
-    "href": "2024-cmb-france-6/index.html#non-ideal-hwp-credits-ema-tsang",
+    "objectID": "2024-cmb-france-6/index.html#non-ideal-hwp",
+    "href": "2024-cmb-france-6/index.html#non-ideal-hwp",
     "title": "",
-    "section": "Non-Ideal HWP (credits: Ema Tsang)",
-    "text": "Non-Ideal HWP (credits: Ema Tsang)\n\n\n\nRealistic HWP operator\n\nseveral layers stacked\ntransmission + reflection of incident EM field at the boundaries\n\nCf. great presentation by Miguel Gomes yesterday!\n\n\n\n\nMueller matrix coefficients in angle-frequency space for the SO mid-frequency SAT\n\n\n\n\n\nfrequency-dependent phase shift (middle blocks)\nI-&gt;P leakage at ~0.4% (IQ, IU blocks)\nalso 2f but not very visible"
+    "section": "Non-Ideal HWP",
+    "text": "Non-Ideal HWP\n\n\n\nRealistic HWP operator\n\nseveral layers stacked\ntransmission + reflection of incident EM field at the boundaries\n\nCf. great presentation by Miguel Gomes yesterday!\n\n\n\n\nMueller matrix coefficients in angle-frequency space for the SO mid-frequency SAT\n\n\n\n\n\nfrequency-dependent phase shift (middle blocks)\nI-&gt;P leakage at ~0.4% (IQ, IU blocks)\nalso 2f but not very visible\n\n\n\n\nCredit: Ema Tsang"
   },
   {
-    "objectID": "2024-cmb-france-6/index.html#component-separation-credits-wassim-kabalan",
-    "href": "2024-cmb-france-6/index.html#component-separation-credits-wassim-kabalan",
+    "objectID": "2024-cmb-france-6/index.html#component-separation",
+    "href": "2024-cmb-france-6/index.html#component-separation",
     "title": "",
-    "section": "Component separation (credits: Wassim Kabalan)",
-    "text": "Component separation (credits: Wassim Kabalan)\n\n\ntldr: Does everything fgbuster does, but better\n\nFurax operators efficiently represent the mixing matrix\nhardware accelerated\neasy access to gradients and hessians\n\nBeyond fgbuster\n\nAutomatic cluster detection for spectral index parameters\nVery flexible model: straigt-forward extensions to other sky components, different objective functions, etc.\n\n\n\nCost of evaluating the likelihood function is reduced by a factor 10 for \\(\\textrm{nside} \\geq 64\\). \n\n\nThis will power the map-based pipeline for \\(r\\) estimation in SO (cf. presentation by Baptiste Jost earlier today)."
+    "section": "Component separation",
+    "text": "Component separation\n\n\ntldr: Does everything fgbuster does, but better\n\nFurax operators efficiently represent the mixing matrix\nhardware accelerated\neasy access to gradients and hessians\n\nBeyond fgbuster\n\nAutomatic cluster detection for spectral index parameters\nVery flexible model: straigt-forward extensions to other sky components, different objective functions, etc.\n\n\n\nCost of evaluating the likelihood function is reduced by a factor 10 for \\(\\textrm{nside} \\geq 64\\). \n\n\nThis will power the map-based pipeline for \\(r\\) estimation in SO (cf. presentation by Baptiste Jost earlier today).\n\n\n\n\nCredit: Wassim Kabalan"
   },
   {
     "objectID": "2024-cmb-france-6/index.html#atmosphere-decontamination-using-time-domain-component-separation",
     "href": "2024-cmb-france-6/index.html#atmosphere-decontamination-using-time-domain-component-separation",
     "title": "",
     "section": "Atmosphere Decontamination Using Time-Domain Component Separation",
-    "text": "Atmosphere Decontamination Using Time-Domain Component Separation\nGoal: For the Simons Observatory, characterize the observed atmospheric template from the recorded time-ordered data to separate the atmosphere from the sky signal we are after.\n\n\n\n\n\n\n\nData Model\n\\[\nd_{\\text{atm}} = \\mathbf{A}(\\text{PWV}) \\mathbf{P}(w_x, w_y) s_{\\text{atm}} + n\n\\]\n\n\n\nModel Parameters\n\n\n\nWind velocity: \\(\\vec{w} = (w_x, w_y)\\)\nPrecipitable Water Vapour (PWV): ~Amplitude of atmospheric fluctuations.\nEstimate parameters by minimizing the spectral likelihood.\n\n\n\n\nAtmospheric time-ordered data recorded by our telescope at two frequencies: \\(d_{\\text{atm}}\\)\nMixing matrix \\(\\mathbf{A} =\n\\begin{bmatrix}\n  a(\\text{PWV}_{1}) & 0 \\\\\n  0 & a(\\text{PWV}_{2})\n\\end{bmatrix}\\)\nPointing matrix \\(\\mathbf{P} =\n\\begin{bmatrix}\n  P_{1} \\\\\n  P_{2}\n\\end{bmatrix}\\)\nAtmospheric template: \\(s_{\\text{atm}}\\)\nNoise: \\(n\\), of covariance matrix \\(\\mathbf{N} =\n\\begin{bmatrix}\n  \\sigma_{1}^{2} & 0 \\\\\n  0 & \\sigma_{2}^{2}\n\\end{bmatrix}\\)\n\nSpectral Likelihood\n\\[\n\\boxed{\n\\langle \\delta \\mathcal{S}_\\text{spec}(w_x, w_y, \\text{PWV} \\mid \\vec{d}_{\\text{atm}}) \\rangle\n= \\vec{d}_{\\text{atm}}^\\top \\cdot \\mathbf{AP}\n\\Big[ (\\mathbf{AP})^\\top \\mathbf{N}^{-1} (\\mathbf{AP}) \\Big]^{-1}\n(\\mathbf{AP})^\\top \\mathbf{N}^{-1} d_{\\text{atm}}\n}\n\\]\n\n\nCredit: Amalia Villarrubia Aguilar"
+    "text": "Atmosphere Decontamination Using Time-Domain Component Separation\nGoal: For the Simons Observatory, characterize the observed atmospheric template from the recorded time-ordered data to separate the atmosphere from the sky signal we are after.\n\n\nDetector array scanning the sky (signal has arbitrary units)\n\n\n\n\n\n\nData Model\n\\[\nd_{\\text{atm}} = \\mathbf{A}(\\text{pwv}) \\mathbf{P}(\\vec{w}) s_{\\text{atm}} + n\n\\]\nwith parameters:\n\nWind velocity: \\(\\vec{w} = (w_x, w_y)\\)\nPrecipitable Water Vapour (PWV): ~Amplitude of atmospheric fluctuations.\n\nEstimate parameters by minimizing the spectral likelihood.\n\\[\n\\boxed{\n\\langle \\delta \\mathcal{S}_\\text{spec}(\\vec{w}, \\text{pwv} \\mid d_{\\text{atm}}) \\rangle\n= d_{\\text{atm}}^\\top \\cdot \\mathbf{AP}\n\\Big[ (\\mathbf{AP})^\\top \\mathbf{N}^{-1} (\\mathbf{AP}) \\Big]^{-1}\n(\\mathbf{AP})^\\top \\mathbf{N}^{-1} d_{\\text{atm}}\n}\n\\]\n\n\n\n\nCredit: Amalia Villarrubia Aguilar"
   },
   {
-    "objectID": "2024-cmb-france-6/index.html#atmosphere-decontamination-using-time-domain-component-separation-1",
-    "href": "2024-cmb-france-6/index.html#atmosphere-decontamination-using-time-domain-component-separation-1",
+    "objectID": "2024-cmb-france-6/index.html#spectral-likelihood-minimization",
+    "href": "2024-cmb-france-6/index.html#spectral-likelihood-minimization",
     "title": "",
-    "section": "Atmosphere Decontamination Using Time-Domain Component Separation",
-    "text": "Atmosphere Decontamination Using Time-Domain Component Separation\nSpectral likelihood computation using FURAX\ndef average_spectral_likelihood_noise(d_atm, w_vec, PWV):\n    # POINTING matrix (shape: (n_detectors * N_obs * n_freq) x N_pix)\n    P_single_freq = pointing_matrix_single_freq(detector_pointings_t, t_obs, n_detectors, z_atm, d_pix_sim, N_pix_sim, w_vec)\n    P = BlockColumnOperator({‘93’: P_single_freq, ‘145’: P_single_freq})\n    # MIXING matrix: (shape: (n_detectors * N_obs * n_freq) x (n_detectors * N_obs * n_freq))\n    A_block_structure = StokesIPyTree.structure_for((n_detectors,N_obs))\n    A_93 = HomothetyOperator(atm_emission(PWV, mu_93)/atm_emission(PWV, mu_93), in_structure=A_block_structure)\n    A_145 = HomothetyOperator(atm_emission(PWV, mu_145)/atm_emission(PWV, mu_93), in_structure=A_block_structure)\n    A = BlockDiagonalOperator({‘93’: A_93, ‘145’: A_145})\n    # COMPOSITION matrix: mixing matrix @ pointing matrix (shape: (n_detectors * N_obs * n_freq) x N_pix)\n    C = A @ P\n    # NOISE covariance matrix (shape: (n_det x N_obs x n_freq) x (n_det x N_obs x n_freq))\n    N_block_structure = StokesIPyTree.structure_for((n_detectors,N_obs))\n    N_93 = HomothetyOperator(noise_variance_93, in_structure=N_block_structure)\n    N_145 = HomothetyOperator(noise_variance_145, in_structure=N_block_structure)\n    N = BlockDiagonalOperator({‘93’: N_93, ‘145’: N_145})\n    # Spectral likelihood computation:\n    core_op = (C.T @ N.I @ C).I\n    full_op = N.I @ C @ core_op @ C.T @ N.I\n    S = - StokesIPyTree(d_atm) @ StokesIPyTree(full_op(d_atm))\n    return S\n\n\n\nEasily extensible\nEasy access to gradients\n\n\n\n\nCredit: Amalia Villarrubia Aguilar"
+    "section": "Spectral likelihood minimization",
+    "text": "Spectral likelihood minimization\n\n\n\nSpectral likelihood values in the \\((w_x, w_y)\\) plane for a fixed PWV values. \n\nMinimization is done by brute force: we compute \\(\\langle \\delta \\mathcal{S}_\\text{spec}(w_x, w_y \\mid \\text{pwv}_{\\text{sim}}) \\rangle\\) for 22,500 different combinations of \\((w_x, w_y)\\).\nProof of concept: we can recover the input values of \\((w_x, w_y)\\)!\nFuture work:\n\nmake the likelihood smooth (differentiable) by interpolating the pointing matrix coefficients\nuse a gradient-based minimization algorithm\n\n\n\n\nCredit: Amalia Villarrubia Aguilar"
   },
   {
-    "objectID": "2024-cmb-france-6/index.html#atmosphere-decontamination-using-time-domain-component-separation-2",
-    "href": "2024-cmb-france-6/index.html#atmosphere-decontamination-using-time-domain-component-separation-2",
+    "objectID": "2024-cmb-france-6/index.html#conclusion",
+    "href": "2024-cmb-france-6/index.html#conclusion",
     "title": "",
-    "section": "Atmosphere Decontamination Using Time-Domain Component Separation",
-    "text": "Atmosphere Decontamination Using Time-Domain Component Separation\n\nSpectral likelihood minimization\n\n\n\n\n\nSpectral likelihood gridding\n\n\n\n \n\n\nGridding process\n\n\n➜ This spectral likelihood is minimised through gridding: we compute \\(\\langle \\delta \\mathcal{S}_\\text{spec}(w_x, w_y \\mid \\text{PWV}_{\\text{sim}}) \\rangle\\) for 22,500 different combinations of \\((w_x, w_y)\\).\n\n\n\n\nCredit: Amalia Villarrubia Aguilar"
+    "section": "Conclusion",
+    "text": "Conclusion\n\nCMB polarization analysis mixes instrument + foregrounds + cosmology\nNeed for robust and efficient tools\nWe are building a python-based toolbox\n\nusing jax for performance and portability\nable to represent complex instrument models\ninterfaced with Simons Observatory products"
   }
 ]
