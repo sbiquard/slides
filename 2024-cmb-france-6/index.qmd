@@ -72,8 +72,6 @@ Key features
 - Automatic vectorization
 
 
-# FURAX Building Blocks
-
 ## PyTrees {.smaller}
 
 FURAX relies on [PyTrees](https://jax.readthedocs.io/en/latest/pytrees.html) to represent the data.
@@ -125,12 +123,11 @@ The base class `AbstractLinearOperator` provides a default implementation for th
 
 ## Operators (cont'd) {.smaller}
 
-::: {.columns}
+::::: {.columns}
 
-::: {.column width="60%"}
+:::: {.column width="60%"}
 
 ::: {.solutionbox}
-
 ::: {.solutionbox-body style="font-size: 20px;"}
 
 | Generic Operator                | Description |
@@ -150,15 +147,13 @@ The base class `AbstractLinearOperator` provides a default implementation for th
 : {tbl-colwidths="[50,50]"}
 
 :::
-
 :::
 
-:::
+::::
 
-::: {.column width="40%"}
+:::: {.column width="40%"}
 
 ::: {.solutionbox}
-
 ::: {.solutionbox-body style="font-size: 20px;"}
 
 | Applied Operator          | Description |
@@ -171,12 +166,11 @@ The base class `AbstractLinearOperator` provides a default implementation for th
 | `SynchrotronOperator`     | Parametrized synchrotron SED |
 
 :::
-
 :::
 
-:::
+::::
 
-:::
+:::::
 
 
 ## Algebraic reductions: Rotations {.smaller}
@@ -201,7 +195,7 @@ $$
 $$
 
 
-# CMB Applications
+## CMB Applications {.center}
 
 ::: {style="font-size: 24px"}
 <br>
@@ -264,7 +258,7 @@ $$
 
 Noise correlations in a _stationary_ period correspond to a symmetric Toeplitz matrix structure.
 
-`SymmetricBandToeplitzOperator` with optimized matrix-vector operations in $\mathcal O(n \log \lambda)$ (overlap-and-add method).
+`SymmetricBandToeplitzOperator` with optimized matrix-vector operations in $\mathcal O(n \log \lambda)$ (overlap-and-save method).
 
 ::: {.fragment}
 ![Impact of gaps. Credits: B3DCMB](assets/mapmaking/fig_gstbmm.png){width="75%"}
@@ -356,7 +350,7 @@ Can be extended & complexified easily!.
 --->
 
 
-## Non-Ideal HWP (credits: Ema Tsang) {.smaller}
+## Non-Ideal HWP {.smaller}
 
 <!--- ![](assets/hwp/hwp-ema.png){width="100%"} --->
 
@@ -383,12 +377,16 @@ Cf. great presentation by Miguel Gomes yesterday!
 - also 2f but not very visible
 :::
 
+::: {.aside}
+Credit: Ema Tsang
+:::
 
-## Component separation (credits: Wassim Kabalan) {style="font-size: 20pt;"}
 
-::: {.columns}
+## Component separation {style="font-size: 18pt;"}
 
-::: {.column width="40%"}
+::::: {.columns}
+
+:::: {.column width="40%"}
 **tldr: Does everything `fgbuster` does, but better**
 
  - Furax operators efficiently represent the mixing matrix
@@ -399,9 +397,9 @@ Cf. great presentation by Miguel Gomes yesterday!
 
 - Automatic cluster detection for spectral index parameters
 - Very flexible model: straigt-forward extensions to other sky components, different objective functions, etc.
-:::
+::::
 
-::: {.column width="60%"}
+:::: {.column width="60%"}
 
 ::: {.fragment}
 Cost of evaluating the likelihood function is reduced by a factor 10 for $\textrm{nside} \geq 64$.
@@ -412,99 +410,67 @@ Cost of evaluating the likelihood function is reduced by a factor 10 for $\textr
 This will power the map-based pipeline for $r$ estimation in SO (cf. presentation by Baptiste Jost earlier today).
 :::
 
-:::
-
-:::
-
-
-## Atmosphere Decontamination Using Time-Domain Component Separation {style="font-size: 18px;"}
-
-**Goal**:
-For the Simons Observatory, characterize the observed atmospheric template from the recorded time-ordered data to separate the atmosphere from the sky signal we are after.
-
-::::: {.columns}
-
-:::: {.column width="40%"}
-![](assets/atm/atm-template.png){fig-align="center" width="100%"}
-
-### Data Model
-$$
-d_{\text{atm}} = \mathbf{A}(\text{PWV}) \mathbf{P}(w_x, w_y) s_{\text{atm}} + n
-$$
-
 ::::
 
-:::: {.column width="60%"}
+:::::
 
-:::{.solutionbox}
+::: {.aside}
+Credit: Wassim Kabalan
+:::
 
-:::{.solutionbox-header style="font-size: 19px;"}
 
-**Model Parameters**
+## Atmosphere Decontamination Using Time-Domain Component Separation {style="font-size: 16pt;"}
+
+**Goal**:
+For the Simons Observatory, characterize the observed atmospheric template from the recorded time-ordered data
+to separate the atmosphere from the sky signal we are after.
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+Detector array scanning the sky (signal has arbitrary units)
+
+![](assets/atm/atm-template.png){fig-align="center" width="100%"}
 
 :::
 
-:::{.solutionbox-body style="font-size: 17px;"}
+::: {.column width="60%"}
+
+**Data Model**
+
+$$
+d_{\text{atm}} = \mathbf{A}(\text{pwv}) \mathbf{P}(\vec{w}) s_{\text{atm}} + n
+$$
+
+with parameters:
 
 - **Wind velocity**: $\vec{w} = (w_x, w_y)$
 - **Precipitable Water Vapour (PWV)**: ~Amplitude of atmospheric fluctuations.
-- Estimate parameters by minimizing the spectral likelihood.
 
-:::
-
-:::
-
-- Atmospheric time-ordered data recorded by our telescope at two frequencies: $d_{\text{atm}}$
-
-- Mixing matrix
-$\mathbf{A} =
-\begin{bmatrix}
-    a(\text{PWV}_{1}) & 0 \\
-    0 & a(\text{PWV}_{2})
-\end{bmatrix}
-$
-
-- Pointing matrix
-$\mathbf{P} =
-\begin{bmatrix}
-    P_{1} \\
-    P_{2}
-\end{bmatrix}$
-
-- Atmospheric template: $s_{\text{atm}}$
-
-- Noise: $n$, of covariance matrix $\mathbf{N} =
-\begin{bmatrix}
-    \sigma_{1}^{2} & 0 \\
-    0 & \sigma_{2}^{2}
-\end{bmatrix}$
-
-
-### Spectral Likelihood
+Estimate parameters by minimizing the **spectral likelihood**.
 
 $$
 \boxed{
-\langle \delta \mathcal{S}_\text{spec}(w_x, w_y, \text{PWV} \mid \vec{d}_{\text{atm}}) \rangle
-= \vec{d}_{\text{atm}}^\top \cdot \mathbf{AP}
+\langle \delta \mathcal{S}_\text{spec}(\vec{w}, \text{pwv} \mid d_{\text{atm}}) \rangle
+= d_{\text{atm}}^\top \cdot \mathbf{AP}
 \Big[ (\mathbf{AP})^\top \mathbf{N}^{-1} (\mathbf{AP}) \Big]^{-1}
 (\mathbf{AP})^\top \mathbf{N}^{-1} d_{\text{atm}}
 }
 $$
 
+:::
 
 ::::
 
-:::::
 
-
-::: {style="color: gray; font-size: 16px"}
+::: {.aside}
 Credit: Amalia Villarrubia Aguilar
 :::
 
 
-## Atmosphere Decontamination Using Time-Domain Component Separation
-
-### Spectral likelihood computation using FURAX
+<!---
+## Spectral likelihood computation using FURAX {.smaller}
 
 ```{.python code-line-numbers="|17-21"}
 def average_spectral_likelihood_noise(d_atm, w_vec, PWV):
@@ -530,64 +496,45 @@ def average_spectral_likelihood_noise(d_atm, w_vec, PWV):
     return S
 ```
 
-:::{.solutionbox}
-
-:::{.solutionbox-body style="font-size: 18px;"}
-
-- Easily extensible
-- Easy access to gradients
-
-:::
-
-:::
 
 ::: {style="color: gray; font-size: 16px"}
 Credit: Amalia Villarrubia Aguilar
 :::
+--->
 
 
-## Atmosphere Decontamination Using Time-Domain Component Separation {style="font-size: 20px;"}
+## Spectral likelihood minimization {style="font-size: 18pt;"}
 
 <br>
-
-### Spectral likelihood minimization
-
 
 :::::{.columns}
 
 ::::{.column width="60%"}
 
-![Spectral likelihood gridding](assets/CMB/Spec-likelihood-gridding.png){.nostretch fig-align="center" width="100%" style="border: 2px solid #000000;"}
+Spectral likelihood values in the $(w_x, w_y)$ plane for a fixed PWV values.
+![](assets/CMB/Spec-likelihood-gridding.png){}
 
 ::::
 
 ::::{.column width="40%"}
 
-<br />
-<br />
-
-:::{.solutionbox}
-
-:::{.solutionbox-header style="font-size: 20px;"}
-
-**Gridding process**
-
-:::
-
-:::{.solutionbox-body style="font-size: 18px;"}
-
-➜ This spectral likelihood is minimised through gridding: we compute
-$\langle \delta \mathcal{S}_\text{spec}(w_x, w_y \mid \text{PWV}_{\text{sim}}) \rangle$
+Minimization is done by brute force: we compute
+$\langle \delta \mathcal{S}_\text{spec}(w_x, w_y \mid \text{pwv}_{\text{sim}}) \rangle$
 for 22,500 different combinations of $(w_x, w_y)$.
 
-:::
+Proof of concept: we can recover the input values of $(w_x, w_y)$!
 
-:::
+Future work:
+
+- make the likelihood smooth (differentiable) by interpolating the pointing matrix coefficients
+- use a gradient-based minimization algorithm
 
 ::::
 
 :::::
 
-::: {style="color: gray; font-size: 16px"}
+::: {.aside}
 Credit: Amalia Villarrubia Aguilar
 :::
+
+
