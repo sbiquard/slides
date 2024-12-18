@@ -289,9 +289,10 @@ Credits: Ema Tsang, Wassim Kabalan, Amalia Villarrubia & the whole SciPol team
 :::
 
 
-## Generalized Map-Making {style="font-size: 18pt"}
+## Generalized Map-Making {.smaller}
 
 :::: {.columns}
+::: {style="font-size: 18pt"}
 
 ::: {.column width="45%"}
 
@@ -319,7 +320,7 @@ $$
 
 **Generalized parametric data model**
 
-![](assets/mapmaking/instrument-foregrounds.png){fig-align="center"}
+![](assets/mapmaking/instrument-foregrounds.png){fig-align="center" width="80%"}
 
 $$
 d_{\nu, i, t} = \int_{\textrm{BP}_\nu} d\nu' \mathbf{M}^{(\gamma)}_{\nu', i, t, p} \mathbf{A}^{(\beta)}_{\nu', t, c, p} s_{c, p} + n_{\nu, i, t}
@@ -328,8 +329,10 @@ $$
 - $\mathbf{M}$: _instrument matrix_ (pointing, HWP parameters, bandpasses, beam properties, etc.)
 - $\mathbf{A}$: _mixing matrix_ (modeling of CMB, astrophysical foregrounds, atmosphere, etc.)
 - $\mathbf{H} = \mathbf{MA}$ is the generalized pointing operator
+
 :::
 
+:::
 ::::
 
 
