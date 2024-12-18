@@ -18,7 +18,7 @@
     "href": "2024-cmb-france-6/index.html#motivations-and-goals",
     "title": "",
     "section": "Motivations and Goals",
-    "text": "Motivations and Goals\n\nInverse problems: assuming data \\(d_{obs} = F(p)\\), find the parameters \\(p\\)\nPure Python, open source: https://github.com/CMBSciPol/furax\n\npip install furax (work in progress!)\n\nModular & extensible: Easy to experiment new ideas\nHigh-performance: JAX (see next slide)\n\n\n\nMaximum likelihood and template map-making as in El Bouhargani et al. 2021\nNon-ideal, frequency-dependent optical components\nProvide tools for next generation experiments (SO, CMB-S4, LiteBIRD)\n\nInterfaces with TOAST, sotodlib\nLarge data sets: multi-GPU parallelization is underway"
+    "text": "Motivations and Goals\n\nInverse problems: assuming data \\(d_{obs} = F(p)\\), find the parameters \\(p\\)\nPure Python, open source: https://github.com/CMBSciPol/furax\n\npip install furax (work in progress!)\n\nModular & extensible: Easy to experiment new ideas\nHigh-performance: JAX (see next slide)\n\n\n\n\nMaximum likelihood and template map-making as in El Bouhargani et al. 2021\nNon-ideal, frequency-dependent optical components\nProvide tools for next generation experiments (SO, CMB-S4, LiteBIRD)\n\nInterfaces with TOAST, sotodlib\nLarge data sets: multi-GPU parallelization is underway"
   },
   {
     "objectID": "2024-cmb-france-6/index.html#what-is-jax",
@@ -32,7 +32,7 @@
     "href": "2024-cmb-france-6/index.html#pytrees",
     "title": "",
     "section": "PyTrees",
-    "text": "PyTrees\nFURAX relies on PyTrees to represent the data.\nExample: random sky with 3 components\nsky = {\n  'cmb': HealpixLandscape(nside, 'IQU').normal(key1),\n  'dust': HealpixLandscape(nside, 'IQU').normal(key2),\n  'synchrotron': HealpixLandscape(nside, 'IQU').normal(key3),\n}\nHealpixLandscape(nside, 'IQU') returns an instance of StokesIQUPyTree, a container for the Stokes parameters I, Q, U.\nUse FrequencyLandscape to generalize to multiple frequencies.\nfrequencies = np.array([93, 145])\nsky = {\n  'cmb': FrequencyLandscape(nside, frequencies, 'IQU').normal(key1),\n  'dust': FrequencyLandscape(nside, frequencies, 'IQU').normal(key2),\n  'synchrotron': FrequencyLandscape(nside, frequencies, 'IQU').normal(key3),\n}"
+    "text": "PyTrees\nFURAX relies on PyTrees to represent the data.\n\nExample: random sky with 3 components\nsky = {\n  'cmb': HealpixLandscape(nside, 'IQU').normal(key1),\n  'dust': HealpixLandscape(nside, 'IQU').normal(key2),\n  'synchrotron': HealpixLandscape(nside, 'IQU').normal(key3),\n}\nHealpixLandscape(nside, 'IQU') returns an instance of StokesIQUPyTree, a container for the Stokes parameters I, Q, U.\n\n\nUse FrequencyLandscape to generalize to multiple frequencies.\nfrequencies = np.array([93, 145])\nsky = {\n  'cmb': FrequencyLandscape(nside, frequencies, 'IQU').normal(key1),\n  'dust': FrequencyLandscape(nside, frequencies, 'IQU').normal(key2),\n  'synchrotron': FrequencyLandscape(nside, frequencies, 'IQU').normal(key3),\n}"
   },
   {
     "objectID": "2024-cmb-france-6/index.html#operators",
@@ -53,7 +53,7 @@
     "href": "2024-cmb-france-6/index.html#algebraic-reductions-rotations",
     "title": "",
     "section": "Algebraic reductions: Rotations",
-    "text": "Algebraic reductions: Rotations\nClassic acquisition model with ideal linear polarizer, ideal half wave plate, rotations, pointing matrix\n\\[\n\\mathbf{H} = \\mathbf{M}_{\\textrm{LP}} \\, \\mathbf{R}_{2\\theta} \\, \\mathbf{R}_{-2\\phi} \\,\n\\mathbf{M}_{\\textrm{HWP}} \\, \\mathbf{R}_{2\\phi} \\, \\mathbf{R}_{2\\psi} \\, \\mathbf{P}\n\\]\nwith\n\n\\(\\theta\\): polarizer angle\n\\(\\phi\\): half-wave plate angle\n\\(\\psi\\): telescope angle\n\nis reduced automatically to the much simpler\n\\[\n\\mathbf{H} = \\mathbf{M}_{\\textrm{LP}} \\, \\mathbf{R}_{-2\\theta + 4\\phi + 2\\psi}\\, \\mathbf{P}\n\\]"
+    "text": "Algebraic reductions: Rotations\nClassic acquisition model with ideal linear polarizer \\(\\mathbf{M}_{\\textrm{LP}}\\), ideal half wave plate \\(\\mathbf{M}_{\\textrm{HWP}}\\), rotations \\(\\mathbf{R}\\), pointing matrix \\(\\mathbf P\\):\n\\[\n\\mathbf{H} = \\mathbf{M}_{\\textrm{LP}} \\, \\mathbf{R}_{2\\theta} \\, \\mathbf{R}_{-2\\phi} \\,\n\\mathbf{M}_{\\textrm{HWP}} \\, \\mathbf{R}_{2\\phi} \\, \\mathbf{R}_{2\\psi} \\, \\mathbf{P}\n\\]\nwhere\n\n\\(\\theta\\): polarizer angle\n\\(\\phi\\): half-wave plate angle\n\\(\\psi\\): telescope angle\n\nis reduced automatically to the much simpler\n\\[\n\\mathbf{H} = \\mathbf{M}_{\\textrm{LP}} \\, \\mathbf{R}_{-2\\theta + 4\\phi + 2\\psi}\\, \\mathbf{P}\n\\]"
   },
   {
     "objectID": "2024-cmb-france-6/index.html#cmb-applications",
@@ -67,7 +67,7 @@
     "href": "2024-cmb-france-6/index.html#generalized-map-making",
     "title": "",
     "section": "Generalized Map-Making",
-    "text": "Generalized Map-Making\n\n\n\nClassic data model\n\\[\nd = \\mathbf{P}s + n\n\\]\n\n\\(d\\): time-ordered data\n\\(\\mathbf{P}\\): pointing matrix (telescope scanning)\n\\(s\\): discretized sky signal\n\\(n\\): stochastic contribution (noise)\n\n\nOptimal (GLS) solution\n\\[\n\\widehat{s} = (\\mathbf{P}^\\top \\mathbf{N}^{-1} \\mathbf{P})^{-1} \\mathbf{P}^\\top \\mathbf{N}^{-1} d\n\\]\n\nGeneralized parametric data model\n\n\n\n\n\n\\[\nd_{\\nu, i, t} = \\int_{\\textrm{BP}_\\nu} d\\nu' \\mathbf{M}^{(\\gamma)}_{\\nu', i, t, p} \\mathbf{A}^{(\\beta)}_{\\nu', t, c, p} s_{c, p} + n_{\\nu, i, t}\n\\]\n\n\\(\\mathbf{M}\\): instrument matrix (pointing, HWP parameters, bandpasses, beam properties, etc.)\n\\(\\mathbf{A}\\): mixing matrix (modeling of CMB, astrophysical foregrounds, atmosphere, etc.)\n\\(\\mathbf{H} = \\mathbf{MA}\\) is the generalized pointing operator"
+    "text": "Generalized Map-Making\n\n\n\nClassic data model\n\\[\nd = \\mathbf{P}s + n\n\\]\n\n\\(d\\): time-ordered data\n\\(\\mathbf{P}\\): pointing matrix (telescope scanning)\n\\(s\\): discretized sky signal\n\\(n\\): stochastic contribution (noise)\n\n\nOptimal (GLS) solution\n\\[\n\\widehat{s} = (\\mathbf{P}^\\top \\mathbf{N}^{-1} \\mathbf{P})^{-1} \\mathbf{P}^\\top \\mathbf{N}^{-1} d\n\\]\n\n\nGeneralized parametric data model\n\n\n\n\n\n\\[\nd_{\\nu, i, t} = \\int_{\\textrm{BP}_\\nu} d\\nu' \\mathbf{M}^{(\\gamma)}_{\\nu', i, t, p} \\mathbf{A}^{(\\beta)}_{\\nu', t, c, p} s_{c, p} + n_{\\nu, i, t}\n\\]\n\n\\(\\mathbf{M}\\): instrument matrix (pointing, HWP parameters, bandpasses, beam properties, etc.)\n\\(\\mathbf{A}\\): mixing matrix (modeling of CMB, astrophysical foregrounds, atmosphere, etc.)\n\\(\\mathbf{H} = \\mathbf{MA}\\) is the generalized pointing operator"
   },
   {
     "objectID": "2024-cmb-france-6/index.html#time-domain-noise-correlations",
@@ -102,13 +102,13 @@
     "href": "2024-cmb-france-6/index.html#spectral-likelihood-minimization",
     "title": "",
     "section": "Spectral likelihood minimization",
-    "text": "Spectral likelihood minimization\n\n\n\nSpectral likelihood values in the \\((w_x, w_y)\\) plane for a fixed PWV values. \n\nMinimization is done by brute force: we compute \\(\\langle \\delta \\mathcal{S}_\\text{spec}(w_x, w_y \\mid \\text{pwv}_{\\text{sim}}) \\rangle\\) for 22,500 different combinations of \\((w_x, w_y)\\).\nProof of concept: we can recover the input values of \\((w_x, w_y)\\)!\nFuture work:\n\nmake the likelihood smooth (differentiable) by interpolating the pointing matrix coefficients\nuse a gradient-based minimization algorithm\n\n\n\n\nCredit: Amalia Villarrubia Aguilar"
+    "text": "Spectral likelihood minimization\n\n\n\nSpectral likelihood values in the \\((w_x, w_y)\\) plane for a fixed PWV value. \n\nMinimization is done by brute force: we compute \\(\\langle \\delta \\mathcal{S}_\\text{spec}(w_x, w_y \\mid \\text{pwv}_{\\text{sim}}) \\rangle\\) for 22,500 different combinations of \\((w_x, w_y)\\).\nProof of concept: we can recover the input values of \\((w_x, w_y)\\)!\nFuture work:\n\nmake the likelihood smooth (differentiable) by interpolating the pointing matrix coefficients\nuse a gradient-based minimization algorithm\n\n\n\n\nCredit: Amalia Villarrubia Aguilar"
   },
   {
     "objectID": "2024-cmb-france-6/index.html#conclusion",
     "href": "2024-cmb-france-6/index.html#conclusion",
     "title": "",
     "section": "Conclusion",
-    "text": "Conclusion\n\nCMB polarization analysis mixes instrument + foregrounds + cosmology\nNeed for robust and efficient tools\nWe are building a python-based toolbox\n\nusing jax for performance and portability\nable to represent complex instrument models\ninterfaced with Simons Observatory products"
+    "text": "Conclusion\n\nCMB polarization analysis mixes instrument + foregrounds + cosmology\nNeed for robust and efficient tools\nWe are building a python-based toolbox\n\nusing jax for performance and portability\nable to represent complex instrument models\n\nApplications: map-making, component separation, atmosphere decontamination, etc.\nGoals for early 2025\n\nunbiased map-making + map-based pipeline for SO-SAT\ncluster component separation for LiteBIRD\n\n\nIf you are interested, check out our the repository on GitHub: CMBSciPol/furax.\nThis work is part of the ERC project SciPol (https://scipol.in2p3.fr/)."
   }
 ]

@@ -198,7 +198,7 @@
   <p class="date">2024-12-19</p>
   <div style=""></div>
 <div style="margin-top: 20px; text-align: center; align-items: bottom;">
-  <div style="display: flex; justify-content: space-around; align-items: center; layout-valign=" middle"=""> <img src="assets/Logos/Furax_logo_transparent.png" style="width: 25%;"> <img src="assets/Logos/APC.png" style="width: 15%;"> <img src="assets/Logos/scipol.png" style="width: 15%;"> <img src="assets/Logos/ERC.svg" style="width: 15%;"> <img src="assets/Logos/CNRS.svg" style="width: 15%;"> </div>
+  <div style="display: flex; justify-content: space-around; align-items: center; layout-valign=" middle"=""> <img src="assets/Logos/Furax_logo_transparent.png" style="height: 4em"> <img src="assets/Logos/APC.png" style="height: 4em"> <img src="assets/Logos/scipol.png" style="height: 4em"> <img src="assets/Logos/ERC.svg" style="height: 4em"> <img src="assets/Logos/CNRS.svg" style="height: 4em"> </div>
 </div>
 
 </section>
@@ -222,6 +222,7 @@
 <li>High-performance: <code>JAX</code> (see next slide)</li>
 </ul>
 <p><br></p>
+<div class="fragment">
 <ul>
 <li>Maximum likelihood and template map-making as in <a href="https://arxiv.org/abs/2112.03370">El Bouhargani et al.&nbsp;2021</a></li>
 <li>Non-ideal, frequency-dependent optical components</li>
@@ -231,6 +232,7 @@
 <li>Large data sets: multi-GPU parallelization is underway</li>
 </ul></li>
 </ul>
+</div>
 </section>
 <section id="what-is-jax" class="slide level2 smaller">
 <h2>What is JAX</h2>
@@ -249,6 +251,7 @@
 <section id="pytrees" class="slide level2 smaller">
 <h2>PyTrees</h2>
 <p>FURAX relies on <a href="https://jax.readthedocs.io/en/latest/pytrees.html">PyTrees</a> to represent the data.</p>
+<div class="fragment">
 <p>Example: random sky with 3 components</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>sky <span class="op">=</span> {</span>
 <span id="cb1-2"><a></a>  <span class="st">'cmb'</span>: HealpixLandscape(nside, <span class="st">'IQU'</span>).normal(key1),</span>
@@ -256,6 +259,8 @@
 <span id="cb1-4"><a></a>  <span class="st">'synchrotron'</span>: HealpixLandscape(nside, <span class="st">'IQU'</span>).normal(key3),</span>
 <span id="cb1-5"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>HealpixLandscape(nside, 'IQU')</code> returns an instance of <code>StokesIQUPyTree</code>, a container for the Stokes parameters I, Q, U.</p>
+</div>
+<div class="fragment">
 <p>Use <code>FrequencyLandscape</code> to generalize to multiple frequencies.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>frequencies <span class="op">=</span> np.array([<span class="dv">93</span>, <span class="dv">145</span>])</span>
 <span id="cb2-2"><a></a>sky <span class="op">=</span> {</span>
@@ -263,6 +268,7 @@
 <span id="cb2-4"><a></a>  <span class="st">'dust'</span>: FrequencyLandscape(nside, frequencies, <span class="st">'IQU'</span>).normal(key2),</span>
 <span id="cb2-5"><a></a>  <span class="st">'synchrotron'</span>: FrequencyLandscape(nside, frequencies, <span class="st">'IQU'</span>).normal(key3),</span>
 <span id="cb2-6"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="operators" class="slide level2 smaller">
 <h2>Operators</h2>
@@ -435,12 +441,12 @@
 </section>
 <section id="algebraic-reductions-rotations" class="slide level2 smaller">
 <h2>Algebraic reductions: Rotations</h2>
-<p>Classic acquisition model with ideal linear polarizer, ideal half wave plate, rotations, pointing matrix</p>
+<p>Classic acquisition model with ideal linear polarizer <span class="math inline">\(\mathbf{M}_{\textrm{LP}}\)</span>, ideal half wave plate <span class="math inline">\(\mathbf{M}_{\textrm{HWP}}\)</span>, rotations <span class="math inline">\(\mathbf{R}\)</span>, pointing matrix <span class="math inline">\(\mathbf P\)</span>:</p>
 <p><span class="math display">\[
 \mathbf{H} = \mathbf{M}_{\textrm{LP}} \, \mathbf{R}_{2\theta} \, \mathbf{R}_{-2\phi} \,
 \mathbf{M}_{\textrm{HWP}} \, \mathbf{R}_{2\phi} \, \mathbf{R}_{2\psi} \, \mathbf{P}
 \]</span></p>
-<p>with</p>
+<p>where</p>
 <ul>
 <li><span class="math inline">\(\theta\)</span>: polarizer angle</li>
 <li><span class="math inline">\(\phi\)</span>: half-wave plate angle</li>
@@ -478,6 +484,7 @@ d = \mathbf{P}s + n
 \widehat{s} = (\mathbf{P}^\top \mathbf{N}^{-1} \mathbf{P})^{-1} \mathbf{P}^\top \mathbf{N}^{-1} d
 \]</span></p>
 </div><div class="column" style="width:55%;">
+<div class="fragment">
 <p><strong>Generalized parametric data model</strong></p>
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -492,6 +499,7 @@ d_{\nu, i, t} = \int_{\textrm{BP}_\nu} d\nu' \mathbf{M}^{(\gamma)}_{\nu', i, t, 
 <li><span class="math inline">\(\mathbf{A}\)</span>: <em>mixing matrix</em> (modeling of CMB, astrophysical foregrounds, atmosphere, etc.)</li>
 <li><span class="math inline">\(\mathbf{H} = \mathbf{MA}\)</span> is the generalized pointing operator</li>
 </ul>
+</div>
 </div></div>
 </div>
 </section>
@@ -730,7 +738,7 @@ Credit: Amalia Villarrubia Aguilar
 <p><br></p>
 <div class="columns">
 <div class="column" style="width:60%;">
-<p>Spectral likelihood values in the <span class="math inline">\((w_x, w_y)\)</span> plane for a fixed PWV values. <img data-src="assets/CMB/Spec-likelihood-gridding.png"></p>
+<p>Spectral likelihood values in the <span class="math inline">\((w_x, w_y)\)</span> plane for a fixed PWV value. <img data-src="assets/CMB/Spec-likelihood-gridding.png"></p>
 </div><div class="column" style="width:40%;">
 <p>Minimization is done by brute force: we compute <span class="math inline">\(\langle \delta \mathcal{S}_\text{spec}(w_x, w_y \mid \text{pwv}_{\text{sim}}) \rangle\)</span> for 22,500 different combinations of <span class="math inline">\((w_x, w_y)\)</span>.</p>
 <p>Proof of concept: we can recover the input values of <span class="math inline">\((w_x, w_y)\)</span>!</p>
@@ -753,9 +761,16 @@ Credit: Amalia Villarrubia Aguilar
 <ul>
 <li>using <code>jax</code> for performance and portability</li>
 <li>able to represent complex instrument models</li>
-<li>interfaced with Simons Observatory products</li>
+</ul></li>
+<li>Applications: map-making, component separation, atmosphere decontamination, etc.</li>
+<li>Goals for early 2025
+<ul>
+<li>unbiased map-making + map-based pipeline for SO-SAT</li>
+<li>cluster component separation for LiteBIRD</li>
 </ul></li>
 </ul>
+<p>If you are interested, check out our the repository on GitHub: <a href="https://github.com/CMBSciPol/furax">CMBSciPol/furax</a>.</p>
+<p>This work is part of the ERC project SciPol (<a href="https://scipol.in2p3.fr/" class="uri">https://scipol.in2p3.fr/</a>).</p>
 
 
 </section>
