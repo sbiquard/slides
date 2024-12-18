@@ -426,7 +426,7 @@ Credit: Wassim Kabalan
 :::
 
 
-## Atmosphere Decontamination Using Time-Domain Component Separation {style="font-size: 16pt;"}
+## Atmosphere decontamination: time-domain component separation {style="font-size: 16pt;"}
 
 **Goal**:
 For the Simons Observatory, characterize the observed atmospheric template from the recorded time-ordered data
@@ -510,7 +510,7 @@ Credit: Amalia Villarrubia Aguilar
 --->
 
 
-## Spectral likelihood minimization {style="font-size: 18pt;"}
+## Atmosphere decontamination: spectral likelihood minimization {style="font-size: 18pt;"}
 
 <br>
 
@@ -529,7 +529,7 @@ Minimization is done by brute force: we compute
 $\langle \delta \mathcal{S}_\text{spec}(w_x, w_y \mid \text{pwv}_{\text{sim}}) \rangle$
 for 22,500 different combinations of $(w_x, w_y)$.
 
-Proof of concept: we can recover the input values of $(w_x, w_y)$!
+Proof of concept: we can recover the wind parameters!
 
 Future work:
 
