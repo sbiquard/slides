@@ -7,15 +7,15 @@ author:
 
 format:
   revealjs:
-    theme: [default, css/custom.scss]
     incremental: false
     transition: slide
+    transition-speed: fast
     background-transition: slide
-    presentation-size: max-scale
     highlight-style: github
     slide-number: true
     template-partials:
       - css/title-slide.html
+    pdf-max-pages-per-slide: 1
 output: revealjs
 
 title-slide-attributes:
@@ -27,10 +27,6 @@ title-slide-attributes:
 logo1 : '
 <div style="display: flex; justify-content: space-around; align-items: center; layout-valign="middle">
   <img src="assets/Logos/Furax_logo_transparent.png" style="width: 25%;"/>
-  <img src="assets/Logos/JaxLogo.png" style="width: 15%;"/>
-  <img src="assets/Logos/Python.png" style="width: 20%;"/>
-</div>
-<div style="display: flex; justify-content: space-around; align-items: center; layout-valign="middle">
   <img src="assets/Logos/APC.png" style="width: 15%;"/>
   <img src="assets/Logos/scipol.png" style="width: 15%;"/>
   <img src="assets/Logos/ERC.svg" style="width: 15%;"/>
@@ -39,111 +35,97 @@ logo1 : '
 '
 ---
 
-## FURAX Library
+## Outline {.center}
 
-<br>
-<br>
-
-:::{.solutionbox}
-
-::::{.solutionbox-body style="font-size: 22px; border-radius: 10px; border: 2px solid #521463;"}
-
-- <span style="color:#521463; font-size: 28px;">**Motivations and Goals**</span>: Why and for what FURAX ?
-<br />
-<br />
-- <span style="color:#521463; font-size: 28px;">**FURAX Bulding Blocks**</span>: Presentation of the FURAX PyTrees and Operators.
-<br />
-<br />
-- <span style="color:#521463; font-size: 28px;">**Optimizations**</span>: High-level algebraic reductions with FURAX.
-<br />
-<br />
-- <span style="color:#521463; font-size: 28px;">**CMB Applications**</span>: From map-making to component separation.
-::::
-
-:::
+1. Motivations and goals: why and for what?
+2. Presentation of the framework
+3. Applications in CMB science
 
 
-## Motivations and Goals
+## Motivations and Goals {.smaller}
 
-- Inverse problems
-- Open source: [https://github.com/CMBSciPol/furax](https://github.com/CMBSciPol/furax)
+- Inverse problems: assuming data $d_{obs} = F(p)$, find the parameters $p$
+- Pure Python, open source: [https://github.com/CMBSciPol/furax](https://github.com/CMBSciPol/furax)
+    - `pip install furax` (_work in progress!_)
+- Modular & extensible: Easy to experiment new ideas
+- High-performance: `JAX` (see next slide)
 
 <br>
 
-- Modularity, extensibility, simplicity: Easy to experiment new ideas, Fail fast approach
-- JAX: Differentiation, Just In Time (JIT) compilation, run the same code anywhere — on CPUs and GPUs, laptops and super-computers
-- Framework for robust B-mode analysis
-- Able to handle SO- and S4-like data sets volumes, Compatibility with TOAST
+- Maximum likelihood and “template” map-making
 - Non-ideal optical components
-- 1st steps: “max-L” and “template” map-making (following MAPPRAISER’s formalism)
-- Multi-GPU parallelization (soon)
-
-You can try it: `pip install furax`, bearing in mind that the library is actively developed and currently in a refactoring phase.
-
+- Able to handle SO- and S4-like data sets
+    - Interfaces with `TOAST`, `sotodlib`
+    - Multi-GPU parallelization (soon)
 
 
-# FURAX Building Blocks {style="font-size: 35px; align=center;"}
+## What is JAX {.smaller}
+
+From the [JAX website](https://jax.readthedocs.io/en/latest/quickstart.html):
+
+> JAX is a library for array-oriented numerical computation (à la NumPy),
+with automatic differentiation and JIT compilation to enable high-performance machine learning research.
+
+Key features
+
+- NumPy-like interface with CPU/GPU/TPU support in local and distributed environments
+- Just-in-time (JIT) compilation via [Open XLA](https://github.com/openxla)
+- Automatic differentiation
+- Automatic vectorization
 
 
-## FURAX PyTrees
+# FURAX Building Blocks
 
+## PyTrees {.smaller}
 
-<br>
-<br>
+FURAX relies on [PyTrees](https://jax.readthedocs.io/en/latest/pytrees.html) to represent the data.
 
-FURAX relies on PyTrees to represent the data. For example, for component separation analysis, we can write the generalized sky as a nested PyTree
+Example: random sky with 3 components
 
 ```python
 sky = {
-  'cmb': HealpixLandscape(NSIDE, 'IQU').normal(key1),
-  'dust': HealpixLandscape(NSIDE, 'IQU').normal(key2),
-  'synchrotron': HealpixLandscape(NSIDE, 'IQU').normal(key3),
+  'cmb': HealpixLandscape(nside, 'IQU').normal(key1),
+  'dust': HealpixLandscape(nside, 'IQU').normal(key2),
+  'synchrotron': HealpixLandscape(nside, 'IQU').normal(key3),
 }
 ```
 
-`HealpixLandscape(NSIDE, 'IQU')` returns an instance of `StokesIQUPyTree`, which has the attributes `i`, `q` and `u` that store the JAX arrays of the Stokes components.
+`HealpixLandscape(nside, 'IQU')` returns an instance of `StokesIQUPyTree`,
+a container for the Stokes parameters I, Q, U.
 
-Also available are `StokesIPyTree`, `StokesQUPyTree` and `StokesIQUVPyTree`.
-
-<br>
-
-PyTree are then used by the FURAX Operators:
+Use `FrequencyLandscape` to generalize to multiple frequencies.
 
 ```python
-# Given an acquisition H:
-tod = H(sky)
+frequencies = np.array([93, 145])
+sky = {
+  'cmb': FrequencyLandscape(nside, frequencies, 'IQU').normal(key1),
+  'dust': FrequencyLandscape(nside, frequencies, 'IQU').normal(key2),
+  'synchrotron': FrequencyLandscape(nside, frequencies, 'IQU').normal(key3),
+}
 ```
 
-
-## FURAX Operators
-
-<br>
+## Operators {.smaller}
 
 The base class `AbstractLinearOperator` provides a default implementation for the usual linear algebra operations.
 
-<br>
+::: {style="font-size: 22px;"}
 
-::: {style="font-size: 18px;"}
-
-| Operation   | FURAX | Comment |
-|-------------|-------|---------|
-| Addition    | `A + B` |   |
-| Composition | `A @ B` |   |
-| Multiplication by scalar | `k * A` | Returns the composition of a HomothetyOperator and A|
-| Transpose   | `A.T`  |  Through JAX autodiff, but can be overriden |
-| Inverse     | `A.I` | By default, the CG solver is used, but it can be overriden or configured using a context manager |
-| Block Assembly | `BlockColumnOperator([A, B])` `BlockDiagonalOperator([A, B])` `BlockRowOperator([A, B])` | Handle any PyTree of Operators: `Block*Operator({'a': A, 'b': B})`|
-| Flattened dense matrix | `A.as_matrix()` | |
-| Algebraic reduction | `A.reduce()` | |
+| Operation                | FURAX           | Comment |
+|--------------------------|-----------------|---------|
+| Addition                 | `A + B`         |         |
+| Composition              | `A @ B`         |         |
+| Multiplication by scalar | `k * A`         | Returns the composition of a HomothetyOperator and A |
+| Transpose                | `A.T`           | Through JAX autodiff, but can be overriden           |
+| Inverse                  | `A.I`           | By default, the CG solver is used, but it can be overriden or configured using a context manager |
+| Block Assembly           | `BlockColumnOperator([A, B])` `BlockDiagonalOperator([A, B])` `BlockRowOperator([A, B])` | Handle any PyTree of Operators: `Block*Operator({'a': A, 'b': B})` |
+| Flattened dense matrix   | `A.as_matrix()` |         |
+| Algebraic reduction      | `A.reduce()`    |         |
 
 : {tbl-colwidths="[25,35,40]"}
 
 :::
 
-## FURAX Operators {style="font-size: 18px;"}
-
-<br/>
-<br/>
+## Operators (cont'd) {.smaller}
 
 ::: {.columns}
 
@@ -151,7 +133,7 @@ The base class `AbstractLinearOperator` provides a default implementation for th
 
 ::: {.solutionbox}
 
-:::{.solutionbox-body style="font-size: 17px;"}
+::: {.solutionbox-body style="font-size: 20px;"}
 
 | Generic Operator                | Description |
 |---------------------------------|-------------|
@@ -159,18 +141,19 @@ The base class `AbstractLinearOperator` provides a default implementation for th
 | `HomothetyOperator`             |             |
 | `DiagonalOperator`              |             |
 | `BroadcastDiagonalOperator`     | Non-square operator for broadcasting |
-| `TensorOperator`    | For dense matrix operations |
-| `IndexOperator`                 | Can be used for projecting skies onto time-ordered series|
+| `TensorOperator`                | For dense matrix operations |
+| `IndexOperator`                 | Can be used for projecting skies onto time-ordered series |
 | `MoveAxisOperator`              |             |
 | `ReshapeOperator`               |             |
 | `RavelOperator`                 |             |
 | `SymmetricBandToeplitzOperator` | Methods: direct, FFT, overlap and save |
-| `Block*Operator` | Block assembly operators (column, diagonal, row)|
+| `Block*Operator`                | Block assembly operators (column, diagonal, row) |
+
+: {tbl-colwidths="[50,50]"}
 
 :::
 
 :::
-
 
 :::
 
@@ -178,8 +161,7 @@ The base class `AbstractLinearOperator` provides a default implementation for th
 
 ::: {.solutionbox}
 
-:::{.solutionbox-body style="font-size: 17px;"}
-
+::: {.solutionbox-body style="font-size: 20px;"}
 
 | Applied Operator          | Description |
 |---------------------------|-------------|
@@ -199,293 +181,20 @@ The base class `AbstractLinearOperator` provides a default implementation for th
 :::
 
 
-# Multi-level Optimizations {style="font-size: 35px;"}
-
-
-## JAX GPU Compilation Chain
-
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-
-![From the Python code to the GPU-native code](assets/jax-compilation-chain.png){.nostrech fig-align="center" width="100%"}
-
-## XLA simplifications
-
-<br>
-
-::::: {.columns}
-
-:::: {.column width="50%"}
-
-
-::: {.solutionbox}
-
-::: {.solutionbox-header}
-
-**Mathematical identities**
-
-:::
-
-:::{.solutionbox-body style="font-size: 20px;"}
-
-- $a\times 0 = a - a = 0$
-- $a - 0 = a\times 1 = a / 1 = a^1 = a$
-- $a^{-1} = 1/a$, $a^{1/2} = \sqrt{a}$
-- $-(-x) = x$
-- $(-a)(-b) = ab$
-- $ac + bc = (a+b)c$
-- $a / const = a \times (1 / const)$
-- $(a + c1) + (b + c2) =  a + b + (c1 + c2)$
-- $(a / b) / (c / d) = ad / bc$
-- $\ln e^x = x$
-- $\exp a \exp b = \exp(a+b)$
-- $a / \exp b = a \exp(-b)$
-
-:::
-
-:::
-
-::::
-
-:::: {.column width="50%"}
-
-::: {.solutionbox}
-
-:::{.solutionbox-header}
-
-**Array manipulations**
-
-:::
-
-:::{.solutionbox-body style="font-size: 20px;"}
-
-- slicing
-- reshaping
-- broadcasting
-- transposition
-- bitcast
-- copies
-
-:::
-
-:::
-
-
-:::{.solutionbox}
-
-:::{.solutionbox-header}
-
-**Ol' Digger's tricks**
-
-:::
-
-:::{.solutionbox-body style="font-size: 20px;"}
-
-- $a^2 = a \times a$, $a^3 = a \times a \times a$
-- $a / b = a$>>$\log_2 b$ if b is a power of 2
-- $a \mod b = a \& (b - 1)$ if b is a power of 2
-
-:::
-
-:::
-
-::::
-
-:::::
-
-and many more (see [xla/hlo/transforms/simplifiers/algebraic_simplifier.cc](xla/hlo/transforms/simplifiers/algebraic_simplifier.cc))
-
-
-## Dead Code Elimination (DCE)
-
-:::: {.columns}
-
-::: {.column width="50%"}
-
-```python
-import jax
-import jax.numpy as jnp
-
-@jax.jit
-def func_dce(x):
-    unused = jnp.sin(x)
-    y = jnp.exp(x)
-    return y[0]
-```
-
-::: {.fragment fragment-index=1}
-
-![Compiled StableHLO representation](assets/hlo/hlo-func-dce.png){fig-align="center" width="60%"}
-
-:::
-
-:::
-
-::: {.column width="50%"}
-
-::: {.fragment fragment-index=2}
-
-```python
-import jax
-import jax.numpy as jnp
-
-@jax.jit
-def func_full(x):
-    return jnp.exp(x)
-
-
-
-```
-
-:::
-
-::: {.fragment fragment-index=3}
-
-![Full computation vs DCE](assets/hlo/bench-dce.png){fig-align="center" width="190%"}
-
-:::
-
-:::
-
-::::
-
-
-## XLA Common Subexpression Elimination (CSE)
-
-:::: {.columns}
-
-::: {.column width="50%"}
-
-```python
-import jax
-import jax.numpy as jnp
-
-@jax.jit
-def func_cse(theta):
-    a = jnp.sin(theta)
-    b = jnp.sin(theta) + 1
-    return a + b
- ```
-
-:::{.fragment fragment-index=2}
-
-:::{.solutionbox}
-
-:::{.solutionbox-header style="font-size: 22px;"}
-
-**XLA Common Subexpression Elimination (CSE)**
-
-:::
-
-::::{.solutionbox-body style="font-size: 20px;"}
-
-- **Definition**: CSE identifies and eliminates duplicate computations within a function to optimize performance.
-
-- **Example in Code**:
-  - Without CSE: `jnp.sin(theta)` computed twice.
-  - After CSE: Shared computation across `a` and `b`.
-
-- **Benefits**:
-  - Reduces redundant computation.
-  - Enhances runtime efficiency and memory usage.
-
-::::
-
-:::
-
-:::
-
-:::
-
-::: {.column width="50%"}
-
-::: {.fragment fragment-index=1}
-
-![Compiled StableHLO representation](assets/hlo/hlo-func-cse.png){fig-align="center" width="60%" style="border: 2px solid #000000;"}
-
-:::
-
-:::
-
-::::
-
-
-## JAX GPU Compilation Chain with FURAX
-
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-
-![From the Python code to the GPU-native code](assets/jax-compilation-chain-with-furax.png){fig-align="center" width="120%"}
-
-
-## FURAX Algebraic Reductions: Composition of Rotations
-
-
-```python
-import jax
-import jax.numpy as jnp
-
-def rot(x, y, theta):
-    rotated_x = x * jnp.cos(theta) - y * jnp.sin(theta)
-    rotated_y = x * jnp.sin(theta) + y * jnp.cos(theta)
-    return rotated_x, rotated_y
-
-@jax.jit
-def func(x, y, theta1, theta2):
-    return rot(x, y, theta=theta1 + theta2)
-  ```
-
-::: {.fragment fragment-index=1}
-
-![Compiled StableHLO representation](assets/hlo/hlo-rot-furax.png){fig-align="center" width="60%"}
-
-:::
-
-
-## FURAX Algebraic Reductions: Composition of Rotations
-
-
-```python
-import jax
-import jax.numpy as jnp
-
-def rot(x, y, theta):
-    rotated_x = x * jnp.cos(theta) - y * jnp.sin(theta)
-    rotated_y = x * jnp.sin(theta) + y * jnp.cos(theta)
-    return rotated_x, rotated_y
-
-@jax.jit
-def func(x, y, theta1, theta2):
-    x, y = rot(x, y, theta=theta1)
-    return rot(x, y, theta=theta2)
-  ```
-
-::: {.fragment fragment-index=1}
-
-![Compiled StableHLO representation](assets/hlo/hlo-rot.png){fig-align="center" width="60%"}
-
-:::
-
-
-## FURAX Algebraic Reductions: Instrument Acquisition
-
-<br>
+## Algebraic reductions: Rotations {.smaller}
 
 Given this modeling of the acquisition, using an ideal linear polarizer and an ideal half wave plate:
+
 $$
-\mathbf{H} = \mathbf{C}_{\textrm{LP}} \, \mathbf{R}_{2\theta} \, \mathbf{R}_{-2\phi} \, \mathbf{C}_{\textrm{HWP}} \, \mathbf{R}_{2\phi} \, \mathbf{R}_{2\psi} \, \mathbf{P}
+\mathbf{H} = \mathbf{C}_{\textrm{LP}} \, \mathbf{R}_{2\theta} \, \mathbf{R}_{-2\phi} \,
+\mathbf{C}_{\textrm{HWP}} \, \mathbf{R}_{2\phi} \, \mathbf{R}_{2\psi} \, \mathbf{P}
 $$
+
 with
 
-- $\theta$: detector polarization angle
-- $\phi$: HWP rotation angle
-- $\psi$: telescope rotation angle
+- $\theta$: polarizer angle
+- $\phi$: half-wave plate angle
+- $\psi$: telescope angle
 
 FURAX reduces this expression to:
 
@@ -494,6 +203,7 @@ $$
 $$
 
 
+<!---
 ## FURAX Algebraic Reductions: Pointing Matrix
 
 <br>
@@ -568,42 +278,37 @@ The combination is reduced to
 $$
 \mathbf{P}^\top \mathbf{N}^{-1} \mathbf{P} = \mathbf{P}_1^\top \mathbf{N}_1^{-1} \mathbf{P}_1^{\,} + \mathbf{P}_2^\top \mathbf{N}_2^{-1} \mathbf{P}_2^{\,}.
 $$
+--->
 
 
-# CMB Applications {style="font-size: 35px; align=center;"}
+# CMB Applications
 
-::: {style="color: gray; font-size: 16px"}
-
+::: {style="font-size: 24px"}
 <br>
-<br>
-<br>
-<br>
-Credits: SciPol Ph.D students
+Credits: Ema Tsang, Wassim Kabalan, Amalia Villarrubia & the whole SciPol team
 :::
 
 
-## Maximum-Likelihood Map-Making{style="font-size: 20px;"}
+## Generalized Map-Making {style="font-size: 18pt"}
 
-<br>
-
-::::: {.columns}
+:::: {.columns}
 
 ::: {.column width="45%"}
 
-#### Classic data model
+**Classic data model**
 
 $$
 d = \mathbf{P}s + n
 $$
 
 - $d$: time-ordered data
-- $\mathbf{P}$: pointing matrix ( telescope scanning)
+- $\mathbf{P}$: pointing matrix (telescope scanning)
 - $s$: discretized sky signal
 - $n$: stochastic contribution (noise)
 
 <br>
 
-#### Optimal (GLS) solution:
+**Optimal (GLS) solution**
 
 $$
 \widehat{s} = (\mathbf{P}^\top \mathbf{N}^{-1} \mathbf{P})^{-1} \mathbf{P}^\top \mathbf{N}^{-1} d
@@ -612,7 +317,7 @@ $$
 
 ::: {.column width="55%"}
 
-#### Generalized parametric data model
+**Generalized parametric data model**
 
 ![](assets/mapmaking/instrument-foregrounds.png){fig-align="center"}
 
@@ -620,43 +325,44 @@ $$
 d_{\nu, i, t} = \int_{\textrm{BP}_\nu} d\nu' \mathbf{M}^{(\gamma)}_{\nu', i, t, p} \mathbf{A}^{(\beta)}_{\nu', t, c, p} s_{c, p} + n_{\nu, i, t}
 $$
 
-- $\mathbf{M}$ includes HWP parameters, band passes, beam properties, gains, ...
-- $\mathbf{A}$ includes the frequency modeling of CMB, astrophysical foregrounds, atmosphere, ground
+- $\mathbf{M}$: _instrument matrix_ (pointing, HWP parameters, bandpasses, beam properties, etc.)
+- $\mathbf{A}$: _mixing matrix_ (modeling of CMB, astrophysical foregrounds, atmosphere, etc.)
 - $\mathbf{H} = \mathbf{MA}$ is the generalized pointing operator
 :::
 
-:::::
-
-::: {style="color: gray; font-size: 16px"}
-Credit: Simon Biquart
-:::
+::::
 
 
-## Maximum-Likelihood Map-Making
+## Time-domain noise correlations {.smaller}
 
-<br>
+:::: {.columns}
 
-::::: {.columns}
 ::: {.column}
-![$N^{-1}$ Block symmetric band Toeplitz](assets/mapmaking/block-toeplitz.png){fig-align="center" width="50%"}
+
+Noise correlations in a _stationary_ period correspond to a symmetric Toeplitz matrix structure.
+
+Furax has the `SymmetricBandToeplitzOperator` with optimized matrix-vector operations in $\mathcal O(n \log \lambda)$ (overlap-and-add method).
+
+![Impact of gaps. Credits: B3DCMB](assets/mapmaking/fig_gstbmm.png){width="75%"}
+
 :::
+
 ::: {.column}
-![](assets/mapmaking/gap-filling.png){fig-align="center" width="65%"}
-:::
-:::::
 
-### Furax example
+**Restoring stationarity**
 
-```python
-h = bandpass @ pol @ rot @ hwp @ proj @ mixing
-tod = h(sky)
-solution = ((h.T @ invN @ h).I @ h.T @ invN)(gap_fill(key, tod))
-```
+To work around this problem, one solution is to fill the gaps with synthetic samples consistent with noise.
 
-::: {style="color: gray; font-size: 16px"}
-Credit: Simon Biquart
+Furax's `GapFillingOperator` computes a _constrained noise realization_ from an estimate of the noise correlations.
+
+![Toy example with a few detectors](assets/mapmaking/gap_filling_example.png)
+
 :::
 
+::::
+
+
+<!---
 ## Writing this with FURAX tools
 
 ::::: {.columns}
@@ -700,10 +406,6 @@ Can be extended & complexified easily!.
 
 :::
 
-::: {style="color: gray; font-size: 16px"}
-Credit: Simon Biquart
-:::
-
 
 ::::
 
@@ -725,26 +427,32 @@ Credit: Simon Biquart
 ::::
 
 :::::
+--->
 
-## Quantifying Biases from Non-Ideal Half Wave Plates
 
-<br>
+## Non-Ideal HWP (credits: Ema Tsang) {.smaller}
 
-![](assets/hwp/hwp-ema.png){fig-align="center" width="100%"}
+<!--- ![](assets/hwp/hwp-ema.png){width="100%"} --->
 
-#### Non-ideal Half Wave Plate
-- Made of several stacked layers
-- Takes into account the transmission and reflection of the incident electromagnetic field at the layers boundaries
+:::: {.columns}
 
-#### Furax modeling
+::: {.column width="40%"}
+Realistic HWP operator
 
-```python
-h = pol @ bandpass @ hwp @ mixing_matrix @ projection
-sol = ((h.T @ h).I @ h.T)(tod)
-```
+- several layers stacked
+- transmission + reflection of incident EM field at the boundaries
+:::
 
-::: {style="color: gray; font-size: 16px"}
-Credit: Ema Tsang King Sang
+:::{.column width="60%"}
+![Mueller matrix coefficients in angle-frequency space](assets/hwp/transfer_matrix.png)
+:::
+
+::::
+
+::: {.notes}
+- frequency-dependent phase shift (middle blocks)
+- I->P leakage at ~0.4% (IQ, IU blocks)
+- also 2f but not very visible
 :::
 
 
