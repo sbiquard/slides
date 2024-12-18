@@ -9,112 +9,98 @@
   {
     "objectID": "2024-cmb-france-6/index.html#outline",
     "href": "2024-cmb-france-6/index.html#outline",
-    "title": "FURAX: a modular JAX toolbox for solving inverse problems in science",
+    "title": "",
     "section": "Outline",
     "text": "Outline\n\nMotivations and goals: why and for what?\nPresentation of the framework\nApplications in CMB science"
   },
   {
     "objectID": "2024-cmb-france-6/index.html#motivations-and-goals",
     "href": "2024-cmb-france-6/index.html#motivations-and-goals",
-    "title": "FURAX: a modular JAX toolbox for solving inverse problems in science",
+    "title": "",
     "section": "Motivations and Goals",
-    "text": "Motivations and Goals\n\nInverse problems: assuming data \\(d_{obs} = F(p)\\), find the parameters \\(p\\)\nPure Python, open source: https://github.com/CMBSciPol/furax\n\npip install furax (work in progress!)\n\nModular & extensible: Easy to experiment new ideas\nHigh-performance: JAX (see next slide)\n\n\n\nMaximum likelihood and “template” map-making\nNon-ideal optical components\nAble to handle SO- and S4-like data sets\n\nInterfaces with TOAST, sotodlib\nMulti-GPU parallelization (soon)"
+    "text": "Motivations and Goals\n\nInverse problems: assuming data \\(d_{obs} = F(p)\\), find the parameters \\(p\\)\nPure Python, open source: https://github.com/CMBSciPol/furax\n\npip install furax (work in progress!)\n\nModular & extensible: Easy to experiment new ideas\nHigh-performance: JAX (see next slide)\n\n\n\nMaximum likelihood and template map-making as in El Bouhargani et al. 2021\nNon-ideal, frequency-dependent optical components\nProvide tools for next generation experiments (SO, CMB-S4, LiteBIRD)\n\nInterfaces with TOAST, sotodlib\nLarge data sets: multi-GPU parallelization is underway"
   },
   {
     "objectID": "2024-cmb-france-6/index.html#what-is-jax",
     "href": "2024-cmb-france-6/index.html#what-is-jax",
-    "title": "FURAX: a modular JAX toolbox for solving inverse problems in science",
+    "title": "",
     "section": "What is JAX",
     "text": "What is JAX\nFrom the JAX website:\n\nJAX is a library for array-oriented numerical computation (à la NumPy), with automatic differentiation and JIT compilation to enable high-performance machine learning research.\n\nKey features\n\nNumPy-like interface with CPU/GPU/TPU support in local and distributed environments\nJust-in-time (JIT) compilation via Open XLA\nAutomatic differentiation\nAutomatic vectorization"
   },
   {
     "objectID": "2024-cmb-france-6/index.html#pytrees",
     "href": "2024-cmb-france-6/index.html#pytrees",
-    "title": "FURAX: a modular JAX toolbox for solving inverse problems in science",
+    "title": "",
     "section": "PyTrees",
     "text": "PyTrees\nFURAX relies on PyTrees to represent the data.\nExample: random sky with 3 components\nsky = {\n  'cmb': HealpixLandscape(nside, 'IQU').normal(key1),\n  'dust': HealpixLandscape(nside, 'IQU').normal(key2),\n  'synchrotron': HealpixLandscape(nside, 'IQU').normal(key3),\n}\nHealpixLandscape(nside, 'IQU') returns an instance of StokesIQUPyTree, a container for the Stokes parameters I, Q, U.\nUse FrequencyLandscape to generalize to multiple frequencies.\nfrequencies = np.array([93, 145])\nsky = {\n  'cmb': FrequencyLandscape(nside, frequencies, 'IQU').normal(key1),\n  'dust': FrequencyLandscape(nside, frequencies, 'IQU').normal(key2),\n  'synchrotron': FrequencyLandscape(nside, frequencies, 'IQU').normal(key3),\n}"
   },
   {
     "objectID": "2024-cmb-france-6/index.html#operators",
     "href": "2024-cmb-france-6/index.html#operators",
-    "title": "FURAX: a modular JAX toolbox for solving inverse problems in science",
+    "title": "",
     "section": "Operators",
     "text": "Operators\nThe base class AbstractLinearOperator provides a default implementation for the usual linear algebra operations.\n\n\n\n\n\n\n\n\n\nOperation\nFURAX\nComment\n\n\n\n\nAddition\nA + B\n\n\n\nComposition\nA @ B\n\n\n\nMultiplication by scalar\nk * A\nReturns the composition of a HomothetyOperator and A\n\n\nTranspose\nA.T\nThrough JAX autodiff, but can be overriden\n\n\nInverse\nA.I\nBy default, the CG solver is used, but it can be overriden or configured using a context manager\n\n\nBlock Assembly\nBlockColumnOperator([A, B]) BlockDiagonalOperator([A, B]) BlockRowOperator([A, B])\nHandle any PyTree of Operators: Block*Operator({'a': A, 'b': B})\n\n\nFlattened dense matrix\nA.as_matrix()\n\n\n\nAlgebraic reduction\nA.reduce()"
   },
   {
     "objectID": "2024-cmb-france-6/index.html#operators-contd",
     "href": "2024-cmb-france-6/index.html#operators-contd",
-    "title": "FURAX: a modular JAX toolbox for solving inverse problems in science",
+    "title": "",
     "section": "Operators (cont’d)",
     "text": "Operators (cont’d)\n\n\n\n\n\n\n\n\n\n\n\nGeneric Operator\nDescription\n\n\n\n\nIdentityOperator\n\n\n\nHomothetyOperator\n\n\n\nDiagonalOperator\n\n\n\nBroadcastDiagonalOperator\nNon-square operator for broadcasting\n\n\nTensorOperator\nFor dense matrix operations\n\n\nIndexOperator\nCan be used for projecting skies onto time-ordered series\n\n\nMoveAxisOperator\n\n\n\nReshapeOperator\n\n\n\nRavelOperator\n\n\n\nSymmetricBandToeplitzOperator\nMethods: direct, FFT, overlap and save\n\n\nBlock*Operator\nBlock assembly operators (column, diagonal, row)\n\n\n\n\n\n\n\n\n\n\n\nApplied Operator\nDescription\n\n\n\n\nQURotationOperator\n\n\n\nHWPOperator\nIdeal HWP\n\n\nLinearPolarizerOperator\nIdeal linear polarizer\n\n\nCMBOperator\nParametrized CMB SED\n\n\nDustOperator\nParametrized dust SED\n\n\nSynchrotronOperator\nParametrized synchrotron SED"
   },
   {
     "objectID": "2024-cmb-france-6/index.html#algebraic-reductions-rotations",
     "href": "2024-cmb-france-6/index.html#algebraic-reductions-rotations",
-    "title": "FURAX: a modular JAX toolbox for solving inverse problems in science",
+    "title": "",
     "section": "Algebraic reductions: Rotations",
-    "text": "Algebraic reductions: Rotations\nGiven this modeling of the acquisition, using an ideal linear polarizer and an ideal half wave plate:\n\\[\n\\mathbf{H} = \\mathbf{C}_{\\textrm{LP}} \\, \\mathbf{R}_{2\\theta} \\, \\mathbf{R}_{-2\\phi} \\,\n\\mathbf{C}_{\\textrm{HWP}} \\, \\mathbf{R}_{2\\phi} \\, \\mathbf{R}_{2\\psi} \\, \\mathbf{P}\n\\]\nwith\n\n\\(\\theta\\): polarizer angle\n\\(\\phi\\): half-wave plate angle\n\\(\\psi\\): telescope angle\n\nFURAX reduces this expression to:\n\\[\n\\mathbf{H} = \\mathbf{C}_{\\textrm{LP}} \\, \\mathbf{R}_{-2\\theta + 4\\phi + 2\\psi}\\, \\mathbf{P}\n\\]"
+    "text": "Algebraic reductions: Rotations\nClassic acquisition model with ideal linear polarizer, ideal half wave plate, rotations, pointing matrix\n\\[\n\\mathbf{H} = \\mathbf{M}_{\\textrm{LP}} \\, \\mathbf{R}_{2\\theta} \\, \\mathbf{R}_{-2\\phi} \\,\n\\mathbf{M}_{\\textrm{HWP}} \\, \\mathbf{R}_{2\\phi} \\, \\mathbf{R}_{2\\psi} \\, \\mathbf{P}\n\\]\nwith\n\n\\(\\theta\\): polarizer angle\n\\(\\phi\\): half-wave plate angle\n\\(\\psi\\): telescope angle\n\nis reduced automatically to the much simpler\n\\[\n\\mathbf{H} = \\mathbf{M}_{\\textrm{LP}} \\, \\mathbf{R}_{-2\\theta + 4\\phi + 2\\psi}\\, \\mathbf{P}\n\\]"
   },
   {
     "objectID": "2024-cmb-france-6/index.html#generalized-map-making",
     "href": "2024-cmb-france-6/index.html#generalized-map-making",
-    "title": "FURAX: a modular JAX toolbox for solving inverse problems in science",
+    "title": "",
     "section": "Generalized Map-Making",
     "text": "Generalized Map-Making\n\n\n\nClassic data model\n\\[\nd = \\mathbf{P}s + n\n\\]\n\n\\(d\\): time-ordered data\n\\(\\mathbf{P}\\): pointing matrix (telescope scanning)\n\\(s\\): discretized sky signal\n\\(n\\): stochastic contribution (noise)\n\n\nOptimal (GLS) solution\n\\[\n\\widehat{s} = (\\mathbf{P}^\\top \\mathbf{N}^{-1} \\mathbf{P})^{-1} \\mathbf{P}^\\top \\mathbf{N}^{-1} d\n\\]\n\nGeneralized parametric data model\n\n\n\n\n\n\\[\nd_{\\nu, i, t} = \\int_{\\textrm{BP}_\\nu} d\\nu' \\mathbf{M}^{(\\gamma)}_{\\nu', i, t, p} \\mathbf{A}^{(\\beta)}_{\\nu', t, c, p} s_{c, p} + n_{\\nu, i, t}\n\\]\n\n\\(\\mathbf{M}\\): instrument matrix (pointing, HWP parameters, bandpasses, beam properties, etc.)\n\\(\\mathbf{A}\\): mixing matrix (modeling of CMB, astrophysical foregrounds, atmosphere, etc.)\n\\(\\mathbf{H} = \\mathbf{MA}\\) is the generalized pointing operator"
   },
   {
     "objectID": "2024-cmb-france-6/index.html#time-domain-noise-correlations",
     "href": "2024-cmb-france-6/index.html#time-domain-noise-correlations",
-    "title": "FURAX: a modular JAX toolbox for solving inverse problems in science",
+    "title": "",
     "section": "Time-domain noise correlations",
-    "text": "Time-domain noise correlations\n\n\nNoise correlations in a stationary period correspond to a symmetric Toeplitz matrix structure.\nFurax has the SymmetricBandToeplitzOperator with optimized matrix-vector operations in \\(\\mathcal O(n \\log \\lambda)\\) (overlap-and-add method).\n\n\n\nImpact of gaps. Credits: B3DCMB\n\n\n\nRestoring stationarity\nTo work around this problem, one solution is to fill the gaps with synthetic samples consistent with noise.\nFurax’s GapFillingOperator computes a constrained noise realization from an estimate of the noise correlations.\n\n\n\nToy example with a few detectors"
+    "text": "Time-domain noise correlations\n\n\nNoise correlations in a stationary period correspond to a symmetric Toeplitz matrix structure.\nSymmetricBandToeplitzOperator with optimized matrix-vector operations in \\(\\mathcal O(n \\log \\lambda)\\) (overlap-and-add method).\n\n\n\n\nImpact of gaps. Credits: B3DCMB\n\n\n\n\n\nRestoring stationarity\nTo work around this problem, one solution is to fill the gaps with synthetic samples consistent with noise.\nFurax’s GapFillingOperator computes a constrained noise realization from an estimate of the noise correlations.\n\n\n\n\n\nToy example. Only gaps are modified."
   },
   {
     "objectID": "2024-cmb-france-6/index.html#non-ideal-hwp-credits-ema-tsang",
     "href": "2024-cmb-france-6/index.html#non-ideal-hwp-credits-ema-tsang",
-    "title": "FURAX: a modular JAX toolbox for solving inverse problems in science",
+    "title": "",
     "section": "Non-Ideal HWP (credits: Ema Tsang)",
-    "text": "Non-Ideal HWP (credits: Ema Tsang)\n\n\n\nRealistic HWP operator\n\nseveral layers stacked\ntransmission + reflection of incident EM field at the boundaries\n\n\n\n\n\nMueller matrix coefficients in angle-frequency space\n\n\n\n\n\nfrequency-dependent phase shift (middle blocks)\nI-&gt;P leakage at ~0.4% (IQ, IU blocks)\nalso 2f but not very visible"
+    "text": "Non-Ideal HWP (credits: Ema Tsang)\n\n\n\nRealistic HWP operator\n\nseveral layers stacked\ntransmission + reflection of incident EM field at the boundaries\n\nCf. great presentation by Miguel Gomes yesterday!\n\n\n\n\nMueller matrix coefficients in angle-frequency space for the SO mid-frequency SAT\n\n\n\n\n\nfrequency-dependent phase shift (middle blocks)\nI-&gt;P leakage at ~0.4% (IQ, IU blocks)\nalso 2f but not very visible"
   },
   {
-    "objectID": "2024-cmb-france-6/index.html#component-separation",
-    "href": "2024-cmb-france-6/index.html#component-separation",
-    "title": "FURAX: a modular JAX toolbox for solving inverse problems in science",
-    "section": "Component Separation",
-    "text": "Component Separation\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe Cosmic Microwave Background (CMB) signal is obscured by various foregrounds, making it challenging to detect the true cosmological information.\n\n\n\nDust: Emission from galactic dust adds significant noise to the CMB, particularly affecting polarization measurements.\n\n\n\n\nSynchrotron Radiation: Electrons spiraling in the galaxy’s magnetic fields produce synchrotron radiation, another major contaminant.\n\n\n\n\n\nComponent separation methods\n\n\n\nBlind Methods: Like SMICA (Spectral Matching Independent Component Analysis)\nParametric Methods: Like FGbuster (Foreground Buster)\n\n\n\n\n\n\nLe signal du fond diffus cosmologique, ou CMB, est en réalité obscurci par plusieurs avant-plans, ce qui rend difficile l’extraction des informations cosmologiques réelles.\nL’un des contaminants principaux est la poussière galactique. Cette poussière émet du rayonnement qui ajoute un bruit significatif au CMB, affectant particulièrement les mesures de polarisation.\nNEXT\nUn autre contaminant majeur est la radiation synchrotron. Elle est produite par des électrons en spirale dans les champs magnétiques de notre galaxie, ce qui vient encore plus brouiller le signal cosmologique que l’on souhaite observer.\nAFTER\nPour pouvoir extraire une valeur fiable du rapport \\(r\\), il est crucial de séparer ou de “démixer” ces composants. Le signal du CMB est mêlé à diverses émissions parasites.\nIl existe différentes méthodes pour cela, principalement des méthodes aveugles comme SMICA, qui fonctionnent sans connaissances préalables des avant-plans, et des méthodes paramétriques comme FGbuster, qui reposent sur la modélisation explicite des avant-plans.\nDans cette présentation, nous allons nous concentrer sur les méthodes paramétriques. Celles-ci nous permettent d’utiliser des modèles pour les avant-plans et d’améliorer la précision du processus de séparation.\n\n\nCredit: Wassim Kabalan"
-  },
-  {
-    "objectID": "2024-cmb-france-6/index.html#on-going-development-of-parametric-component-separation-within-the-furax-framework",
-    "href": "2024-cmb-france-6/index.html#on-going-development-of-parametric-component-separation-within-the-furax-framework",
-    "title": "FURAX: a modular JAX toolbox for solving inverse problems in science",
-    "section": "On-going development of parametric component separation within the FURAX framework",
-    "text": "On-going development of parametric component separation within the FURAX framework\n\n\nDoes everything fgbuster does but “better”\n\nUses FURAX linear algebra operators to efficiently represent the mixing matrix\nIs written in JAX, is hardware accelerated\nProvides easy access to gradients\n\n\n\n\n\n\n\n\n\nBeyond fgbuster\n\nAutomatic cluster detection for spectral index parameters\nFlexible likelihood model (can be extended to include more components and different objective functions)\n\n\n\n\n\n\n\n\n\n\nCredit: Wassim Kabalan"
-  },
-  {
-    "objectID": "2024-cmb-france-6/index.html#on-going-development-of-parametric-component-separation-within-the-furax-framework-1",
-    "href": "2024-cmb-france-6/index.html#on-going-development-of-parametric-component-separation-within-the-furax-framework-1",
-    "title": "FURAX: a modular JAX toolbox for solving inverse problems in science",
-    "section": "On-going development of parametric component separation within the FURAX framework",
-    "text": "On-going development of parametric component separation within the FURAX framework\n\n\n\n\nCreating a Mixing Matrix Operator for SED evaluation\nfrom furax.seds import \\\n  CMBOperator,DustOperator, SynchrotronOperator\n\ndef make_A(TEMP_D , BETA_D , BETA_S):\n  cmb = CMBOperator(nu, in_structure)\n  dust = DustOperator(nu , TEMP_D , BETA_D)\n  synchrotron = SynchrotronOperator(nu , BETA_S)\n\n  mixed_sed = BlockRowOperator({\n          'cmb': cmb,\n          'dust': dust,\n          'synchrotron': synchrotron,\n      })\n  return mixed_sed\n\n\n\nTrivial construction of a spectral likelihood functions\nimport jax\n\n@jax.jit\ndef negative_log_prob(params, d):\n  A = make_A(params['TEMP_D'],\n             params['BETA_D'],\n             params['BETA_S'])\n\n  x = (A.T @ invN)(d)\n  l = jax.tree.map(lambda a, b: a @ b, x, (A.T @ invN @ A).I(x))\\\n                       S\n  summed_log_prob = jax.tree.reduce(operator.add, l)\n\n  return -summed_log_prob\n\n\n\n\n\n\n\nEasy to evaluate and extend\n\n\n\nThe likelihood function is readily available and can be easily extended to include more components or different objective functions.\nEasy access to gradients and hessians for optimization.\n\n\n\n\n\nCredit: Wassim Kabalan"
+    "objectID": "2024-cmb-france-6/index.html#component-separation-credits-wassim-kabalan",
+    "href": "2024-cmb-france-6/index.html#component-separation-credits-wassim-kabalan",
+    "title": "",
+    "section": "Component separation (credits: Wassim Kabalan)",
+    "text": "Component separation (credits: Wassim Kabalan)\n\n\ntldr: Does everything fgbuster does, but better\n\nFurax operators efficiently represent the mixing matrix\nhardware accelerated\neasy access to gradients and hessians\n\nBeyond fgbuster\n\nAutomatic cluster detection for spectral index parameters\nVery flexible model: straigt-forward extensions to other sky components, different objective functions, etc.\n\n\n\nCost of evaluating the likelihood function is reduced by a factor 10 for \\(\\textrm{nside} \\geq 64\\). \n\n\nThis will power the map-based pipeline for \\(r\\) estimation in SO (cf. presentation by Baptiste Jost earlier today)."
   },
   {
     "objectID": "2024-cmb-france-6/index.html#atmosphere-decontamination-using-time-domain-component-separation",
     "href": "2024-cmb-france-6/index.html#atmosphere-decontamination-using-time-domain-component-separation",
-    "title": "FURAX: a modular JAX toolbox for solving inverse problems in science",
+    "title": "",
     "section": "Atmosphere Decontamination Using Time-Domain Component Separation",
-    "text": "Atmosphere Decontamination Using Time-Domain Component Separation\nScience Goal\nFor the Simons Observatory, characterize the observed atmospheric template from the recorded time-ordered data to separate the atmosphere from the sky signal we are after.\n\n\n\n\n\n\n\nData Model\n\\[\nd_{\\text{atm}} = \\mathbf{A}(\\text{PWV}) \\mathbf{P}(w_x, w_y) s_{\\text{atm}} + n\n\\]\n\n\n\nModel Parameters\n\n\n\nWind velocity: \\(\\vec{w} = (w_x, w_y)\\)\nPrecipitable Water Vapour (PWV): ~Amplitude of atmospheric fluctuations.\nEstimate parameters by minimizing the spectral likelihood.\n\n\n\n\nAtmospheric time-ordered data recorded by our telescope at two frequencies: \\(d_{\\text{atm}}\\)\nMixing matrix \\(\\mathbf{A} =\n\\begin{bmatrix}\n  a(\\text{PWV}_{1}) & 0 \\\\\n  0 & a(\\text{PWV}_{2})\n\\end{bmatrix}\\)\nPointing matrix \\(\\mathbf{P} =\n\\begin{bmatrix}\n  P_{1} \\\\\n  P_{2}\n\\end{bmatrix}\\)\nAtmospheric template: \\(s_{\\text{atm}}\\)\nNoise: \\(n\\), of covariance matrix \\(\\mathbf{N} =\n\\begin{bmatrix}\n  \\sigma_{1}^{2} & 0 \\\\\n  0 & \\sigma_{2}^{2}\n\\end{bmatrix}\\)\n\nSpectral Likelihood\n\\[\n\\boxed{\n\\langle \\delta \\mathcal{S}_\\text{spec}(w_x, w_y, \\text{PWV} \\mid \\vec{d}_{\\text{atm}}) \\rangle\n= \\vec{d}_{\\text{atm}}^\\top \\cdot \\mathbf{AP}\n\\Big[ (\\mathbf{AP})^\\top \\mathbf{N}^{-1} (\\mathbf{AP}) \\Big]^{-1}\n(\\mathbf{AP})^\\top \\mathbf{N}^{-1} d_{\\text{atm}}\n}\n\\]\n\n\nCredit: Amalia Villarrubia Aguilar"
+    "text": "Atmosphere Decontamination Using Time-Domain Component Separation\nGoal: For the Simons Observatory, characterize the observed atmospheric template from the recorded time-ordered data to separate the atmosphere from the sky signal we are after.\n\n\n\n\n\n\n\nData Model\n\\[\nd_{\\text{atm}} = \\mathbf{A}(\\text{PWV}) \\mathbf{P}(w_x, w_y) s_{\\text{atm}} + n\n\\]\n\n\n\nModel Parameters\n\n\n\nWind velocity: \\(\\vec{w} = (w_x, w_y)\\)\nPrecipitable Water Vapour (PWV): ~Amplitude of atmospheric fluctuations.\nEstimate parameters by minimizing the spectral likelihood.\n\n\n\n\nAtmospheric time-ordered data recorded by our telescope at two frequencies: \\(d_{\\text{atm}}\\)\nMixing matrix \\(\\mathbf{A} =\n\\begin{bmatrix}\n  a(\\text{PWV}_{1}) & 0 \\\\\n  0 & a(\\text{PWV}_{2})\n\\end{bmatrix}\\)\nPointing matrix \\(\\mathbf{P} =\n\\begin{bmatrix}\n  P_{1} \\\\\n  P_{2}\n\\end{bmatrix}\\)\nAtmospheric template: \\(s_{\\text{atm}}\\)\nNoise: \\(n\\), of covariance matrix \\(\\mathbf{N} =\n\\begin{bmatrix}\n  \\sigma_{1}^{2} & 0 \\\\\n  0 & \\sigma_{2}^{2}\n\\end{bmatrix}\\)\n\nSpectral Likelihood\n\\[\n\\boxed{\n\\langle \\delta \\mathcal{S}_\\text{spec}(w_x, w_y, \\text{PWV} \\mid \\vec{d}_{\\text{atm}}) \\rangle\n= \\vec{d}_{\\text{atm}}^\\top \\cdot \\mathbf{AP}\n\\Big[ (\\mathbf{AP})^\\top \\mathbf{N}^{-1} (\\mathbf{AP}) \\Big]^{-1}\n(\\mathbf{AP})^\\top \\mathbf{N}^{-1} d_{\\text{atm}}\n}\n\\]\n\n\nCredit: Amalia Villarrubia Aguilar"
   },
   {
     "objectID": "2024-cmb-france-6/index.html#atmosphere-decontamination-using-time-domain-component-separation-1",
     "href": "2024-cmb-france-6/index.html#atmosphere-decontamination-using-time-domain-component-separation-1",
-    "title": "FURAX: a modular JAX toolbox for solving inverse problems in science",
+    "title": "",
     "section": "Atmosphere Decontamination Using Time-Domain Component Separation",
     "text": "Atmosphere Decontamination Using Time-Domain Component Separation\nSpectral likelihood computation using FURAX\ndef average_spectral_likelihood_noise(d_atm, w_vec, PWV):\n    # POINTING matrix (shape: (n_detectors * N_obs * n_freq) x N_pix)\n    P_single_freq = pointing_matrix_single_freq(detector_pointings_t, t_obs, n_detectors, z_atm, d_pix_sim, N_pix_sim, w_vec)\n    P = BlockColumnOperator({‘93’: P_single_freq, ‘145’: P_single_freq})\n    # MIXING matrix: (shape: (n_detectors * N_obs * n_freq) x (n_detectors * N_obs * n_freq))\n    A_block_structure = StokesIPyTree.structure_for((n_detectors,N_obs))\n    A_93 = HomothetyOperator(atm_emission(PWV, mu_93)/atm_emission(PWV, mu_93), in_structure=A_block_structure)\n    A_145 = HomothetyOperator(atm_emission(PWV, mu_145)/atm_emission(PWV, mu_93), in_structure=A_block_structure)\n    A = BlockDiagonalOperator({‘93’: A_93, ‘145’: A_145})\n    # COMPOSITION matrix: mixing matrix @ pointing matrix (shape: (n_detectors * N_obs * n_freq) x N_pix)\n    C = A @ P\n    # NOISE covariance matrix (shape: (n_det x N_obs x n_freq) x (n_det x N_obs x n_freq))\n    N_block_structure = StokesIPyTree.structure_for((n_detectors,N_obs))\n    N_93 = HomothetyOperator(noise_variance_93, in_structure=N_block_structure)\n    N_145 = HomothetyOperator(noise_variance_145, in_structure=N_block_structure)\n    N = BlockDiagonalOperator({‘93’: N_93, ‘145’: N_145})\n    # Spectral likelihood computation:\n    core_op = (C.T @ N.I @ C).I\n    full_op = N.I @ C @ core_op @ C.T @ N.I\n    S = - StokesIPyTree(d_atm) @ StokesIPyTree(full_op(d_atm))\n    return S\n\n\n\nEasily extensible\nEasy access to gradients\n\n\n\n\nCredit: Amalia Villarrubia Aguilar"
   },
   {
     "objectID": "2024-cmb-france-6/index.html#atmosphere-decontamination-using-time-domain-component-separation-2",
     "href": "2024-cmb-france-6/index.html#atmosphere-decontamination-using-time-domain-component-separation-2",
-    "title": "FURAX: a modular JAX toolbox for solving inverse problems in science",
+    "title": "",
     "section": "Atmosphere Decontamination Using Time-Domain Component Separation",
     "text": "Atmosphere Decontamination Using Time-Domain Component Separation\n\nSpectral likelihood minimization\n\n\n\n\n\nSpectral likelihood gridding\n\n\n\n \n\n\nGridding process\n\n\n➜ This spectral likelihood is minimised through gridding: we compute \\(\\langle \\delta \\mathcal{S}_\\text{spec}(w_x, w_y \\mid \\text{PWV}_{\\text{sim}}) \\rangle\\) for 22,500 different combinations of \\((w_x, w_y)\\).\n\n\n\n\nCredit: Amalia Villarrubia Aguilar"
   }
