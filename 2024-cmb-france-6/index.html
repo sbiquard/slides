@@ -95,7 +95,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-684fc630bfa5c753b6ab51f042d05f14.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-bbe7401fe57d4b791b917637bb662036.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -198,70 +198,81 @@
   <p class="date">2024-12-19</p>
   <div style=""></div>
 <div style="margin-top: 20px; text-align: center;align-items: bottom;">
-  <div style="display: flex; justify-content: space-around; align-items: center; layout-valign=" middle"=""> <img src="assets/Logos/Furax_logo_transparent.png" style="width: 25%;"> <img src="assets/Logos/JaxLogo.png" style="width: 15%;"> <img src="assets/Logos/Python.png" style="width: 20%;"> </div><br>
-  <div style="display: flex; justify-content: space-around; align-items: center; layout-valign=" middle"=""> <img src="assets/Logos/APC.png" style="width: 15%;"> <img src="assets/Logos/scipol.png" style="width: 15%;"> <img src="assets/Logos/ERC.svg" style="width: 15%;"> <img src="assets/Logos/CNRS.svg" style="width: 15%;"> </div>
+  <div style="display: flex; justify-content: space-around; align-items: center; layout-valign=" middle"=""> <img src="assets/Logos/Furax_logo_transparent.png" style="width: 25%;"> <img src="assets/Logos/APC.png" style="width: 15%;"> <img src="assets/Logos/scipol.png" style="width: 15%;"> <img src="assets/Logos/ERC.svg" style="width: 15%;"> <img src="assets/Logos/CNRS.svg" style="width: 15%;"> </div>
 </div>
 
 </section>
-<section id="furax-library" class="slide level2">
-<h2>FURAX Library</h2>
-<p><br> <br></p>
-<div class="solutionbox">
-<div class="solutionbox-body" style="font-size: 22px; border-radius: 10px; border: 2px solid #521463;">
-<ul>
-<li><span style="color:#521463; font-size: 28px;"><strong>Motivations and Goals</strong></span>: Why and for what FURAX ? <br> <br></li>
-<li><span style="color:#521463; font-size: 28px;"><strong>FURAX Bulding Blocks</strong></span>: Presentation of the FURAX PyTrees and Operators. <br> <br></li>
-<li><span style="color:#521463; font-size: 28px;"><strong>Optimizations</strong></span>: High-level algebraic reductions with FURAX. <br> <br></li>
-<li><span style="color:#521463; font-size: 28px;"><strong>CMB Applications</strong></span>: From map-making to component separation.</li>
-</ul>
-</div>
-</div>
+<section id="outline" class="slide level2 center">
+<h2>Outline</h2>
+<ol type="1">
+<li>Motivations and goals: why and for what?</li>
+<li>Presentation of the framework</li>
+<li>Applications in CMB science</li>
+</ol>
 </section>
-<section id="motivations-and-goals" class="slide level2">
+<section id="motivations-and-goals" class="slide level2 smaller">
 <h2>Motivations and Goals</h2>
 <ul>
-<li>Inverse problems</li>
-<li>Open source: <a href="https://github.com/CMBSciPol/furax">https://github.com/CMBSciPol/furax</a></li>
+<li>Inverse problems: assuming data <span class="math inline">\(d_{obs} = F(p)\)</span>, find the parameters <span class="math inline">\(p\)</span></li>
+<li>Pure Python, open source: <a href="https://github.com/CMBSciPol/furax">https://github.com/CMBSciPol/furax</a>
+<ul>
+<li><code>pip install furax</code> (<em>work in progress!</em>)</li>
+</ul></li>
+<li>Modular &amp; extensible: Easy to experiment new ideas</li>
+<li>High-performance: <code>JAX</code> (see next slide)</li>
 </ul>
 <p><br></p>
 <ul>
-<li>Modularity, extensibility, simplicity: Easy to experiment new ideas, Fail fast approach</li>
-<li>JAX: Differentiation, Just In Time (JIT) compilation, run the same code anywhere — on CPUs and GPUs, laptops and super-computers</li>
-<li>Framework for robust B-mode analysis</li>
-<li>Able to handle SO- and S4-like data sets volumes, Compatibility with TOAST</li>
+<li>Maximum likelihood and “template” map-making</li>
 <li>Non-ideal optical components</li>
-<li>1st steps: “max-L” and “template” map-making (following MAPPRAISER’s formalism)</li>
+<li>Able to handle SO- and S4-like data sets
+<ul>
+<li>Interfaces with <code>TOAST</code>, <code>sotodlib</code></li>
 <li>Multi-GPU parallelization (soon)</li>
+</ul></li>
 </ul>
-<p>You can try it: <code>pip install furax</code>, bearing in mind that the library is actively developed and currently in a refactoring phase.</p>
+</section>
+<section id="what-is-jax" class="slide level2 smaller">
+<h2>What is JAX</h2>
+<p>From the <a href="https://jax.readthedocs.io/en/latest/quickstart.html">JAX website</a>:</p>
+<blockquote>
+<p>JAX is a library for array-oriented numerical computation (à la NumPy), with automatic differentiation and JIT compilation to enable high-performance machine learning research.</p>
+</blockquote>
+<p>Key features</p>
+<ul>
+<li>NumPy-like interface with CPU/GPU/TPU support in local and distributed environments</li>
+<li>Just-in-time (JIT) compilation via <a href="https://github.com/openxla">Open XLA</a></li>
+<li>Automatic differentiation</li>
+<li>Automatic vectorization</li>
+</ul>
 </section>
 <section>
-<section id="furax-building-blocks" class="title-slide slide level1 center" style="font-size: 35px; align=center;">
+<section id="furax-building-blocks" class="title-slide slide level1 center">
 <h1>FURAX Building Blocks</h1>
 
 </section>
-<section id="furax-pytrees" class="slide level2">
-<h2>FURAX PyTrees</h2>
-<p><br> <br></p>
-<p>FURAX relies on PyTrees to represent the data. For example, for component separation analysis, we can write the generalized sky as a nested PyTree</p>
+<section id="pytrees" class="slide level2 smaller">
+<h2>PyTrees</h2>
+<p>FURAX relies on <a href="https://jax.readthedocs.io/en/latest/pytrees.html">PyTrees</a> to represent the data.</p>
+<p>Example: random sky with 3 components</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a>sky <span class="op">=</span> {</span>
-<span id="cb1-2"><a></a>  <span class="st">'cmb'</span>: HealpixLandscape(NSIDE, <span class="st">'IQU'</span>).normal(key1),</span>
-<span id="cb1-3"><a></a>  <span class="st">'dust'</span>: HealpixLandscape(NSIDE, <span class="st">'IQU'</span>).normal(key2),</span>
-<span id="cb1-4"><a></a>  <span class="st">'synchrotron'</span>: HealpixLandscape(NSIDE, <span class="st">'IQU'</span>).normal(key3),</span>
+<span id="cb1-2"><a></a>  <span class="st">'cmb'</span>: HealpixLandscape(nside, <span class="st">'IQU'</span>).normal(key1),</span>
+<span id="cb1-3"><a></a>  <span class="st">'dust'</span>: HealpixLandscape(nside, <span class="st">'IQU'</span>).normal(key2),</span>
+<span id="cb1-4"><a></a>  <span class="st">'synchrotron'</span>: HealpixLandscape(nside, <span class="st">'IQU'</span>).normal(key3),</span>
 <span id="cb1-5"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><code>HealpixLandscape(NSIDE, 'IQU')</code> returns an instance of <code>StokesIQUPyTree</code>, which has the attributes <code>i</code>, <code>q</code> and <code>u</code> that store the JAX arrays of the Stokes components.</p>
-<p>Also available are <code>StokesIPyTree</code>, <code>StokesQUPyTree</code> and <code>StokesIQUVPyTree</code>.</p>
-<p><br></p>
-<p>PyTree are then used by the FURAX Operators:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co"># Given an acquisition H:</span></span>
-<span id="cb2-2"><a></a>tod <span class="op">=</span> H(sky)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>HealpixLandscape(nside, 'IQU')</code> returns an instance of <code>StokesIQUPyTree</code>, a container for the Stokes parameters I, Q, U.</p>
+<p>Use <code>FrequencyLandscape</code> to generalize to multiple frequencies.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>frequencies <span class="op">=</span> np.array([<span class="dv">93</span>, <span class="dv">145</span>])</span>
+<span id="cb2-2"><a></a>sky <span class="op">=</span> {</span>
+<span id="cb2-3"><a></a>  <span class="st">'cmb'</span>: FrequencyLandscape(nside, frequencies, <span class="st">'IQU'</span>).normal(key1),</span>
+<span id="cb2-4"><a></a>  <span class="st">'dust'</span>: FrequencyLandscape(nside, frequencies, <span class="st">'IQU'</span>).normal(key2),</span>
+<span id="cb2-5"><a></a>  <span class="st">'synchrotron'</span>: FrequencyLandscape(nside, frequencies, <span class="st">'IQU'</span>).normal(key3),</span>
+<span id="cb2-6"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="furax-operators" class="slide level2">
-<h2>FURAX Operators</h2>
-<p><br></p>
+<section id="operators" class="slide level2 smaller">
+<h2>Operators</h2>
 <p>The base class <code>AbstractLinearOperator</code> provides a default implementation for the usual linear algebra operations.</p>
-<p><br></p>
-<div style="font-size: 18px;">
+<div style="font-size: 22px;">
 <table class="caption-top">
 <colgroup>
 <col style="width: 25%">
@@ -320,17 +331,16 @@
 </table>
 </div>
 </section>
-<section id="furax-operators-1" class="slide level2" style="font-size: 18px;">
-<h2>FURAX Operators</h2>
-<p><br> <br></p>
+<section id="operators-contd" class="slide level2 smaller">
+<h2>Operators (cont’d)</h2>
 <div class="columns">
 <div class="column" style="width:60%;">
 <div class="solutionbox">
-<div class="solutionbox-body" style="font-size: 17px;">
+<div class="solutionbox-body" style="font-size: 20px;">
 <table class="caption-top">
 <colgroup>
-<col style="width: 71%">
-<col style="width: 28%">
+<col style="width: 50%">
+<col style="width: 50%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -389,7 +399,7 @@
 </div>
 </div><div class="column" style="width:40%;">
 <div class="solutionbox">
-<div class="solutionbox-body" style="font-size: 17px;">
+<div class="solutionbox-body" style="font-size: 20px;">
 <table class="caption-top">
 <thead>
 <tr class="header">
@@ -427,286 +437,83 @@
 </div>
 </div>
 </div></div>
-</section></section>
-<section>
-<section id="multi-level-optimizations" class="title-slide slide level1 center" style="font-size: 35px;">
-<h1>Multi-level Optimizations</h1>
-
 </section>
-<section id="jax-gpu-compilation-chain" class="slide level2">
-<h2>JAX GPU Compilation Chain</h2>
-<p><br> <br> <br> <br> <br></p>
-
-<img data-src="assets/jax-compilation-chain.png" class="nostrech r-stretch quarto-figure-center" style="width:100.0%"><p class="caption">From the Python code to the GPU-native code</p></section>
-<section id="xla-simplifications" class="slide level2">
-<h2>XLA simplifications</h2>
-<p><br></p>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="solutionbox">
-<div class="solutionbox-header">
-<p><strong>Mathematical identities</strong></p>
-</div>
-<div class="solutionbox-body" style="font-size: 20px;">
+<section id="algebraic-reductions-rotations" class="slide level2 smaller">
+<h2>Algebraic reductions: Rotations</h2>
+<p>Given this modeling of the acquisition, using an ideal linear polarizer and an ideal half wave plate:</p>
+<p><span class="math display">\[
+\mathbf{H} = \mathbf{C}_{\textrm{LP}} \, \mathbf{R}_{2\theta} \, \mathbf{R}_{-2\phi} \,
+\mathbf{C}_{\textrm{HWP}} \, \mathbf{R}_{2\phi} \, \mathbf{R}_{2\psi} \, \mathbf{P}
+\]</span></p>
+<p>with</p>
 <ul>
-<li><span class="math inline">\(a\times 0 = a - a = 0\)</span></li>
-<li><span class="math inline">\(a - 0 = a\times 1 = a / 1 = a^1 = a\)</span></li>
-<li><span class="math inline">\(a^{-1} = 1/a\)</span>, <span class="math inline">\(a^{1/2} = \sqrt{a}\)</span></li>
-<li><span class="math inline">\(-(-x) = x\)</span></li>
-<li><span class="math inline">\((-a)(-b) = ab\)</span></li>
-<li><span class="math inline">\(ac + bc = (a+b)c\)</span></li>
-<li><span class="math inline">\(a / const = a \times (1 / const)\)</span></li>
-<li><span class="math inline">\((a + c1) + (b + c2) =  a + b + (c1 + c2)\)</span></li>
-<li><span class="math inline">\((a / b) / (c / d) = ad / bc\)</span></li>
-<li><span class="math inline">\(\ln e^x = x\)</span></li>
-<li><span class="math inline">\(\exp a \exp b = \exp(a+b)\)</span></li>
-<li><span class="math inline">\(a / \exp b = a \exp(-b)\)</span></li>
-</ul>
-</div>
-</div>
-</div><div class="column" style="width:50%;">
-<div class="solutionbox">
-<div class="solutionbox-header">
-<p><strong>Array manipulations</strong></p>
-</div>
-<div class="solutionbox-body" style="font-size: 20px;">
-<ul>
-<li>slicing</li>
-<li>reshaping</li>
-<li>broadcasting</li>
-<li>transposition</li>
-<li>bitcast</li>
-<li>copies</li>
-</ul>
-</div>
-</div>
-<div class="solutionbox">
-<div class="solutionbox-header">
-<p><strong>Ol’ Digger’s tricks</strong></p>
-</div>
-<div class="solutionbox-body" style="font-size: 20px;">
-<ul>
-<li><span class="math inline">\(a^2 = a \times a\)</span>, <span class="math inline">\(a^3 = a \times a \times a\)</span></li>
-<li><span class="math inline">\(a / b = a\)</span>&gt;&gt;<span class="math inline">\(\log_2 b\)</span> if b is a power of 2</li>
-<li><span class="math inline">\(a \mod b = a \&amp; (b - 1)\)</span> if b is a power of 2</li>
-</ul>
-</div>
-</div>
-</div></div>
-<p>and many more (see <a href="xla/hlo/transforms/simplifiers/algebraic_simplifier.cc">xla/hlo/transforms/simplifiers/algebraic_simplifier.cc</a>)</p>
-</section>
-<section id="dead-code-elimination-dce" class="slide level2">
-<h2>Dead Code Elimination (DCE)</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">import</span> jax</span>
-<span id="cb3-2"><a></a><span class="im">import</span> jax.numpy <span class="im">as</span> jnp</span>
-<span id="cb3-3"><a></a></span>
-<span id="cb3-4"><a></a><span class="at">@jax.jit</span></span>
-<span id="cb3-5"><a></a><span class="kw">def</span> func_dce(x):</span>
-<span id="cb3-6"><a></a>    unused <span class="op">=</span> jnp.sin(x)</span>
-<span id="cb3-7"><a></a>    y <span class="op">=</span> jnp.exp(x)</span>
-<span id="cb3-8"><a></a>    <span class="cf">return</span> y[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="fragment" data-fragment-index="1">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="assets/hlo/hlo-func-dce.png" style="width:60.0%"></p>
-<figcaption>Compiled StableHLO representation</figcaption>
-</figure>
-</div>
-</div>
-</div><div class="column" style="width:50%;">
-<div class="fragment" data-fragment-index="2">
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">import</span> jax</span>
-<span id="cb4-2"><a></a><span class="im">import</span> jax.numpy <span class="im">as</span> jnp</span>
-<span id="cb4-3"><a></a></span>
-<span id="cb4-4"><a></a><span class="at">@jax.jit</span></span>
-<span id="cb4-5"><a></a><span class="kw">def</span> func_full(x):</span>
-<span id="cb4-6"><a></a>    <span class="cf">return</span> jnp.exp(x)</span>
-<span id="cb4-7"><a></a></span>
-<span id="cb4-8"><a></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="fragment" data-fragment-index="3">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="assets/hlo/bench-dce.png" style="width:190.0%"></p>
-<figcaption>Full computation vs DCE</figcaption>
-</figure>
-</div>
-</div>
-</div></div>
-</section>
-<section id="xla-common-subexpression-elimination-cse" class="slide level2">
-<h2>XLA Common Subexpression Elimination (CSE)</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">import</span> jax</span>
-<span id="cb5-2"><a></a><span class="im">import</span> jax.numpy <span class="im">as</span> jnp</span>
-<span id="cb5-3"><a></a></span>
-<span id="cb5-4"><a></a><span class="at">@jax.jit</span></span>
-<span id="cb5-5"><a></a><span class="kw">def</span> func_cse(theta):</span>
-<span id="cb5-6"><a></a>    a <span class="op">=</span> jnp.sin(theta)</span>
-<span id="cb5-7"><a></a>    b <span class="op">=</span> jnp.sin(theta) <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb5-8"><a></a>    <span class="cf">return</span> a <span class="op">+</span> b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="fragment" data-fragment-index="2">
-<div class="solutionbox">
-<div class="solutionbox-header" style="font-size: 22px;">
-<p><strong>XLA Common Subexpression Elimination (CSE)</strong></p>
-</div>
-<div class="solutionbox-body" style="font-size: 20px;">
-<ul>
-<li><p><strong>Definition</strong>: CSE identifies and eliminates duplicate computations within a function to optimize performance.</p></li>
-<li><p><strong>Example in Code</strong>:</p>
-<ul>
-<li>Without CSE: <code>jnp.sin(theta)</code> computed twice.</li>
-<li>After CSE: Shared computation across <code>a</code> and <code>b</code>.</li>
-</ul></li>
-<li><p><strong>Benefits</strong>:</p>
-<ul>
-<li>Reduces redundant computation.</li>
-<li>Enhances runtime efficiency and memory usage.</li>
-</ul></li>
-</ul>
-</div>
-</div>
-</div>
-</div><div class="column" style="width:50%;">
-<div class="fragment" data-fragment-index="1">
-<div class="quarto-figure quarto-figure-center" style="border: 2px solid #000000;">
-<figure>
-<p><img data-src="assets/hlo/hlo-func-cse.png" style="width:60.0%"></p>
-<figcaption>Compiled StableHLO representation</figcaption>
-</figure>
-</div>
-</div>
-</div></div>
-</section>
-<section id="jax-gpu-compilation-chain-with-furax" class="slide level2">
-<h2>JAX GPU Compilation Chain with FURAX</h2>
-<p><br> <br> <br> <br> <br></p>
-
-<img data-src="assets/jax-compilation-chain-with-furax.png" style="width:120.0%" class="r-stretch quarto-figure-center"><p class="caption">From the Python code to the GPU-native code</p></section>
-<section id="furax-algebraic-reductions-composition-of-rotations" class="slide level2">
-<h2>FURAX Algebraic Reductions: Composition of Rotations</h2>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="im">import</span> jax</span>
-<span id="cb6-2"><a></a><span class="im">import</span> jax.numpy <span class="im">as</span> jnp</span>
-<span id="cb6-3"><a></a></span>
-<span id="cb6-4"><a></a><span class="kw">def</span> rot(x, y, theta):</span>
-<span id="cb6-5"><a></a>    rotated_x <span class="op">=</span> x <span class="op">*</span> jnp.cos(theta) <span class="op">-</span> y <span class="op">*</span> jnp.sin(theta)</span>
-<span id="cb6-6"><a></a>    rotated_y <span class="op">=</span> x <span class="op">*</span> jnp.sin(theta) <span class="op">+</span> y <span class="op">*</span> jnp.cos(theta)</span>
-<span id="cb6-7"><a></a>    <span class="cf">return</span> rotated_x, rotated_y</span>
-<span id="cb6-8"><a></a></span>
-<span id="cb6-9"><a></a><span class="at">@jax.jit</span></span>
-<span id="cb6-10"><a></a><span class="kw">def</span> func(x, y, theta1, theta2):</span>
-<span id="cb6-11"><a></a>    <span class="cf">return</span> rot(x, y, theta<span class="op">=</span>theta1 <span class="op">+</span> theta2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="fragment" data-fragment-index="1">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="assets/hlo/hlo-rot-furax.png" style="width:60.0%"></p>
-<figcaption>Compiled StableHLO representation</figcaption>
-</figure>
-</div>
-</div>
-</section>
-<section id="furax-algebraic-reductions-composition-of-rotations-1" class="slide level2">
-<h2>FURAX Algebraic Reductions: Composition of Rotations</h2>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">import</span> jax</span>
-<span id="cb7-2"><a></a><span class="im">import</span> jax.numpy <span class="im">as</span> jnp</span>
-<span id="cb7-3"><a></a></span>
-<span id="cb7-4"><a></a><span class="kw">def</span> rot(x, y, theta):</span>
-<span id="cb7-5"><a></a>    rotated_x <span class="op">=</span> x <span class="op">*</span> jnp.cos(theta) <span class="op">-</span> y <span class="op">*</span> jnp.sin(theta)</span>
-<span id="cb7-6"><a></a>    rotated_y <span class="op">=</span> x <span class="op">*</span> jnp.sin(theta) <span class="op">+</span> y <span class="op">*</span> jnp.cos(theta)</span>
-<span id="cb7-7"><a></a>    <span class="cf">return</span> rotated_x, rotated_y</span>
-<span id="cb7-8"><a></a></span>
-<span id="cb7-9"><a></a><span class="at">@jax.jit</span></span>
-<span id="cb7-10"><a></a><span class="kw">def</span> func(x, y, theta1, theta2):</span>
-<span id="cb7-11"><a></a>    x, y <span class="op">=</span> rot(x, y, theta<span class="op">=</span>theta1)</span>
-<span id="cb7-12"><a></a>    <span class="cf">return</span> rot(x, y, theta<span class="op">=</span>theta2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="fragment" data-fragment-index="1">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="assets/hlo/hlo-rot.png" style="width:60.0%"></p>
-<figcaption>Compiled StableHLO representation</figcaption>
-</figure>
-</div>
-</div>
-</section>
-<section id="furax-algebraic-reductions-instrument-acquisition" class="slide level2">
-<h2>FURAX Algebraic Reductions: Instrument Acquisition</h2>
-<p><br></p>
-<p>Given this modeling of the acquisition, using an ideal linear polarizer and an ideal half wave plate: <span class="math display">\[
-\mathbf{H} = \mathbf{C}_{\textrm{LP}} \, \mathbf{R}_{2\theta} \, \mathbf{R}_{-2\phi} \, \mathbf{C}_{\textrm{HWP}} \, \mathbf{R}_{2\phi} \, \mathbf{R}_{2\psi} \, \mathbf{P}
-\]</span> with</p>
-<ul>
-<li><span class="math inline">\(\theta\)</span>: detector polarization angle</li>
-<li><span class="math inline">\(\phi\)</span>: HWP rotation angle</li>
-<li><span class="math inline">\(\psi\)</span>: telescope rotation angle</li>
+<li><span class="math inline">\(\theta\)</span>: polarizer angle</li>
+<li><span class="math inline">\(\phi\)</span>: half-wave plate angle</li>
+<li><span class="math inline">\(\psi\)</span>: telescope angle</li>
 </ul>
 <p>FURAX reduces this expression to:</p>
 <p><span class="math display">\[
 \mathbf{H} = \mathbf{C}_{\textrm{LP}} \, \mathbf{R}_{-2\theta + 4\phi + 2\psi}\, \mathbf{P}
 \]</span></p>
-</section>
-<section id="furax-algebraic-reductions-pointing-matrix" class="slide level2">
-<h2>FURAX Algebraic Reductions: Pointing Matrix</h2>
-<p><br></p>
-<div style="font-size: 20px;">
-<p>When the time-time noise covariance matrix <span class="math inline">\(\mathbf{N}\)</span> is diagonal and <span class="math inline">\(\mathbf{P}\)</span> is a “one-to-one” intensity projection matrix:</p>
-<p><span class="math display">\[
+<!---
+## FURAX Algebraic Reductions: Pointing Matrix
+
+<br>
+
+::: {style="font-size: 20px;"}
+
+When the time-time noise covariance matrix $\mathbf{N}$ is diagonal and $\mathbf{P}$ is a "one-to-one" intensity projection matrix:
+
+$$
 \mathbf{P} =
 \begin{bmatrix}
-0 &amp; \cdots &amp; 0 &amp; 1 &amp; 0 &amp; \cdots &amp; 0 \\
-0 &amp; 1 &amp; 0 &amp; \cdots &amp; 0 &amp; 0 &amp; \cdots &amp; 0 \\
-\vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots \\
-1 &amp; 0 &amp; \cdots &amp; 0 &amp; 0 &amp; \cdots &amp; 0 \\
-\vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots \\
-0 &amp; 0 &amp; \cdots &amp; 0 &amp; 1 &amp; 0 &amp; \cdots &amp; 0 \\
+0 & \cdots & 0 & 1 & 0 & \cdots & 0 \\
+0 & 1 & 0 & \cdots & 0 & 0 & \cdots & 0 \\
+\vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots \\
+1 & 0 & \cdots & 0 & 0 & \cdots & 0 \\
+\vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots \\
+0 & 0 & \cdots & 0 & 1 & 0 & \cdots & 0 \\
 \end{bmatrix},
-\]</span></p>
-<p><br> <br></p>
-<ul>
-<li><p>the product <span class="math inline">\(\mathbf{P}^\top \mathbf{N}^{-1} \mathbf{P}\)</span> is diagonal and can therefore be easily inverted (for pixel-pixel covariance matrix or preconditioning).</p></li>
-<li><p>Each term is related to the number of noise-weighted times a pixel of the map has been observed.</p></li>
-<li><p>For IQU maps, the product is block diagonal, with 3x3 blocks that can also be easily inverted.</p></li>
-<li><p>By adding a <strong>rule</strong> for this operation, we’ve seen an performance improvement by more than a <strong>factor of 10</strong> in the forward application (WIP, currently only for <span class="math inline">\(\mathbf{N}\)</span> scalar).</p></li>
-</ul>
-</div>
-</section>
-<section id="furax-algebraic-reductions-block-assembly" class="slide level2">
-<h2>FURAX Algebraic Reductions: Block Assembly</h2>
-<div style="font-size: 15px;">
-<p><br> <br></p>
-<table class="caption-top">
-<colgroup>
-<col style="width: 60%">
-<col style="width: 40%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Operation</th>
-<th>Reduction</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>BlockDiagonalOperator([D1, D2]) @ BlockColumnOperator([C1, C2])</code></td>
-<td><code>BlockColumnOperator([D1 @ C1, D2 @ C2])</code></td>
-</tr>
-<tr class="even">
-<td><code>BlockRowOperator([R1, R2]) @ BlockDiagonalOperator([D1, D2])</code></td>
-<td><code>BlockRowOperator([R1 @ D1, R2 @ D2])</code></td>
-</tr>
-<tr class="odd">
-<td><code>BlockRowOperator([R1, R2]) @ BlockColumnOperator([C1, C2])</code></td>
-<td><code>R1 @ C1 + R2 @ C2</code></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><br> <br></p>
-<h4 id="practical-use-case">Practical use case:</h4>
-<p>Given two observations</p>
-<p><span class="math display">\[
+$$
+
+<br/>
+<br/>
+
+ - the product $\mathbf{P}^\top \mathbf{N}^{-1} \mathbf{P}$ is diagonal and can therefore be easily inverted (for pixel-pixel covariance matrix or preconditioning).
+ - Each term is related to the number of noise-weighted times a pixel of the map has been observed.
+
+ - For IQU maps, the product is block diagonal, with 3x3 blocks that can also be easily inverted.
+
+ - By adding a **rule** for this operation, we've seen an performance improvement by more than a **factor of 10** in the forward application (WIP, currently only for $\mathbf{N}$ scalar).
+
+:::
+
+
+## FURAX Algebraic Reductions: Block Assembly
+
+::: {style="font-size: 15px;"}
+
+<br>
+<br>
+
+| Operation | Reduction |
+|---------------------------------|-------------|
+| `BlockDiagonalOperator([D1, D2]) @ BlockColumnOperator([C1, C2])`              | `BlockColumnOperator([D1 @ C1, D2 @ C2])`|
+| `BlockRowOperator([R1, R2]) @ BlockDiagonalOperator([D1, D2])`              | `BlockRowOperator([R1 @ D1, R2 @ D2])`|
+| `BlockRowOperator([R1, R2]) @ BlockColumnOperator([C1, C2])`              | `R1 @ C1 + R2 @ C2`|
+
+: {tbl-colwidths="[60,40]"}
+
+:::
+
+<br>
+<br>
+
+#### Practical use case:
+
+Given two observations
+
+$$
 \mathbf{P} =
 \begin{bmatrix}
 \mathbf{P}_1 \\
@@ -714,43 +521,45 @@
 \end{bmatrix}, \quad
 \mathbf{N}^{-1} =
 \begin{bmatrix}
-\mathbf{N}_1^{-1} &amp; 0 \\
-0 &amp; \mathbf{N}_2^{-1}
+\mathbf{N}_1^{-1} & 0 \\
+0 & \mathbf{N}_2^{-1}
 \end{bmatrix},
-\]</span></p>
-<p>The combination is reduced to <span class="math display">\[
+$$
+
+The combination is reduced to
+$$
 \mathbf{P}^\top \mathbf{N}^{-1} \mathbf{P} = \mathbf{P}_1^\top \mathbf{N}_1^{-1} \mathbf{P}_1^{\,} + \mathbf{P}_2^\top \mathbf{N}_2^{-1} \mathbf{P}_2^{\,}.
-\]</span></p>
+$$
+--->
 </section></section>
 <section>
-<section id="cmb-applications" class="title-slide slide level1 center" style="font-size: 35px; align=center;">
+<section id="cmb-applications" class="title-slide slide level1 center">
 <h1>CMB Applications</h1>
-<div style="color: gray; font-size: 16px">
-<p><br> <br> <br> <br> Credits: SciPol Ph.D students</p>
+<div style="font-size: 24px">
+<p><br> Credits: Ema Tsang, Wassim Kabalan, Amalia Villarrubia &amp; the whole SciPol team</p>
 </div>
 </section>
-<section id="maximum-likelihood-map-making" class="slide level2" style="font-size: 20px;">
-<h2>Maximum-Likelihood Map-Making</h2>
-<p><br></p>
+<section id="generalized-map-making" class="slide level2" style="font-size: 18pt">
+<h2>Generalized Map-Making</h2>
 <div class="columns">
 <div class="column" style="width:45%;">
-<h4 id="classic-data-model">Classic data model</h4>
+<p><strong>Classic data model</strong></p>
 <p><span class="math display">\[
 d = \mathbf{P}s + n
 \]</span></p>
 <ul>
 <li><span class="math inline">\(d\)</span>: time-ordered data</li>
-<li><span class="math inline">\(\mathbf{P}\)</span>: pointing matrix ( telescope scanning)</li>
+<li><span class="math inline">\(\mathbf{P}\)</span>: pointing matrix (telescope scanning)</li>
 <li><span class="math inline">\(s\)</span>: discretized sky signal</li>
 <li><span class="math inline">\(n\)</span>: stochastic contribution (noise)</li>
 </ul>
 <p><br></p>
-<h4 id="optimal-gls-solution">Optimal (GLS) solution:</h4>
+<p><strong>Optimal (GLS) solution</strong></p>
 <p><span class="math display">\[
 \widehat{s} = (\mathbf{P}^\top \mathbf{N}^{-1} \mathbf{P})^{-1} \mathbf{P}^\top \mathbf{N}^{-1} d
 \]</span></p>
 </div><div class="column" style="width:55%;">
-<h4 id="generalized-parametric-data-model">Generalized parametric data model</h4>
+<p><strong>Generalized parametric data model</strong></p>
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="assets/mapmaking/instrument-foregrounds.png" class="quarto-figure quarto-figure-center"></p>
@@ -760,116 +569,137 @@ d = \mathbf{P}s + n
 d_{\nu, i, t} = \int_{\textrm{BP}_\nu} d\nu' \mathbf{M}^{(\gamma)}_{\nu', i, t, p} \mathbf{A}^{(\beta)}_{\nu', t, c, p} s_{c, p} + n_{\nu, i, t}
 \]</span></p>
 <ul>
-<li><span class="math inline">\(\mathbf{M}\)</span> includes HWP parameters, band passes, beam properties, gains, …</li>
-<li><span class="math inline">\(\mathbf{A}\)</span> includes the frequency modeling of CMB, astrophysical foregrounds, atmosphere, ground</li>
+<li><span class="math inline">\(\mathbf{M}\)</span>: <em>instrument matrix</em> (pointing, HWP parameters, bandpasses, beam properties, etc.)</li>
+<li><span class="math inline">\(\mathbf{A}\)</span>: <em>mixing matrix</em> (modeling of CMB, astrophysical foregrounds, atmosphere, etc.)</li>
 <li><span class="math inline">\(\mathbf{H} = \mathbf{MA}\)</span> is the generalized pointing operator</li>
 </ul>
 </div></div>
-<div style="color: gray; font-size: 16px">
-<p>Credit: Simon Biquart</p>
-</div>
 </section>
-<section id="maximum-likelihood-map-making-1" class="slide level2">
-<h2>Maximum-Likelihood Map-Making</h2>
-<p><br></p>
+<section id="time-domain-noise-correlations" class="slide level2 smaller">
+<h2>Time-domain noise correlations</h2>
 <div class="columns">
 <div class="column">
+<p>Noise correlations in a <em>stationary</em> period correspond to a symmetric Toeplitz matrix structure.</p>
+<p>Furax has the <code>SymmetricBandToeplitzOperator</code> with optimized matrix-vector operations in <span class="math inline">\(\mathcal O(n \log \lambda)\)</span> (overlap-and-add method).</p>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="assets/mapmaking/block-toeplitz.png" style="width:50.0%"></p>
-<figcaption><span class="math inline">\(N^{-1}\)</span> Block symmetric band Toeplitz</figcaption>
+<p><img data-src="assets/mapmaking/fig_gstbmm.png" style="width:75.0%"></p>
+<figcaption>Impact of gaps. Credits: B3DCMB</figcaption>
 </figure>
 </div>
 </div><div class="column">
+<p><strong>Restoring stationarity</strong></p>
+<p>To work around this problem, one solution is to fill the gaps with synthetic samples consistent with noise.</p>
+<p>Furax’s <code>GapFillingOperator</code> computes a <em>constrained noise realization</em> from an estimate of the noise correlations.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="assets/mapmaking/gap-filling.png" class="quarto-figure quarto-figure-center" style="width:65.0%"></p>
+<p><img data-src="assets/mapmaking/gap_filling_example.png"></p>
+<figcaption>Toy example with a few detectors</figcaption>
 </figure>
 </div>
 </div></div>
-<h3 id="furax-example">Furax example</h3>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>h <span class="op">=</span> bandpass <span class="op">@</span> pol <span class="op">@</span> rot <span class="op">@</span> hwp <span class="op">@</span> proj <span class="op">@</span> mixing</span>
-<span id="cb8-2"><a></a>tod <span class="op">=</span> h(sky)</span>
-<span id="cb8-3"><a></a>solution <span class="op">=</span> ((h.T <span class="op">@</span> invN <span class="op">@</span> h).I <span class="op">@</span> h.T <span class="op">@</span> invN)(gap_fill(key, tod))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div style="color: gray; font-size: 16px">
-<p>Credit: Simon Biquart</p>
-</div>
+<!---
+## Writing this with FURAX tools
+
+::::: {.columns}
+
+:::: {.column width="60%"}
+
+<br/>
+
+```python
+polarizer = LinearPolarizerOperator.create(detector_angles)
+hwp = HWPOperator.create(hwp_angles)
+rotation = QURotationOperator.create(telescope_angle)
+sampling = SamplingOperator(pixel_indices)
+h = polarizer @ hwp @ rotation @ sampling
+invN = SymmetricBandToeplitzOperator(noise_correlations)
+L = (h.T @ invN @ h).I @ h.T @ invN
+estimate = L(data)
+```
+
+<br/>
+<br/>
+<br/>
+
+
+:::{.solutionbox}
+
+:::{.solutionbox-header style="font-size: 22px;"}
+
+**FURAX Map-Making**
+
+:::
+
+::::{.solutionbox-body style="font-size: 20px;"}
+
+Can be extended & complexified easily!.
+- non-ideal components
+- parametric data model
+
+
+::::
+
+:::
+
+
+::::
+
+:::: {.column width="40%"}
+
+
+::: {layout="[[3],[1],[3]]"}
+
+![](assets/CMB/input.png){fig-align="center" width="70%"}
+
+![](assets/Symboles/down_arrow.svg){fig-align="center" width="5%"}
+
+![](assets/CMB/output.png){fig-align="center" width="70%"}
+
+
+:::
+
+
+::::
+
+:::::
+--->
 </section>
-<section id="writing-this-with-furax-tools" class="slide level2">
-<h2>Writing this with FURAX tools</h2>
+<section id="non-ideal-hwp-credits-ema-tsang" class="slide level2 smaller">
+<h2>Non-Ideal HWP (credits: Ema Tsang)</h2>
+<!--- ![](assets/hwp/hwp-ema.png){width="100%"} --->
 <div class="columns">
-<div class="column" style="width:60%;">
-<p><br></p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a>polarizer <span class="op">=</span> LinearPolarizerOperator.create(detector_angles)</span>
-<span id="cb9-2"><a></a>hwp <span class="op">=</span> HWPOperator.create(hwp_angles)</span>
-<span id="cb9-3"><a></a>rotation <span class="op">=</span> QURotationOperator.create(telescope_angle)</span>
-<span id="cb9-4"><a></a>sampling <span class="op">=</span> SamplingOperator(pixel_indices)</span>
-<span id="cb9-5"><a></a>h <span class="op">=</span> polarizer <span class="op">@</span> hwp <span class="op">@</span> rotation <span class="op">@</span> sampling</span>
-<span id="cb9-6"><a></a>invN <span class="op">=</span> SymmetricBandToeplitzOperator(noise_correlations)</span>
-<span id="cb9-7"><a></a>L <span class="op">=</span> (h.T <span class="op">@</span> invN <span class="op">@</span> h).I <span class="op">@</span> h.T <span class="op">@</span> invN</span>
-<span id="cb9-8"><a></a>estimate <span class="op">=</span> L(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><br> <br> <br></p>
-<div class="solutionbox">
-<div class="solutionbox-header" style="font-size: 22px;">
-<p><strong>FURAX Map-Making</strong></p>
-</div>
-<div class="solutionbox-body" style="font-size: 20px;">
-<p>Can be extended &amp; complexified easily!. - non-ideal components - parametric data model</p>
-</div>
-</div>
-<div style="color: gray; font-size: 16px">
-<p>Credit: Simon Biquart</p>
-</div>
-</div><div class="column" style="width:40%;">
-<div>
-
-</div>
-<div class="quarto-layout-panel" data-layout="[[3],[1],[3]]">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
+<div class="column" style="width:40%;">
+<p>Realistic HWP operator</p>
+<ul>
+<li>several layers stacked</li>
+<li>transmission + reflection of incident EM field at the boundaries</li>
+</ul>
+</div><div class="column" style="width:60%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="assets/CMB/input.png" class="quarto-figure quarto-figure-center"></p>
+<p><img data-src="assets/hwp/transfer_matrix.png"></p>
+<figcaption>Mueller matrix coefficients in angle-frequency space</figcaption>
 </figure>
-</div>
-</div>
-</div>
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="assets/Symboles/down_arrow.svg" class="quarto-figure quarto-figure-center"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="assets/CMB/output.png" class="quarto-figure quarto-figure-center"></p>
-</figure>
-</div>
-</div>
-</div>
 </div>
 </div></div>
-</section>
-<section id="quantifying-biases-from-non-ideal-half-wave-plates" class="slide level2">
-<h2>Quantifying Biases from Non-Ideal Half Wave Plates</h2>
-<p><br></p>
-
-<img data-src="assets/hwp/hwp-ema.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"><h4 id="non-ideal-half-wave-plate">Non-ideal Half Wave Plate</h4>
+<aside class="notes">
 <ul>
-<li>Made of several stacked layers</li>
-<li>Takes into account the transmission and reflection of the incident electromagnetic field at the layers boundaries</li>
+<li>frequency-dependent phase shift (middle blocks)</li>
+<li>I-&gt;P leakage at ~0.4% (IQ, IU blocks)</li>
+<li>also 2f but not very visible</li>
 </ul>
-<h4 id="furax-modeling">Furax modeling</h4>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a>h <span class="op">=</span> pol <span class="op">@</span> bandpass <span class="op">@</span> hwp <span class="op">@</span> mixing_matrix <span class="op">@</span> projection</span>
-<span id="cb10-2"><a></a>sol <span class="op">=</span> ((h.T <span class="op">@</span> h).I <span class="op">@</span> h.T)(tod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div style="color: gray; font-size: 16px">
-<p>Credit: Ema Tsang King Sang</p>
-</div>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="component-separation" class="slide level2" style="font-size: 22px;">
 <h2>Component Separation</h2>
@@ -998,39 +828,39 @@ d_{\nu, i, t} = \int_{\textrm{BP}_\nu} d\nu' \mathbf{M}^{(\gamma)}_{\nu', i, t, 
 <div class="column" style="width:50%;">
 <div class="fragment" data-fragment-index="1">
 <h4 id="creating-a-mixing-matrix-operator-for-sed-evaluation">Creating a Mixing Matrix Operator for SED evaluation</h4>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="im">from</span> furax.seds <span class="im">import</span> <span class="op">\</span></span>
-<span id="cb11-2"><a></a>  CMBOperator,DustOperator, SynchrotronOperator</span>
-<span id="cb11-3"><a></a></span>
-<span id="cb11-4"><a></a><span class="kw">def</span> make_A(TEMP_D , BETA_D , BETA_S):</span>
-<span id="cb11-5"><a></a>  cmb <span class="op">=</span> CMBOperator(nu, in_structure)</span>
-<span id="cb11-6"><a></a>  dust <span class="op">=</span> DustOperator(nu , TEMP_D , BETA_D)</span>
-<span id="cb11-7"><a></a>  synchrotron <span class="op">=</span> SynchrotronOperator(nu , BETA_S)</span>
-<span id="cb11-8"><a></a></span>
-<span id="cb11-9"><a></a>  mixed_sed <span class="op">=</span> BlockRowOperator({</span>
-<span id="cb11-10"><a></a>          <span class="st">'cmb'</span>: cmb,</span>
-<span id="cb11-11"><a></a>          <span class="st">'dust'</span>: dust,</span>
-<span id="cb11-12"><a></a>          <span class="st">'synchrotron'</span>: synchrotron,</span>
-<span id="cb11-13"><a></a>      })</span>
-<span id="cb11-14"><a></a>  <span class="cf">return</span> mixed_sed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="im">from</span> furax.seds <span class="im">import</span> <span class="op">\</span></span>
+<span id="cb3-2"><a></a>  CMBOperator,DustOperator, SynchrotronOperator</span>
+<span id="cb3-3"><a></a></span>
+<span id="cb3-4"><a></a><span class="kw">def</span> make_A(TEMP_D , BETA_D , BETA_S):</span>
+<span id="cb3-5"><a></a>  cmb <span class="op">=</span> CMBOperator(nu, in_structure)</span>
+<span id="cb3-6"><a></a>  dust <span class="op">=</span> DustOperator(nu , TEMP_D , BETA_D)</span>
+<span id="cb3-7"><a></a>  synchrotron <span class="op">=</span> SynchrotronOperator(nu , BETA_S)</span>
+<span id="cb3-8"><a></a></span>
+<span id="cb3-9"><a></a>  mixed_sed <span class="op">=</span> BlockRowOperator({</span>
+<span id="cb3-10"><a></a>          <span class="st">'cmb'</span>: cmb,</span>
+<span id="cb3-11"><a></a>          <span class="st">'dust'</span>: dust,</span>
+<span id="cb3-12"><a></a>          <span class="st">'synchrotron'</span>: synchrotron,</span>
+<span id="cb3-13"><a></a>      })</span>
+<span id="cb3-14"><a></a>  <span class="cf">return</span> mixed_sed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:50%;">
 <div class="fragment" data-fragment-index="2">
 <h4 id="trivial-construction-of-a-spectral-likelihood-functions">Trivial construction of a spectral likelihood functions</h4>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a></a><span class="im">import</span> jax</span>
-<span id="cb12-2"><a></a></span>
-<span id="cb12-3"><a></a><span class="at">@jax.jit</span></span>
-<span id="cb12-4"><a></a><span class="kw">def</span> negative_log_prob(params, d):</span>
-<span id="cb12-5"><a></a>  A <span class="op">=</span> make_A(params[<span class="st">'TEMP_D'</span>],</span>
-<span id="cb12-6"><a></a>             params[<span class="st">'BETA_D'</span>],</span>
-<span id="cb12-7"><a></a>             params[<span class="st">'BETA_S'</span>])</span>
-<span id="cb12-8"><a></a></span>
-<span id="cb12-9"><a></a>  x <span class="op">=</span> (A.T <span class="op">@</span> invN)(d)</span>
-<span id="cb12-10"><a></a>  l <span class="op">=</span> jax.tree.<span class="bu">map</span>(<span class="kw">lambda</span> a, b: a <span class="op">@</span> b, x, (A.T <span class="op">@</span> invN <span class="op">@</span> A).I(x))<span class="op">\</span></span>
-<span id="cb12-11"><a></a>                       S</span>
-<span id="cb12-12"><a></a>  summed_log_prob <span class="op">=</span> jax.tree.<span class="bu">reduce</span>(operator.add, l)</span>
-<span id="cb12-13"><a></a></span>
-<span id="cb12-14"><a></a>  <span class="cf">return</span> <span class="op">-</span>summed_log_prob</span>
-<span id="cb12-15"><a></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="im">import</span> jax</span>
+<span id="cb4-2"><a></a></span>
+<span id="cb4-3"><a></a><span class="at">@jax.jit</span></span>
+<span id="cb4-4"><a></a><span class="kw">def</span> negative_log_prob(params, d):</span>
+<span id="cb4-5"><a></a>  A <span class="op">=</span> make_A(params[<span class="st">'TEMP_D'</span>],</span>
+<span id="cb4-6"><a></a>             params[<span class="st">'BETA_D'</span>],</span>
+<span id="cb4-7"><a></a>             params[<span class="st">'BETA_S'</span>])</span>
+<span id="cb4-8"><a></a></span>
+<span id="cb4-9"><a></a>  x <span class="op">=</span> (A.T <span class="op">@</span> invN)(d)</span>
+<span id="cb4-10"><a></a>  l <span class="op">=</span> jax.tree.<span class="bu">map</span>(<span class="kw">lambda</span> a, b: a <span class="op">@</span> b, x, (A.T <span class="op">@</span> invN <span class="op">@</span> A).I(x))<span class="op">\</span></span>
+<span id="cb4-11"><a></a>                       S</span>
+<span id="cb4-12"><a></a>  summed_log_prob <span class="op">=</span> jax.tree.<span class="bu">reduce</span>(operator.add, l)</span>
+<span id="cb4-13"><a></a></span>
+<span id="cb4-14"><a></a>  <span class="cf">return</span> <span class="op">-</span>summed_log_prob</span>
+<span id="cb4-15"><a></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div></div>
 <p><br></p>
@@ -1115,27 +945,27 @@ d_{\text{atm}} = \mathbf{A}(\text{PWV}) \mathbf{P}(w_x, w_y) s_{\text{atm}} + n
 <section id="atmosphere-decontamination-using-time-domain-component-separation-1" class="slide level2">
 <h2>Atmosphere Decontamination Using Time-Domain Component Separation</h2>
 <h3 id="spectral-likelihood-computation-using-furax">Spectral likelihood computation using FURAX</h3>
-<div class="sourceCode" id="cb13" data-code-line-numbers="|17-21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="kw">def</span> average_spectral_likelihood_noise(d_atm, w_vec, PWV):</span>
-<span id="cb13-2"><a></a>    <span class="co"># POINTING matrix (shape: (n_detectors * N_obs * n_freq) x N_pix)</span></span>
-<span id="cb13-3"><a></a>    P_single_freq <span class="op">=</span> pointing_matrix_single_freq(detector_pointings_t, t_obs, n_detectors, z_atm, d_pix_sim, N_pix_sim, w_vec)</span>
-<span id="cb13-4"><a></a>    P <span class="op">=</span> BlockColumnOperator({‘<span class="dv">93</span>’: P_single_freq, ‘<span class="dv">145</span>’: P_single_freq})</span>
-<span id="cb13-5"><a></a>    <span class="co"># MIXING matrix: (shape: (n_detectors * N_obs * n_freq) x (n_detectors * N_obs * n_freq))</span></span>
-<span id="cb13-6"><a></a>    A_block_structure <span class="op">=</span> StokesIPyTree.structure_for((n_detectors,N_obs))</span>
-<span id="cb13-7"><a></a>    A_93 <span class="op">=</span> HomothetyOperator(atm_emission(PWV, mu_93)<span class="op">/</span>atm_emission(PWV, mu_93), in_structure<span class="op">=</span>A_block_structure)</span>
-<span id="cb13-8"><a></a>    A_145 <span class="op">=</span> HomothetyOperator(atm_emission(PWV, mu_145)<span class="op">/</span>atm_emission(PWV, mu_93), in_structure<span class="op">=</span>A_block_structure)</span>
-<span id="cb13-9"><a></a>    A <span class="op">=</span> BlockDiagonalOperator({‘<span class="dv">93</span>’: A_93, ‘<span class="dv">145</span>’: A_145})</span>
-<span id="cb13-10"><a></a>    <span class="co"># COMPOSITION matrix: mixing matrix @ pointing matrix (shape: (n_detectors * N_obs * n_freq) x N_pix)</span></span>
-<span id="cb13-11"><a></a>    C <span class="op">=</span> A <span class="op">@</span> P</span>
-<span id="cb13-12"><a></a>    <span class="co"># NOISE covariance matrix (shape: (n_det x N_obs x n_freq) x (n_det x N_obs x n_freq))</span></span>
-<span id="cb13-13"><a></a>    N_block_structure <span class="op">=</span> StokesIPyTree.structure_for((n_detectors,N_obs))</span>
-<span id="cb13-14"><a></a>    N_93 <span class="op">=</span> HomothetyOperator(noise_variance_93, in_structure<span class="op">=</span>N_block_structure)</span>
-<span id="cb13-15"><a></a>    N_145 <span class="op">=</span> HomothetyOperator(noise_variance_145, in_structure<span class="op">=</span>N_block_structure)</span>
-<span id="cb13-16"><a></a>    N <span class="op">=</span> BlockDiagonalOperator({‘<span class="dv">93</span>’: N_93, ‘<span class="dv">145</span>’: N_145})</span>
-<span id="cb13-17"><a></a>    <span class="co"># Spectral likelihood computation:</span></span>
-<span id="cb13-18"><a></a>    core_op <span class="op">=</span> (C.T <span class="op">@</span> N.I <span class="op">@</span> C).I</span>
-<span id="cb13-19"><a></a>    full_op <span class="op">=</span> N.I <span class="op">@</span> C <span class="op">@</span> core_op <span class="op">@</span> C.T <span class="op">@</span> N.I</span>
-<span id="cb13-20"><a></a>    S <span class="op">=</span> <span class="op">-</span> StokesIPyTree(d_atm) <span class="op">@</span> StokesIPyTree(full_op(d_atm))</span>
-<span id="cb13-21"><a></a>    <span class="cf">return</span> S</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5" data-code-line-numbers="|17-21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="kw">def</span> average_spectral_likelihood_noise(d_atm, w_vec, PWV):</span>
+<span id="cb5-2"><a></a>    <span class="co"># POINTING matrix (shape: (n_detectors * N_obs * n_freq) x N_pix)</span></span>
+<span id="cb5-3"><a></a>    P_single_freq <span class="op">=</span> pointing_matrix_single_freq(detector_pointings_t, t_obs, n_detectors, z_atm, d_pix_sim, N_pix_sim, w_vec)</span>
+<span id="cb5-4"><a></a>    P <span class="op">=</span> BlockColumnOperator({‘<span class="dv">93</span>’: P_single_freq, ‘<span class="dv">145</span>’: P_single_freq})</span>
+<span id="cb5-5"><a></a>    <span class="co"># MIXING matrix: (shape: (n_detectors * N_obs * n_freq) x (n_detectors * N_obs * n_freq))</span></span>
+<span id="cb5-6"><a></a>    A_block_structure <span class="op">=</span> StokesIPyTree.structure_for((n_detectors,N_obs))</span>
+<span id="cb5-7"><a></a>    A_93 <span class="op">=</span> HomothetyOperator(atm_emission(PWV, mu_93)<span class="op">/</span>atm_emission(PWV, mu_93), in_structure<span class="op">=</span>A_block_structure)</span>
+<span id="cb5-8"><a></a>    A_145 <span class="op">=</span> HomothetyOperator(atm_emission(PWV, mu_145)<span class="op">/</span>atm_emission(PWV, mu_93), in_structure<span class="op">=</span>A_block_structure)</span>
+<span id="cb5-9"><a></a>    A <span class="op">=</span> BlockDiagonalOperator({‘<span class="dv">93</span>’: A_93, ‘<span class="dv">145</span>’: A_145})</span>
+<span id="cb5-10"><a></a>    <span class="co"># COMPOSITION matrix: mixing matrix @ pointing matrix (shape: (n_detectors * N_obs * n_freq) x N_pix)</span></span>
+<span id="cb5-11"><a></a>    C <span class="op">=</span> A <span class="op">@</span> P</span>
+<span id="cb5-12"><a></a>    <span class="co"># NOISE covariance matrix (shape: (n_det x N_obs x n_freq) x (n_det x N_obs x n_freq))</span></span>
+<span id="cb5-13"><a></a>    N_block_structure <span class="op">=</span> StokesIPyTree.structure_for((n_detectors,N_obs))</span>
+<span id="cb5-14"><a></a>    N_93 <span class="op">=</span> HomothetyOperator(noise_variance_93, in_structure<span class="op">=</span>N_block_structure)</span>
+<span id="cb5-15"><a></a>    N_145 <span class="op">=</span> HomothetyOperator(noise_variance_145, in_structure<span class="op">=</span>N_block_structure)</span>
+<span id="cb5-16"><a></a>    N <span class="op">=</span> BlockDiagonalOperator({‘<span class="dv">93</span>’: N_93, ‘<span class="dv">145</span>’: N_145})</span>
+<span id="cb5-17"><a></a>    <span class="co"># Spectral likelihood computation:</span></span>
+<span id="cb5-18"><a></a>    core_op <span class="op">=</span> (C.T <span class="op">@</span> N.I <span class="op">@</span> C).I</span>
+<span id="cb5-19"><a></a>    full_op <span class="op">=</span> N.I <span class="op">@</span> C <span class="op">@</span> core_op <span class="op">@</span> C.T <span class="op">@</span> N.I</span>
+<span id="cb5-20"><a></a>    S <span class="op">=</span> <span class="op">-</span> StokesIPyTree(d_atm) <span class="op">@</span> StokesIPyTree(full_op(d_atm))</span>
+<span id="cb5-21"><a></a>    <span class="cf">return</span> S</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="solutionbox">
 <div class="solutionbox-body" style="font-size: 18px;">
 <ul>
@@ -1212,6 +1042,7 @@ d_{\text{atm}} = \mathbf{A}(\text{PWV}) \mathbf{P}(w_x, w_y) s_{\text{atm}} + n
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'jumpToSlide': true,
+'pdfMaxPagesPerSlide': 1,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
 'smaller': false,
  
@@ -1341,7 +1172,7 @@ d_{\text{atm}} = \mathbf{A}(\text{PWV}) \mathbf{P}(w_x, w_y) s_{\text{atm}} + n
         transition: 'slide',
 
         // Transition speed (default/fast/slow)
-        transitionSpeed: 'default',
+        transitionSpeed: 'fast',
 
         // Transition style for full page slide backgrounds
         // (none/fade/slide/convex/concave/zoom)

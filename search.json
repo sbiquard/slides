@@ -7,137 +7,74 @@
     "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nDec 19, 2024\n\n\nFURAX: a modular JAX toolbox for solving inverse problems in science\n\n\nSimon Biquard, Pierre Chanial, Wassim Kabalan\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "2024-cmb-france-6/index.html#furax-library",
-    "href": "2024-cmb-france-6/index.html#furax-library",
+    "objectID": "2024-cmb-france-6/index.html#outline",
+    "href": "2024-cmb-france-6/index.html#outline",
     "title": "FURAX: a modular JAX toolbox for solving inverse problems in science",
-    "section": "FURAX Library",
-    "text": "FURAX Library\n \n\n\n\nMotivations and Goals: Why and for what FURAX ?  \nFURAX Bulding Blocks: Presentation of the FURAX PyTrees and Operators.  \nOptimizations: High-level algebraic reductions with FURAX.  \nCMB Applications: From map-making to component separation."
+    "section": "Outline",
+    "text": "Outline\n\nMotivations and goals: why and for what?\nPresentation of the framework\nApplications in CMB science"
   },
   {
     "objectID": "2024-cmb-france-6/index.html#motivations-and-goals",
     "href": "2024-cmb-france-6/index.html#motivations-and-goals",
     "title": "FURAX: a modular JAX toolbox for solving inverse problems in science",
     "section": "Motivations and Goals",
-    "text": "Motivations and Goals\n\nInverse problems\nOpen source: https://github.com/CMBSciPol/furax\n\n\n\nModularity, extensibility, simplicity: Easy to experiment new ideas, Fail fast approach\nJAX: Differentiation, Just In Time (JIT) compilation, run the same code anywhere — on CPUs and GPUs, laptops and super-computers\nFramework for robust B-mode analysis\nAble to handle SO- and S4-like data sets volumes, Compatibility with TOAST\nNon-ideal optical components\n1st steps: “max-L” and “template” map-making (following MAPPRAISER’s formalism)\nMulti-GPU parallelization (soon)\n\nYou can try it: pip install furax, bearing in mind that the library is actively developed and currently in a refactoring phase."
+    "text": "Motivations and Goals\n\nInverse problems: assuming data \\(d_{obs} = F(p)\\), find the parameters \\(p\\)\nPure Python, open source: https://github.com/CMBSciPol/furax\n\npip install furax (work in progress!)\n\nModular & extensible: Easy to experiment new ideas\nHigh-performance: JAX (see next slide)\n\n\n\nMaximum likelihood and “template” map-making\nNon-ideal optical components\nAble to handle SO- and S4-like data sets\n\nInterfaces with TOAST, sotodlib\nMulti-GPU parallelization (soon)"
   },
   {
-    "objectID": "2024-cmb-france-6/index.html#furax-pytrees",
-    "href": "2024-cmb-france-6/index.html#furax-pytrees",
+    "objectID": "2024-cmb-france-6/index.html#what-is-jax",
+    "href": "2024-cmb-france-6/index.html#what-is-jax",
     "title": "FURAX: a modular JAX toolbox for solving inverse problems in science",
-    "section": "FURAX PyTrees",
-    "text": "FURAX PyTrees\n \nFURAX relies on PyTrees to represent the data. For example, for component separation analysis, we can write the generalized sky as a nested PyTree\nsky = {\n  'cmb': HealpixLandscape(NSIDE, 'IQU').normal(key1),\n  'dust': HealpixLandscape(NSIDE, 'IQU').normal(key2),\n  'synchrotron': HealpixLandscape(NSIDE, 'IQU').normal(key3),\n}\nHealpixLandscape(NSIDE, 'IQU') returns an instance of StokesIQUPyTree, which has the attributes i, q and u that store the JAX arrays of the Stokes components.\nAlso available are StokesIPyTree, StokesQUPyTree and StokesIQUVPyTree.\n\nPyTree are then used by the FURAX Operators:\n# Given an acquisition H:\ntod = H(sky)"
+    "section": "What is JAX",
+    "text": "What is JAX\nFrom the JAX website:\n\nJAX is a library for array-oriented numerical computation (à la NumPy), with automatic differentiation and JIT compilation to enable high-performance machine learning research.\n\nKey features\n\nNumPy-like interface with CPU/GPU/TPU support in local and distributed environments\nJust-in-time (JIT) compilation via Open XLA\nAutomatic differentiation\nAutomatic vectorization"
   },
   {
-    "objectID": "2024-cmb-france-6/index.html#furax-operators",
-    "href": "2024-cmb-france-6/index.html#furax-operators",
+    "objectID": "2024-cmb-france-6/index.html#pytrees",
+    "href": "2024-cmb-france-6/index.html#pytrees",
     "title": "FURAX: a modular JAX toolbox for solving inverse problems in science",
-    "section": "FURAX Operators",
-    "text": "FURAX Operators\n\nThe base class AbstractLinearOperator provides a default implementation for the usual linear algebra operations.\n\n\n\n\n\n\n\n\n\n\nOperation\nFURAX\nComment\n\n\n\n\nAddition\nA + B\n\n\n\nComposition\nA @ B\n\n\n\nMultiplication by scalar\nk * A\nReturns the composition of a HomothetyOperator and A\n\n\nTranspose\nA.T\nThrough JAX autodiff, but can be overriden\n\n\nInverse\nA.I\nBy default, the CG solver is used, but it can be overriden or configured using a context manager\n\n\nBlock Assembly\nBlockColumnOperator([A, B]) BlockDiagonalOperator([A, B]) BlockRowOperator([A, B])\nHandle any PyTree of Operators: Block*Operator({'a': A, 'b': B})\n\n\nFlattened dense matrix\nA.as_matrix()\n\n\n\nAlgebraic reduction\nA.reduce()"
+    "section": "PyTrees",
+    "text": "PyTrees\nFURAX relies on PyTrees to represent the data.\nExample: random sky with 3 components\nsky = {\n  'cmb': HealpixLandscape(nside, 'IQU').normal(key1),\n  'dust': HealpixLandscape(nside, 'IQU').normal(key2),\n  'synchrotron': HealpixLandscape(nside, 'IQU').normal(key3),\n}\nHealpixLandscape(nside, 'IQU') returns an instance of StokesIQUPyTree, a container for the Stokes parameters I, Q, U.\nUse FrequencyLandscape to generalize to multiple frequencies.\nfrequencies = np.array([93, 145])\nsky = {\n  'cmb': FrequencyLandscape(nside, frequencies, 'IQU').normal(key1),\n  'dust': FrequencyLandscape(nside, frequencies, 'IQU').normal(key2),\n  'synchrotron': FrequencyLandscape(nside, frequencies, 'IQU').normal(key3),\n}"
   },
   {
-    "objectID": "2024-cmb-france-6/index.html#furax-operators-1",
-    "href": "2024-cmb-france-6/index.html#furax-operators-1",
+    "objectID": "2024-cmb-france-6/index.html#operators",
+    "href": "2024-cmb-france-6/index.html#operators",
     "title": "FURAX: a modular JAX toolbox for solving inverse problems in science",
-    "section": "FURAX Operators",
-    "text": "FURAX Operators\n \n\n\n\n\n\n\n\n\n\n\n\nGeneric Operator\nDescription\n\n\n\n\nIdentityOperator\n\n\n\nHomothetyOperator\n\n\n\nDiagonalOperator\n\n\n\nBroadcastDiagonalOperator\nNon-square operator for broadcasting\n\n\nTensorOperator\nFor dense matrix operations\n\n\nIndexOperator\nCan be used for projecting skies onto time-ordered series\n\n\nMoveAxisOperator\n\n\n\nReshapeOperator\n\n\n\nRavelOperator\n\n\n\nSymmetricBandToeplitzOperator\nMethods: direct, FFT, overlap and save\n\n\nBlock*Operator\nBlock assembly operators (column, diagonal, row)\n\n\n\n\n\n\n\n\n\n\n\nApplied Operator\nDescription\n\n\n\n\nQURotationOperator\n\n\n\nHWPOperator\nIdeal HWP\n\n\nLinearPolarizerOperator\nIdeal linear polarizer\n\n\nCMBOperator\nParametrized CMB SED\n\n\nDustOperator\nParametrized dust SED\n\n\nSynchrotronOperator\nParametrized synchrotron SED"
+    "section": "Operators",
+    "text": "Operators\nThe base class AbstractLinearOperator provides a default implementation for the usual linear algebra operations.\n\n\n\n\n\n\n\n\n\nOperation\nFURAX\nComment\n\n\n\n\nAddition\nA + B\n\n\n\nComposition\nA @ B\n\n\n\nMultiplication by scalar\nk * A\nReturns the composition of a HomothetyOperator and A\n\n\nTranspose\nA.T\nThrough JAX autodiff, but can be overriden\n\n\nInverse\nA.I\nBy default, the CG solver is used, but it can be overriden or configured using a context manager\n\n\nBlock Assembly\nBlockColumnOperator([A, B]) BlockDiagonalOperator([A, B]) BlockRowOperator([A, B])\nHandle any PyTree of Operators: Block*Operator({'a': A, 'b': B})\n\n\nFlattened dense matrix\nA.as_matrix()\n\n\n\nAlgebraic reduction\nA.reduce()"
   },
   {
-    "objectID": "2024-cmb-france-6/index.html#jax-gpu-compilation-chain",
-    "href": "2024-cmb-france-6/index.html#jax-gpu-compilation-chain",
+    "objectID": "2024-cmb-france-6/index.html#operators-contd",
+    "href": "2024-cmb-france-6/index.html#operators-contd",
     "title": "FURAX: a modular JAX toolbox for solving inverse problems in science",
-    "section": "JAX GPU Compilation Chain",
-    "text": "JAX GPU Compilation Chain\n    \n\nFrom the Python code to the GPU-native code"
+    "section": "Operators (cont’d)",
+    "text": "Operators (cont’d)\n\n\n\n\n\n\n\n\n\n\n\nGeneric Operator\nDescription\n\n\n\n\nIdentityOperator\n\n\n\nHomothetyOperator\n\n\n\nDiagonalOperator\n\n\n\nBroadcastDiagonalOperator\nNon-square operator for broadcasting\n\n\nTensorOperator\nFor dense matrix operations\n\n\nIndexOperator\nCan be used for projecting skies onto time-ordered series\n\n\nMoveAxisOperator\n\n\n\nReshapeOperator\n\n\n\nRavelOperator\n\n\n\nSymmetricBandToeplitzOperator\nMethods: direct, FFT, overlap and save\n\n\nBlock*Operator\nBlock assembly operators (column, diagonal, row)\n\n\n\n\n\n\n\n\n\n\n\nApplied Operator\nDescription\n\n\n\n\nQURotationOperator\n\n\n\nHWPOperator\nIdeal HWP\n\n\nLinearPolarizerOperator\nIdeal linear polarizer\n\n\nCMBOperator\nParametrized CMB SED\n\n\nDustOperator\nParametrized dust SED\n\n\nSynchrotronOperator\nParametrized synchrotron SED"
   },
   {
-    "objectID": "2024-cmb-france-6/index.html#xla-simplifications",
-    "href": "2024-cmb-france-6/index.html#xla-simplifications",
+    "objectID": "2024-cmb-france-6/index.html#algebraic-reductions-rotations",
+    "href": "2024-cmb-france-6/index.html#algebraic-reductions-rotations",
     "title": "FURAX: a modular JAX toolbox for solving inverse problems in science",
-    "section": "XLA simplifications",
-    "text": "XLA simplifications\n\n\n\n\n\nMathematical identities\n\n\n\n\\(a\\times 0 = a - a = 0\\)\n\\(a - 0 = a\\times 1 = a / 1 = a^1 = a\\)\n\\(a^{-1} = 1/a\\), \\(a^{1/2} = \\sqrt{a}\\)\n\\(-(-x) = x\\)\n\\((-a)(-b) = ab\\)\n\\(ac + bc = (a+b)c\\)\n\\(a / const = a \\times (1 / const)\\)\n\\((a + c1) + (b + c2) =  a + b + (c1 + c2)\\)\n\\((a / b) / (c / d) = ad / bc\\)\n\\(\\ln e^x = x\\)\n\\(\\exp a \\exp b = \\exp(a+b)\\)\n\\(a / \\exp b = a \\exp(-b)\\)\n\n\n\n\n\n\nArray manipulations\n\n\n\nslicing\nreshaping\nbroadcasting\ntransposition\nbitcast\ncopies\n\n\n\n\n\nOl’ Digger’s tricks\n\n\n\n\\(a^2 = a \\times a\\), \\(a^3 = a \\times a \\times a\\)\n\\(a / b = a\\)&gt;&gt;\\(\\log_2 b\\) if b is a power of 2\n\\(a \\mod b = a \\& (b - 1)\\) if b is a power of 2\n\n\n\n\nand many more (see xla/hlo/transforms/simplifiers/algebraic_simplifier.cc)"
+    "section": "Algebraic reductions: Rotations",
+    "text": "Algebraic reductions: Rotations\nGiven this modeling of the acquisition, using an ideal linear polarizer and an ideal half wave plate:\n\\[\n\\mathbf{H} = \\mathbf{C}_{\\textrm{LP}} \\, \\mathbf{R}_{2\\theta} \\, \\mathbf{R}_{-2\\phi} \\,\n\\mathbf{C}_{\\textrm{HWP}} \\, \\mathbf{R}_{2\\phi} \\, \\mathbf{R}_{2\\psi} \\, \\mathbf{P}\n\\]\nwith\n\n\\(\\theta\\): polarizer angle\n\\(\\phi\\): half-wave plate angle\n\\(\\psi\\): telescope angle\n\nFURAX reduces this expression to:\n\\[\n\\mathbf{H} = \\mathbf{C}_{\\textrm{LP}} \\, \\mathbf{R}_{-2\\theta + 4\\phi + 2\\psi}\\, \\mathbf{P}\n\\]"
   },
   {
-    "objectID": "2024-cmb-france-6/index.html#dead-code-elimination-dce",
-    "href": "2024-cmb-france-6/index.html#dead-code-elimination-dce",
+    "objectID": "2024-cmb-france-6/index.html#generalized-map-making",
+    "href": "2024-cmb-france-6/index.html#generalized-map-making",
     "title": "FURAX: a modular JAX toolbox for solving inverse problems in science",
-    "section": "Dead Code Elimination (DCE)",
-    "text": "Dead Code Elimination (DCE)\n\n\nimport jax\nimport jax.numpy as jnp\n\n@jax.jit\ndef func_dce(x):\n    unused = jnp.sin(x)\n    y = jnp.exp(x)\n    return y[0]\n\n\n\n\nCompiled StableHLO representation\n\n\n\n\n\nimport jax\nimport jax.numpy as jnp\n\n@jax.jit\ndef func_full(x):\n    return jnp.exp(x)\n\n\n\n\n\n\n\nFull computation vs DCE"
+    "section": "Generalized Map-Making",
+    "text": "Generalized Map-Making\n\n\nClassic data model\n\\[\nd = \\mathbf{P}s + n\n\\]\n\n\\(d\\): time-ordered data\n\\(\\mathbf{P}\\): pointing matrix (telescope scanning)\n\\(s\\): discretized sky signal\n\\(n\\): stochastic contribution (noise)\n\n\nOptimal (GLS) solution\n\\[\n\\widehat{s} = (\\mathbf{P}^\\top \\mathbf{N}^{-1} \\mathbf{P})^{-1} \\mathbf{P}^\\top \\mathbf{N}^{-1} d\n\\]\n\nGeneralized parametric data model\n\n\n\n\n\n\\[\nd_{\\nu, i, t} = \\int_{\\textrm{BP}_\\nu} d\\nu' \\mathbf{M}^{(\\gamma)}_{\\nu', i, t, p} \\mathbf{A}^{(\\beta)}_{\\nu', t, c, p} s_{c, p} + n_{\\nu, i, t}\n\\]\n\n\\(\\mathbf{M}\\): instrument matrix (pointing, HWP parameters, bandpasses, beam properties, etc.)\n\\(\\mathbf{A}\\): mixing matrix (modeling of CMB, astrophysical foregrounds, atmosphere, etc.)\n\\(\\mathbf{H} = \\mathbf{MA}\\) is the generalized pointing operator"
   },
   {
-    "objectID": "2024-cmb-france-6/index.html#xla-common-subexpression-elimination-cse",
-    "href": "2024-cmb-france-6/index.html#xla-common-subexpression-elimination-cse",
+    "objectID": "2024-cmb-france-6/index.html#time-domain-noise-correlations",
+    "href": "2024-cmb-france-6/index.html#time-domain-noise-correlations",
     "title": "FURAX: a modular JAX toolbox for solving inverse problems in science",
-    "section": "XLA Common Subexpression Elimination (CSE)",
-    "text": "XLA Common Subexpression Elimination (CSE)\n\n\nimport jax\nimport jax.numpy as jnp\n\n@jax.jit\ndef func_cse(theta):\n    a = jnp.sin(theta)\n    b = jnp.sin(theta) + 1\n    return a + b\n\n\n\nXLA Common Subexpression Elimination (CSE)\n\n\n\nDefinition: CSE identifies and eliminates duplicate computations within a function to optimize performance.\nExample in Code:\n\nWithout CSE: jnp.sin(theta) computed twice.\nAfter CSE: Shared computation across a and b.\n\nBenefits:\n\nReduces redundant computation.\nEnhances runtime efficiency and memory usage.\n\n\n\n\n\n\n\n\n\n\nCompiled StableHLO representation"
+    "section": "Time-domain noise correlations",
+    "text": "Time-domain noise correlations\n\n\nNoise correlations in a stationary period correspond to a symmetric Toeplitz matrix structure.\nFurax has the SymmetricBandToeplitzOperator with optimized matrix-vector operations in \\(\\mathcal O(n \\log \\lambda)\\) (overlap-and-add method).\n\n\n\nImpact of gaps. Credits: B3DCMB\n\n\n\nRestoring stationarity\nTo work around this problem, one solution is to fill the gaps with synthetic samples consistent with noise.\nFurax’s GapFillingOperator computes a constrained noise realization from an estimate of the noise correlations.\n\n\n\nToy example with a few detectors"
   },
   {
-    "objectID": "2024-cmb-france-6/index.html#jax-gpu-compilation-chain-with-furax",
-    "href": "2024-cmb-france-6/index.html#jax-gpu-compilation-chain-with-furax",
+    "objectID": "2024-cmb-france-6/index.html#non-ideal-hwp-credits-ema-tsang",
+    "href": "2024-cmb-france-6/index.html#non-ideal-hwp-credits-ema-tsang",
     "title": "FURAX: a modular JAX toolbox for solving inverse problems in science",
-    "section": "JAX GPU Compilation Chain with FURAX",
-    "text": "JAX GPU Compilation Chain with FURAX\n    \n\nFrom the Python code to the GPU-native code"
-  },
-  {
-    "objectID": "2024-cmb-france-6/index.html#furax-algebraic-reductions-composition-of-rotations",
-    "href": "2024-cmb-france-6/index.html#furax-algebraic-reductions-composition-of-rotations",
-    "title": "FURAX: a modular JAX toolbox for solving inverse problems in science",
-    "section": "FURAX Algebraic Reductions: Composition of Rotations",
-    "text": "FURAX Algebraic Reductions: Composition of Rotations\nimport jax\nimport jax.numpy as jnp\n\ndef rot(x, y, theta):\n    rotated_x = x * jnp.cos(theta) - y * jnp.sin(theta)\n    rotated_y = x * jnp.sin(theta) + y * jnp.cos(theta)\n    return rotated_x, rotated_y\n\n@jax.jit\ndef func(x, y, theta1, theta2):\n    return rot(x, y, theta=theta1 + theta2)\n\n\n\n\nCompiled StableHLO representation"
-  },
-  {
-    "objectID": "2024-cmb-france-6/index.html#furax-algebraic-reductions-composition-of-rotations-1",
-    "href": "2024-cmb-france-6/index.html#furax-algebraic-reductions-composition-of-rotations-1",
-    "title": "FURAX: a modular JAX toolbox for solving inverse problems in science",
-    "section": "FURAX Algebraic Reductions: Composition of Rotations",
-    "text": "FURAX Algebraic Reductions: Composition of Rotations\nimport jax\nimport jax.numpy as jnp\n\ndef rot(x, y, theta):\n    rotated_x = x * jnp.cos(theta) - y * jnp.sin(theta)\n    rotated_y = x * jnp.sin(theta) + y * jnp.cos(theta)\n    return rotated_x, rotated_y\n\n@jax.jit\ndef func(x, y, theta1, theta2):\n    x, y = rot(x, y, theta=theta1)\n    return rot(x, y, theta=theta2)\n\n\n\n\nCompiled StableHLO representation"
-  },
-  {
-    "objectID": "2024-cmb-france-6/index.html#furax-algebraic-reductions-instrument-acquisition",
-    "href": "2024-cmb-france-6/index.html#furax-algebraic-reductions-instrument-acquisition",
-    "title": "FURAX: a modular JAX toolbox for solving inverse problems in science",
-    "section": "FURAX Algebraic Reductions: Instrument Acquisition",
-    "text": "FURAX Algebraic Reductions: Instrument Acquisition\n\nGiven this modeling of the acquisition, using an ideal linear polarizer and an ideal half wave plate: \\[\n\\mathbf{H} = \\mathbf{C}_{\\textrm{LP}} \\, \\mathbf{R}_{2\\theta} \\, \\mathbf{R}_{-2\\phi} \\, \\mathbf{C}_{\\textrm{HWP}} \\, \\mathbf{R}_{2\\phi} \\, \\mathbf{R}_{2\\psi} \\, \\mathbf{P}\n\\] with\n\n\\(\\theta\\): detector polarization angle\n\\(\\phi\\): HWP rotation angle\n\\(\\psi\\): telescope rotation angle\n\nFURAX reduces this expression to:\n\\[\n\\mathbf{H} = \\mathbf{C}_{\\textrm{LP}} \\, \\mathbf{R}_{-2\\theta + 4\\phi + 2\\psi}\\, \\mathbf{P}\n\\]"
-  },
-  {
-    "objectID": "2024-cmb-france-6/index.html#furax-algebraic-reductions-pointing-matrix",
-    "href": "2024-cmb-france-6/index.html#furax-algebraic-reductions-pointing-matrix",
-    "title": "FURAX: a modular JAX toolbox for solving inverse problems in science",
-    "section": "FURAX Algebraic Reductions: Pointing Matrix",
-    "text": "FURAX Algebraic Reductions: Pointing Matrix\n\n\nWhen the time-time noise covariance matrix \\(\\mathbf{N}\\) is diagonal and \\(\\mathbf{P}\\) is a “one-to-one” intensity projection matrix:\n\\[\n\\mathbf{P} =\n\\begin{bmatrix}\n0 & \\cdots & 0 & 1 & 0 & \\cdots & 0 \\\\\n0 & 1 & 0 & \\cdots & 0 & 0 & \\cdots & 0 \\\\\n\\vdots & \\vdots & \\vdots & \\vdots & \\vdots & \\vdots & \\vdots \\\\\n1 & 0 & \\cdots & 0 & 0 & \\cdots & 0 \\\\\n\\vdots & \\vdots & \\vdots & \\vdots & \\vdots & \\vdots & \\vdots \\\\\n0 & 0 & \\cdots & 0 & 1 & 0 & \\cdots & 0 \\\\\n\\end{bmatrix},\n\\]\n \n\nthe product \\(\\mathbf{P}^\\top \\mathbf{N}^{-1} \\mathbf{P}\\) is diagonal and can therefore be easily inverted (for pixel-pixel covariance matrix or preconditioning).\nEach term is related to the number of noise-weighted times a pixel of the map has been observed.\nFor IQU maps, the product is block diagonal, with 3x3 blocks that can also be easily inverted.\nBy adding a rule for this operation, we’ve seen an performance improvement by more than a factor of 10 in the forward application (WIP, currently only for \\(\\mathbf{N}\\) scalar)."
-  },
-  {
-    "objectID": "2024-cmb-france-6/index.html#furax-algebraic-reductions-block-assembly",
-    "href": "2024-cmb-france-6/index.html#furax-algebraic-reductions-block-assembly",
-    "title": "FURAX: a modular JAX toolbox for solving inverse problems in science",
-    "section": "FURAX Algebraic Reductions: Block Assembly",
-    "text": "FURAX Algebraic Reductions: Block Assembly\n\n \n\n\n\n\n\n\n\nOperation\nReduction\n\n\n\n\nBlockDiagonalOperator([D1, D2]) @ BlockColumnOperator([C1, C2])\nBlockColumnOperator([D1 @ C1, D2 @ C2])\n\n\nBlockRowOperator([R1, R2]) @ BlockDiagonalOperator([D1, D2])\nBlockRowOperator([R1 @ D1, R2 @ D2])\n\n\nBlockRowOperator([R1, R2]) @ BlockColumnOperator([C1, C2])\nR1 @ C1 + R2 @ C2\n\n\n\n\n \nPractical use case:\nGiven two observations\n\\[\n\\mathbf{P} =\n\\begin{bmatrix}\n\\mathbf{P}_1 \\\\\n\\mathbf{P}_2\n\\end{bmatrix}, \\quad\n\\mathbf{N}^{-1} =\n\\begin{bmatrix}\n\\mathbf{N}_1^{-1} & 0 \\\\\n0 & \\mathbf{N}_2^{-1}\n\\end{bmatrix},\n\\]\nThe combination is reduced to \\[\n\\mathbf{P}^\\top \\mathbf{N}^{-1} \\mathbf{P} = \\mathbf{P}_1^\\top \\mathbf{N}_1^{-1} \\mathbf{P}_1^{\\,} + \\mathbf{P}_2^\\top \\mathbf{N}_2^{-1} \\mathbf{P}_2^{\\,}.\n\\]"
-  },
-  {
-    "objectID": "2024-cmb-france-6/index.html#maximum-likelihood-map-making",
-    "href": "2024-cmb-france-6/index.html#maximum-likelihood-map-making",
-    "title": "FURAX: a modular JAX toolbox for solving inverse problems in science",
-    "section": "Maximum-Likelihood Map-Making",
-    "text": "Maximum-Likelihood Map-Making\n\n\n\nClassic data model\n\\[\nd = \\mathbf{P}s + n\n\\]\n\n\\(d\\): time-ordered data\n\\(\\mathbf{P}\\): pointing matrix ( telescope scanning)\n\\(s\\): discretized sky signal\n\\(n\\): stochastic contribution (noise)\n\n\nOptimal (GLS) solution:\n\\[\n\\widehat{s} = (\\mathbf{P}^\\top \\mathbf{N}^{-1} \\mathbf{P})^{-1} \\mathbf{P}^\\top \\mathbf{N}^{-1} d\n\\]\n\nGeneralized parametric data model\n\n\n\n\n\n\\[\nd_{\\nu, i, t} = \\int_{\\textrm{BP}_\\nu} d\\nu' \\mathbf{M}^{(\\gamma)}_{\\nu', i, t, p} \\mathbf{A}^{(\\beta)}_{\\nu', t, c, p} s_{c, p} + n_{\\nu, i, t}\n\\]\n\n\\(\\mathbf{M}\\) includes HWP parameters, band passes, beam properties, gains, …\n\\(\\mathbf{A}\\) includes the frequency modeling of CMB, astrophysical foregrounds, atmosphere, ground\n\\(\\mathbf{H} = \\mathbf{MA}\\) is the generalized pointing operator\n\n\n\nCredit: Simon Biquart"
-  },
-  {
-    "objectID": "2024-cmb-france-6/index.html#maximum-likelihood-map-making-1",
-    "href": "2024-cmb-france-6/index.html#maximum-likelihood-map-making-1",
-    "title": "FURAX: a modular JAX toolbox for solving inverse problems in science",
-    "section": "Maximum-Likelihood Map-Making",
-    "text": "Maximum-Likelihood Map-Making\n\n\n\n\n\n\n\\(N^{-1}\\) Block symmetric band Toeplitz\n\n\n\n\n\n\n\n\n\nFurax example\nh = bandpass @ pol @ rot @ hwp @ proj @ mixing\ntod = h(sky)\nsolution = ((h.T @ invN @ h).I @ h.T @ invN)(gap_fill(key, tod))\n\nCredit: Simon Biquart"
-  },
-  {
-    "objectID": "2024-cmb-france-6/index.html#writing-this-with-furax-tools",
-    "href": "2024-cmb-france-6/index.html#writing-this-with-furax-tools",
-    "title": "FURAX: a modular JAX toolbox for solving inverse problems in science",
-    "section": "Writing this with FURAX tools",
-    "text": "Writing this with FURAX tools\n\n\n\npolarizer = LinearPolarizerOperator.create(detector_angles)\nhwp = HWPOperator.create(hwp_angles)\nrotation = QURotationOperator.create(telescope_angle)\nsampling = SamplingOperator(pixel_indices)\nh = polarizer @ hwp @ rotation @ sampling\ninvN = SymmetricBandToeplitzOperator(noise_correlations)\nL = (h.T @ invN @ h).I @ h.T @ invN\nestimate = L(data)\n  \n\n\nFURAX Map-Making\n\n\nCan be extended & complexified easily!. - non-ideal components - parametric data model\n\n\n\nCredit: Simon Biquart"
-  },
-  {
-    "objectID": "2024-cmb-france-6/index.html#quantifying-biases-from-non-ideal-half-wave-plates",
-    "href": "2024-cmb-france-6/index.html#quantifying-biases-from-non-ideal-half-wave-plates",
-    "title": "FURAX: a modular JAX toolbox for solving inverse problems in science",
-    "section": "Quantifying Biases from Non-Ideal Half Wave Plates",
-    "text": "Quantifying Biases from Non-Ideal Half Wave Plates\n\n\nNon-ideal Half Wave Plate\n\nMade of several stacked layers\nTakes into account the transmission and reflection of the incident electromagnetic field at the layers boundaries\n\nFurax modeling\nh = pol @ bandpass @ hwp @ mixing_matrix @ projection\nsol = ((h.T @ h).I @ h.T)(tod)\n\nCredit: Ema Tsang King Sang"
+    "section": "Non-Ideal HWP (credits: Ema Tsang)",
+    "text": "Non-Ideal HWP (credits: Ema Tsang)\n\n\n\nRealistic HWP operator\n\nseveral layers stacked\ntransmission + reflection of incident EM field at the boundaries\n\n\n\n\n\nMueller matrix coefficients in angle-frequency space\n\n\n\n\n\nfrequency-dependent phase shift (middle blocks)\nI-&gt;P leakage at ~0.4% (IQ, IU blocks)\nalso 2f but not very visible"
   },
   {
     "objectID": "2024-cmb-france-6/index.html#component-separation",
