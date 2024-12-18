@@ -538,3 +538,11 @@ Credit: Amalia Villarrubia Aguilar
 :::
 
 
+## Conclusion {.smaller}
+
+- CMB polarization analysis mixes instrument + foregrounds + cosmology
+- Need for _robust_ and _efficient_ tools
+- We are building a python-based toolbox
+  - using `jax` for performance and portability
+  - able to represent complex instrument models
+  - interfaced with Simons Observatory products
