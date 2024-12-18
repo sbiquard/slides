@@ -7,7 +7,6 @@ author:
 
 format:
   revealjs:
-    incremental: false
     transition: slide
     transition-speed: fast
     background-transition: slide
