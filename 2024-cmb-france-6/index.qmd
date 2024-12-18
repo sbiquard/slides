@@ -24,11 +24,11 @@ title-slide-attributes:
 
 logo1 : '
 <div style="display: flex; justify-content: space-around; align-items: center; layout-valign="middle">
-  <img src="assets/Logos/Furax_logo_transparent.png" style="width: 25%;"/>
-  <img src="assets/Logos/APC.png" style="width: 15%;"/>
-  <img src="assets/Logos/scipol.png" style="width: 15%;"/>
-  <img src="assets/Logos/ERC.svg" style="width: 15%;"/>
-  <img src="assets/Logos/CNRS.svg" style="width: 15%;"/>
+  <img src="assets/Logos/Furax_logo_transparent.png" style="height: 4em"/>
+  <img src="assets/Logos/APC.png" style="height: 4em"/>
+  <img src="assets/Logos/scipol.png" style="height: 4em"/>
+  <img src="assets/Logos/ERC.svg" style="height: 4em"/>
+  <img src="assets/Logos/CNRS.svg" style="height: 4em"/>
 </div>
 '
 ---
@@ -50,11 +50,13 @@ logo1 : '
 
 <br>
 
+::: {.fragment}
 - Maximum likelihood and template map-making as in [El Bouhargani et al. 2021](https://arxiv.org/abs/2112.03370)
 - Non-ideal, frequency-dependent optical components
 - Provide tools for next generation experiments (SO, CMB-S4, LiteBIRD)
   - Interfaces with `TOAST`, `sotodlib`
   - Large data sets: multi-GPU parallelization is underway
+:::
 
 
 ## What is JAX {.smaller}
@@ -76,6 +78,7 @@ Key features
 
 FURAX relies on [PyTrees](https://jax.readthedocs.io/en/latest/pytrees.html) to represent the data.
 
+::: {.fragment}
 Example: random sky with 3 components
 
 ```python
@@ -85,10 +88,11 @@ sky = {
   'synchrotron': HealpixLandscape(nside, 'IQU').normal(key3),
 }
 ```
-
 `HealpixLandscape(nside, 'IQU')` returns an instance of `StokesIQUPyTree`,
 a container for the Stokes parameters I, Q, U.
+:::
 
+::: {.fragment}
 Use `FrequencyLandscape` to generalize to multiple frequencies.
 
 ```python
@@ -99,6 +103,8 @@ sky = {
   'synchrotron': FrequencyLandscape(nside, frequencies, 'IQU').normal(key3),
 }
 ```
+:::
+
 
 ## Operators {.smaller}
 
@@ -175,14 +181,15 @@ The base class `AbstractLinearOperator` provides a default implementation for th
 
 ## Algebraic reductions: Rotations {.smaller}
 
-Classic acquisition model with ideal linear polarizer, ideal half wave plate, rotations, pointing matrix
+Classic acquisition model with ideal linear polarizer $\mathbf{M}_{\textrm{LP}}$, ideal half wave plate $\mathbf{M}_{\textrm{HWP}}$,
+rotations $\mathbf{R}$, pointing matrix $\mathbf P$:
 
 $$
 \mathbf{H} = \mathbf{M}_{\textrm{LP}} \, \mathbf{R}_{2\theta} \, \mathbf{R}_{-2\phi} \,
 \mathbf{M}_{\textrm{HWP}} \, \mathbf{R}_{2\phi} \, \mathbf{R}_{2\psi} \, \mathbf{P}
 $$
 
-with
+where
 
 - $\theta$: polarizer angle
 - $\phi$: half-wave plate angle
@@ -231,7 +238,7 @@ $$
 :::
 
 ::: {.column width="55%"}
-
+::: {.fragment}
 **Generalized parametric data model**
 
 ![](assets/mapmaking/instrument-foregrounds.png){fig-align="center" width="80%"}
@@ -243,7 +250,7 @@ $$
 - $\mathbf{M}$: _instrument matrix_ (pointing, HWP parameters, bandpasses, beam properties, etc.)
 - $\mathbf{A}$: _mixing matrix_ (modeling of CMB, astrophysical foregrounds, atmosphere, etc.)
 - $\mathbf{H} = \mathbf{MA}$ is the generalized pointing operator
-
+:::
 :::
 
 :::
@@ -511,7 +518,7 @@ Credit: Amalia Villarrubia Aguilar
 
 ::::{.column width="60%"}
 
-Spectral likelihood values in the $(w_x, w_y)$ plane for a fixed PWV values.
+Spectral likelihood values in the $(w_x, w_y)$ plane for a fixed PWV value.
 ![](assets/CMB/Spec-likelihood-gridding.png){}
 
 ::::
@@ -545,4 +552,11 @@ Credit: Amalia Villarrubia Aguilar
 - We are building a python-based toolbox
   - using `jax` for performance and portability
   - able to represent complex instrument models
-  - interfaced with Simons Observatory products
+- Applications: map-making, component separation, atmosphere decontamination, etc.
+- Goals for early 2025
+  - unbiased map-making + map-based pipeline for SO-SAT
+  - cluster component separation for LiteBIRD
+
+If you are interested, check out our the repository on GitHub: [CMBSciPol/furax](https://github.com/CMBSciPol/furax).
+
+This work is part of the ERC project SciPol (<https://scipol.in2p3.fr/>).
