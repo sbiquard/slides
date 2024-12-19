@@ -403,7 +403,7 @@ Credit: Ema Tsang
 **Beyond fgbuster**
 
 - Automatic cluster detection for spectral index parameters
-- Very flexible model: straigt-forward extensions to other sky components, different objective functions, etc.
+- Very flexible model: straight-forward extensions to other sky components, different objective functions, etc.
 ::::
 
 :::: {.column width="60%"}
