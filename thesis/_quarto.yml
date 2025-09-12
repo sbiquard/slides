@@ -1,0 +1,8 @@
+project:
+  type: website
+  output-dir: .
+website:
+  title: "Thesis"
+  navbar:
+    left:
+      - href: index.qmd

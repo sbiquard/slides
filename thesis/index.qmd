@@ -1,0 +1,15 @@
+---
+title: Thesis defence
+subtitle: Making maps of the polarised cosmic microwave background with next generation ground-based experiments
+author: Simon Biquard
+format: clean-revealjs
+date: 2025-09-26
+
+title-slide-attributes:
+  data-background-image: assets/title_background.svg
+  data-background-size: contain
+---
+
+## Example
+
+Some text.
