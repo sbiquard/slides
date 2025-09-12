@@ -1,10 +1,10 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Slides",
-    "section": "",
-    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nDec 19, 2024\n\n\nFURAX: a modular JAX toolbox for solving inverse problems in science\n\n\nSimon Biquard, Pierre Chanial, Wassim Kabalan\n\n\n\n\n\nNo matching items"
+    "objectID": "thesis/index.html#example",
+    "href": "thesis/index.html#example",
+    "title": "Thesis defence",
+    "section": "Example",
+    "text": "Example\nSome text."
   },
   {
     "objectID": "2024-cmb-france-6/index.html#outline",
@@ -110,5 +110,12 @@
     "title": "",
     "section": "Conclusion",
     "text": "Conclusion\n\nCMB polarization analysis mixes instrument + foregrounds + cosmology\nNeed for robust and efficient tools\nWe are building a python-based toolbox\n\nusing jax for performance and portability\nable to represent complex instrument models\n\nApplications: map-making, component separation, atmosphere decontamination, etc.\nGoals for early 2025\n\nunbiased map-making + map-based pipeline for SO-SAT\ncluster component separation for LiteBIRD\n\n\nIf you are interested, check out our the repository on GitHub: CMBSciPol/furax.\nThis work is part of the ERC project SciPol (https://scipol.in2p3.fr/)."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Slides",
+    "section": "",
+    "text": "Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nAuthor\n\n\n\n\n\n\n\n\nSep 26, 2025\n\n\nThesis defence\n\n\nSimon Biquard\n\n\n\n\n\n\nDec 19, 2024\n\n\nFURAX: a modular JAX toolbox for solving inverse problems in science\n\n\nSimon Biquard, Pierre Chanial, Wassim Kabalan\n\n\n\n\n\n\nNo matching items"
   }
 ]
