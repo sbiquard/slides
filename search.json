@@ -1,10 +1,87 @@
 [
   {
-    "objectID": "thesis/index.html#example",
-    "href": "thesis/index.html#example",
+    "objectID": "thesis/index.html#outline",
+    "href": "thesis/index.html#outline",
     "title": "Thesis defence",
-    "section": "Example",
-    "text": "Example\nSome text."
+    "section": "Outline",
+    "text": "Outline\nTBW"
+  },
+  {
+    "objectID": "thesis/index.html#introduction",
+    "href": "thesis/index.html#introduction",
+    "title": "Thesis defence",
+    "section": "Introduction",
+    "text": "Introduction\n\nThe Universe is expanding\nUniverse was smaller in the past\nHot Big Bang theory: hotter, denser, “smaller”\nHow do we know that?"
+  },
+  {
+    "objectID": "thesis/index.html#galaxies",
+    "href": "thesis/index.html#galaxies",
+    "title": "Thesis defence",
+    "section": "Galaxies",
+    "text": "Galaxies\n\nMilky Way x 100,000 light years\nMany other galaxies! ~10^11 in observable Universe\nDistant galaxies are moving away\nHow do we know?"
+  },
+  {
+    "objectID": "thesis/index.html#redshift-i",
+    "href": "thesis/index.html#redshift-i",
+    "title": "Thesis defence",
+    "section": "Redshift I",
+    "text": "Redshift I\n\nLike Doppler effect of sound\nThe farther away, the faster a galaxy recedes from us\nExpected if all galaxies move away from each other\ni.e. If Universe expands in all directions"
+  },
+  {
+    "objectID": "thesis/index.html#redshift-ii",
+    "href": "thesis/index.html#redshift-ii",
+    "title": "Thesis defence",
+    "section": "Redshift II",
+    "text": "Redshift II\n\nSpring analogy!\nDistance & redshift -&gt; use z to talk about cosmic distances\nLight has a finite speed -&gt; use z to talk about time\nHigh z is far away in space and in time"
+  },
+  {
+    "objectID": "thesis/index.html#primordial-plasma",
+    "href": "thesis/index.html#primordial-plasma",
+    "title": "Thesis defence",
+    "section": "Primordial Plasma",
+    "text": "Primordial Plasma\n\nHot Big Bang: all matter and radiation compressed to an unimaginable degree → denser & hotter\nIn this state, ordinary matter (atoms) cannot exist\nIt is a hot plasma"
+  },
+  {
+    "objectID": "thesis/index.html#cosmic-history",
+    "href": "thesis/index.html#cosmic-history",
+    "title": "Thesis defence",
+    "section": "Cosmic History",
+    "text": "Cosmic History\n\n“Inside-out star”\nBBN: nuclear reactions everywhere, nuclei forming\nPhotons bouncing off protons & electrons, cannot travel very far\nTime passes: moving from core of the star to its diffuse edge\nEventually (380,000 years), the first atoms form\nPhotons can travel freely, like the light of the star shining out into space"
+  },
+  {
+    "objectID": "thesis/index.html#the-cmb",
+    "href": "thesis/index.html#the-cmb",
+    "title": "Thesis defence",
+    "section": "The CMB",
+    "text": "The CMB\n\nFrom our perspective, CMB photons seem to come from a spherical surface: the LSS\nThis is the farthest away that we can see into the cosmos\nVisible spectrum (3000K) at the time\nToday microwave (2.7K) because of the expansion\nBlackbody spectrum: confirms Big Bang theory!"
+  },
+  {
+    "objectID": "thesis/index.html#observing-the-cmb",
+    "href": "thesis/index.html#observing-the-cmb",
+    "title": "Thesis defence",
+    "section": "Observing the CMB",
+    "text": "Observing the CMB\nTBW"
+  },
+  {
+    "objectID": "thesis/index.html#the-horizon-problem",
+    "href": "thesis/index.html#the-horizon-problem",
+    "title": "Thesis defence",
+    "section": "The Horizon Problem",
+    "text": "The Horizon Problem\n\nHorizon problem: why is the CMB so homogeneous?\nPoints at same temperature must have been in contact\nLight from 2 opposite points “meets” for the first time right now when reaching us"
+  },
+  {
+    "objectID": "thesis/index.html#inflation",
+    "href": "thesis/index.html#inflation",
+    "title": "Thesis defence",
+    "section": "Inflation",
+    "text": "Inflation\n\nMost widely accepted solution: inflation\nExpansion fast enough to take a causally connected region of space and blow it up to a size bigger than our observable Universe\nLike enlarging a single pixel of an image"
+  },
+  {
+    "objectID": "thesis/index.html#successes-of-inflation",
+    "href": "thesis/index.html#successes-of-inflation",
+    "title": "Thesis defence",
+    "section": "Successes of Inflation",
+    "text": "Successes of Inflation\n\nSeeds of cosmic structure\nStill not proven\nSmoking gun: B modes"
   },
   {
     "objectID": "2024-cmb-france-6/index.html#outline",
