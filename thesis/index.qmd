@@ -10,6 +10,98 @@ title-slide-attributes:
   data-background-size: contain
 ---
 
-## Example
+## Outline
 
-Some text.
+TBW
+
+# The expanding Universe
+
+## Introduction
+
+- The Universe is expanding
+- Universe was smaller in the past
+- Hot Big Bang theory: hotter, denser, "smaller"
+- How do we know that?
+
+## Galaxies
+
+- Milky Way x 100,000 light years
+- Many other galaxies! ~10^11 in observable Universe
+- Distant galaxies are moving away
+- How do we know?
+
+## Redshift I
+
+- Like Doppler effect of sound
+- The farther away, the faster a galaxy recedes from us
+- Expected if all galaxies move away from each other
+- i.e. If Universe expands in all directions
+
+## Redshift II
+
+- Spring analogy!
+- Distance & redshift -> use z to talk about cosmic distances
+- Light has a finite speed -> use z to talk about time
+- High z is far away in space and in time
+
+# Looking at the Big Bang: the CMB
+
+::: {.notes}
+- In cosmology, we can see the history of the Universe
+  - Moon ~1.3s away/ago
+  - Nearby stars ~ 10-100 years
+  - Other galaxies -> millions/billions of years
+- Can we look so far into the past that we see the Big Bang?
+:::
+
+## Primordial Plasma
+
+- Hot Big Bang: all matter and radiation compressed to an unimaginable degree → denser & hotter
+- In this state, ordinary matter (atoms) cannot exist
+- It is a hot plasma
+
+## Cosmic History
+
+- "Inside-out star"
+- BBN: nuclear reactions everywhere, nuclei forming
+- Photons bouncing off protons & electrons, cannot travel very far
+- Time passes: moving from core of the star to its diffuse edge
+- Eventually (380,000 years), the first atoms form
+- Photons can travel freely, like the light of the star shining out into space
+
+## The CMB
+
+- From our perspective, CMB photons seem to come from a spherical surface: the LSS
+- This is the farthest away that we can see into the cosmos
+- Visible spectrum (3000K) at the time
+- Today microwave (2.7K) because of the expansion
+- Blackbody spectrum: confirms Big Bang theory!
+
+## Observing the CMB
+
+TBW
+
+# Cosmic inflation
+
+::: {.notes}
+- CMB: triumph of Hot Big Bang theory?
+- Also a sign that cosmic history must be more complex → inflation
+:::
+
+## The Horizon Problem
+
+- Horizon problem: why is the CMB so homogeneous?
+- Points at same temperature must have been in contact
+- Light from 2 opposite points "meets" for the first time right now when reaching us
+
+## Inflation
+
+- Most widely accepted solution: inflation
+- Expansion fast enough to take a causally connected region of space and blow it up to a size bigger than our observable Universe
+- Like enlarging a single pixel of an image
+
+## Successes of Inflation
+
+- Seeds of cosmic structure
+- Still not proven
+- Smoking gun: B modes
