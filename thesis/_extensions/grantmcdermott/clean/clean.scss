@@ -84,12 +84,23 @@ $selection-bg: #26351c !default;
   .author,
   .quarto-title-author-name {
     color: $body-color;
+    font-weight: normal;
   }
 
   .supervisors {
-    font-size: 0.8em;
-    color: $body-color;
-  }
+     font-size: 0.8em;
+     font-style: italic;
+     color: $body-color;
+     margin-top: 0.5em;  // Reduced from the default 1.25em
+
+     .supervision-text {
+       font-weight: lighter;
+     }
+
+     .supervisor-names {
+       font-weight: normal;
+     }
+   }
 
   .quarto-title-authors {
     display: flex;
