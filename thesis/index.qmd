@@ -3,17 +3,17 @@ title: Thesis defence
 subtitle: Making maps of the polarised cosmic microwave background with next generation ground-based experiments
 author:
   - Simon Biquard
-# supervisors:
-#   - Josquin Errard
-#   - Radek Stompor
+supervisors:
+  - Josquin Errard
+  - Radek Stompor
 format:
   clean-revealjs:
     slide-number: true
     transition: slide
     transition-speed: fast
     background-transition: slide
-    # template-partials:
-    #   - title-slide.html
+    template-partials:
+      - title-slide.html
 date: 2025-09-26
 
 # Institutional logos for title slide

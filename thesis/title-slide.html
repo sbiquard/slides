@@ -6,6 +6,9 @@ $endif$
 $for(author)$
   <p class="author">$author$</p>
 $endfor$
+$if(supervisors)$
+  <p class="supervisors"><em>under the supervision of</em> $for(supervisors)$$supervisors$$sep$, $endfor$</p>
+$endif$
 $for(institute)$
   <p class="institute">$institute$</p>
 $endfor$

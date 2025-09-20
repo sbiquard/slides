@@ -86,6 +86,11 @@ $selection-bg: #26351c !default;
     color: $body-color;
   }
 
+  .supervisors {
+    font-size: 0.8em;
+    color: $body-color;
+  }
+
   .quarto-title-authors {
     display: flex;
     justify-content: left;
