@@ -23,9 +23,9 @@ logos:
   - "assets/step_up.jpg"
   - "assets/logo_scipol_banniere.png"
 
-# title-slide-attributes:
-#   data-background-image: assets/background.svg
-#   data-background-size: contain
+title-slide-attributes:
+  data-background-image: assets/landscape.png
+  data-background-size: cover
 ---
 
 ## Outline
