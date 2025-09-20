@@ -59,6 +59,20 @@ $selection-bg: #26351c !default;
 #title-slide {
   text-align: left;
 
+  .logos-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;  // Space between logos
+    margin-bottom: 0.5em;  // Space before the title
+
+    img {
+        height: 80px;  // Fixed height for all logos
+        width: auto;  // Maintain aspect ratio
+        object-fit: contain;
+    }
+  }
+
   .title {
     color: $body-color;
     font-size: 1.4em;

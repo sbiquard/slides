@@ -17,11 +17,11 @@ format:
 date: 2025-09-26
 
 # Institutional logos for title slide
-# logos:
-#   - "assets/apc.png"
-#   - "assets/UParisCitelogo.jpg"
-#   - "assets/step_up.jpg"
-#   - "assets/logo_scipol_banniere.png"
+logos:
+  - "assets/apc.png"
+  - "assets/UParisCitelogo.jpg"
+  - "assets/step_up.jpg"
+  - "assets/logo_scipol_banniere.png"
 
 # title-slide-attributes:
 #   data-background-image: assets/background.svg

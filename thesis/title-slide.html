@@ -1,4 +1,11 @@
 <section id="$idprefix$title-slide"$for(title-slide-attributes/pairs)$ $it.key$="$it.value$"$endfor$>
+$if(logos)$
+  <div class="logos-container">
+  $for(logos)$
+    <img src="$it$" alt="Institution logo">
+  $endfor$
+  </div>
+$endif$
   <h1 class="title">$title$</h1>
 $if(subtitle)$
   <p class="subtitle">$subtitle$</p>
