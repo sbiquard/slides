@@ -7,81 +7,67 @@
     "text": "Outline\n\nIntroduction to cosmology and the CMB (?? min)\nPolarization maps from the ground (?? min)\nTBD"
   },
   {
-    "objectID": "thesis/index.html#introduction",
-    "href": "thesis/index.html#introduction",
+    "objectID": "thesis/index.html#expansion",
+    "href": "thesis/index.html#expansion",
     "title": "Thesis defence",
-    "section": "Introduction",
-    "text": "Introduction\n\nThe Universe is expanding\nUniverse was smaller in the past\nHot Big Bang theory: hotter, denser, “smaller”\nHow do we know that?"
+    "section": "Expansion",
+    "text": "Expansion\n\nThe Universe is expanding\n\nUniverse was smaller in the past\nHot Big Bang theory: hotter, denser, “smaller”\n\n\n\n\n\nWhere are we?\n\nMilky Way ~100,000 light years\nMany other galaxies! ~10^11 in observable Universe\nDistant galaxies are moving away\n\n\n\n\n\n\nRedshift \n\nFractional change in wavelength\n\\(z \\equiv \\frac{\\lambda_0 - \\lambda_1}{\\lambda_1}\\)"
   },
   {
-    "objectID": "thesis/index.html#galaxies",
-    "href": "thesis/index.html#galaxies",
+    "objectID": "thesis/index.html#hubbles-law",
+    "href": "thesis/index.html#hubbles-law",
     "title": "Thesis defence",
-    "section": "Galaxies",
-    "text": "Galaxies\n\nMilky Way x 100,000 light years\nMany other galaxies! ~10^11 in observable Universe\nDistant galaxies are moving away\nHow do we know?"
+    "section": "Hubble’s law",
+    "text": "Hubble’s law\n\n\nThe farther away, the faster a galaxy recedes from us\nExpected if all galaxies move away from each other\ni.e. If Universe expands in all directions\n\n\n\n\n\n\n\nVelocity-distance relation (Hubble 1929)"
   },
   {
-    "objectID": "thesis/index.html#redshift-i",
-    "href": "thesis/index.html#redshift-i",
+    "objectID": "thesis/index.html#redshift-distance-time",
+    "href": "thesis/index.html#redshift-distance-time",
     "title": "Thesis defence",
-    "section": "Redshift I",
-    "text": "Redshift I\n\nLike Doppler effect of sound\nThe farther away, the faster a galaxy recedes from us\nExpected if all galaxies move away from each other\ni.e. If Universe expands in all directions"
+    "section": "Redshift, distance, time",
+    "text": "Redshift, distance, time\n\n\nIn cosmology, we can see the history of the Universe\n\nMoon ~1.3s away/ago\nNearby stars ~ 10-100 years\nOther galaxies -&gt; millions/billions of years\n\nCan we look so far into the past that we see the Big Bang?\n\n\n\nDistance-redshift relation\n\nuse \\(z\\) to talk about cosmic distances\n\nFinite speed of light\n\nuse \\(z\\) to talk about time\n\n\n\nHigh redshift = far away in space and in time.\nWe can see the history of the Universe!"
   },
   {
-    "objectID": "thesis/index.html#redshift-ii",
-    "href": "thesis/index.html#redshift-ii",
+    "objectID": "thesis/index.html#section",
+    "href": "thesis/index.html#section",
     "title": "Thesis defence",
-    "section": "Redshift II",
-    "text": "Redshift II\n\nSpring analogy!\nDistance & redshift -&gt; use z to talk about cosmic distances\nLight has a finite speed -&gt; use z to talk about time\nHigh z is far away in space and in time"
+    "section": "",
+    "text": "Hot Big Bang: all matter and radiation compressed to an unimaginable degree → denser & hotter\nIn this state, ordinary matter (atoms) cannot exist\nIt is a hot plasma\n“Inside-out star”\nBBN: nuclear reactions everywhere, nuclei forming\nPhotons bouncing off protons & electrons, cannot travel very far\nTime passes: moving from core of the star to its diffuse edge\nEventually (380,000 years), the first atoms form\nPhotons can travel freely, like the light of the star shining out into space\n\n\n\nCredit: NASA (https://science.nasa.gov/universe/overview/)."
   },
   {
-    "objectID": "thesis/index.html#primordial-plasma",
-    "href": "thesis/index.html#primordial-plasma",
+    "objectID": "thesis/index.html#a-witness-of-the-homogeneous-early-universe",
+    "href": "thesis/index.html#a-witness-of-the-homogeneous-early-universe",
     "title": "Thesis defence",
-    "section": "Primordial Plasma",
-    "text": "Primordial Plasma\n\nHot Big Bang: all matter and radiation compressed to an unimaginable degree → denser & hotter\nIn this state, ordinary matter (atoms) cannot exist\nIt is a hot plasma"
-  },
-  {
-    "objectID": "thesis/index.html#cosmic-history",
-    "href": "thesis/index.html#cosmic-history",
-    "title": "Thesis defence",
-    "section": "Cosmic History",
-    "text": "Cosmic History\n\n“Inside-out star”\nBBN: nuclear reactions everywhere, nuclei forming\nPhotons bouncing off protons & electrons, cannot travel very far\nTime passes: moving from core of the star to its diffuse edge\nEventually (380,000 years), the first atoms form\nPhotons can travel freely, like the light of the star shining out into space"
-  },
-  {
-    "objectID": "thesis/index.html#the-cmb",
-    "href": "thesis/index.html#the-cmb",
-    "title": "Thesis defence",
-    "section": "The CMB",
-    "text": "The CMB\n\nFrom our perspective, CMB photons seem to come from a spherical surface: the LSS\nThis is the farthest away that we can see into the cosmos\nVisible spectrum (3000K) at the time\nToday microwave (2.7K) because of the expansion\nBlackbody spectrum: confirms Big Bang theory!"
-  },
-  {
-    "objectID": "thesis/index.html#physics-of-the-cmb",
-    "href": "thesis/index.html#physics-of-the-cmb",
-    "title": "Thesis defence",
-    "section": "Physics of the CMB",
-    "text": "Physics of the CMB\n\nCMB is very uniform, but not perfectly\nPerturbations in primordial plasma -&gt; anisotropies in CMB\nPolarization generated by Thomson scattering\nE and B modes (use Planck 2018 figure)"
+    "section": "A witness of the homogeneous early universe",
+    "text": "A witness of the homogeneous early universe\n\n\nVisible spectrum (3000K) at the time\nToday microwave (2.7K) because of the expansion\nBlackbody spectrum: confirms Big Bang theory!\n\n\n\nThe blackbody spectrum of the CMB (Fixsen 1996 adapted by D. Baumann)\nSame temperature in all directions. How?"
   },
   {
     "objectID": "thesis/index.html#the-horizon-problem",
     "href": "thesis/index.html#the-horizon-problem",
     "title": "Thesis defence",
     "section": "The Horizon Problem",
-    "text": "The Horizon Problem\n\nHorizon problem: why is the CMB so homogeneous?\nPoints at same temperature must have been in contact\nLight from 2 opposite points “meets” for the first time right now when reaching us"
+    "text": "The Horizon Problem\n\nWhy is the CMB so homogeneous?\nPoints at same temperature must have been in contact\n\n\n\nThe horizon problem. Credits: D. Baumann"
   },
   {
-    "objectID": "thesis/index.html#inflation",
-    "href": "thesis/index.html#inflation",
+    "objectID": "thesis/index.html#a-solution-cosmic-inflation",
+    "href": "thesis/index.html#a-solution-cosmic-inflation",
     "title": "Thesis defence",
-    "section": "Inflation",
-    "text": "Inflation\n\nMost widely accepted solution: inflation\nExpansion fast enough to take a causally connected region of space and blow it up to a size bigger than our observable Universe\nLike enlarging a single pixel of an image"
+    "section": "A solution: cosmic inflation",
+    "text": "A solution: cosmic inflation\n\n\nMost commonly accepted solution to horizon problem\nLike enlarging a single pixel of an image\n\n\nExpansion fast enough to take a causally connected region of space and blow it up to a size bigger than our observable Universe.\n\nCoordinate grid during and after inflation (Dodelson and Schmidt, 2020)"
   },
   {
-    "objectID": "thesis/index.html#status-of-inflation",
-    "href": "thesis/index.html#status-of-inflation",
+    "objectID": "thesis/index.html#beyond-the-horizon-problem",
+    "href": "thesis/index.html#beyond-the-horizon-problem",
     "title": "Thesis defence",
-    "section": "Status of inflation",
-    "text": "Status of inflation\n\nMost plausible mechanism for generating the seeds of cosmic structure\nObservations so far in agreement with single-field slow-roll models\nNo direct evidence yet\nGWs are a very clean prediction of inflationary models\n\namplitude: tensor-to-scalar ratio \\(r \\equiv A_t / A_s\\)\nonly source of primordial B modes\n“smoking gun” for inflation"
+    "section": "Beyond the horizon problem",
+    "text": "Beyond the horizon problem\n\n\nHow to achieve inflation?\n\nscalar field rolling down a potential slowly\nobservations so far in agreement with single-field slow-roll models\n\nMost plausible mechanism for generating the seeds of cosmic structure\n\nfluctuations -&gt; different regions inflate by different amounts\ninhomogeneities when standard Big Bang starts (reheating)\n\nNo direct evidence of inflation yet\n\n\nSlow-roll inflation: \\(\\phi\\) rolling down a potential \\(V(\\phi)\\) slowly\n\nScalar field rolling down its potential in slow-roll inflation (source).\nQuantum fluctuations \\(\\delta\\phi\\) -&gt; seeds of cosmic structure!"
+  },
+  {
+    "objectID": "thesis/index.html#primordial-gravitational-waves",
+    "href": "thesis/index.html#primordial-gravitational-waves",
+    "title": "Thesis defence",
+    "section": "Primordial gravitational waves",
+    "text": "Primordial gravitational waves\n\n\nGWs are a very clean prediction of inflation models\nmeasuring r gives the energy scale of inflation\nwindow into physics at ultra-high energies\n\n\nInflation also predicts gravitational waves.\n\nScalar perturbations: \\(\\Delta^2_s(k) = A_s (k/k_*)^{n_s - 1}\\)\nTensor perturbations: \\(\\Delta^2_t(k) = A_t (k/k_*)^{n_t}\\)\nTensor-to-scalar ratio \\(r \\equiv A_t / A_s \\propto E^4_\\mathrm{inf}\\).\n\nGWs leave a unique imprint in the CMB polarization: “B modes”."
   },
   {
     "objectID": "thesis/index.html#discovery",
@@ -110,6 +96,13 @@
     "title": "Thesis defence",
     "section": "Current constraints on \\(r\\)",
     "text": "Current constraints on \\(r\\)\n\nplot from Tristram 2022"
+  },
+  {
+    "objectID": "thesis/index.html#physics-of-the-cmb",
+    "href": "thesis/index.html#physics-of-the-cmb",
+    "title": "Thesis defence",
+    "section": "Physics of the CMB",
+    "text": "Physics of the CMB\n\nCMB is very uniform, but not perfectly\nPerturbations in primordial plasma -&gt; anisotropies in CMB\nPolarization generated by Thomson scattering\nE and B modes (use Planck 2018 figure)"
   },
   {
     "objectID": "thesis/index.html#a-stage-3-cmb-experiment",
