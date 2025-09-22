@@ -9,9 +9,7 @@ supervisors:
 format:
   clean-revealjs:
     slide-number: true
-    transition: slide
-    transition-speed: fast
-    background-transition: slide
+    transition: none
     template-partials:
       - title-slide.html
 date: 2025-09-26
@@ -24,41 +22,42 @@ logos:
   - "assets/logo_scipol_banniere.png"
 
 title-slide-attributes:
-  data-background-image: assets/landscape.png
+  data-background-image: assets/scipol_landscape_1.png
   data-background-size: cover
 ---
 
 ## Outline
 
 1. Introduction to cosmology and the CMB (?? min)
-2. Polarization maps from the ground (?? min)
-3. TBD
+2. Reconstruction of CMB maps (?? min)
+3. Polarisation maps from the ground (?? min)
+4. ...
 
 # Introduction {background-color=#40666e}
 
 # An expanding universe
 
+## {background-video="assets/universe_fly_through.mov"}
+
+::: {.notes}
+- Milky Way ~100,000 light years
+- Many other galaxies! ~10^11 in observable Universe
+- Distant galaxies are moving away
+:::
+
+::: footer
+Credit: ESO/L.Calçada/spaceengine.org
+:::
+
 ## Expansion
 
-- The Universe is **expanding**
-  - Universe was smaller in the past
-  - Hot Big Bang theory: hotter, denser, "smaller"
-
-<!--How do we know that?-->
-. . .
-
-- Where are we?
-  - Milky Way ~100,000 light years
-  - Many other galaxies! ~10^11 in observable Universe
-  - Distant galaxies are **moving away**
-
-<!--How do we know that?-->
-. . .
-
-- **Redshift**
-<!--Like Doppler effect of sound-->
-  - Fractional change in wavelength
-  - $z \equiv \frac{\lambda_0 - \lambda_1}{\lambda_1}$
+- The Universe is **expanding**!
+- Universe was smaller, hotter, denser in the past
+  - Hot Big Bang theory
+- Scale factor $a(t)$ = size of the Universe at time $t$ / today
+  - today: $a(t_0) = 1$
+  - past: $a(t) < 1$
+  - Big Bang: $a(t) \rightarrow 0$
 
 ## Hubble's law
 
@@ -66,11 +65,12 @@ title-slide-attributes:
 - The farther away, the faster a galaxy recedes from us
 - Expected if all galaxies move away from each other
 - i.e. If Universe expands in all directions
--
 :::
 
 ::: {.r-stack}
-![Velocity-distance relation ([_Hubble 1929_](https://www.pnas.org/doi/full/10.1073/pnas.15.3.168))](assets/hubble_diagram.jpeg){.nostretch fig-align="center" width="800px"}
+- **Redshift** $z \equiv (\lambda_0 - \lambda_1) / \lambda_1 \Rightarrow 1 + z = 1 / a$
+- Recession velocity proportional to distance [[Hubble 1929]](https://www.pnas.org/doi/full/10.1073/pnas.15.3.168)
+![](assets/hubble_diagram.png){.nostretch height="450px"}
 
 ![](assets/raisinbread.gif){.fragment}
 :::
@@ -90,13 +90,9 @@ title-slide-attributes:
 - Finite speed of light
   - use $z$ to talk about time
 
-. . .
-
 High redshift = far away in **space** and in **time**.
 
 We can **see** the history of the Universe!
-
-# Looking at the Big Bang
 
 ## {background-image="assets/Universe_History_2.png"}
 
@@ -110,6 +106,8 @@ We can **see** the history of the Universe!
 - Time passes: moving from core of the star to its diffuse edge
 - Eventually (380,000 years), the first atoms form
 - Photons can travel freely, like the light of the star shining out into space
+- Comment following epochs (dark ages, first stars, galaxies, dark energy taking over, ...)
+  - Scale very non-linear
 :::
 
 ::: footer
@@ -126,9 +124,17 @@ Credit: NASA (<https://science.nasa.gov/universe/overview/>).
 
 ![The blackbody spectrum of the CMB ([Fixsen 1996](https://iopscience.iop.org/article/10.1086/178173) adapted by D. Baumann)](assets/blackbody.svg)
 
-. . .
+## The Horizon Problem
 
-Same temperature in all directions. *How?*
+::: {.notes}
+- Same temperature in all directions. How?
+- Light from 2 opposite points "meets" for the first time right now when reaching us
+:::
+
+- Why is the CMB so homogeneous?
+- Points at same temperature must have been in contact
+
+![The horizon problem. Credits: D. Baumann](assets/horizon_problem.png)
 
 # Cosmic inflation
 
@@ -136,15 +142,6 @@ Same temperature in all directions. *How?*
 - CMB: triumph of Hot Big Bang theory?
 - Also a sign that cosmic history must be more complex → inflation
 :::
-
-## The Horizon Problem
-
-- Why is the CMB so homogeneous?
-- Points at same temperature must have been in contact
-
-<!--Light from 2 opposite points "meets" for the first time right now when reaching us-->
-
-![The horizon problem. Credits: D. Baumann](assets/horizon_problem.png)
 
 ## A solution: cosmic inflation
 
@@ -189,13 +186,14 @@ Inflation also predicts **gravitational waves**.
 
 - Scalar perturbations: $\Delta^2_s(k) = A_s (k/k_*)^{n_s - 1}$
 - Tensor perturbations: $\Delta^2_t(k) = A_t (k/k_*)^{n_t}$
-- Tensor-to-scalar ratio $r \equiv A_t / A_s \propto E^4_\mathrm{inf}$.
+- Tensor-to-scalar ratio:
+$$
+r \equiv A_t / A_s \propto E^4_\mathrm{inf}
+$$
 
-GWs leave a unique imprint in the CMB polarization: "**B modes**".
+GWs leave a unique imprint in the CMB.
 
-# The cosmic microwave background {background-color="#40666e"}
-
-# Observing the CMB
+# The cosmic microwave background
 
 ::: {.notes}
 - What does the CMB look like?
@@ -249,12 +247,14 @@ The CMB is not perfectly uniform!
 :::
 
 - How to characterise "noise"? Look at its **spectral properties**.
-- Spatial/angular frequency: "multipole moment" $\ell$ -- angular separation $\theta \sim 2\pi / \ell$
+- Spatial/angular frequency: multipole moment $\ell$ -- angular scale $\theta \sim 2\pi / \ell$
 - **Power spectrum** $C_\ell$ = variance of fluctuations at scale $\ell$
 
-![Two estimates of the WMAP nine-year power spectrum along with the best-fit model (Credit: NASA/WMAP Science Team)](assets/wmap_power_spectrum.png)
+![_Planck_ power spectrum of temperature fluctuations along with best-fit model (Credit: ESA and the Planck Collaboration)](assets/Planck_Power_Spectrum.jpg)
 
-## CMB polarisation
+# CMB polarisation
+
+## Basics of polarisation
 
 - Linear polarisation from Thomson scattering $\propto \lvert \hat\epsilon \cdot \hat\epsilon' \rvert^2$
 - 3 **Stokes parameters** entirely describe linear polarisation
@@ -277,66 +277,32 @@ The CMB is not perfectly uniform!
 ::::
 
 - $B$ modes are only sourced by tensor perturbations!
-- By measuring CMB polarizatoin, we have access to $r$ and inflation
+- By measuring CMB polarisation, we have access to $r$ and inflation
 
-# Challenges in measuring $r$
+## Challenges in observing CMB polarisation {background-image="assets/scipol_landscape_1.png"}
+## {background-image="assets/scipol_landscape_2.png"}
+## {background-image="assets/scipol_landscape_3.png"}
+## {background-image="assets/scipol_landscape_4.png"}
+## {background-image="assets/scipol_landscape_5.png"}
 
 ## Current constraints on $r$
 
-:::: {.columns4060}
+:::: {.columns3070}
 ::: {.column}
 ![Compilation of $r$ constraints ([Tristram et al., 2022](https://arxiv.org/abs/2112.07961))](assets/r_constraints.png)
 :::
 
 ::: {.column}
-![](assets/Power_Spectrum_figure_showing_foregrounds.jpg){.nostretch fig-align="center" width="500px"}
+![Expected $B$-mode power from Galactic foregrounds (dust, synchrotron). Credit: Josquin Errard, _Planck_ collaboration.](assets/Power_Spectrum_figure_showing_foregrounds.jpg){.nostretch fig-align="center" height="380px"}
+<!--TODO(plot): Actual measurements of BB spectrum instead?-->
 :::
 ::::
 
-## Galactic foregrounds
+Many challenges: faint signal, obscured by foregrounds, gravitational lensing, systematics, ...
 
-- Galactic dust and synchrotron radiation
-- Brighter than CMB polarization signal
-- Frequency dependence different from CMB
-- Need multi-frequency observations to separate components
-- Statistical and physical modeling challenges
+<!--TODO(speech): highlight scientific goals of modern CMB experiments-->
 
-## Lensing
-
-- Gravitational lensing distorts CMB anisotropies
-- Creates B-modes from E-modes
-- Lensing B-modes mask primordial signal
-- Need to "delense" maps
-- Requires precise small-scale measurements
-
-## Systematics
-
-- Instrumental effects can create false signals
-- Temperature to polarization leakage
-- Beam systematics
-- Calibration uncertainties
-- Ground pickup
-- Need careful characterization and control
-
-## Atmosphere
-
-- Water vapor emission/absorption
-- 1/f noise from atmospheric fluctuations
-- Scanning strategy limitations
-- Site selection critical
-- Atmospheric monitoring and modeling
-
-## Numerical challenges
-
-- Large data volumes
-- Complex time-ordered data processing
-- Component separation algorithms
-- Computationally intensive simulations
-- High performance computing requirements
-
-# The Simons Observatory
-
-## Current configuration {.smaller}
+## The Simons Observatory {.smaller}
 
 ::: {.columns6040}
 ::: {.column}
@@ -349,22 +315,128 @@ The CMB is not perfectly uniform!
 - LAT for small scales over large sky fraction
 - First light: early 2024
 
-![](assets/SAT_01-scaled.jpg){.nostretch fig-align="center" height="300px"}
+![SAT in its ground shield (credit: SO collaboration)](assets/SAT_01-scaled.jpg){.nostretch fig-align="center" height="250px"}
 :::
 
 ::: {.column}
-![](assets/so_site.png)
+![Simons Observatory site on Cerro Toco](assets/so_site.png)
 :::
 :::
 
-## Advanced SO
+# Reconstruction of CMB maps {background-color="#40666e"}
 
-TBW
+::: {.notes}
+- Transition with PhD subject
+- data analysis -> map-making (and explain why)
+:::
+
+## From time-ordered data to maps
+
+:::: {.columns3070}
+::: {.column}
+**map-making** = from time-ordered data (TOD) to sky maps at observed frequencies
+
+data reduction step: ~6 orders of magnitude
+:::
+
+::: {.column}
+![Traditional CMB analysis pipeline steps (credit: Josquin Errard)](assets/cmb_pipeline_mapmaking_box.jpeg)
+:::
+::::
+
+## Linear data model
+
+::: {.notes}
+- we measure series of very noisy samples
+- scanning experiment, not imaging
+- highlight what we want to recover/mitigate, what we assume
+:::
+
+$$
+d = P s + T x + n
+$$
+<!--TODO: figure to better illustrate?-->
+
+- $d$: time-ordered data (all detectors concatenated)
+- $s$: sky maps (usually IQU)
+- $P$: pointing matrix (response of the instrument to the sky)
+- $T$: template matrix (response to other signals, like systematics)
+- $x$: template amplitudes
+- $n$: noise with known statistics (covariance matrix $N$)
+
+"Map-making" = linear operation $\hat s = L d$ to estimate sky maps from the data.
+
+## Unbiased estimators
+
+Generic form of linear unbiased estimators [[Poletti et al. 2017]](http://www.aanda.org/10.1051/0004-6361/201629467)
+$$
+\hat s = (P^\top F_T^{-1} P)^{-1} P^\top F_T^{-1} d
+$$
+
+with the filtering and weighing operator
+$$
+F_T = W \left[\mathbb I - T (T^\top W T)^{-1} T^\top W \right]
+$$
+
+- filters out unwanted signals (columns of $T$)
+- weights orthogonal modes by weight matrix $W$
+
+Minimum variance if $W = N^{-1}$ (generalized least squares, GLS, maximum likelihood, ML).
+
+## Practical considerations {.smaller}
+
+- Size of the problem
+  - 10,000 detectors + months of data + sampling @100 Hz -> $n_t \sim 10^{12}$ samples!
+  - resolution + sky coverage + Stokes (I)QU -> $n_p \sim 10^5 - 10^8$ sky pixels
+  - $P$ is huge ($n_t \times n_s$) but sparse (few non-zeros per row)
+
+. . .
+
+- Noise correlations
+  - split data in independent chunks (e.g. constant evelation scans)
+  - assume noise is stationary in each chunk, $N(t,t')=N(\lvert t-t' \rvert)$
+  - characterise in Fourier space (power spectral density, PSD)
+
+. . .
+
+- Iterative solvers $A x = b \Leftrightarrow x = A^{-1} b$
+  - avoid storing large matrices explicitly
+  - conjugate gradient (CG) algorithm
 
 # Polarization maps from the ground {background-color="#40666e"}
 
 [*SB*, Errard and Stompor, 2025](https://arxiv.org/abs/xxxx.xxxxx) (submitted to PRD)
 
-# Mapmaking
+## Observing from the ground
 
-TBW
+Map-making is already difficult, but from the ground even more so.
+
+Major challenge: atmosphere.
+
+Hardware solutions: dual-polarisation detectors, fast modulation (HWP).
+
+Focus on unbiased reconstruction (no filtering) with minimal assumptions.
+
+Explain why other methods are not satisfactory: hard to control statistical precision of the maps, etc.
+
+## Unbiased polarisation map-making
+
+Minimal model vs. down-weighting.
+
+Show that minimal model = pair diff.
+
+## The `mappraiser` library
+
+![Overview of the software architecture. Credit: Hamza El Bouhargani ([paper](http://arxiv.org/abs/2112.03370)).](assets/midapack_architecture.png)
+
+## Conclusion {.smaller}
+
+- La fabrication de cartes (map-making) reste une étape clé de l’analyse des données (DA), mais elle n’a pas encore trouvé de solution satisfaisante pour les télescopes à petite ouverture observant depuis le sol — pourtant indispensables pour chasser les modes B primordiaux liés à l’inflation.
+- Les approches actuellement utilisées (« quick and dirty » : filtrage et binning) sont rapides et flexibles, mais elles compromettent la puissance statistique des données de manière difficile à contrôler et anticiper.
+- Les méthodes plus rigoureuses, non biaisées et de type maximum de vraisemblance (ML), ont été délaissées car jugées lourdes et chronophages, mais elles deviendront probablement incontournables dès que des détections marginales de r apparaîtront.
+en partant de ce constat, Simon propose plusieurs innovations en map-making :
+  - Décorréler la reconstruction des cartes Q/U de celle des cartes I/Q/U, malgré l’utilisation de détecteurs sensibles à l’intensité.
+  - Replacer le pair-differencing (initialement une méthode « rapide et sale ») dans un cadre ML bien défini, avec des hypothèses explicites.
+  - Montrer que cette approche est quasi-optimale, même en présence d’une variabilité du bruit entre détecteurs du plan focal — un résultat remarquable et non trivial.
+- Pour le gap filling, l’algorithme basé sur un nested PCG constitue la seule implémentation robuste existante. C’est la première fois qu’une telle solution est démontrée de manière numériquement “gérable”.
+- La combinaison du nouveau pair-differencing et du gap filling ouvre la voie à un map-making polarisé robuste statistiquement, efficace numériquement et réaliste pour les SATs au sol — avec des applications imminentes.
