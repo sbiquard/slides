@@ -128,7 +128,7 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" data-background-image="assets/landscape.png" data-background-size="cover" class="center">
+<section id="title-slide" data-background-image="assets/scipol_landscape_1.png" data-background-size="cover" class="center">
   <div class="logos-container">
       <img src="assets/apc.png" alt="Institution logo">
       <img src="assets/UParisCitelogo.jpg" alt="Institution logo">
@@ -145,8 +145,9 @@
 <h2>Outline</h2>
 <ol type="1">
 <li>Introduction to cosmology and the CMB (?? min)</li>
-<li>Polarization maps from the ground (?? min)</li>
-<li>TBD</li>
+<li>Reconstruction of CMB maps (?? min)</li>
+<li>Polarisation maps from the ground (?? min)</li>
+<li>…</li>
 </ol>
 </section>
 <section id="introduction" class="title-slide slide level1 center" data-background-color="#40666e">
@@ -159,36 +160,44 @@
 <h1>An expanding universe</h1>
 
 </section>
-<section id="expansion" class="slide level2">
-<h2>Expansion</h2>
-<ul>
-<li>The Universe is <strong>expanding</strong>
-<ul>
-<li>Universe was smaller in the past</li>
-<li>Hot Big Bang theory: hotter, denser, “smaller”</li>
-</ul></li>
-</ul>
-<!--How do we know that?-->
-<div class="fragment">
-<ul>
-<li>Where are we?
+<section id="section" class="slide level2" data-background-video="assets/universe_fly_through.mov">
+<h2></h2>
+<aside class="notes">
 <ul>
 <li>Milky Way ~100,000 light years</li>
 <li>Many other galaxies! ~10^11 in observable Universe</li>
-<li>Distant galaxies are <strong>moving away</strong></li>
+<li>Distant galaxies are moving away</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<div class="footer">
+<p>Credit: ESO/L.Calçada/spaceengine.org</p>
+</div>
+</section>
+<section id="expansion" class="slide level2">
+<h2>Expansion</h2>
+<ul>
+<li>The Universe is <strong>expanding</strong>!</li>
+<li>Universe was smaller, hotter, denser in the past
+<ul>
+<li>Hot Big Bang theory</li>
+</ul></li>
+<li>Scale factor <span class="math inline">\(a(t)\)</span> = size of the Universe at time <span class="math inline">\(t\)</span> / today
+<ul>
+<li>today: <span class="math inline">\(a(t_0) = 1\)</span></li>
+<li>past: <span class="math inline">\(a(t) &lt; 1\)</span></li>
+<li>Big Bang: <span class="math inline">\(a(t) \rightarrow 0\)</span></li>
 </ul></li>
 </ul>
-<!--How do we know that?-->
-</div>
-<div class="fragment">
-<ul>
-<li><strong>Redshift</strong> <!--Like Doppler effect of sound-->
-<ul>
-<li>Fractional change in wavelength</li>
-<li><span class="math inline">\(z \equiv \frac{\lambda_0 - \lambda_1}{\lambda_1}\)</span></li>
-</ul></li>
-</ul>
-</div>
 </section>
 <section id="hubbles-law" class="slide level2">
 <h2>Hubble’s law</h2>
@@ -197,7 +206,6 @@
 <li>The farther away, the faster a galaxy recedes from us</li>
 <li>Expected if all galaxies move away from each other</li>
 <li>i.e.&nbsp;If Universe expands in all directions</li>
-<li></li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -211,12 +219,10 @@
           display:block!important;
       }</style></aside>
 <div class="r-stack">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="assets/hubble_diagram.jpeg" class="nostretch" width="800"></p>
-<figcaption>Velocity-distance relation (<a href="https://www.pnas.org/doi/full/10.1073/pnas.15.3.168"><em>Hubble 1929</em></a>)</figcaption>
-</figure>
-</div>
+<ul>
+<li><strong>Redshift</strong> <span class="math inline">\(z \equiv (\lambda_0 - \lambda_1) / \lambda_1 \Rightarrow 1 + z = 1 / a\)</span></li>
+<li>Recession velocity proportional to distance <a href="https://www.pnas.org/doi/full/10.1073/pnas.15.3.168">[Hubble 1929]</a> <img data-src="assets/hubble_diagram.png" class="nostretch" height="450"></li>
+</ul>
 <p><img data-src="assets/raisinbread.gif" class="fragment"></p>
 </div>
 </section>
@@ -253,17 +259,10 @@
 <li>use <span class="math inline">\(z\)</span> to talk about time</li>
 </ul></li>
 </ul>
-<div class="fragment">
 <p>High redshift = far away in <strong>space</strong> and in <strong>time</strong>.</p>
 <p>We can <strong>see</strong> the history of the Universe!</p>
-</div>
-</section></section>
-<section>
-<section id="looking-at-the-big-bang" class="title-slide slide level1 center">
-<h1>Looking at the Big Bang</h1>
-
 </section>
-<section id="section" class="slide level2" data-background-image="assets/Universe_History_2.png">
+<section id="section-1" class="slide level2" data-background-image="assets/Universe_History_2.png">
 <h2></h2>
 <aside class="notes">
 <ul>
@@ -276,6 +275,10 @@
 <li>Time passes: moving from core of the star to its diffuse edge</li>
 <li>Eventually (380,000 years), the first atoms form</li>
 <li>Photons can travel freely, like the light of the star shining out into space</li>
+<li>Comment following epochs (dark ages, first stars, galaxies, dark energy taking over, …)
+<ul>
+<li>Scale very non-linear</li>
+</ul></li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -312,10 +315,31 @@
           display:block!important;
       }</style></aside>
 
-<img data-src="assets/blackbody.svg" class="r-stretch quarto-figure-center"><p class="caption">The blackbody spectrum of the CMB (<a href="https://iopscience.iop.org/article/10.1086/178173">Fixsen 1996</a> adapted by D. Baumann)</p><div class="fragment">
-<p>Same temperature in all directions. <em>How?</em></p>
-</div>
-</section></section>
+<img data-src="assets/blackbody.svg" class="r-stretch quarto-figure-center"><p class="caption">The blackbody spectrum of the CMB (<a href="https://iopscience.iop.org/article/10.1086/178173">Fixsen 1996</a> adapted by D. Baumann)</p></section>
+<section id="the-horizon-problem" class="slide level2">
+<h2>The Horizon Problem</h2>
+<aside class="notes">
+<ul>
+<li>Same temperature in all directions. How?</li>
+<li>Light from 2 opposite points “meets” for the first time right now when reaching us</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<ul>
+<li>Why is the CMB so homogeneous?</li>
+<li>Points at same temperature must have been in contact</li>
+</ul>
+
+<img data-src="assets/horizon_problem.png" class="r-stretch quarto-figure-center"><p class="caption">The horizon problem. Credits: D. Baumann</p></section></section>
 <section>
 <section id="cosmic-inflation" class="title-slide slide level1 center">
 <h1>Cosmic inflation</h1>
@@ -336,15 +360,6 @@
           display:block!important;
       }</style></aside>
 </section>
-<section id="the-horizon-problem" class="slide level2">
-<h2>The Horizon Problem</h2>
-<ul>
-<li>Why is the CMB so homogeneous?</li>
-<li>Points at same temperature must have been in contact</li>
-</ul>
-<!--Light from 2 opposite points "meets" for the first time right now when reaching us-->
-
-<img data-src="assets/horizon_problem.png" class="r-stretch quarto-figure-center"><p class="caption">The horizon problem. Credits: D. Baumann</p></section>
 <section id="a-solution-cosmic-inflation" class="slide level2">
 <h2>A solution: cosmic inflation</h2>
 <aside class="notes">
@@ -422,18 +437,15 @@
 <ul>
 <li>Scalar perturbations: <span class="math inline">\(\Delta^2_s(k) = A_s (k/k_*)^{n_s - 1}\)</span></li>
 <li>Tensor perturbations: <span class="math inline">\(\Delta^2_t(k) = A_t (k/k_*)^{n_t}\)</span></li>
-<li>Tensor-to-scalar ratio <span class="math inline">\(r \equiv A_t / A_s \propto E^4_\mathrm{inf}\)</span>.</li>
+<li>Tensor-to-scalar ratio: <span class="math display">\[
+r \equiv A_t / A_s \propto E^4_\mathrm{inf}
+\]</span></li>
 </ul>
-<p>GWs leave a unique imprint in the CMB polarization: “<strong>B modes</strong>”.</p>
+<p>GWs leave a unique imprint in the CMB.</p>
 </section></section>
-<section id="the-cosmic-microwave-background" class="title-slide slide level1 center" data-background-color="#40666e">
-<h1>The cosmic microwave background</h1>
-
-</section>
-
 <section>
-<section id="observing-the-cmb" class="title-slide slide level1 center">
-<h1>Observing the CMB</h1>
+<section id="the-cosmic-microwave-background" class="title-slide slide level1 center">
+<h1>The cosmic microwave background</h1>
 <aside class="notes">
 <ul>
 <li>What does the CMB look like?</li>
@@ -531,13 +543,18 @@
       }</style></aside>
 <ul>
 <li>How to characterise “noise”? Look at its <strong>spectral properties</strong>.</li>
-<li>Spatial/angular frequency: “multipole moment” <span class="math inline">\(\ell\)</span> – angular separation <span class="math inline">\(\theta \sim 2\pi / \ell\)</span></li>
+<li>Spatial/angular frequency: multipole moment <span class="math inline">\(\ell\)</span> – angular scale <span class="math inline">\(\theta \sim 2\pi / \ell\)</span></li>
 <li><strong>Power spectrum</strong> <span class="math inline">\(C_\ell\)</span> = variance of fluctuations at scale <span class="math inline">\(\ell\)</span></li>
 </ul>
 
-<img data-src="assets/wmap_power_spectrum.png" class="r-stretch quarto-figure-center"><p class="caption">Two estimates of the WMAP nine-year power spectrum along with the best-fit model (Credit: NASA/WMAP Science Team)</p></section>
-<section id="cmb-polarisation" class="slide level2">
-<h2>CMB polarisation</h2>
+<img data-src="assets/Planck_Power_Spectrum.jpg" class="r-stretch quarto-figure-center"><p class="caption"><em>Planck</em> power spectrum of temperature fluctuations along with best-fit model (Credit: ESA and the Planck Collaboration)</p></section></section>
+<section>
+<section id="cmb-polarisation" class="title-slide slide level1 center">
+<h1>CMB polarisation</h1>
+
+</section>
+<section id="basics-of-polarisation" class="slide level2">
+<h2>Basics of polarisation</h2>
 <ul>
 <li>Linear polarisation from Thomson scattering <span class="math inline">\(\propto \lvert \hat\epsilon \cdot \hat\epsilon' \rvert^2\)</span></li>
 <li>3 <strong>Stokes parameters</strong> entirely describe linear polarisation
@@ -564,17 +581,27 @@
 </div></div>
 <ul>
 <li><span class="math inline">\(B\)</span> modes are only sourced by tensor perturbations!</li>
-<li>By measuring CMB polarizatoin, we have access to <span class="math inline">\(r\)</span> and inflation</li>
+<li>By measuring CMB polarisation, we have access to <span class="math inline">\(r\)</span> and inflation</li>
 </ul>
-</section></section>
-<section>
-<section id="challenges-in-measuring-r" class="title-slide slide level1 center">
-<h1>Challenges in measuring <span class="math inline">\(r\)</span></h1>
-
+</section>
+<section id="challenges-in-observing-cmb-polarisation" class="slide level2" data-background-image="assets/scipol_landscape_1.png">
+<h2>Challenges in observing CMB polarisation</h2>
+</section>
+<section id="section-2" class="slide level2" data-background-image="assets/scipol_landscape_2.png">
+<h2></h2>
+</section>
+<section id="section-3" class="slide level2" data-background-image="assets/scipol_landscape_3.png">
+<h2></h2>
+</section>
+<section id="section-4" class="slide level2" data-background-image="assets/scipol_landscape_4.png">
+<h2></h2>
+</section>
+<section id="section-5" class="slide level2" data-background-image="assets/scipol_landscape_5.png">
+<h2></h2>
 </section>
 <section id="current-constraints-on-r" class="slide level2">
 <h2>Current constraints on <span class="math inline">\(r\)</span></h2>
-<div class="columns4060">
+<div class="columns3070">
 <div class="column">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -583,71 +610,13 @@
 </figure>
 </div>
 </div><div class="column">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="assets/Power_Spectrum_figure_showing_foregrounds.jpg" class="nostretch quarto-figure quarto-figure-center" width="500"></p>
-</figure>
-</div>
+<p><img data-src="assets/Power_Spectrum_figure_showing_foregrounds.jpg" class="nostretch quarto-figure quarto-figure-center" height="380" alt="Expected B-mode power from Galactic foregrounds (dust, synchrotron). Credit: Josquin Errard, Planck collaboration."> <!--TODO(plot): Actual measurements of BB spectrum instead?--></p>
 </div></div>
+<p>Many challenges: faint signal, obscured by foregrounds, gravitational lensing, systematics, …</p>
+<!--TODO(speech): highlight scientific goals of modern CMB experiments-->
 </section>
-<section id="galactic-foregrounds" class="slide level2">
-<h2>Galactic foregrounds</h2>
-<ul>
-<li>Galactic dust and synchrotron radiation</li>
-<li>Brighter than CMB polarization signal</li>
-<li>Frequency dependence different from CMB</li>
-<li>Need multi-frequency observations to separate components</li>
-<li>Statistical and physical modeling challenges</li>
-</ul>
-</section>
-<section id="lensing" class="slide level2">
-<h2>Lensing</h2>
-<ul>
-<li>Gravitational lensing distorts CMB anisotropies</li>
-<li>Creates B-modes from E-modes</li>
-<li>Lensing B-modes mask primordial signal</li>
-<li>Need to “delense” maps</li>
-<li>Requires precise small-scale measurements</li>
-</ul>
-</section>
-<section id="systematics" class="slide level2">
-<h2>Systematics</h2>
-<ul>
-<li>Instrumental effects can create false signals</li>
-<li>Temperature to polarization leakage</li>
-<li>Beam systematics</li>
-<li>Calibration uncertainties</li>
-<li>Ground pickup</li>
-<li>Need careful characterization and control</li>
-</ul>
-</section>
-<section id="atmosphere" class="slide level2">
-<h2>Atmosphere</h2>
-<ul>
-<li>Water vapor emission/absorption</li>
-<li>1/f noise from atmospheric fluctuations</li>
-<li>Scanning strategy limitations</li>
-<li>Site selection critical</li>
-<li>Atmospheric monitoring and modeling</li>
-</ul>
-</section>
-<section id="numerical-challenges" class="slide level2">
-<h2>Numerical challenges</h2>
-<ul>
-<li>Large data volumes</li>
-<li>Complex time-ordered data processing</li>
-<li>Component separation algorithms</li>
-<li>Computationally intensive simulations</li>
-<li>High performance computing requirements</li>
-</ul>
-</section></section>
-<section>
-<section id="the-simons-observatory" class="title-slide slide level1 center">
-<h1>The Simons Observatory</h1>
-
-</section>
-<section id="current-configuration" class="slide level2 smaller">
-<h2>Current configuration</h2>
+<section id="the-simons-observatory" class="slide level2 smaller">
+<h2>The Simons Observatory</h2>
 <div class="columns6040">
 <div class="column">
 <ul>
@@ -664,28 +633,169 @@
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="assets/SAT_01-scaled.jpg" class="nostretch quarto-figure quarto-figure-center" height="300"></p>
+<p><img data-src="assets/SAT_01-scaled.jpg" class="nostretch" height="250"></p>
+<figcaption>SAT in its ground shield (credit: SO collaboration)</figcaption>
 </figure>
 </div>
 </div><div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure>
 <p><img data-src="assets/so_site.png"></p>
+<figcaption>Simons Observatory site on Cerro Toco</figcaption>
+</figure>
+</div>
+</div></div>
+</section></section>
+<section>
+<section id="reconstruction-of-cmb-maps" class="title-slide slide level1 center" data-background-color="#40666e">
+<h1>Reconstruction of CMB maps</h1>
+<aside class="notes">
+<ul>
+<li>Transition with PhD subject</li>
+<li>data analysis -&gt; map-making (and explain why)</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="from-time-ordered-data-to-maps" class="slide level2">
+<h2>From time-ordered data to maps</h2>
+<div class="columns3070">
+<div class="column">
+<p><strong>map-making</strong> = from time-ordered data (TOD) to sky maps at observed frequencies</p>
+<p>data reduction step: ~6 orders of magnitude</p>
+</div><div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="assets/cmb_pipeline_mapmaking_box.jpeg"></p>
+<figcaption>Traditional CMB analysis pipeline steps (credit: Josquin Errard)</figcaption>
+</figure>
+</div>
 </div></div>
 </section>
-<section id="advanced-so" class="slide level2">
-<h2>Advanced SO</h2>
-<p>TBW</p>
+<section id="linear-data-model" class="slide level2">
+<h2>Linear data model</h2>
+<aside class="notes">
+<ul>
+<li>we measure series of very noisy samples</li>
+<li>scanning experiment, not imaging</li>
+<li>highlight what we want to recover/mitigate, what we assume</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<p><span class="math display">\[
+d = P s + T x + n
+\]</span> <!--TODO: figure to better illustrate?--></p>
+<ul>
+<li><span class="math inline">\(d\)</span>: time-ordered data (all detectors concatenated)</li>
+<li><span class="math inline">\(s\)</span>: sky maps (usually IQU)</li>
+<li><span class="math inline">\(P\)</span>: pointing matrix (response of the instrument to the sky)</li>
+<li><span class="math inline">\(T\)</span>: template matrix (response to other signals, like systematics)</li>
+<li><span class="math inline">\(x\)</span>: template amplitudes</li>
+<li><span class="math inline">\(n\)</span>: noise with known statistics (covariance matrix <span class="math inline">\(N\)</span>)</li>
+</ul>
+<p>“Map-making” = linear operation <span class="math inline">\(\hat s = L d\)</span> to estimate sky maps from the data.</p>
+</section>
+<section id="unbiased-estimators" class="slide level2">
+<h2>Unbiased estimators</h2>
+<p>Generic form of linear unbiased estimators <a href="http://www.aanda.org/10.1051/0004-6361/201629467">[Poletti et al.&nbsp;2017]</a> <span class="math display">\[
+\hat s = (P^\top F_T^{-1} P)^{-1} P^\top F_T^{-1} d
+\]</span></p>
+<p>with the filtering and weighing operator <span class="math display">\[
+F_T = W \left[\mathbb I - T (T^\top W T)^{-1} T^\top W \right]
+\]</span></p>
+<ul>
+<li>filters out unwanted signals (columns of <span class="math inline">\(T\)</span>)</li>
+<li>weights orthogonal modes by weight matrix <span class="math inline">\(W\)</span></li>
+</ul>
+<p>Minimum variance if <span class="math inline">\(W = N^{-1}\)</span> (generalized least squares, GLS, maximum likelihood, ML).</p>
+</section>
+<section id="practical-considerations" class="slide level2 smaller">
+<h2>Practical considerations</h2>
+<ul>
+<li>Size of the problem
+<ul>
+<li>10,000 detectors + months of data + sampling <span class="citation" data-cites="100">@100</span> Hz -&gt; <span class="math inline">\(n_t \sim 10^{12}\)</span> samples!</li>
+<li>resolution + sky coverage + Stokes (I)QU -&gt; <span class="math inline">\(n_p \sim 10^5 - 10^8\)</span> sky pixels</li>
+<li><span class="math inline">\(P\)</span> is huge (<span class="math inline">\(n_t \times n_s\)</span>) but sparse (few non-zeros per row)</li>
+</ul></li>
+</ul>
+<div class="fragment">
+<ul>
+<li>Noise correlations
+<ul>
+<li>split data in independent chunks (e.g.&nbsp;constant evelation scans)</li>
+<li>assume noise is stationary in each chunk, <span class="math inline">\(N(t,t')=N(\lvert t-t' \rvert)\)</span></li>
+<li>characterise in Fourier space (power spectral density, PSD)</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>Iterative solvers <span class="math inline">\(A x = b \Leftrightarrow x = A^{-1} b\)</span>
+<ul>
+<li>avoid storing large matrices explicitly</li>
+<li>conjugate gradient (CG) algorithm</li>
+</ul></li>
+</ul>
+</div>
 </section></section>
+<section>
 <section id="polarization-maps-from-the-ground" class="title-slide slide level1 center" data-background-color="#40666e">
 <h1>Polarization maps from the ground</h1>
 <p><a href="https://arxiv.org/abs/xxxx.xxxxx"><em>SB</em>, Errard and Stompor, 2025</a> (submitted to PRD)</p>
 </section>
-
-<section id="mapmaking" class="title-slide slide level1 center">
-<h1>Mapmaking</h1>
-<p>TBW</p>
-
-
+<section id="observing-from-the-ground" class="slide level2">
+<h2>Observing from the ground</h2>
+<p>Map-making is already difficult, but from the ground even more so.</p>
+<p>Major challenge: atmosphere.</p>
+<p>Hardware solutions: dual-polarisation detectors, fast modulation (HWP).</p>
+<p>Focus on unbiased reconstruction (no filtering) with minimal assumptions.</p>
+<p>Explain why other methods are not satisfactory: hard to control statistical precision of the maps, etc.</p>
 </section>
+<section id="unbiased-polarisation-map-making" class="slide level2">
+<h2>Unbiased polarisation map-making</h2>
+<p>Minimal model vs.&nbsp;down-weighting.</p>
+<p>Show that minimal model = pair diff.</p>
+</section>
+<section id="the-mappraiser-library" class="slide level2">
+<h2>The <code>mappraiser</code> library</h2>
+
+<img data-src="assets/midapack_architecture.png" class="r-stretch quarto-figure-center"><p class="caption">Overview of the software architecture. Credit: Hamza El Bouhargani (<a href="http://arxiv.org/abs/2112.03370">paper</a>).</p></section>
+<section id="conclusion" class="slide level2 smaller">
+<h2>Conclusion</h2>
+<ul>
+<li>La fabrication de cartes (map-making) reste une étape clé de l’analyse des données (DA), mais elle n’a pas encore trouvé de solution satisfaisante pour les télescopes à petite ouverture observant depuis le sol — pourtant indispensables pour chasser les modes B primordiaux liés à l’inflation.</li>
+<li>Les approches actuellement utilisées (« quick and dirty » : filtrage et binning) sont rapides et flexibles, mais elles compromettent la puissance statistique des données de manière difficile à contrôler et anticiper.</li>
+<li>Les méthodes plus rigoureuses, non biaisées et de type maximum de vraisemblance (ML), ont été délaissées car jugées lourdes et chronophages, mais elles deviendront probablement incontournables dès que des détections marginales de r apparaîtront. en partant de ce constat, Simon propose plusieurs innovations en map-making :
+<ul>
+<li>Décorréler la reconstruction des cartes Q/U de celle des cartes I/Q/U, malgré l’utilisation de détecteurs sensibles à l’intensité.</li>
+<li>Replacer le pair-differencing (initialement une méthode « rapide et sale ») dans un cadre ML bien défini, avec des hypothèses explicites.</li>
+<li>Montrer que cette approche est quasi-optimale, même en présence d’une variabilité du bruit entre détecteurs du plan focal — un résultat remarquable et non trivial.</li>
+</ul></li>
+<li>Pour le gap filling, l’algorithme basé sur un nested PCG constitue la seule implémentation robuste existante. C’est la première fois qu’une telle solution est démontrée de manière numériquement “gérable”.</li>
+<li>La combinaison du nouveau pair-differencing et du gap filling ouvre la voie à un map-making polarisé robuste statistiquement, efficace numériquement et réaliste pour les SATs au sol — avec des applications imminentes.</li>
+</ul>
+
+
+</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
@@ -847,14 +957,14 @@
         previewLinks: false,
 
         // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'slide',
+        transition: 'none',
 
         // Transition speed (default/fast/slow)
-        transitionSpeed: 'fast',
+        transitionSpeed: 'default',
 
         // Transition style for full page slide backgrounds
         // (none/fade/slide/convex/concave/zoom)
-        backgroundTransition: 'slide',
+        backgroundTransition: 'none',
 
         // Number of slides away from the current that are visible
         viewDistance: 3,

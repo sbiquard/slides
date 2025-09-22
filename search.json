@@ -4,49 +4,56 @@
     "href": "thesis/index.html#outline",
     "title": "Thesis defence",
     "section": "Outline",
-    "text": "Outline\n\nIntroduction to cosmology and the CMB (?? min)\nPolarization maps from the ground (?? min)\nTBD"
-  },
-  {
-    "objectID": "thesis/index.html#expansion",
-    "href": "thesis/index.html#expansion",
-    "title": "Thesis defence",
-    "section": "Expansion",
-    "text": "Expansion\n\nThe Universe is expanding\n\nUniverse was smaller in the past\nHot Big Bang theory: hotter, denser, “smaller”\n\n\n\n\n\nWhere are we?\n\nMilky Way ~100,000 light years\nMany other galaxies! ~10^11 in observable Universe\nDistant galaxies are moving away\n\n\n\n\n\n\nRedshift \n\nFractional change in wavelength\n\\(z \\equiv \\frac{\\lambda_0 - \\lambda_1}{\\lambda_1}\\)"
-  },
-  {
-    "objectID": "thesis/index.html#hubbles-law",
-    "href": "thesis/index.html#hubbles-law",
-    "title": "Thesis defence",
-    "section": "Hubble’s law",
-    "text": "Hubble’s law\n\n\nThe farther away, the faster a galaxy recedes from us\nExpected if all galaxies move away from each other\ni.e. If Universe expands in all directions\n\n\n\n\n\n\n\nVelocity-distance relation (Hubble 1929)"
-  },
-  {
-    "objectID": "thesis/index.html#redshift-distance-time",
-    "href": "thesis/index.html#redshift-distance-time",
-    "title": "Thesis defence",
-    "section": "Redshift, distance, time",
-    "text": "Redshift, distance, time\n\n\nIn cosmology, we can see the history of the Universe\n\nMoon ~1.3s away/ago\nNearby stars ~ 10-100 years\nOther galaxies -&gt; millions/billions of years\n\nCan we look so far into the past that we see the Big Bang?\n\n\n\nDistance-redshift relation\n\nuse \\(z\\) to talk about cosmic distances\n\nFinite speed of light\n\nuse \\(z\\) to talk about time\n\n\n\nHigh redshift = far away in space and in time.\nWe can see the history of the Universe!"
+    "text": "Outline\n\nIntroduction to cosmology and the CMB (?? min)\nReconstruction of CMB maps (?? min)\nPolarisation maps from the ground (?? min)\n…"
   },
   {
     "objectID": "thesis/index.html#section",
     "href": "thesis/index.html#section",
     "title": "Thesis defence",
     "section": "",
-    "text": "Hot Big Bang: all matter and radiation compressed to an unimaginable degree → denser & hotter\nIn this state, ordinary matter (atoms) cannot exist\nIt is a hot plasma\n“Inside-out star”\nBBN: nuclear reactions everywhere, nuclei forming\nPhotons bouncing off protons & electrons, cannot travel very far\nTime passes: moving from core of the star to its diffuse edge\nEventually (380,000 years), the first atoms form\nPhotons can travel freely, like the light of the star shining out into space\n\n\n\nCredit: NASA (https://science.nasa.gov/universe/overview/)."
+    "text": "Milky Way ~100,000 light years\nMany other galaxies! ~10^11 in observable Universe\nDistant galaxies are moving away\n\n\n\nCredit: ESO/L.Calçada/spaceengine.org"
+  },
+  {
+    "objectID": "thesis/index.html#expansion",
+    "href": "thesis/index.html#expansion",
+    "title": "Thesis defence",
+    "section": "Expansion",
+    "text": "Expansion\n\nThe Universe is expanding!\nUniverse was smaller, hotter, denser in the past\n\nHot Big Bang theory\n\nScale factor \\(a(t)\\) = size of the Universe at time \\(t\\) / today\n\ntoday: \\(a(t_0) = 1\\)\npast: \\(a(t) &lt; 1\\)\nBig Bang: \\(a(t) \\rightarrow 0\\)"
+  },
+  {
+    "objectID": "thesis/index.html#hubbles-law",
+    "href": "thesis/index.html#hubbles-law",
+    "title": "Thesis defence",
+    "section": "Hubble’s law",
+    "text": "Hubble’s law\n\n\nThe farther away, the faster a galaxy recedes from us\nExpected if all galaxies move away from each other\ni.e. If Universe expands in all directions\n\n\n\n\nRedshift \\(z \\equiv (\\lambda_0 - \\lambda_1) / \\lambda_1 \\Rightarrow 1 + z = 1 / a\\)\nRecession velocity proportional to distance [Hubble 1929]"
+  },
+  {
+    "objectID": "thesis/index.html#redshift-distance-time",
+    "href": "thesis/index.html#redshift-distance-time",
+    "title": "Thesis defence",
+    "section": "Redshift, distance, time",
+    "text": "Redshift, distance, time\n\n\nIn cosmology, we can see the history of the Universe\n\nMoon ~1.3s away/ago\nNearby stars ~ 10-100 years\nOther galaxies -&gt; millions/billions of years\n\nCan we look so far into the past that we see the Big Bang?\n\n\n\nDistance-redshift relation\n\nuse \\(z\\) to talk about cosmic distances\n\nFinite speed of light\n\nuse \\(z\\) to talk about time\n\n\nHigh redshift = far away in space and in time.\nWe can see the history of the Universe!"
+  },
+  {
+    "objectID": "thesis/index.html#section-1",
+    "href": "thesis/index.html#section-1",
+    "title": "Thesis defence",
+    "section": "",
+    "text": "Hot Big Bang: all matter and radiation compressed to an unimaginable degree → denser & hotter\nIn this state, ordinary matter (atoms) cannot exist\nIt is a hot plasma\n“Inside-out star”\nBBN: nuclear reactions everywhere, nuclei forming\nPhotons bouncing off protons & electrons, cannot travel very far\nTime passes: moving from core of the star to its diffuse edge\nEventually (380,000 years), the first atoms form\nPhotons can travel freely, like the light of the star shining out into space\nComment following epochs (dark ages, first stars, galaxies, dark energy taking over, …)\n\nScale very non-linear\n\n\n\n\nCredit: NASA (https://science.nasa.gov/universe/overview/)."
   },
   {
     "objectID": "thesis/index.html#a-witness-of-the-homogeneous-early-universe",
     "href": "thesis/index.html#a-witness-of-the-homogeneous-early-universe",
     "title": "Thesis defence",
     "section": "A witness of the homogeneous early universe",
-    "text": "A witness of the homogeneous early universe\n\n\nVisible spectrum (3000K) at the time\nToday microwave (2.7K) because of the expansion\nBlackbody spectrum: confirms Big Bang theory!\n\n\n\nThe blackbody spectrum of the CMB (Fixsen 1996 adapted by D. Baumann)\nSame temperature in all directions. How?"
+    "text": "A witness of the homogeneous early universe\n\n\nVisible spectrum (3000K) at the time\nToday microwave (2.7K) because of the expansion\nBlackbody spectrum: confirms Big Bang theory!\n\n\n\nThe blackbody spectrum of the CMB (Fixsen 1996 adapted by D. Baumann)"
   },
   {
     "objectID": "thesis/index.html#the-horizon-problem",
     "href": "thesis/index.html#the-horizon-problem",
     "title": "Thesis defence",
     "section": "The Horizon Problem",
-    "text": "The Horizon Problem\n\nWhy is the CMB so homogeneous?\nPoints at same temperature must have been in contact\n\n\n\nThe horizon problem. Credits: D. Baumann"
+    "text": "The Horizon Problem\n\n\nSame temperature in all directions. How?\nLight from 2 opposite points “meets” for the first time right now when reaching us\n\n\n\nWhy is the CMB so homogeneous?\nPoints at same temperature must have been in contact\n\n\nThe horizon problem. Credits: D. Baumann"
   },
   {
     "objectID": "thesis/index.html#a-solution-cosmic-inflation",
@@ -67,7 +74,7 @@
     "href": "thesis/index.html#primordial-gravitational-waves",
     "title": "Thesis defence",
     "section": "Primordial gravitational waves",
-    "text": "Primordial gravitational waves\n\n\nGWs are a very clean prediction of inflation models\nmeasuring r gives the energy scale of inflation\nwindow into physics at ultra-high energies\n\n\nInflation also predicts gravitational waves.\n\nScalar perturbations: \\(\\Delta^2_s(k) = A_s (k/k_*)^{n_s - 1}\\)\nTensor perturbations: \\(\\Delta^2_t(k) = A_t (k/k_*)^{n_t}\\)\nTensor-to-scalar ratio \\(r \\equiv A_t / A_s \\propto E^4_\\mathrm{inf}\\).\n\nGWs leave a unique imprint in the CMB polarization: “B modes”."
+    "text": "Primordial gravitational waves\n\n\nGWs are a very clean prediction of inflation models\nmeasuring r gives the energy scale of inflation\nwindow into physics at ultra-high energies\n\n\nInflation also predicts gravitational waves.\n\nScalar perturbations: \\(\\Delta^2_s(k) = A_s (k/k_*)^{n_s - 1}\\)\nTensor perturbations: \\(\\Delta^2_t(k) = A_t (k/k_*)^{n_t}\\)\nTensor-to-scalar ratio: \\[\nr \\equiv A_t / A_s \\propto E^4_\\mathrm{inf}\n\\]\n\nGWs leave a unique imprint in the CMB."
   },
   {
     "objectID": "thesis/index.html#discovery",
@@ -95,77 +102,98 @@
     "href": "thesis/index.html#angular-power-spectrum",
     "title": "Thesis defence",
     "section": "Angular power spectrum",
-    "text": "Angular power spectrum\n\n\nCMB anisotropies are noise (acoustic oscillations)\nSpectral properties -&gt; white, red, blue? any features?\nTemporal frequency for sound -&gt; angular (spatial frequency) for CMB maps\nFormally: spherical harmonic decomposition of the fluctuations\n\n\n\nHow to characterise “noise”? Look at its spectral properties.\nSpatial/angular frequency: “multipole moment” \\(\\ell\\) – angular separation \\(\\theta \\sim 2\\pi / \\ell\\)\nPower spectrum \\(C_\\ell\\) = variance of fluctuations at scale \\(\\ell\\)\n\n\nTwo estimates of the WMAP nine-year power spectrum along with the best-fit model (Credit: NASA/WMAP Science Team)"
+    "text": "Angular power spectrum\n\n\nCMB anisotropies are noise (acoustic oscillations)\nSpectral properties -&gt; white, red, blue? any features?\nTemporal frequency for sound -&gt; angular (spatial frequency) for CMB maps\nFormally: spherical harmonic decomposition of the fluctuations\n\n\n\nHow to characterise “noise”? Look at its spectral properties.\nSpatial/angular frequency: multipole moment \\(\\ell\\) – angular scale \\(\\theta \\sim 2\\pi / \\ell\\)\nPower spectrum \\(C_\\ell\\) = variance of fluctuations at scale \\(\\ell\\)\n\n\nPlanck power spectrum of temperature fluctuations along with best-fit model (Credit: ESA and the Planck Collaboration)"
   },
   {
-    "objectID": "thesis/index.html#cmb-polarisation",
-    "href": "thesis/index.html#cmb-polarisation",
+    "objectID": "thesis/index.html#basics-of-polarisation",
+    "href": "thesis/index.html#basics-of-polarisation",
     "title": "Thesis defence",
-    "section": "CMB polarisation",
-    "text": "CMB polarisation\n\nLinear polarisation from Thomson scattering \\(\\propto \\lvert \\hat\\epsilon \\cdot \\hat\\epsilon' \\rvert^2\\)\n3 Stokes parameters entirely describe linear polarisation\n\n\\(I\\) = total intensity (temperature)\n\\(Q\\) = difference in brightness between horizontal and vertical\n\\(U\\) = difference in brightness between polarisations at +45° and -45°\n\n\n\nCredit: Emma Alexander (source)"
+    "section": "Basics of polarisation",
+    "text": "Basics of polarisation\n\nLinear polarisation from Thomson scattering \\(\\propto \\lvert \\hat\\epsilon \\cdot \\hat\\epsilon' \\rvert^2\\)\n3 Stokes parameters entirely describe linear polarisation\n\n\\(I\\) = total intensity (temperature)\n\\(Q\\) = difference in brightness between horizontal and vertical\n\\(U\\) = difference in brightness between polarisations at +45° and -45°\n\n\n\nCredit: Emma Alexander (source)"
   },
   {
     "objectID": "thesis/index.html#e-and-b-modes",
     "href": "thesis/index.html#e-and-b-modes",
     "title": "Thesis defence",
     "section": "\\(E\\) and \\(B\\) modes",
-    "text": "\\(E\\) and \\(B\\) modes\n\n\n\n\n\nCMB polarization superimposed on temperature map (smoothed to 5°) (Planck 2018 results I)\n\n\n\n\n\n\n\\(B\\) modes are only sourced by tensor perturbations!\nBy measuring CMB polarizatoin, we have access to \\(r\\) and inflation"
+    "text": "\\(E\\) and \\(B\\) modes\n\n\n\n\n\nCMB polarization superimposed on temperature map (smoothed to 5°) (Planck 2018 results I)\n\n\n\n\n\n\n\\(B\\) modes are only sourced by tensor perturbations!\nBy measuring CMB polarisation, we have access to \\(r\\) and inflation"
+  },
+  {
+    "objectID": "thesis/index.html#challenges-in-observing-cmb-polarisation",
+    "href": "thesis/index.html#challenges-in-observing-cmb-polarisation",
+    "title": "Thesis defence",
+    "section": "Challenges in observing CMB polarisation",
+    "text": "Challenges in observing CMB polarisation"
   },
   {
     "objectID": "thesis/index.html#current-constraints-on-r",
     "href": "thesis/index.html#current-constraints-on-r",
     "title": "Thesis defence",
     "section": "Current constraints on \\(r\\)",
-    "text": "Current constraints on \\(r\\)\n\n\n\n\n\nCompilation of \\(r\\) constraints (Tristram et al., 2022)"
+    "text": "Current constraints on \\(r\\)\n\n\n\n\n\nCompilation of \\(r\\) constraints (Tristram et al., 2022)\n\n\n\n \n\nMany challenges: faint signal, obscured by foregrounds, gravitational lensing, systematics, …"
   },
   {
-    "objectID": "thesis/index.html#galactic-foregrounds",
-    "href": "thesis/index.html#galactic-foregrounds",
+    "objectID": "thesis/index.html#the-simons-observatory",
+    "href": "thesis/index.html#the-simons-observatory",
     "title": "Thesis defence",
-    "section": "Galactic foregrounds",
-    "text": "Galactic foregrounds\n\nGalactic dust and synchrotron radiation\nBrighter than CMB polarization signal\nFrequency dependence different from CMB\nNeed multi-frequency observations to separate components\nStatistical and physical modeling challenges"
+    "section": "The Simons Observatory",
+    "text": "The Simons Observatory\n\n\n\nCerro Toco, Chile, 5200m altitude (“high and dry”)\n3 small (SATs) + 1 large aperture telescopes (LAT)\n60,000+ detectors\n6 frequency bands, 27-280 GHz\nSATs for polarization at large scales\n\nGoal: \\(\\sigma(r) = 0.002\\)\n\nLAT for small scales over large sky fraction\nFirst light: early 2024\n\n\n\n\nSAT in its ground shield (credit: SO collaboration)\n\n\n\n\n\n\nSimons Observatory site on Cerro Toco"
   },
   {
-    "objectID": "thesis/index.html#lensing",
-    "href": "thesis/index.html#lensing",
+    "objectID": "thesis/index.html#from-time-ordered-data-to-maps",
+    "href": "thesis/index.html#from-time-ordered-data-to-maps",
     "title": "Thesis defence",
-    "section": "Lensing",
-    "text": "Lensing\n\nGravitational lensing distorts CMB anisotropies\nCreates B-modes from E-modes\nLensing B-modes mask primordial signal\nNeed to “delense” maps\nRequires precise small-scale measurements"
+    "section": "From time-ordered data to maps",
+    "text": "From time-ordered data to maps\n\n\nmap-making = from time-ordered data (TOD) to sky maps at observed frequencies\ndata reduction step: ~6 orders of magnitude\n\n\n\n\nTraditional CMB analysis pipeline steps (credit: Josquin Errard)"
   },
   {
-    "objectID": "thesis/index.html#systematics",
-    "href": "thesis/index.html#systematics",
+    "objectID": "thesis/index.html#linear-data-model",
+    "href": "thesis/index.html#linear-data-model",
     "title": "Thesis defence",
-    "section": "Systematics",
-    "text": "Systematics\n\nInstrumental effects can create false signals\nTemperature to polarization leakage\nBeam systematics\nCalibration uncertainties\nGround pickup\nNeed careful characterization and control"
+    "section": "Linear data model",
+    "text": "Linear data model\n\n\nwe measure series of very noisy samples\nscanning experiment, not imaging\nhighlight what we want to recover/mitigate, what we assume\n\n\n\\[\nd = P s + T x + n\n\\] \n\n\\(d\\): time-ordered data (all detectors concatenated)\n\\(s\\): sky maps (usually IQU)\n\\(P\\): pointing matrix (response of the instrument to the sky)\n\\(T\\): template matrix (response to other signals, like systematics)\n\\(x\\): template amplitudes\n\\(n\\): noise with known statistics (covariance matrix \\(N\\))\n\n“Map-making” = linear operation \\(\\hat s = L d\\) to estimate sky maps from the data."
   },
   {
-    "objectID": "thesis/index.html#atmosphere",
-    "href": "thesis/index.html#atmosphere",
+    "objectID": "thesis/index.html#unbiased-estimators",
+    "href": "thesis/index.html#unbiased-estimators",
     "title": "Thesis defence",
-    "section": "Atmosphere",
-    "text": "Atmosphere\n\nWater vapor emission/absorption\n1/f noise from atmospheric fluctuations\nScanning strategy limitations\nSite selection critical\nAtmospheric monitoring and modeling"
+    "section": "Unbiased estimators",
+    "text": "Unbiased estimators\nGeneric form of linear unbiased estimators [Poletti et al. 2017] \\[\n\\hat s = (P^\\top F_T^{-1} P)^{-1} P^\\top F_T^{-1} d\n\\]\nwith the filtering and weighing operator \\[\nF_T = W \\left[\\mathbb I - T (T^\\top W T)^{-1} T^\\top W \\right]\n\\]\n\nfilters out unwanted signals (columns of \\(T\\))\nweights orthogonal modes by weight matrix \\(W\\)\n\nMinimum variance if \\(W = N^{-1}\\) (generalized least squares, GLS, maximum likelihood, ML)."
   },
   {
-    "objectID": "thesis/index.html#numerical-challenges",
-    "href": "thesis/index.html#numerical-challenges",
+    "objectID": "thesis/index.html#practical-considerations",
+    "href": "thesis/index.html#practical-considerations",
     "title": "Thesis defence",
-    "section": "Numerical challenges",
-    "text": "Numerical challenges\n\nLarge data volumes\nComplex time-ordered data processing\nComponent separation algorithms\nComputationally intensive simulations\nHigh performance computing requirements"
+    "section": "Practical considerations",
+    "text": "Practical considerations\n\nSize of the problem\n\n10,000 detectors + months of data + sampling @100 Hz -&gt; \\(n_t \\sim 10^{12}\\) samples!\nresolution + sky coverage + Stokes (I)QU -&gt; \\(n_p \\sim 10^5 - 10^8\\) sky pixels\n\\(P\\) is huge (\\(n_t \\times n_s\\)) but sparse (few non-zeros per row)\n\n\n\n\nNoise correlations\n\nsplit data in independent chunks (e.g. constant evelation scans)\nassume noise is stationary in each chunk, \\(N(t,t')=N(\\lvert t-t' \\rvert)\\)\ncharacterise in Fourier space (power spectral density, PSD)\n\n\n\n\n\nIterative solvers \\(A x = b \\Leftrightarrow x = A^{-1} b\\)\n\navoid storing large matrices explicitly\nconjugate gradient (CG) algorithm"
   },
   {
-    "objectID": "thesis/index.html#current-configuration",
-    "href": "thesis/index.html#current-configuration",
+    "objectID": "thesis/index.html#observing-from-the-ground",
+    "href": "thesis/index.html#observing-from-the-ground",
     "title": "Thesis defence",
-    "section": "Current configuration",
-    "text": "Current configuration\n\n\n\nCerro Toco, Chile, 5200m altitude (“high and dry”)\n3 small (SATs) + 1 large aperture telescopes (LAT)\n60,000+ detectors\n6 frequency bands, 27-280 GHz\nSATs for polarization at large scales\n\nGoal: \\(\\sigma(r) = 0.002\\)\n\nLAT for small scales over large sky fraction\nFirst light: early 2024"
+    "section": "Observing from the ground",
+    "text": "Observing from the ground\nMap-making is already difficult, but from the ground even more so.\nMajor challenge: atmosphere.\nHardware solutions: dual-polarisation detectors, fast modulation (HWP).\nFocus on unbiased reconstruction (no filtering) with minimal assumptions.\nExplain why other methods are not satisfactory: hard to control statistical precision of the maps, etc."
   },
   {
-    "objectID": "thesis/index.html#advanced-so",
-    "href": "thesis/index.html#advanced-so",
+    "objectID": "thesis/index.html#unbiased-polarisation-map-making",
+    "href": "thesis/index.html#unbiased-polarisation-map-making",
     "title": "Thesis defence",
-    "section": "Advanced SO",
-    "text": "Advanced SO\nTBW"
+    "section": "Unbiased polarisation map-making",
+    "text": "Unbiased polarisation map-making\nMinimal model vs. down-weighting.\nShow that minimal model = pair diff."
+  },
+  {
+    "objectID": "thesis/index.html#the-mappraiser-library",
+    "href": "thesis/index.html#the-mappraiser-library",
+    "title": "Thesis defence",
+    "section": "The mappraiser library",
+    "text": "The mappraiser library\n\nOverview of the software architecture. Credit: Hamza El Bouhargani (paper)."
+  },
+  {
+    "objectID": "thesis/index.html#conclusion",
+    "href": "thesis/index.html#conclusion",
+    "title": "Thesis defence",
+    "section": "Conclusion",
+    "text": "Conclusion\n\nLa fabrication de cartes (map-making) reste une étape clé de l’analyse des données (DA), mais elle n’a pas encore trouvé de solution satisfaisante pour les télescopes à petite ouverture observant depuis le sol — pourtant indispensables pour chasser les modes B primordiaux liés à l’inflation.\nLes approches actuellement utilisées (« quick and dirty » : filtrage et binning) sont rapides et flexibles, mais elles compromettent la puissance statistique des données de manière difficile à contrôler et anticiper.\nLes méthodes plus rigoureuses, non biaisées et de type maximum de vraisemblance (ML), ont été délaissées car jugées lourdes et chronophages, mais elles deviendront probablement incontournables dès que des détections marginales de r apparaîtront. en partant de ce constat, Simon propose plusieurs innovations en map-making :\n\nDécorréler la reconstruction des cartes Q/U de celle des cartes I/Q/U, malgré l’utilisation de détecteurs sensibles à l’intensité.\nReplacer le pair-differencing (initialement une méthode « rapide et sale ») dans un cadre ML bien défini, avec des hypothèses explicites.\nMontrer que cette approche est quasi-optimale, même en présence d’une variabilité du bruit entre détecteurs du plan focal — un résultat remarquable et non trivial.\n\nPour le gap filling, l’algorithme basé sur un nested PCG constitue la seule implémentation robuste existante. C’est la première fois qu’une telle solution est démontrée de manière numériquement “gérable”.\nLa combinaison du nouveau pair-differencing et du gap filling ouvre la voie à un map-making polarisé robuste statistiquement, efficace numériquement et réaliste pour les SATs au sol — avec des applications imminentes."
   },
   {
     "objectID": "2024-cmb-france-6/index.html#outline",
