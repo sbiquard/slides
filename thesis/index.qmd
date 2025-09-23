@@ -37,77 +37,109 @@ title-slide-attributes:
 
 # An expanding universe
 
+::: {.notes}
+We live in an expanding universe.
+Since the first moments of the Big Bang, the cosmos has been stretching out in every direction.
+If the Universe is expanding now, is must have been smaller in the past, and everything in it compressed into a smaller space.
+That is the essence of the Big Bang theory: the idea that the Universe was hotter, denser, and 'smaller' in the past.
+But what does that mean for us living inside it? And how do we know that it's expanding?
+:::
+
 ## {background-video="assets/universe_fly_through.mov"}
 
 ::: {.notes}
-- Milky Way ~100,000 light years
-- Many other galaxies! ~10^11 in observable Universe
-- Distant galaxies are moving away
+Let's start here, on Earth.
+Our planet is part of the Solar System, and orbits the Sun.
+The Sun is one of approximately 400 billion stars in our Galaxy, the Milky Way.
+Our Galaxy is a disk, so large that it takes light about 100,000 years to travel from one end to the other.
+As vast as the Milky Way is, it is only one of something like a trillion galaxies in our observable Universe.
+Before astronomical telescopes, only a few nearby galaxies could be seen from Earth.
+But as soon as we could make detailed observations of other galaxies, astronomers noticed something strange:
+Distant galaxies are moving away from us.
+But if we can barely see these things, how do we know they are moving away?
+This has to do with redshifting.
 :::
 
 ::: footer
 Credit: ESO/L.Calçada/spaceengine.org
 :::
 
-## Expansion
+## Redshifting
 
-- The Universe is **expanding**!
-- Universe was smaller, hotter, denser in the past
-  - Hot Big Bang theory
-- Scale factor $a(t)$ = size of the Universe at time $t$ / today
-  - today: $a(t_0) = 1$
-  - past: $a(t) < 1$
-  - Big Bang: $a(t) \rightarrow 0$
+- Doppler effect for sound
+  - pitch of a siren drops as it moves away
+- Same for light:
+  - wavelength is stretched as source moves away
+  <!--- longest visible wavelength = red-->
+  - **redshift** $z \equiv (\lambda_0 - \lambda_1) / \lambda_1$
+  - fractional change in wavelength between emission and reception
+
+![](assets/visible-light-spectrum.png)
 
 ## Hubble's law
 
 ::: {.notes}
-- The farther away, the faster a galaxy recedes from us
-- Expected if all galaxies move away from each other
-- i.e. If Universe expands in all directions
+- The faster a star or galaxy is receding, the more its light is redshfited
+- In the 1920s, astronomers measured the redshifts of several distant galaxies
+- They found that the farther away the galaxy, the faster it recedes from us
+- Center of some repulsion field?
+- In fact, expected if *all* galaxies are moving away from each other
+- This is what happens if Universe is expanding the same way in every direction
 :::
 
 ::: {.r-stack}
-- **Redshift** $z \equiv (\lambda_0 - \lambda_1) / \lambda_1 \Rightarrow 1 + z = 1 / a$
-- Recession velocity proportional to distance [[Hubble 1929]](https://www.pnas.org/doi/full/10.1073/pnas.15.3.168)
+Recession velocity proportional to distance e.g. [[Hubble 1929]](https://www.pnas.org/doi/full/10.1073/pnas.15.3.168)
 ![](assets/hubble_diagram.png){.nostretch height="450px"}
-
-![](assets/raisinbread.gif){.fragment}
+<!--
+![](assets/raisinbread.gif){.fragment}-->
 :::
 
-## Redshift, distance, time
+## Expansion
 
 ::: {.notes}
-- In cosmology, we can see the history of the Universe
-  - Moon ~1.3s away/ago
-  - Nearby stars ~ 10-100 years
-  - Other galaxies -> millions/billions of years
-- Can we look so far into the past that we see the Big Bang?
+Here is how that kind of uniform expansion works (black board).
+Say you have a spring and stretch it out.
+The two closest spirals went from being 1 cm apart to 10 cm apart, but the ends have gone from 5 cm to 50 in the same amount of time!
+They started further apart, so they moved apart faster.
+
+Because of the relation between how distant a galaxy is and how fast it is receding from us, we use redshift to talk about distances.
+But because light takes time to travel to us from distant galaxies, we also use redshift as a way to talk about time.
+A galaxy with a high redshift is not only far away from us in space, it's also far away in time: its light has taken billions of years to reach us.
+Cosmology gives us this opportunity to see the history of our Universe directly.
+We see stars as they were tens or hundreds of years ago, and other galaxies as they were millions or billions of years ago.
+Can we look so far away and into the past that we see the Big Bang itself?
 :::
 
+- The Universe is **expanding** in every direction!
 - Distance-redshift relation
-  - use $z$ to talk about cosmic distances
+  - use redshift to talk about *distances*
 - Finite speed of light
-  - use $z$ to talk about time
+  - use redshift to talk about *time*
 
 High redshift = far away in **space** and in **time**.
-
-We can **see** the history of the Universe!
 
 ## {background-image="assets/Universe_History_2.png"}
 
 ::: {.notes}
-- Hot Big Bang: all matter and radiation compressed to an unimaginable degree → denser & hotter
-- In this state, ordinary matter (atoms) cannot exist
-- It is a hot plasma
-- "Inside-out star"
-- BBN: nuclear reactions everywhere, nuclei forming
-- Photons bouncing off protons & electrons, cannot travel very far
-- Time passes: moving from core of the star to its diffuse edge
-- Eventually (380,000 years), the first atoms form
-- Photons can travel freely, like the light of the star shining out into space
-- Comment following epochs (dark ages, first stars, galaxies, dark energy taking over, ...)
-  - Scale very non-linear
+The basic idea of the Big Bang theory is simple: if the Universe is expanding now, it must have been smaller in the past.
+If we reverse this expansion, we find that everything we see today, matter and radiation, must have been compressed to an unimaginable degree.
+At some point in the past, the Universe was so dense that it couldn't contain the kind of matter we see today: everything was an ultradense, hot plasma.
+You can think of the early Universe as an inside-out star.
+The core of the star is so hot that nuclear reactions are happening everywhere in the plasma, forming the first atomic nuclei in a process called nucleosynthesis.
+Photons are constantly bouncing off protons and electrons, and cannot travel very far.
+But the Universe keeps expanding; as time passes, it's like we're moving from the core of the star to its diffuse edge.
+Eventually, after about 380,000 years, the plasma has become cool enough for the first atoms to form, in a process called recombination.
+Now, the photons are able to travel freely, like the light of the star shining out into space.
+This afterglow is called the cosmic microwave background and comes to us from everywhere in the sky.
+It's not emitted by stars and galaxies, it really comes from the primordial plasma, showing us the Universe as it was 13.8 billion years ago.
+From our perspective, these photons seem to come from a spherical region that we call the surface of last-scattering.
+This is the most distant surface of light that we can see, since beyond that the Universe is opaque.
+After recombination, apart from the CMB, the Universe remained dark for a while (200 million years) because there were no stars yet.
+The cosmos was a sea of hydrogen and helium atoms, but matter was not distributed uniformly.
+Through gravity, denser regions attracted more matter, and became hotter -- hot enough to eventually trigger nuclear fusion and form the first stars.
+Through more gravitational instability, more structures of the Universe formed, like the galaxies and clusters of galaxies that we see today, while the Universe kept expanding.
+A few billion years ago, the expansion of the Universe started to accelerate, driven by a mysterious component that we call dark energy.
+It's likely the Universe will continue to expand forever.
 :::
 
 ::: footer
@@ -117,9 +149,14 @@ Credit: NASA (<https://science.nasa.gov/universe/overview/>).
 ## A witness of the homogeneous early universe
 
 ::: {.notes}
-- Visible spectrum (3000K) at the time
-- Today microwave (2.7K) because of the expansion
-- Blackbody spectrum: confirms Big Bang theory!
+Let's come back to the CMB.
+There is another clue why the light really is from the primordial plasma.
+It has to do with its spectrum, which is the intensity of light at different wavelengths.
+In the 1990s, the COBE satellite found that the CMB has a nearly perfect blackbody spectrum, which is what you expect from anything that glows with heat.
+The fact that the CMB has this spectrum is a strong confirmation of the Big Bang theory.
+The peak of the spectrum is determined by the temperature.
+The temperature of the CMB when it was emitted was about 3000 K, but because of the expansion the light has been redshifted and it is now only 2.7K, in the microwave range, hence the name.
+This temperature is remarkably uniform across the sky.
 :::
 
 ![The blackbody spectrum of the CMB ([Fixsen 1996](https://iopscience.iop.org/article/10.1086/178173) adapted by D. Baumann)](assets/blackbody.svg)
@@ -127,8 +164,10 @@ Credit: NASA (<https://science.nasa.gov/universe/overview/>).
 ## The Horizon Problem
 
 ::: {.notes}
-- Same temperature in all directions. How?
-- Light from 2 opposite points "meets" for the first time right now when reaching us
+When you think about it, the fact that the CMB is the same temperature in all directions is paradoxical.
+The light from 2 opposite points on the LSS "meets" for the first time right now when reaching us.
+For them to be the same temperature, they must have been in causal contact in the past.
+This is called the horizon problem.
 :::
 
 - Why is the CMB so homogeneous?
@@ -139,8 +178,8 @@ Credit: NASA (<https://science.nasa.gov/universe/overview/>).
 # Cosmic inflation
 
 ::: {.notes}
-- CMB: triumph of Hot Big Bang theory?
-- Also a sign that cosmic history must be more complex → inflation
+The CMB is in some way a triumph of the Hot Big Bang theory.
+But it is also a sign that cosmic history must be more complex.
 :::
 
 ## A solution: cosmic inflation
