@@ -166,7 +166,7 @@ This temperature is remarkably uniform across the sky.
 ::: {.notes}
 When you think about it, the fact that the CMB is the same temperature in all directions is paradoxical.
 The light from 2 opposite points on the LSS "meets" for the first time right now when reaching us.
-For them to be the same temperature, they must have been in causal contact in the past.
+For them to be the same temperature, they must have been in causal contact in the past, but there simply hasn't been enough time for that.
 This is called the horizon problem.
 :::
 
@@ -441,6 +441,7 @@ Minimum variance if $W = N^{-1}$ (generalized least squares, GLS, maximum likeli
 - Iterative solvers $A x = b \Leftrightarrow x = A^{-1} b$
   - avoid storing large matrices explicitly
   - conjugate gradient (CG) algorithm
+  - convergence speed influenced by noise correlations
 
 # Polarization maps from the ground {background-color="#40666e"}
 
@@ -448,28 +449,138 @@ Minimum variance if $W = N^{-1}$ (generalized least squares, GLS, maximum likeli
 
 ## Observing from the ground
 
+::: {.notes}
 Map-making is already difficult, but from the ground even more so.
+Two major challenges: atmospheric emission and ground pickup.
+Atmosphere does not follow a simple linear model because fluctuations are a turbulent process.
+:::
 
-Major challenge: atmosphere.
+:::: {.columns}
+::: {.column}
+- Major challenge: atmosphere
+  - much brighter than CMB
+  - spatial + temporal variations
+  - negligible linear polarisation
+- Hardware solutions
+  - dual-polarisation detectors
+  - fast polarisation modulation (HWP)
+:::
 
-Hardware solutions: dual-polarisation detectors, fast modulation (HWP).
-
-Focus on unbiased reconstruction (no filtering) with minimal assumptions.
-
-Explain why other methods are not satisfactory: hard to control statistical precision of the maps, etc.
+::: {.column}
+![](assets/atmosphere-emission.svg){.nostretch fig-align="center" height="500px"}
+:::
+::::
 
 ## Unbiased polarisation map-making
 
-Minimal model vs. down-weighting.
+::: {.notes}
+- total intensity very hard to recover from the ground because of atmosphere
+- focus on polarisation instead as temperature large scales are well measured from space (Planck)
+:::
 
-Show that minimal model = pair diff.
+Focus on **unbiased reconstruction** (no filtering) of polarisation ($Q$ and $U$).
 
-## The `mappraiser` library
+- **Minimal model**
+  - no specific temporal or spatial structure
+  - unpolarised atmosphere identical for orthogonal detectors
+- **Down-weighting** (DW)
+  - $W = N_\mathrm{atm}^{-1} + N_\mathrm{instr}^{-1}$
+  - stationary noise, independent between detectors
+- **Ideal reconstruction**
+  - atmosphere-free data: $d = P s + n$ (instr noise only)
+  - GLS solution with $W = N_\mathrm{instr}^{-1}$
+  - statistical benchmark
 
-![Overview of the software architecture. Credit: Hamza El Bouhargani ([paper](http://arxiv.org/abs/2112.03370)).](assets/midapack_architecture.png)
+## Pair differencing
 
-## Conclusion {.smaller}
+::: {.notes}
+Pair diff (PD) is a widely used technique to extract polarisation information.
+Half of the data is discarded, so it must be suboptimal?
+No: we can derive it as an ML estimator under the single assumption that total intensity signals are identical for detectors in a pair.
+Therefore PD is as optimal as possible given the assumption.
+:::
 
+Minimal model for pair of orthogonal detectors:
+$$
+d = \begin{bmatrix} d_\parallel \\ d_\perp \end{bmatrix}
+    = \begin{bmatrix} T \\ T \end{bmatrix} x
+    + \begin{bmatrix} P_{QU} \\ -P_{QU} \end{bmatrix} s_{QU}
+    + \begin{bmatrix} n_\parallel \\ n_\perp \end{bmatrix}
+$$
+
+GLS template filtering estimator gives
+$$
+\hat s_{QU} = (P_{QU}^\top N_-^{-1} P_{QU})^{-1} P_{QU}^\top N_-^{-1} d_-
+$$
+with $d_- \equiv d_\parallel - d_\perp$ and $N_-$ the covariance of $n_- \equiv n_\parallel - n_\perp$.
+
+Minimal model equivalent to **pair-differencing** (PD).
+
+## Questions
+
+- Is down-weighting better than PD because it uses all the data?
+  - different models, different assumptions
+  - **implicit** differencing in DW ($W_\parallel = W_\perp$)
+  - DW could surpass PD with better noise/atmosphere model
+
+. . .
+
+- How far is PD from the ideal reconstruction?
+
+. . .
+
+- What is the impact of systematic effects?
+
+## Numerical simulations {.smaller}
+
+- SO-like small aperture telescope
+  - 350 pairs of detectors
+  - HWP (optional)
+- Realistic atmosphere simulation using [TOAST 3](https://github.com/hpc4cmb/toast/tree/toast3) framework
+- Instrumental $1/f$ noise: $S(f) = \mathrm{NET}^2 [1 + (f_\mathrm{knee}/f)^\alpha]$
+<!--TODO: Figure showing 1/f noise ?-->
+- Map-making code: [MAPPRAISER](https://github.com/b3dcmb/midapack) library
+
+![Overview of the `mappraiser` architecture. Credit: Hamza El Bouhargani ([paper](http://arxiv.org/abs/2112.03370)).](assets/midapack_architecture.png)
+
+## Results: PD map sensitivity {.smaller}
+
+:::: {.columns4060}
+::: {.column}
+White instrumental noise.
+
+- Ideal if only $N_\parallel = N_\perp$ (same noise properties)
+- How much degradation if $N_\parallel \neq N_\perp$?
+- Vary NET value from detector to detector
+- Excess variance depends on
+$$
+\varepsilon \equiv \frac{\sigma_\parallel^2 - \sigma_\perp^2}{\sigma_\parallel^2 + \sigma_\perp^2}
+$$
+:::
+
+::: {.column}
+![Relative excess of variance in PD with respect to ideal maps.](assets/var_increase_hwp.svg)
+:::
+::::
+
+## Results: PD constraints on $r$
+
+Realistic instrumental noise with detector-dependent parameters.
+
+Compute noise power spectrum $N_\ell^{BB}$ from PD maps and Fisher forecast of $\sigma(r=0)$.
+
+Measure increase of error bars with respect to ideal forecast.
+
+| Dispersion [%] | Increase [%]      |
+|:--------------:|:------------------|
+| $0.1$          | $0.001 \pm 0.001$ |
+| $1.0$          | $0.017 \pm 0.008$ |
+| $10$           | $0.889 \pm 0.152$ |
+| $20$           | $3.977 \pm 0.526$ |
+
+## Conclusion
+
+<!--
 - La fabrication de cartes (map-making) reste une étape clé de l’analyse des données (DA), mais elle n’a pas encore trouvé de solution satisfaisante pour les télescopes à petite ouverture observant depuis le sol — pourtant indispensables pour chasser les modes B primordiaux liés à l’inflation.
 - Les approches actuellement utilisées (« quick and dirty » : filtrage et binning) sont rapides et flexibles, mais elles compromettent la puissance statistique des données de manière difficile à contrôler et anticiper.
 - Les méthodes plus rigoureuses, non biaisées et de type maximum de vraisemblance (ML), ont été délaissées car jugées lourdes et chronophages, mais elles deviendront probablement incontournables dès que des détections marginales de r apparaîtront.
@@ -479,3 +590,4 @@ en partant de ce constat, Simon propose plusieurs innovations en map-making :
   - Montrer que cette approche est quasi-optimale, même en présence d’une variabilité du bruit entre détecteurs du plan focal — un résultat remarquable et non trivial.
 - Pour le gap filling, l’algorithme basé sur un nested PCG constitue la seule implémentation robuste existante. C’est la première fois qu’une telle solution est démontrée de manière numériquement “gérable”.
 - La combinaison du nouveau pair-differencing et du gap filling ouvre la voie à un map-making polarisé robuste statistiquement, efficace numériquement et réaliste pour les SATs au sol — avec des applications imminentes.
+-->
