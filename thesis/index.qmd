@@ -444,7 +444,7 @@ Minimum variance if $W = N^{-1}$ (generalized least squares, GLS, maximum likeli
 
 # Polarization maps from the ground {background-color="#40666e"}
 
-[*SB*, Errard and Stompor, 2025](https://arxiv.org/abs/xxxx.xxxxx) (submitted to PRD)
+[*SB*, Errard and Stompor, 2025](https://arxiv.org/abs/2509.16302) (submitted to PRD)
 
 ## Observing from the ground
 
