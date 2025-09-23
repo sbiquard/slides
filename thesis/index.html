@@ -302,7 +302,7 @@
 <section id="the-horizon-problem" class="slide level2">
 <h2>The Horizon Problem</h2>
 <aside class="notes">
-<p>When you think about it, the fact that the CMB is the same temperature in all directions is paradoxical. The light from 2 opposite points on the LSS “meets” for the first time right now when reaching us. For them to be the same temperature, they must have been in causal contact in the past. This is called the horizon problem.</p>
+<p>When you think about it, the fact that the CMB is the same temperature in all directions is paradoxical. The light from 2 opposite points on the LSS “meets” for the first time right now when reaching us. For them to be the same temperature, they must have been in causal contact in the past, but there simply hasn’t been enough time for that. This is called the horizon problem.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -730,6 +730,7 @@ F_T = W \left[\mathbb I - T (T^\top W T)^{-1} T^\top W \right]
 <ul>
 <li>avoid storing large matrices explicitly</li>
 <li>conjugate gradient (CG) algorithm</li>
+<li>convergence speed influenced by noise correlations</li>
 </ul></li>
 </ul>
 </div>
@@ -741,35 +742,208 @@ F_T = W \left[\mathbb I - T (T^\top W T)^{-1} T^\top W \right]
 </section>
 <section id="observing-from-the-ground" class="slide level2">
 <h2>Observing from the ground</h2>
-<p>Map-making is already difficult, but from the ground even more so.</p>
-<p>Major challenge: atmosphere.</p>
-<p>Hardware solutions: dual-polarisation detectors, fast modulation (HWP).</p>
-<p>Focus on unbiased reconstruction (no filtering) with minimal assumptions.</p>
-<p>Explain why other methods are not satisfactory: hard to control statistical precision of the maps, etc.</p>
+<aside class="notes">
+<p>Map-making is already difficult, but from the ground even more so. Two major challenges: atmospheric emission and ground pickup. Atmosphere does not follow a simple linear model because fluctuations are a turbulent process.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<div class="columns">
+<div class="column">
+<ul>
+<li>Major challenge: atmosphere
+<ul>
+<li>much brighter than CMB</li>
+<li>spatial + temporal variations</li>
+<li>negligible linear polarisation</li>
+</ul></li>
+<li>Hardware solutions
+<ul>
+<li>dual-polarisation detectors</li>
+<li>fast polarisation modulation (HWP)</li>
+</ul></li>
+</ul>
+</div><div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="assets/atmosphere-emission.svg" class="quarto-figure quarto-figure-center" height="500"></p>
+</figure>
+</div>
+</div></div>
 </section>
 <section id="unbiased-polarisation-map-making" class="slide level2">
 <h2>Unbiased polarisation map-making</h2>
-<p>Minimal model vs.&nbsp;down-weighting.</p>
-<p>Show that minimal model = pair diff.</p>
-</section>
-<section id="the-mappraiser-library" class="slide level2">
-<h2>The <code>mappraiser</code> library</h2>
-
-<img data-src="assets/midapack_architecture.png" class="r-stretch quarto-figure-center"><p class="caption">Overview of the software architecture. Credit: Hamza El Bouhargani (<a href="http://arxiv.org/abs/2112.03370">paper</a>).</p></section>
-<section id="conclusion" class="slide level2 smaller">
-<h2>Conclusion</h2>
+<aside class="notes">
 <ul>
-<li>La fabrication de cartes (map-making) reste une étape clé de l’analyse des données (DA), mais elle n’a pas encore trouvé de solution satisfaisante pour les télescopes à petite ouverture observant depuis le sol — pourtant indispensables pour chasser les modes B primordiaux liés à l’inflation.</li>
-<li>Les approches actuellement utilisées (« quick and dirty » : filtrage et binning) sont rapides et flexibles, mais elles compromettent la puissance statistique des données de manière difficile à contrôler et anticiper.</li>
-<li>Les méthodes plus rigoureuses, non biaisées et de type maximum de vraisemblance (ML), ont été délaissées car jugées lourdes et chronophages, mais elles deviendront probablement incontournables dès que des détections marginales de r apparaîtront. en partant de ce constat, Simon propose plusieurs innovations en map-making :
-<ul>
-<li>Décorréler la reconstruction des cartes Q/U de celle des cartes I/Q/U, malgré l’utilisation de détecteurs sensibles à l’intensité.</li>
-<li>Replacer le pair-differencing (initialement une méthode « rapide et sale ») dans un cadre ML bien défini, avec des hypothèses explicites.</li>
-<li>Montrer que cette approche est quasi-optimale, même en présence d’une variabilité du bruit entre détecteurs du plan focal — un résultat remarquable et non trivial.</li>
-</ul></li>
-<li>Pour le gap filling, l’algorithme basé sur un nested PCG constitue la seule implémentation robuste existante. C’est la première fois qu’une telle solution est démontrée de manière numériquement “gérable”.</li>
-<li>La combinaison du nouveau pair-differencing et du gap filling ouvre la voie à un map-making polarisé robuste statistiquement, efficace numériquement et réaliste pour les SATs au sol — avec des applications imminentes.</li>
+<li>total intensity very hard to recover from the ground because of atmosphere</li>
+<li>focus on polarisation instead as temperature large scales are well measured from space (Planck)</li>
 </ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<p>Focus on <strong>unbiased reconstruction</strong> (no filtering) of polarisation (<span class="math inline">\(Q\)</span> and <span class="math inline">\(U\)</span>).</p>
+<ul>
+<li><strong>Minimal model</strong>
+<ul>
+<li>no specific temporal or spatial structure</li>
+<li>unpolarised atmosphere identical for orthogonal detectors</li>
+</ul></li>
+<li><strong>Down-weighting</strong> (DW)
+<ul>
+<li><span class="math inline">\(W = N_\mathrm{atm}^{-1} + N_\mathrm{instr}^{-1}\)</span></li>
+<li>stationary noise, independent between detectors</li>
+</ul></li>
+<li><strong>Ideal reconstruction</strong>
+<ul>
+<li>atmosphere-free data: <span class="math inline">\(d = P s + n\)</span> (instr noise only)</li>
+<li>GLS solution with <span class="math inline">\(W = N_\mathrm{instr}^{-1}\)</span></li>
+<li>statistical benchmark</li>
+</ul></li>
+</ul>
+</section>
+<section id="pair-differencing" class="slide level2">
+<h2>Pair differencing</h2>
+<aside class="notes">
+<p>Pair diff (PD) is a widely used technique to extract polarisation information. Half of the data is discarded, so it must be suboptimal? No: we can derive it as an ML estimator under the single assumption that total intensity signals are identical for detectors in a pair. Therefore PD is as optimal as possible given the assumption.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<p>Minimal model for pair of orthogonal detectors: <span class="math display">\[
+d = \begin{bmatrix} d_\parallel \\ d_\perp \end{bmatrix}
+    = \begin{bmatrix} T \\ T \end{bmatrix} x
+    + \begin{bmatrix} P_{QU} \\ -P_{QU} \end{bmatrix} s_{QU}
+    + \begin{bmatrix} n_\parallel \\ n_\perp \end{bmatrix}
+\]</span></p>
+<p>GLS template filtering estimator gives <span class="math display">\[
+\hat s_{QU} = (P_{QU}^\top N_-^{-1} P_{QU})^{-1} P_{QU}^\top N_-^{-1} d_-
+\]</span> with <span class="math inline">\(d_- \equiv d_\parallel - d_\perp\)</span> and <span class="math inline">\(N_-\)</span> the covariance of <span class="math inline">\(n_- \equiv n_\parallel - n_\perp\)</span>.</p>
+<p>Minimal model equivalent to <strong>pair-differencing</strong> (PD).</p>
+</section>
+<section id="questions" class="slide level2">
+<h2>Questions</h2>
+<ul>
+<li>Is down-weighting better than PD because it uses all the data?
+<ul>
+<li>different models, different assumptions</li>
+<li><strong>implicit</strong> differencing in DW (<span class="math inline">\(W_\parallel = W_\perp\)</span>)</li>
+<li>DW could surpass PD with better noise/atmosphere model</li>
+</ul></li>
+</ul>
+<div class="fragment">
+<ul>
+<li>How far is PD from the ideal reconstruction?</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>What is the impact of systematic effects?</li>
+</ul>
+</div>
+</section>
+<section id="numerical-simulations" class="slide level2 smaller">
+<h2>Numerical simulations</h2>
+<ul>
+<li>SO-like small aperture telescope
+<ul>
+<li>350 pairs of detectors</li>
+<li>HWP (optional)</li>
+</ul></li>
+<li>Realistic atmosphere simulation using <a href="https://github.com/hpc4cmb/toast/tree/toast3">TOAST 3</a> framework</li>
+<li>Instrumental <span class="math inline">\(1/f\)</span> noise: <span class="math inline">\(S(f) = \mathrm{NET}^2 [1 + (f_\mathrm{knee}/f)^\alpha]\)</span> <!--TODO: Figure showing 1/f noise ?--></li>
+<li>Map-making code: <a href="https://github.com/b3dcmb/midapack">MAPPRAISER</a> library</li>
+</ul>
+
+<img data-src="assets/midapack_architecture.png" class="r-stretch quarto-figure-center"><p class="caption">Overview of the <code>mappraiser</code> architecture. Credit: Hamza El Bouhargani (<a href="http://arxiv.org/abs/2112.03370">paper</a>).</p></section>
+<section id="results-pd-map-sensitivity" class="slide level2 smaller">
+<h2>Results: PD map sensitivity</h2>
+<div class="columns4060">
+<div class="column">
+<p>White instrumental noise.</p>
+<ul>
+<li>Ideal if only <span class="math inline">\(N_\parallel = N_\perp\)</span> (same noise properties)</li>
+<li>How much degradation if <span class="math inline">\(N_\parallel \neq N_\perp\)</span>?</li>
+<li>Vary NET value from detector to detector</li>
+<li>Excess variance depends on <span class="math display">\[
+\varepsilon \equiv \frac{\sigma_\parallel^2 - \sigma_\perp^2}{\sigma_\parallel^2 + \sigma_\perp^2}
+\]</span></li>
+</ul>
+</div><div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="assets/var_increase_hwp.svg"></p>
+<figcaption>Relative excess of variance in PD with respect to ideal maps.</figcaption>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="results-pd-constraints-on-r" class="slide level2">
+<h2>Results: PD constraints on <span class="math inline">\(r\)</span></h2>
+<p>Realistic instrumental noise with detector-dependent parameters.</p>
+<p>Compute noise power spectrum <span class="math inline">\(N_\ell^{BB}\)</span> from PD maps and Fisher forecast of <span class="math inline">\(\sigma(r=0)\)</span>.</p>
+<p>Measure increase of error bars with respect to ideal forecast.</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Dispersion [%]</th>
+<th style="text-align: left;">Increase [%]</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(0.1\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(0.001 \pm 0.001\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(1.0\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(0.017 \pm 0.008\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(10\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(0.889 \pm 0.152\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(20\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(3.977 \pm 0.526\)</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="conclusion" class="slide level2">
+<h2>Conclusion</h2>
+<!--
+- La fabrication de cartes (map-making) reste une étape clé de l’analyse des données (DA), mais elle n’a pas encore trouvé de solution satisfaisante pour les télescopes à petite ouverture observant depuis le sol — pourtant indispensables pour chasser les modes B primordiaux liés à l’inflation.
+- Les approches actuellement utilisées (« quick and dirty » : filtrage et binning) sont rapides et flexibles, mais elles compromettent la puissance statistique des données de manière difficile à contrôler et anticiper.
+- Les méthodes plus rigoureuses, non biaisées et de type maximum de vraisemblance (ML), ont été délaissées car jugées lourdes et chronophages, mais elles deviendront probablement incontournables dès que des détections marginales de r apparaîtront.
+en partant de ce constat, Simon propose plusieurs innovations en map-making :
+  - Décorréler la reconstruction des cartes Q/U de celle des cartes I/Q/U, malgré l’utilisation de détecteurs sensibles à l’intensité.
+  - Replacer le pair-differencing (initialement une méthode « rapide et sale ») dans un cadre ML bien défini, avec des hypothèses explicites.
+  - Montrer que cette approche est quasi-optimale, même en présence d’une variabilité du bruit entre détecteurs du plan focal — un résultat remarquable et non trivial.
+- Pour le gap filling, l’algorithme basé sur un nested PCG constitue la seule implémentation robuste existante. C’est la première fois qu’une telle solution est démontrée de manière numériquement “gérable”.
+- La combinaison du nouveau pair-differencing et du gap filling ouvre la voie à un map-making polarisé robuste statistiquement, efficace numériquement et réaliste pour les SATs au sol — avec des applications imminentes.
+-->
 
 
 </section></section>
