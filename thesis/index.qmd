@@ -106,9 +106,9 @@ Distance-redshift relation e.g. [[Hubble 1929]](https://www.pnas.org/doi/full/10
 ## Expansion
 
 ::: {.notes}
-Here is how that kind of uniform expansion works (black board).
+Here is how that kind of uniform expansion works.
 Say you have a spring and stretch it out.
-The two closest spirals went from being 1 cm apart to 10 cm apart, but the ends have gone from 5 cm to 50 in the same amount of time!
+The two closest spirals went from being 1 mm apart to 1 cm apart, but the ends have gone from 1 cm to 50 in the same amount of time!
 They started further apart, so they moved apart faster.
 
 Because of the relation between how distant a galaxy is and how fast it is receding from us, we use redshift to talk about distances.
@@ -504,6 +504,22 @@ In my thesis, I focused on a key step of this program, the reconstruction of CMB
 
 ## From time-ordered data to maps
 
+::: {.notes}
+Because the CMB signal is faint, each individual data sample is noise dominated.
+
+To achieve a good sensitivity across a significant sky area, CMB telescopes collect lost of measurements across the targeted area by **scanning**.
+This also helps to mitigate low-frequency instrumental noise.
+
+The raw data is therefore made of *time series* (one/detector) called time-ordered data (TOD).
+
+With knowledge of the scanning strategy (pointing information) we can reconstruct the observed sky maps -> **map-making**.
+
+It is the first step of several data reduction stages.
+Huge compression of the data, therefore crucial step to avoid losing information.
+
+Accurate modelling of noise and systematics required.
+:::
+
 :::: {.columns3070}
 ::: {.column}
 **map-making** = from time-ordered data (TOD) to sky maps at observed frequencies
@@ -519,22 +535,28 @@ data reduction step: ~6 orders of magnitude
 ## Linear data model
 
 ::: {.notes}
-- we measure series of very noisy samples
-- scanning experiment, not imaging
-- highlight what we want to recover/mitigate, what we assume
+Formally: linear data model.
+
+What we recover/know/assume.
+
+Map-making = linear operation.
 :::
 
-$$
-d = P s + T x + n
-$$
-<!--TODO: figure to better illustrate?-->
+::: {.columns7030}
+::: {.column}
+![](assets/data_model.svg){.nostrech height="400"}
+:::
 
-- $d$: time-ordered data (all detectors concatenated)
-- $s$: sky maps (usually IQU)
-- $P$: pointing matrix (response of the instrument to the sky)
-- $T$: template matrix (response to other signals, like systematics)
-- $x$: template amplitudes
-- $n$: noise with known statistics (covariance matrix $N$)
+::: {.column}
+We **know** $d$ (the data).
+
+We **want** $s$ (sky maps) and $x$ (to remove).
+
+We **model** $P$ (pointing) and $T$ (templates).
+
+We **assume** $n$ (noise) has covariance $N$.
+:::
+::::
 
 "Map-making" = linear operation $\hat s = L d$ to estimate sky maps from the data.
 
@@ -553,30 +575,35 @@ $$
 - filters out unwanted signals (columns of $T$)
 - weights orthogonal modes by weight matrix $W$
 
-Minimum variance if $W = N^{-1}$ (generalized least squares, GLS, maximum likelihood, ML).
+Minimum variance (optimal) if $W = N^{-1}$ (generalized least squares, GLS).
 
 ## Practical considerations {.smaller}
 
 - Size of the problem
   - 10,000 detectors + months of data + sampling @100 Hz -> $n_t \sim 10^{12}$ samples!
   - resolution + sky coverage + Stokes (I)QU -> $n_p \sim 10^5 - 10^8$ sky pixels
-  - $P$ is huge ($n_t \times n_s$) but sparse (few non-zeros per row)
+  - **Numerical efficiency** is key!
 
 . . .
 
-- Noise correlations
-  - split data in independent chunks (e.g. constant evelation scans)
+- Noise correlations $N$ (size $n_t \times n_t$)
+  - split data in chunks (trade-off efficiency/quality)
   - assume noise is stationary in each chunk, $N(t,t')=N(\lvert t-t' \rvert)$
   - characterise in Fourier space (power spectral density, PSD)
 
 . . .
 
-- Iterative solvers $A x = b \Leftrightarrow x = A^{-1} b$
-  - avoid storing large matrices explicitly
+- **Iterative solvers**
+  - can not compute/store matrices too large
+  - $\hat s = A^{-1} b$ -> instead solve $A s = b$
   - conjugate gradient (CG) algorithm
   - convergence speed influenced by noise correlations
 
 # Polarization maps from the ground {background-color="#40666e"}
+
+::: {.notes}
+All these points are part of the motivation for this study about reconstruction polarisation from the ground.
+:::
 
 [*SB*, Errard and Stompor, 2025](https://arxiv.org/abs/2509.16302) (submitted to PRD)
 
