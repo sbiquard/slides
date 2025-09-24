@@ -249,7 +249,7 @@
 <section id="expansion" class="slide level2">
 <h2>Expansion</h2>
 <aside class="notes">
-<p>Here is how that kind of uniform expansion works (black board). Say you have a spring and stretch it out. The two closest spirals went from being 1 cm apart to 10 cm apart, but the ends have gone from 5 cm to 50 in the same amount of time! They started further apart, so they moved apart faster.</p>
+<p>Here is how that kind of uniform expansion works. Say you have a spring and stretch it out. The two closest spirals went from being 1 mm apart to 1 cm apart, but the ends have gone from 1 cm to 50 in the same amount of time! They started further apart, so they moved apart faster.</p>
 <p>Because of the relation between how distant a galaxy is and how fast it is receding from us, we use redshift to talk about distances. But because light takes time to travel to us from distant galaxies, we also use redshift as a way to talk about time. A galaxy with a high redshift is not only far away from us in space, it’s also far away in time: its light has taken billions of years to reach us.</p>
 <p>Cosmology gives us an opportunity to see the history of our Universe directly. We see stars as they were tens or hundreds of years ago, and other galaxies as they were millions or billions of years ago. Can we look so far away and into the past that we see the Big Bang itself? The answer is yes.</p>
 <style type="text/css">
@@ -787,6 +787,24 @@ r \equiv A_t / A_s \propto E^4_\mathrm{inf}
 </section>
 <section id="from-time-ordered-data-to-maps" class="slide level2">
 <h2>From time-ordered data to maps</h2>
+<aside class="notes">
+<p>Because the CMB signal is faint, each individual data sample is noise dominated.</p>
+<p>To achieve a good sensitivity across a significant sky area, CMB telescopes collect lost of measurements across the targeted area by <strong>scanning</strong>. This also helps to mitigate low-frequency instrumental noise.</p>
+<p>The raw data is therefore made of <em>time series</em> (one/detector) called time-ordered data (TOD).</p>
+<p>With knowledge of the scanning strategy (pointing information) we can reconstruct the observed sky maps -&gt; <strong>map-making</strong>.</p>
+<p>It is the first step of several data reduction stages. Huge compression of the data, therefore crucial step to avoid losing information.</p>
+<p>Accurate modelling of noise and systematics required.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <div class="columns3070">
 <div class="column">
 <p><strong>map-making</strong> = from time-ordered data (TOD) to sky maps at observed frequencies</p>
@@ -803,11 +821,9 @@ r \equiv A_t / A_s \propto E^4_\mathrm{inf}
 <section id="linear-data-model" class="slide level2">
 <h2>Linear data model</h2>
 <aside class="notes">
-<ul>
-<li>we measure series of very noisy samples</li>
-<li>scanning experiment, not imaging</li>
-<li>highlight what we want to recover/mitigate, what we assume</li>
-</ul>
+<p>Formally: linear data model.</p>
+<p>What we recover/know/assume.</p>
+<p>Map-making = linear operation.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -819,17 +835,15 @@ r \equiv A_t / A_s \propto E^4_\mathrm{inf}
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<p><span class="math display">\[
-d = P s + T x + n
-\]</span> <!--TODO: figure to better illustrate?--></p>
-<ul>
-<li><span class="math inline">\(d\)</span>: time-ordered data (all detectors concatenated)</li>
-<li><span class="math inline">\(s\)</span>: sky maps (usually IQU)</li>
-<li><span class="math inline">\(P\)</span>: pointing matrix (response of the instrument to the sky)</li>
-<li><span class="math inline">\(T\)</span>: template matrix (response to other signals, like systematics)</li>
-<li><span class="math inline">\(x\)</span>: template amplitudes</li>
-<li><span class="math inline">\(n\)</span>: noise with known statistics (covariance matrix <span class="math inline">\(N\)</span>)</li>
-</ul>
+<div class="columns7030">
+<div class="column">
+<p><img data-src="assets/data_model.svg" class="nostrech" height="400"></p>
+</div><div class="column">
+<p>We <strong>know</strong> <span class="math inline">\(d\)</span> (the data).</p>
+<p>We <strong>want</strong> <span class="math inline">\(s\)</span> (sky maps) and <span class="math inline">\(x\)</span> (to remove).</p>
+<p>We <strong>model</strong> <span class="math inline">\(P\)</span> (pointing) and <span class="math inline">\(T\)</span> (templates).</p>
+<p>We <strong>assume</strong> <span class="math inline">\(n\)</span> (noise) has covariance <span class="math inline">\(N\)</span>.</p>
+</div></div>
 <p>“Map-making” = linear operation <span class="math inline">\(\hat s = L d\)</span> to estimate sky maps from the data.</p>
 </section>
 <section id="unbiased-estimators" class="slide level2">
@@ -844,7 +858,7 @@ F_T = W \left[\mathbb I - T (T^\top W T)^{-1} T^\top W \right]
 <li>filters out unwanted signals (columns of <span class="math inline">\(T\)</span>)</li>
 <li>weights orthogonal modes by weight matrix <span class="math inline">\(W\)</span></li>
 </ul>
-<p>Minimum variance if <span class="math inline">\(W = N^{-1}\)</span> (generalized least squares, GLS, maximum likelihood, ML).</p>
+<p>Minimum variance (optimal) if <span class="math inline">\(W = N^{-1}\)</span> (generalized least squares, GLS).</p>
 </section>
 <section id="practical-considerations" class="slide level2 smaller">
 <h2>Practical considerations</h2>
@@ -853,14 +867,14 @@ F_T = W \left[\mathbb I - T (T^\top W T)^{-1} T^\top W \right]
 <ul>
 <li>10,000 detectors + months of data + sampling <span class="citation" data-cites="100">@100</span> Hz -&gt; <span class="math inline">\(n_t \sim 10^{12}\)</span> samples!</li>
 <li>resolution + sky coverage + Stokes (I)QU -&gt; <span class="math inline">\(n_p \sim 10^5 - 10^8\)</span> sky pixels</li>
-<li><span class="math inline">\(P\)</span> is huge (<span class="math inline">\(n_t \times n_s\)</span>) but sparse (few non-zeros per row)</li>
+<li><strong>Numerical efficiency</strong> is key!</li>
 </ul></li>
 </ul>
 <div class="fragment">
 <ul>
-<li>Noise correlations
+<li>Noise correlations <span class="math inline">\(N\)</span> (size <span class="math inline">\(n_t \times n_t\)</span>)
 <ul>
-<li>split data in independent chunks (e.g.&nbsp;constant evelation scans)</li>
+<li>split data in chunks (trade-off efficiency/quality)</li>
 <li>assume noise is stationary in each chunk, <span class="math inline">\(N(t,t')=N(\lvert t-t' \rvert)\)</span></li>
 <li>characterise in Fourier space (power spectral density, PSD)</li>
 </ul></li>
@@ -868,9 +882,10 @@ F_T = W \left[\mathbb I - T (T^\top W T)^{-1} T^\top W \right]
 </div>
 <div class="fragment">
 <ul>
-<li>Iterative solvers <span class="math inline">\(A x = b \Leftrightarrow x = A^{-1} b\)</span>
+<li><strong>Iterative solvers</strong>
 <ul>
-<li>avoid storing large matrices explicitly</li>
+<li>can not compute/store matrices too large</li>
+<li><span class="math inline">\(\hat s = A^{-1} b\)</span> -&gt; instead solve <span class="math inline">\(A s = b\)</span></li>
 <li>conjugate gradient (CG) algorithm</li>
 <li>convergence speed influenced by noise correlations</li>
 </ul></li>
@@ -880,9 +895,22 @@ F_T = W \left[\mathbb I - T (T^\top W T)^{-1} T^\top W \right]
 <section>
 <section id="polarization-maps-from-the-ground" class="title-slide slide level1 center" data-background-color="#40666e">
 <h1>Polarization maps from the ground</h1>
+<aside class="notes">
+<p>All these points are part of the motivation for this study about reconstruction polarisation from the ground.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <p><a href="https://arxiv.org/abs/2509.16302"><em>SB</em>, Errard and Stompor, 2025</a> (submitted to PRD)</p>
 </section>
-<section id="observing-from-the-ground" class="slide level2">
+<section id="observing-from-the-ground" class="slide level2 smaller">
 <h2>Observing from the ground</h2>
 <aside class="notes">
 <p>Map-making is already difficult, but from the ground even more so. Two major challenges: atmospheric emission and ground pickup. Atmosphere does not follow a simple linear model because fluctuations are a turbulent process.</p>
@@ -897,7 +925,7 @@ F_T = W \left[\mathbb I - T (T^\top W T)^{-1} T^\top W \right]
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<div class="columns">
+<div class="columns6040">
 <div class="column">
 <ul>
 <li>Major challenge: atmosphere
@@ -912,10 +940,12 @@ F_T = W \left[\mathbb I - T (T^\top W T)^{-1} T^\top W \right]
 <li>fast polarisation modulation (HWP)</li>
 </ul></li>
 </ul>
+<p><img data-src="assets/omt.jpg" class="nostretch" width="200"> <img data-src="assets/hwp.jpeg" class="nostretch" height="200"></p>
 </div><div class="column">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="assets/atmosphere-emission.svg" class="quarto-figure quarto-figure-center" height="500"></p>
+<p><img data-src="assets/atmosphere-emission.svg" class="nostretch" height="500"></p>
+<figcaption>Emission spectrum of the atmosphere for different levels of PWV. Credit: <a href="https://doi.org/10.1103/PhysRevD.105.042004">Morris et al.&nbsp;2022</a></figcaption>
 </figure>
 </div>
 </div></div>

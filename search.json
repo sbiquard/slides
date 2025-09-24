@@ -32,7 +32,7 @@
     "href": "thesis/index.html#expansion",
     "title": "Thesis defence",
     "section": "Expansion",
-    "text": "Expansion\n\nHere is how that kind of uniform expansion works (black board). Say you have a spring and stretch it out. The two closest spirals went from being 1 cm apart to 10 cm apart, but the ends have gone from 5 cm to 50 in the same amount of time! They started further apart, so they moved apart faster.\nBecause of the relation between how distant a galaxy is and how fast it is receding from us, we use redshift to talk about distances. But because light takes time to travel to us from distant galaxies, we also use redshift as a way to talk about time. A galaxy with a high redshift is not only far away from us in space, it’s also far away in time: its light has taken billions of years to reach us.\nCosmology gives us an opportunity to see the history of our Universe directly. We see stars as they were tens or hundreds of years ago, and other galaxies as they were millions or billions of years ago. Can we look so far away and into the past that we see the Big Bang itself? The answer is yes.\n\n\nThe Universe is expanding in every direction!\nDistance-redshift relation\n\nuse redshift to talk about distances\n\nFinite speed of light\n\nuse redshift to talk about time\n\n\nHigh redshift = far away in space and in time."
+    "text": "Expansion\n\nHere is how that kind of uniform expansion works. Say you have a spring and stretch it out. The two closest spirals went from being 1 mm apart to 1 cm apart, but the ends have gone from 1 cm to 50 in the same amount of time! They started further apart, so they moved apart faster.\nBecause of the relation between how distant a galaxy is and how fast it is receding from us, we use redshift to talk about distances. But because light takes time to travel to us from distant galaxies, we also use redshift as a way to talk about time. A galaxy with a high redshift is not only far away from us in space, it’s also far away in time: its light has taken billions of years to reach us.\nCosmology gives us an opportunity to see the history of our Universe directly. We see stars as they were tens or hundreds of years ago, and other galaxies as they were millions or billions of years ago. Can we look so far away and into the past that we see the Big Bang itself? The answer is yes.\n\n\nThe Universe is expanding in every direction!\nDistance-redshift relation\n\nuse redshift to talk about distances\n\nFinite speed of light\n\nuse redshift to talk about time\n\n\nHigh redshift = far away in space and in time."
   },
   {
     "objectID": "thesis/index.html#section-1",
@@ -144,35 +144,35 @@
     "href": "thesis/index.html#from-time-ordered-data-to-maps",
     "title": "Thesis defence",
     "section": "From time-ordered data to maps",
-    "text": "From time-ordered data to maps\n\n\nmap-making = from time-ordered data (TOD) to sky maps at observed frequencies\ndata reduction step: ~6 orders of magnitude\n\n\n\n\nTraditional CMB analysis pipeline steps (credit: Josquin Errard)"
+    "text": "From time-ordered data to maps\n\nBecause the CMB signal is faint, each individual data sample is noise dominated.\nTo achieve a good sensitivity across a significant sky area, CMB telescopes collect lost of measurements across the targeted area by scanning. This also helps to mitigate low-frequency instrumental noise.\nThe raw data is therefore made of time series (one/detector) called time-ordered data (TOD).\nWith knowledge of the scanning strategy (pointing information) we can reconstruct the observed sky maps -&gt; map-making.\nIt is the first step of several data reduction stages. Huge compression of the data, therefore crucial step to avoid losing information.\nAccurate modelling of noise and systematics required.\n\n\n\nmap-making = from time-ordered data (TOD) to sky maps at observed frequencies\ndata reduction step: ~6 orders of magnitude\n\n\n\n\nTraditional CMB analysis pipeline steps (credit: Josquin Errard)"
   },
   {
     "objectID": "thesis/index.html#linear-data-model",
     "href": "thesis/index.html#linear-data-model",
     "title": "Thesis defence",
     "section": "Linear data model",
-    "text": "Linear data model\n\n\nwe measure series of very noisy samples\nscanning experiment, not imaging\nhighlight what we want to recover/mitigate, what we assume\n\n\n\\[\nd = P s + T x + n\n\\] \n\n\\(d\\): time-ordered data (all detectors concatenated)\n\\(s\\): sky maps (usually IQU)\n\\(P\\): pointing matrix (response of the instrument to the sky)\n\\(T\\): template matrix (response to other signals, like systematics)\n\\(x\\): template amplitudes\n\\(n\\): noise with known statistics (covariance matrix \\(N\\))\n\n“Map-making” = linear operation \\(\\hat s = L d\\) to estimate sky maps from the data."
+    "text": "Linear data model\n\nFormally: linear data model.\nWhat we recover/know/assume.\nMap-making = linear operation.\n\n\n\n\n\nWe know \\(d\\) (the data).\nWe want \\(s\\) (sky maps) and \\(x\\) (to remove).\nWe model \\(P\\) (pointing) and \\(T\\) (templates).\nWe assume \\(n\\) (noise) has covariance \\(N\\).\n\n“Map-making” = linear operation \\(\\hat s = L d\\) to estimate sky maps from the data."
   },
   {
     "objectID": "thesis/index.html#unbiased-estimators",
     "href": "thesis/index.html#unbiased-estimators",
     "title": "Thesis defence",
     "section": "Unbiased estimators",
-    "text": "Unbiased estimators\nGeneric form of linear unbiased estimators [Poletti et al. 2017] \\[\n\\hat s = (P^\\top F_T^{-1} P)^{-1} P^\\top F_T^{-1} d\n\\]\nwith the filtering and weighing operator \\[\nF_T = W \\left[\\mathbb I - T (T^\\top W T)^{-1} T^\\top W \\right]\n\\]\n\nfilters out unwanted signals (columns of \\(T\\))\nweights orthogonal modes by weight matrix \\(W\\)\n\nMinimum variance if \\(W = N^{-1}\\) (generalized least squares, GLS, maximum likelihood, ML)."
+    "text": "Unbiased estimators\nGeneric form of linear unbiased estimators [Poletti et al. 2017] \\[\n\\hat s = (P^\\top F_T^{-1} P)^{-1} P^\\top F_T^{-1} d\n\\]\nwith the filtering and weighing operator \\[\nF_T = W \\left[\\mathbb I - T (T^\\top W T)^{-1} T^\\top W \\right]\n\\]\n\nfilters out unwanted signals (columns of \\(T\\))\nweights orthogonal modes by weight matrix \\(W\\)\n\nMinimum variance (optimal) if \\(W = N^{-1}\\) (generalized least squares, GLS)."
   },
   {
     "objectID": "thesis/index.html#practical-considerations",
     "href": "thesis/index.html#practical-considerations",
     "title": "Thesis defence",
     "section": "Practical considerations",
-    "text": "Practical considerations\n\nSize of the problem\n\n10,000 detectors + months of data + sampling @100 Hz -&gt; \\(n_t \\sim 10^{12}\\) samples!\nresolution + sky coverage + Stokes (I)QU -&gt; \\(n_p \\sim 10^5 - 10^8\\) sky pixels\n\\(P\\) is huge (\\(n_t \\times n_s\\)) but sparse (few non-zeros per row)\n\n\n\n\nNoise correlations\n\nsplit data in independent chunks (e.g. constant evelation scans)\nassume noise is stationary in each chunk, \\(N(t,t')=N(\\lvert t-t' \\rvert)\\)\ncharacterise in Fourier space (power spectral density, PSD)\n\n\n\n\n\nIterative solvers \\(A x = b \\Leftrightarrow x = A^{-1} b\\)\n\navoid storing large matrices explicitly\nconjugate gradient (CG) algorithm\nconvergence speed influenced by noise correlations"
+    "text": "Practical considerations\n\nSize of the problem\n\n10,000 detectors + months of data + sampling @100 Hz -&gt; \\(n_t \\sim 10^{12}\\) samples!\nresolution + sky coverage + Stokes (I)QU -&gt; \\(n_p \\sim 10^5 - 10^8\\) sky pixels\nNumerical efficiency is key!\n\n\n\n\nNoise correlations \\(N\\) (size \\(n_t \\times n_t\\))\n\nsplit data in chunks (trade-off efficiency/quality)\nassume noise is stationary in each chunk, \\(N(t,t')=N(\\lvert t-t' \\rvert)\\)\ncharacterise in Fourier space (power spectral density, PSD)\n\n\n\n\n\nIterative solvers\n\ncan not compute/store matrices too large\n\\(\\hat s = A^{-1} b\\) -&gt; instead solve \\(A s = b\\)\nconjugate gradient (CG) algorithm\nconvergence speed influenced by noise correlations"
   },
   {
     "objectID": "thesis/index.html#observing-from-the-ground",
     "href": "thesis/index.html#observing-from-the-ground",
     "title": "Thesis defence",
     "section": "Observing from the ground",
-    "text": "Observing from the ground\n\nMap-making is already difficult, but from the ground even more so. Two major challenges: atmospheric emission and ground pickup. Atmosphere does not follow a simple linear model because fluctuations are a turbulent process.\n\n\n\n\nMajor challenge: atmosphere\n\nmuch brighter than CMB\nspatial + temporal variations\nnegligible linear polarisation\n\nHardware solutions\n\ndual-polarisation detectors\nfast polarisation modulation (HWP)"
+    "text": "Observing from the ground\n\nMap-making is already difficult, but from the ground even more so. Two major challenges: atmospheric emission and ground pickup. Atmosphere does not follow a simple linear model because fluctuations are a turbulent process.\n\n\n\n\nMajor challenge: atmosphere\n\nmuch brighter than CMB\nspatial + temporal variations\nnegligible linear polarisation\n\nHardware solutions\n\ndual-polarisation detectors\nfast polarisation modulation (HWP)\n\n\n \n\n\n\n\nEmission spectrum of the atmosphere for different levels of PWV. Credit: Morris et al. 2022"
   },
   {
     "objectID": "thesis/index.html#unbiased-polarisation-map-making",
