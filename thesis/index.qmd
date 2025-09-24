@@ -607,7 +607,7 @@ All these points are part of the motivation for this study about reconstruction 
 
 [*SB*, Errard and Stompor, 2025](https://arxiv.org/abs/2509.16302) (submitted to PRD)
 
-## Observing from the ground
+## Observing from the ground {.smaller}
 
 ::: {.notes}
 Map-making is already difficult, but from the ground even more so.
@@ -615,7 +615,7 @@ Two major challenges: atmospheric emission and ground pickup.
 Atmosphere does not follow a simple linear model because fluctuations are a turbulent process.
 :::
 
-:::: {.columns}
+:::: {.columns6040}
 ::: {.column}
 - Major challenge: atmosphere
   - much brighter than CMB
@@ -624,10 +624,13 @@ Atmosphere does not follow a simple linear model because fluctuations are a turb
 - Hardware solutions
   - dual-polarisation detectors
   - fast polarisation modulation (HWP)
+
+![](assets/omt.jpg){.nostretch width="200px"}
+![](assets/hwp.jpeg){.nostretch height="200px"}
 :::
 
 ::: {.column}
-![](assets/atmosphere-emission.svg){.nostretch fig-align="center" height="500px"}
+![Emission spectrum of the atmosphere for different levels of PWV. Credit: [Morris et al. 2022](https://doi.org/10.1103/PhysRevD.105.042004)](assets/atmosphere-emission.svg){.nostretch fig-align="center" height="500px"}
 :::
 ::::
 
