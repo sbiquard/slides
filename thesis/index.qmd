@@ -313,7 +313,7 @@ In overdense regions, gravity tries to compress matter while radiation pressure 
 The temperature fluctuations we see are the direct consequence of these *acoustic oscillations*, and therefore probe the physics of the primordial plasma.
 :::
 
-::: {.columns}
+::: {.columns6040}
 ::: {.column}
 The CMB is not perfectly uniform!
 
@@ -324,7 +324,7 @@ The CMB is not perfectly uniform!
 - Anisotropies (**acoustic oscillations** in the plasma)
   - $\Delta T / T \sim 10^{-5}$
 
-![George Smoot](assets/George_Smoot.jpg){.nostretch fig-align="center" height="200px"}
+![George Smoot](assets/George_Smoot.jpg){.nostretch fig-align="left" height="200px"}
 :::
 
 ::: {.column}
