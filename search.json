@@ -4,7 +4,7 @@
     "href": "thesis/index.html#outline",
     "title": "Thesis defence",
     "section": "Outline",
-    "text": "Outline\n\nIntroduction to cosmology and the CMB (?? min)\nReconstruction of CMB maps (?? min)\nPolarisation maps from the ground (?? min)\n…"
+    "text": "Outline\n\nIntroduction to cosmology and the CMB (20-25 min)\nReconstruction of CMB maps (5 min)\nPolarisation maps from the ground (15 min)\nOther work and conclusion (5-10 min)"
   },
   {
     "objectID": "thesis/index.html#section",
@@ -137,7 +137,7 @@
     "href": "thesis/index.html#the-simons-observatory",
     "title": "Thesis defence",
     "section": "The Simons Observatory",
-    "text": "The Simons Observatory\n\nMeasuring \\(r\\) is one of the main science goals of the Simons Observatory.\nAs we can see from the observing site, SO builds on decades of experience in observing CMB from the ground. The observatory is located in the Atacama desert in Chile, which is high and dry, ideal for millimetre-wave observations.\nIt comprises three small aperture telescopes (SATs) dedicated to the measurement of large scale polarisation. A large aperture telescope (LAT) will observe smaller scales (high resolution) over a large fraction of the sky.\nVery broad science case, from inflation to neutrino mass and number of relativistic species, etc. But the main goal for the SATs is to reach \\(\\sigma(r) = 0.002\\).\nTo meet these ambitious goals, SO has deployed about 60,000 detectors over 6 frequency bands. Observations have started since last year, and we are analysing the data now!\n\n\n\n\nCerro Toco, Chile, 5200m altitude (“high and dry”)\n3 small (SATs) + 1 large aperture telescopes (LAT)\nLAT for small scales over large sky fraction\nSATs for polarization at large scales\n\nGoal: \\(\\sigma(r) = 0.002\\)\n\n60,000+ detectors\n6 frequency bands, 27-280 GHz\nData is coming now!\n\n\n\n\nSAT in its ground shield (credit: SO collaboration)\n\n\n\n\n\n\nSimons Observatory site on Cerro Toco"
+    "text": "The Simons Observatory\n\nMeasuring \\(r\\) is one of the main science goals of the Simons Observatory.\nThe observatory is located in the Atacama desert in Chile, which is high and dry, ideal for millimetre-wave observations. SO builds on decades of experience in observing CMB from the ground.\nIt comprises three small aperture telescopes (SATs) dedicated to the measurement of large scale polarisation. A large aperture telescope (LAT) will observe smaller scales (high resolution) over a large fraction of the sky.\nVery broad science case, from inflation to neutrino mass and number of relativistic species, etc. But the main goal for the SATs is to reach \\(\\sigma(r) = 0.002\\).\nTo meet these ambitious goals, SO has deployed about 60,000 detectors over 6 frequency bands. Observations have started since last year, and we are analysing the data now!\n\n\n\n\nCerro Toco, Chile, 5200m altitude (“high and dry”)\n3 small (SATs) + 1 large aperture telescopes (LAT)\nLAT for small scales over large sky fraction\nSATs for polarization at large scales\n\nGoal: \\(\\sigma(r) = 0.002\\)\n\n60,000+ detectors\n6 frequency bands, 27-280 GHz\nData is coming now!\n\n\n\n\nSAT in its ground shield (credit: SO collaboration)\n\n\n\n\n\n\nSimons Observatory site on Cerro Toco"
   },
   {
     "objectID": "thesis/index.html#from-time-ordered-data-to-maps",
