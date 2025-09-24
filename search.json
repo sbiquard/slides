@@ -81,21 +81,21 @@
     "href": "thesis/index.html#discovery",
     "title": "Thesis defence",
     "section": "Discovery",
-    "text": "Discovery\n\n“A measurement of excess antenna temperature at 4080 Mc/s” (Penzias and Wilson, 1965)\nNobel Prize in Physics 1978\n\n\nPenzias and Wilson on the Holmdel Horn Antenna (source)."
+    "text": "Discovery\n\nThe CMB was discovered by accident in 1965 by Arno Penzias and Robert Wilson, working at Bell Labs in New Jersey.\nThey were experimenting with a very sensitive horn antenna (figure) to detect radio signals bounced off a satellite. After reducing their data, they found a residual excess noise that they couldn’t get rid of, whichever direction they pointed the antenna.\nIt was realised with the help of a nearby group at Princeton that this noise was perfectly consistent with predictions of uniform background of microwaves left over from the Big Bang. Penzias and Wilson were awarded the Nobel Prize in Physics in 1978.\n\n\n“A measurement of excess antenna temperature at 4080 Mc/s” (Penzias and Wilson, 1965)\n“Cosmic Black-Body Radiation” (Dicke, Peebles, Roll and Wilkinson, 1965)\n\n\nPenzias and Wilson on the Holmdel Horn Antenna (source)."
   },
   {
     "objectID": "thesis/index.html#temperature-anisotropies",
     "href": "thesis/index.html#temperature-anisotropies",
     "title": "Thesis defence",
     "section": "Temperature anisotropies",
-    "text": "Temperature anisotropies\n\n\nCMB is very uniform, but not perfectly\nPerturbations in primordial plasma -&gt; anisotropies in CMB\n\n\n\n\nThe CMB is not perfectly uniform!\n\nMonopole (average temperature)\n\n\\(T \\sim 2.7\\,\\mathrm{K}\\)\n\nDipole (motion of the Earth)\n\n\\(\\Delta T / T \\sim 1 / 1000\\)\n\nAnisotropies (inhomogeneities of primordial plasma)\n\nResult of acoustic oscillations\n\\(\\Delta T / T \\sim 10^{-5}\\)\n\n\n\n\n\n\nCredit: NASA/COBE Science Team"
+    "text": "Temperature anisotropies\n\nAfter its discovery, experiments were launched to measure the CMB in more detail. In particular, to try and find small variations in temperature across the sky: anisotropies.\nIt is a good place to remember George Smoot, Nobel laureate in 2006 for his work on the CMB. George was associated with APC for many years, and passed away a few days ago.\nHe made the first measurement of the dipole anisotropy of the CMB, interpreted as due to the motion of the Earth with respect to the CMB rest frame. He was also principal investigator of the COBE satellite mission, which measured the blackbody spectrum of the CMB and discovered anisotropies in the 1990s.\nIf we follow the inflationary paradigm, we can relate these anisotropies to the initial density fluctuations. In overdense regions, gravity tries to compress matter while radiation pressure pushes back, creating oscillations in the primordial plasma, like sound waves in air.\nThe temperature fluctuations we see are the direct consequence of these acoustic oscillations, and therefore probe the physics of the primordial plasma.\n\n\n\nThe CMB is not perfectly uniform!\n\nMonopole (average temperature)\n\n\\(T \\sim 2.7\\,\\mathrm{K}\\)\n\nDipole (motion of the Earth)\n\n\\(\\Delta T / T \\sim 1 / 1000\\)\n\nAnisotropies (acoustic oscillations in the plasma)\n\n\\(\\Delta T / T \\sim 10^{-5}\\)\n\n\n\n\n\nGeorge Smoot\n\n\n\n\n\n\nCOBE-DMR maps of the sky (monopole, dipole, anisotropies). Credit: NASA/COBE Science Team"
   },
   {
     "objectID": "thesis/index.html#increasingly-precise-measurements",
     "href": "thesis/index.html#increasingly-precise-measurements",
     "title": "Thesis defence",
     "section": "Increasingly precise measurements",
-    "text": "Increasingly precise measurements\n\nCMB anisotropies in a 10 square degrees sky patch, seen by three generations of satellites: COBE-DMR (1989-1993), WMAP (2001-2010) and Planck (2009-2013). Credit: NASA/JPL-Caltech/ESA."
+    "text": "Increasingly precise measurements\n\nIn the early 2000s, many experiments especially ground-based and balloon-borne improved the sensitivity and angular resolution of anisotropy measurements. But during two decades, it was two satellite missions that fuelled much of the progress in CMB science: WMAP and Planck.\nComment on the figure. Remarkable agreement between theory and power spectrum measurements.\n\n\nCMB anisotropies in a 10 square degrees sky patch, seen by three generations of satellites: COBE-DMR (1989-1993), WMAP (2001-2010) and Planck (2009-2013). Credit: NASA/JPL-Caltech/ESA."
   },
   {
     "objectID": "thesis/index.html#angular-power-spectrum",
