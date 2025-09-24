@@ -55,57 +55,25 @@ As vast as the Milky Way is, it is only one of a trillion galaxies in our observ
 Before astronomical telescopes, only a few nearby galaxies could be seen from Earth.
 But as soon as we could make detailed observations of other galaxies, astronomers noticed something strange:
 Distant galaxies are moving **away** from us.
-
-We can measure that through an effect called *redshifting*.
 :::
 
 ::: footer
 Credit: ESO/L.Calçada/spaceengine.org
 :::
 
-## Redshifting
-
-::: {.notes}
-Like the Doppler effect for sound, which causes the pitch of a siren to drop as it moves away from us, the wavelength of light is stretched as its source moves away.
-
-Since the longest visible wavelength is red, light from a receding source appears reddened, or in technical terms, redshifted.
-
-The redshift parameter z is defined as the fractional change in wavelength between emission and reception.
-The faster a star or galaxy is receding, the more its light is redshifted.
-:::
-
-- Doppler effect for sound
-  - pitch of a siren drops as it moves away
-- Same for light:
-  - wavelength is stretched as source moves away
-  <!--- longest visible wavelength = red-->
-  - **redshift** $z \equiv (\lambda_0 - \lambda_1) / \lambda_1$
-  - fractional change in wavelength between emission and reception
-
-![](assets/visible-light-spectrum.png)
-
-## Hubble's law
-
-::: {.notes}
-1920s: astronomers measured the redshifts of several distant galaxies.
-The farther away the galaxy, the faster it recedes from us.
-This kind of distance-redshift relation is still in use today to measure the rate of expansion of the Universe.
-
-Center of some repulsion field?
-In fact, expected if *all* galaxies are moving away from each other.
-Which is exactly what happens if U is expanding the same way in every direction.
-:::
-
-::: {.r-stack}
-Distance-redshift relation e.g. [[Hubble 1929]](https://www.pnas.org/doi/full/10.1073/pnas.15.3.168) [[Riess et al 2016]](https://iopscience.iop.org/article/10.3847/0004-637X/826/1/56)
-![](assets/hubble_diagram.png){.nostretch height="450px"}
-
-![](assets/hubble_diagram_supernovae.jpg){.fragment .nostretch height="600px"}
-:::
-
 ## Expansion
 
 ::: {.notes}
+We can measure that through an effect called *redshifting*.
+
+1920s: astronomers measure redshifts of several distant galaxies.
+The farther away the galaxy, the faster it recedes from us.
+
+Plot distance vs redshift = Hubble diagram (modern version on figure).
+Used to measure expansion rate of the Universe.
+
+Expected if *all* galaxies are moving away from each other = U expanding in every direction.
+
 Here is how that kind of uniform expansion works.
 Say you have a spring and stretch it out.
 The two closest spirals went from being 1 mm apart to 1 cm apart, but the ends have gone from 1 cm to 50 in the same amount of time!
@@ -120,41 +88,52 @@ We see stars as they were tens or hundreds of years ago, and other galaxies as t
 Can we look so far away and into the past that we see the Big Bang itself? The answer is yes.
 :::
 
+:::: {.columns}
+::: {.column}
+- **Redshift** = wavelength of light stretched as galaxy moves away
+- Distance-redshift relation: farther away = faster away
 - The Universe is **expanding** in every direction!
-- Distance-redshift relation
-  - use redshift to talk about *distances*
-- Finite speed of light
-  - use redshift to talk about *time*
+- Finite speed of light: look back in time
 
 High redshift = far away in **space** and in **time**.
+:::
+
+::: {.column}
+![Modern Hubble diagram using supernovae [[Riess et al 2016]](https://iopscience.iop.org/article/10.3847/0004-637X/826/1/56)](assets/hubble_diagram_supernovae.jpg)
+:::
+::::
 
 ## {background-image="assets/Universe_History_2.png"}
 
 ::: {.notes}
-The Hot Big Bang theory is the idea that, since the Universe is expanding now, it must have been smaller in the past.
-If we reverse this expansion, we find that everything we see today, matter and radiation, must have been compressed to an unimaginable degree.
-At some point in the past, the Universe was so dense that it couldn't contain the kind of matter we see today: everything was an ultradense, hot plasma.
+Hot Big Bang = Universe was smaller in the past.
 
-You can think of the early Universe as an inside-out star.
-The core of the star is so hot that nuclear reactions are happening everywhere in the plasma, forming the first atomic nuclei in a process called nucleosynthesis.
-Photons are constantly bouncing off protons and electrons, and cannot travel very far.
+Reverse the expansion: everything was compressed into a very small space.
+Universe so dense, ordinary matter could not exist.
+Ultra-dense hot plasma of elementary particles.
 
-But the Universe keeps expanding; as time passes, it's like we're moving from the core of the star to its diffuse edge.
+Now the expansion starts.
+Formal description = standard cosmological model (based on GR).
+
+Nuclear reactions happening everywhere, forming the first atomic nuclei -> nucleosynthesis.
+Photons constantly bouncing off protons and electrons, cannot travel very far.
+
+Universe keeps expanding.
 Eventually, after about 380,000 years, the plasma has become cool enough for the first atoms to form, in a process called recombination.
-Now, the photons are able to travel freely, like the light of the star shining out into space.
+The Universe becomes transparent, and the photons are able to travel freely, carrying with them a snapshot of the primordial Universe.
 
-This afterglow of the Big Bang is called the cosmic microwave background (CMB) and comes to us from everywhere in the sky.
-It's not emitted by stars and galaxies, it really comes from the primordial plasma, showing us the Universe as it was 13.8 billion years ago.
+This afterglow of the Big Bang is called the cosmic microwave background (CMB).
 From our perspective, these photons seem to come from a spherical region that we call the surface of last-scattering.
 This is the most distant surface of light that we can see, since beyond that the Universe is opaque.
 
 After recombination, apart from the CMB, the Universe remained dark for a while (200 million years) because there were no stars yet.
-The cosmos was a sea of hydrogen and helium atoms, but matter was not distributed uniformly.
-Through gravity, denser regions attracted more matter, and became hotter -- hot enough to eventually trigger nuclear fusion and form the first stars.
-Through more gravitational instability, more structures of the Universe formed, like the galaxies and clusters of galaxies that we see today, while the Universe kept expanding.
+However, the matter was not distributed uniformly.
+
+While the Universe kept expanding, denser regions attracted more matter, and became hotter.
+Hot enough to eventually trigger nuclear fusion and form the first stars, and then galaxies, clusters of galaxies, and so on.
 
 A few billion years ago, the expansion of the Universe started to accelerate, driven by a mysterious component that we call dark energy.
-It's likely the Universe will continue to expand forever.
+It is still accelerating today.
 :::
 
 ::: footer
@@ -192,7 +171,7 @@ This is called the horizon problem.
 :::
 
 - Why is the CMB so homogeneous?
-- Points at same temperature must have been in contact
+- Points at same temperature must have been in causal contact
 
 ![The horizon problem. Credits: D. Baumann](assets/horizon_problem.png)
 
@@ -209,68 +188,64 @@ It is called cosmic inflation.
 ## A solution: cosmic inflation
 
 ::: {.notes}
-Inflation is the idea that, in the very first fractions of a second after the Big Bang, the Universe went through a phase of extremely rapid expansion.
+Inflation = phase of accelerated expansion before the standard expansion history.
 
-As illustrated in the figure, inflation is a bit like enlarging a single pixel of an image.
+As illustrated in the figure, inflation is a bit like enlarging a single pixel of an image to fill the entire screen.
 
-This expansion was fast enough to take a causally connected region of space and blow it up to a size bigger than our observable Universe.
+This expansion took a causally connected region of space and blew it up to a size bigger than our observable Universe.
 :::
 
-Expansion fast enough to take a causally connected region of space and blow it up to a size bigger than our observable Universe.
+Take a causally connected region of space and blow it up to a size bigger than our observable Universe.
 
 ![Coordinate grid during and after inflation (Dodelson and Schmidt, 2020)](assets/inflation.svg)
 
-## Successes of inflation
+## Successes of inflation {.smaller}
 
 ::: {.notes}
-Technically, the simplest way to achieve inflation is through a scalar field $\phi$ evolving in a potential $V(\phi)$ that is not too steep.
-Such a configuration leads to so-called 'slow-roll' inflation.
+Simplest way to achieve inflation = scalar field $\phi$ with potential energy $V(\phi)$ >> kinetic energy.
+'Slow-roll' inflation.
 
-Remarkably, there is now a beam of observational evidence that agrees with the predictions of single-field slow-roll inflation.
-(Gaussian and adiabatic perturbations, near scale-invariance, spatial flatness, etc.)
+Most impressive feature = mechanism to generate initial conditions for structure formation.
+Quantum fluctuations $\delta\phi$ cause different regions of space to inflate by slightly different amounts.
+Leads to inhomogeneities of density at the end of inflation, which later grow under the influence of gravity to form galaxies and other structures.
 
-But the most impressive feature of inflation is that it provides a mechanism to generate the correct initial conditions for the Universe to evolve into what we see today.
-
-This mechanism is quantum fluctuations of the scalar field $\delta\phi$ which cause different regions of space to inflate by slightly different amounts.
-This leads to small inhomogeneities in the density of the Universe at the end of inflation, which later grow under the influence of gravity to form galaxies and other structures.
+Beam of observational evidence agreeing with predictions of single-field slow-roll inflation.
 :::
 
-Slow-roll inflation: $\phi$ evolving in a potential $V(\phi)$ that is not too steep
+  - Slow-roll inflation: $\phi$ with potential energy $V(\phi) \gg$ kinetic energy.
+- Quantum fluctuations $\delta\phi$ -> seeds of cosmic structure!
+- Measurements agree with slow-roll predictions: adiabatic, nearly scale-invariant perturbations, etc.
 
 ![Scalar field evolution in slow-roll inflation ([source](https://cmb.wintherscoming.no/theory_initial.php)).](assets/scalarfield.png)
 
-. . .
-
-Quantum fluctuations $\delta\phi$ -> seeds of cosmic structure!
 
 ## Primordial gravitational waves
 
 ::: {.notes}
-But as Carl Sagan put it, "Extraordinary claims require extraordinary evidence."
+But "Extraordinary claims require extraordinary evidence."
 
-It turns out there is a very clean prediction of inflation models that could provide such evidence: primordial gravitational waves.
-Fluctuations I have mentioned up to now are what we call *scalar* perturbations, whereas GWs are formally *tensor* perturbations.
+Very clean prediction of inflation: primordial gravitational waves.
 
-The amplitude of tensor perturbations relative to scalar perturbations is quantified by the tensor-to-scalar ratio $r$.
-It is directly related to the energy at which inflation took place.
-
-The measurement of $r$ is therefore a direct window into the first instants of the Universe,
-and an opportunity to learn about the laws of Physics at ultra-high energies, far beyond the reach of current particle accelerators on Earth.
+Follow slide text.
 
 Moreover, primordial GWs leave a unique imprint that we can look for in the CMB!
 :::
 
-Inflation also predicts **gravitational waves**.
-
-- Scalar perturbations: $\Delta^2_s(k) = A_s (k/k_*)^{n_s - 1}$
-- Tensor perturbations: $\Delta^2_t(k) = A_t (k/k_*)^{n_t}$
+- Quantum fluctuations -> perturbations of metric tensor (space-time)
+- Amplitude of perturbations as a function of size
+  - scalar: $\Delta^2_s(k) = A_s (k/k_*)^{n_s - 1}$
+  - tensor: $\Delta^2_t(k) = A_t (k/k_*)^{n_t}$
+- Tensor perturbations = **gravitational waves** (GWs)
 - Tensor-to-scalar ratio:
 $$
 r \equiv A_t / A_s \propto E^4_\mathrm{inf}
 $$
 
-- Window into physics at ultra-high energies
-- GWs leave a unique imprint in the CMB
+- Insight into the fundamental laws of Physics at very high energies
+
+. . .
+
+GWs leave a unique imprint in the CMB!
 
 # The cosmic microwave background
 
@@ -283,11 +258,11 @@ To understand how to detect primordial GWs in the CMB, we need to understand a b
 ::: {.notes}
 The CMB was discovered by accident in 1965 by Arno Penzias and Robert Wilson, working at Bell Labs in New Jersey.
 
-They were experimenting with a very sensitive horn antenna (figure) to detect radio signals bounced off a satellite.
-After reducing their data, they found a residual excess noise that they couldn't get rid of, whichever direction they pointed the antenna.
+Experimenting with a very sensitive horn antenna (figure) for trans-atlantic communication (using balloons to echo signal).
 
-It was realised with the help of a nearby group at Princeton that this noise was perfectly consistent with predictions of uniform background of microwaves left over from the Big Bang.
-Penzias and Wilson were awarded the Nobel Prize in Physics in 1978.
+Residual excess noise in all directions of the sky, perfectly consistent with predictions of uniform background of microwaves left over from the Big Bang.
+
+Nobel Prize in Physics in 1978.
 :::
 
 - "A measurement of excess antenna temperature at 4080 Mc/s" ([Penzias and Wilson, 1965](https://ui.adsabs.harvard.edu/abs/1965ApJ...142..419P))
@@ -298,19 +273,19 @@ Penzias and Wilson were awarded the Nobel Prize in Physics in 1978.
 ## Temperature anisotropies {.smaller}
 
 ::: {.notes}
-After its discovery, experiments were launched to measure the CMB in more detail.
-In particular, to try and find small variations in temperature across the sky: *anisotropies*.
+Experiments to measure CMB in more detail, try to find *anisotropies*.
 
-It is a good place to remember George Smoot, Nobel laureate in 2006 for his work on the CMB.
-George was associated with APC for many years, and passed away a few days ago.
+Comment on figure.
+Remove average brightness -> find dipole (motion of Earth).
+Remove dipole -> see anisotropies!
 
-He made the first measurement of the dipole anisotropy of the CMB, interpreted as due to the motion of the Earth with respect to the CMB rest frame.
-He was also principal investigator of the COBE satellite mission, which measured the blackbody spectrum of the CMB and discovered anisotropies in the 1990s.
+Inflationary paradigm: relate anisotropies to initial perturbations.
+Overdense regions: gravity tries to compress, radiation pressure pushes back -> acoustic oscillations in the plasma.
 
-If we follow the inflationary paradigm, we can relate these anisotropies to the initial density fluctuations.
-In overdense regions, gravity tries to compress matter while radiation pressure pushes back, creating oscillations in the primordial plasma, like sound waves in air.
+At last-scattering, photons coming from different regions have slightly different energy -> anisotropies.
 
-The temperature fluctuations we see are the direct consequence of these *acoustic oscillations*, and therefore probe the physics of the primordial plasma.
+A major contributor to the first measurement of these anisotropies was George Smoot.
+Associated with APC for a long time, passed away a few days ago.
 :::
 
 ::: {.columns6040}
@@ -347,10 +322,13 @@ Remarkable agreement between theory and power spectrum measurements.
 ## Angular power spectrum {.smaller}
 
 ::: {.notes}
-- CMB anisotropies are noise (acoustic oscillations)
-- Spectral properties -> white, red, blue? any features?
-- Temporal frequency for sound -> angular (spatial frequency) for CMB maps
-- Formally: spherical harmonic decomposition of the fluctuations
+CMB anisotropies are noise (acoustic oscillations) -> spectral properties.
+
+Temporal frequency for sound -> angular (spatial frequency) for CMB maps.
+
+Formally: spherical harmonic decomposition of the fluctuations.
+
+Power spectrum = variance of fluctuations at each angular scale.
 :::
 
 - How to characterise "noise"? Look at its **spectral properties**.
@@ -375,6 +353,8 @@ The CMB is polarised through Thomson scattering of photons off free electrons in
 The efficiency of this process depends on the angle between the incoming and outgoing polarisation directions.
 
 To characterise linear polarisation, we use the Stokes parameters $I$, $Q$ and $U$.
+
+The same way as temperature maps, we can make Q and U maps of the sky.
 :::
 
 :::: {.columns7030}
@@ -396,13 +376,15 @@ To characterise linear polarisation, we use the Stokes parameters $I$, $Q$ and $
 ## $E$ and $B$ modes
 
 ::: {.notes}
-Polarisation field = polar direction + amplitude at each point on the sky.
-The same way as temperature maps, we can make Q and U maps of the sky.
+Polarisation field = headless vector.
 
-But Q and U depend on a choice of coordinate system, so they are not easy to interpret physically.
-Instead, we decompose the field into two components called $E$ (parity-even) and $B$ (parity-odd) patterns.
+Figure: polarisation field on top of total intensity map from Planck.
 
-$E$ and $B$ are directly related to the physical processes happening in the plasma.
+Q and U depend on coordinate system.
+Decomposition into $E$ (parity-even) and $B$ (parity-odd) patterns.
+
+$E$ and $B$ related to physical processes in the plasma.
+
 Remarkably, $B$ modes are only sourced by **tensor** perturbations, GWs! (at first order)
 
 By measuring CMB polarisation, specifically B modes, we have access to $r$ and inflation.
@@ -410,7 +392,7 @@ By measuring CMB polarisation, specifically B modes, we have access to $r$ and i
 
 :::: {.columns6040}
 ::: {.column}
-![CMB polarization superimposed on temperature map (smoothed to 5°) ([Planck 2018 results I](https://arxiv.org/abs/1807.06205))](assets/planck_2018_polar_on_temperature.png)
+![CMB polarisation superimposed on temperature map (smoothed to 5°) ([Planck 2018 results I](https://arxiv.org/abs/1807.06205))](assets/planck_2018_polar_on_temperature.png)
 :::
 
 ::: {.column}
@@ -421,39 +403,32 @@ By measuring CMB polarisation, specifically B modes, we have access to $r$ and i
 - $B$ modes are only sourced by tensor perturbations!
 - By measuring CMB polarisation, we have access to $r$ and inflation
 
-## Challenges in observing CMB polarisation {background-image="assets/scipol_landscape_1.png"}
-## {background-image="assets/scipol_landscape_2.png"}
-## {background-image="assets/scipol_landscape_3.png"}
-## {background-image="assets/scipol_landscape_4.png"}
-## {background-image="assets/scipol_landscape_5.png"}
-
 ## Current constraints on $r$
 
 ::: {.notes}
 For now, no detection of primordial $B$ modes has been made.
 We only have upper limits on the value of $r$.
 
-The best constraint to date is from the BICEP/Keck collaboration combined with *Planck*, $r < 0.032$ at 95% CL.
+The best constraint to date is from the BICEP/Keck collaboration combined with *Planck* data.
 
-The figure on the right shows why this measurement is so difficult.
-It shows, in log scale, the power spectrum of the different components contributing to the measurement.
+The figure on the right shows measurements of $B$-mode power spectrum from various experiments.
 
-To measure $r$ we target either the recombination bump at $\ell \sim 100$ (roughly one degree) or the reionisation bump at very large scales ($\ell < 10$).
+Target either recombination bump ($\ell \approx 100$) or reionisation bump ($\ell \lt 10$).
+
 In both cases we need a measurement of the CMB polarisation at intermediate to large scales.
 :::
 
-:::: {.columns}
+:::: {.columns4060}
 ::: {.column}
 ![Compilation of $r$ constraints ([Tristram et al., 2022](https://arxiv.org/abs/2112.07961))](assets/r_constraints.png){.nostretch height="300"}
+
+Best: $r < 0.032$ at 95% confidence
 :::
 
 ::: {.column}
-<!--TODO(plot): Actual measurements of BB spectrum instead?-->
-![Credit: Josquin Errard, _Planck_ collaboration.](assets/Power_Spectrum_figure_showing_foregrounds.jpg)
+![Summary of $B$-mode polarisation measurements ([BK 2021](https://arxiv.org/abs/2110.00483))](assets/BB_measurements_2021.png)
 :::
 ::::
-
-Faint signal, obscured by foregrounds, gravitational lensing, systematics, ...
 
 ## The Simons Observatory {.smaller}
 
@@ -478,8 +453,8 @@ Observations have started since last year, and we are analysing the data now!
 - Cerro Toco, Chile, 5200m altitude ("high and dry")
 - 3 small (SATs) + 1 large aperture telescopes (LAT)
 - LAT for small scales over large sky fraction
-- SATs for polarization at large scales
-  - Goal: $\sigma(r) = 0.002$
+- SATs for polarisation at degree scales
+  - baseline $\sigma(r) = 0.003$ (goal $0.002$)
 - 60,000+ detectors
 - 6 frequency bands, 27-280 GHz
 - Data is coming now!
@@ -505,7 +480,11 @@ In my thesis, I focused on a key step of this program, the reconstruction of CMB
 ## From time-ordered data to maps
 
 ::: {.notes}
-Because the CMB signal is faint, each individual data sample is noise dominated.
+Start from figure on the right!
+
+Lensing converts $E$ -> $B$ and vice versa.
+
+CMB signal is faint: each individual data sample is noise dominated.
 
 To achieve a good sensitivity across a significant sky area, CMB telescopes collect lost of measurements across the targeted area by **scanning**.
 This also helps to mitigate low-frequency instrumental noise.
@@ -542,32 +521,29 @@ What we recover/know/assume.
 Map-making = linear operation.
 :::
 
-::: {.columns7030}
-::: {.column}
-![](assets/data_model.svg){.nostrech height="400"}
-:::
+$$
+d = Ps + Tx + n
+$$
 
-::: {.column}
-We **know** $d$ (the data).
-
-We **want** $s$ (sky maps) and $x$ (to remove).
-
-We **model** $P$ (pointing) and $T$ (templates).
-
-We **assume** $n$ (noise) has covariance $N$.
-:::
-::::
+- we *know* $d$ (the data)
+- we *estimate* $s$ (sky maps) and *marginalize* over $x$ (spurious signals)
+- we *model* $P$ (pointing) and $T$ (templates)
+- we *assume* that $n$ (noise) has covariance $N$
 
 "Map-making" = linear operation $\hat s = L d$ to estimate sky maps from the data.
 
 ## Unbiased estimators
 
-Generic form of linear unbiased estimators [[Poletti et al. 2017]](http://www.aanda.org/10.1051/0004-6361/201629467)
+::: {.notes}
+Weighted co-addition of the data with spurious signals filtered out.
+:::
+
+Generic linear unbiased estimator [[Poletti et al. 2017]](http://www.aanda.org/10.1051/0004-6361/201629467)
 $$
-\hat s = (P^\top F_T^{-1} P)^{-1} P^\top F_T^{-1} d
+\hat s = (P^\top F_T P)^{-1} P^\top F_T d
 $$
 
-with the filtering and weighing operator
+with filtering and weighting operator
 $$
 F_T = W \left[\mathbb I - T (T^\top W T)^{-1} T^\top W \right]
 $$
@@ -580,7 +556,7 @@ Minimum variance (optimal) if $W = N^{-1}$ (generalized least squares, GLS).
 ## Practical considerations {.smaller}
 
 - Size of the problem
-  - 10,000 detectors + months of data + sampling @100 Hz -> $n_t \sim 10^{12}$ samples!
+  - 1,000 detectors + months of data + sampling @100 Hz -> $n_t \sim 10^{11}$ samples!
   - resolution + sky coverage + Stokes (I)QU -> $n_p \sim 10^5 - 10^8$ sky pixels
   - **Numerical efficiency** is key!
 
@@ -596,23 +572,23 @@ Minimum variance (optimal) if $W = N^{-1}$ (generalized least squares, GLS).
 - **Iterative solvers**
   - can not compute/store matrices too large
   - $\hat s = A^{-1} b$ -> instead solve $A s = b$
-  - conjugate gradient (CG) algorithm
+  - preconditioned conjugate gradient (PCG) algorithm
   - convergence speed influenced by noise correlations
 
-# Polarization maps from the ground {background-color="#40666e"}
+# Polarisation maps from the ground {background-color="#40666e"}
 
 ::: {.notes}
 All these points are part of the motivation for this study about reconstruction polarisation from the ground.
+
+Submitted to PRD for publication consideration.
 :::
 
-[*SB*, Errard and Stompor, 2025](https://arxiv.org/abs/2509.16302) (submitted to PRD)
+Thesis Chapter 5 -- [*SB*, Errard and Stompor, 2025](https://arxiv.org/abs/2509.16302) (submitted to PRD)
 
 ## Observing from the ground {.smaller}
 
 ::: {.notes}
-Map-making is already difficult, but from the ground even more so.
-Two major challenges: atmospheric emission and ground pickup.
-Atmosphere does not follow a simple linear model because fluctuations are a turbulent process.
+Major challenge for map-making from the ground: atmospheric emission.
 
 Dual-polarisation -> intuitive technique to recover polarisation = pair differencing.
 :::
@@ -621,20 +597,28 @@ Dual-polarisation -> intuitive technique to recover polarisation = pair differen
 ::: {.column}
 - Major challenge: atmosphere
   - much brighter than CMB
+  - loading: increase detector noise
   - spatial + temporal variations
   - negligible linear polarisation
 - Hardware solutions
   - dual-polarisation detectors
   - fast polarisation modulation (HWP)
 
-![](assets/omt.jpg){.nostretch width="200px"}
-![](assets/hwp.jpeg){.nostretch height="200px"}
+:::: {.columns}
+::: {.column width="30%"}
+![Credit: SO collaboration.](assets/omt.jpg)
+:::
+
+::: {.column width="60%"}
+![HWP illustration ([source](http://en.dayoptics.com/mobile/Technical-Articles/569.html)).](assets/hwp.jpg)
+:::
+::::
 :::
 
 ::: {.column}
 ![Emission spectrum of the atmosphere for different levels of PWV. Credit: [Morris et al. 2022](https://doi.org/10.1103/PhysRevD.105.042004)](assets/atmosphere-emission.svg)
 
-![Atmosphere simulation in `TOAST`. Credit: Julian Borrill.](assets/atm-10-30-10v1.gif)
+![Atmosphere simulation. Credit: R. Keskitalo & J. Borrill](assets/atm-10-30-10v1.gif)
 :::
 ::::
 
@@ -648,7 +632,7 @@ Focus on polarisation instead; temperature large scales already very well measur
 Compare DW and PD and see how they manage to take advantage of hardware solutions.
 :::
 
-Focus on **unbiased reconstruction** (no filtering) of polarisation ($Q$ and $U$).
+Focus on **unbiased reconstruction** of polarisation ($Q$ and $U$).
 
 - **Minimal model**
   - no specific temporal or spatial structure
@@ -659,15 +643,16 @@ Focus on **unbiased reconstruction** (no filtering) of polarisation ($Q$ and $U$
 - **Ideal reconstruction**
   - atmosphere-free data: $d = P s + n$ (instr. noise only)
   - GLS solution with $W = N_\mathrm{instr}^{-1}$
-  - statistical benchmark
+  - benchmark tool
 
 ## Pair differencing
 
 ::: {.notes}
-Pair diff (PD) is a widely used technique to extract polarisation information.
-Half of the data is discarded, so it must be suboptimal?
+Write down minimal model for one pair of detectors.
 
-No: show analytically that PD is **optimal** if no assumption on the atmosphere!
+Use template filtering to estimate $Q$ and $U$, marginalising over $x$.
+
+Find pair differencing!
 :::
 
 Minimal model for pair of orthogonal detectors:
@@ -689,16 +674,7 @@ Minimal model equivalent to **pair-differencing** (PD).
 ## Questions
 
 - How do DW and PD compare out of the box?
-  - different models, different assumptions
-  - **implicit** differencing in DW ($W_\parallel = W_\perp$)
-  - DW requires very good noise/atmosphere model
-
-. . .
-
 - How far is PD from the ideal reconstruction?
-
-. . .
-
 - What is the impact of systematic effects?
 
 ## Numerical simulations {.smaller}
@@ -714,19 +690,42 @@ Massively parallel implementation of the unbiased map-making estimator presented
 :::
 
 - SO-like small aperture telescope
-  - 350 pairs of detectors
-  - HWP (optional)
+  - 350 pairs of detectors + HWP
 - Realistic atmosphere simulation using [TOAST 3](https://github.com/hpc4cmb/toast/tree/toast3) framework
 - Instrumental $1/f$ noise: $S(f) = \mathrm{NET}^2 [1 + (f_\mathrm{knee}/f)^\alpha]$
-<!--TODO: Figure showing 1/f noise ?-->
+  - variation of parameters around nominal values
 - Map-making code: [MAPPRAISER](https://github.com/b3dcmb/midapack) library
 
 ![Overview of the `mappraiser` architecture. Credit: Hamza El Bouhargani ([paper](http://arxiv.org/abs/2112.03370)).](assets/midapack_architecture.png)
 
-## Results: PD map sensitivity {.smaller}
+<!--TODO: Figure showing 1/f noise?-->
+
+## Results: PD vs DW
 
 ::: {.notes}
-White noise -> analytical estimate of the noise level.
+In the absence of systematics, PD is nearly optimal.
+
+No need/reason to try and improve beyond that, unless a better model of atmosphere is available.
+
+How precise is PD compared to ideal reconstruction (perfect model)?
+:::
+
+:::: {.columns}
+::: {.column}
+- different models, different assumptions
+- **implicit** differencing in DW ($W_\parallel = W_\perp$) necessary to avoid atmosphere leakage
+
+![Noise power spectra compared to reference.](assets/pd_vs_dw_spectra.svg){.nostretch height="300px"}
+:::
+::: {.column}
+![Noise maps from PD (top) and DW (bottom) with 10% variation of noise parameters.](assets/pd_vs_dw_variable_maps.png)
+:::
+::::
+
+## Results: PD map sensitivity
+
+::: {.notes}
+White noise -> analytical estimate of the noise level in the maps.
 
 PD ideal if identical noise properties.
 Perturb the nominal noise model and see how much we lose.
@@ -738,39 +737,37 @@ Figure: excess variance in $Q/U$ maps as a function of the variation of noise le
 ::: {.column}
 White instrumental noise.
 
-- Ideal if only $N_\parallel = N_\perp$ (same noise properties)
-- How much degradation if $N_\parallel \neq N_\perp$?
-- Vary NET value from detector to detector
-- Excess variance depends on
-$$
-\varepsilon \equiv \frac{\sigma_\parallel^2 - \sigma_\perp^2}{\sigma_\parallel^2 + \sigma_\perp^2}
-$$
+- How much degradation if $\sigma_\parallel \neq \sigma_\perp$?
+- Excess variance depends on $\varepsilon \equiv \frac{\sigma_\parallel^2 - \sigma_\perp^2}{\sigma_\parallel^2 + \sigma_\perp^2}$
 - Suboptimal propagation of noise levels after differencing
 :::
 
 ::: {.column}
-![](assets/variance_increase_hwp.svg)
+![Analytical prediction (black) vs measured excess variance.](assets/variance_increase_hwp.svg)
 :::
 ::::
 
-## Results: impact on $r$
+$\hat s^\mathrm{ideal}_{QU} = s^\mathrm{pd}_{QU} + \left( P^\top_- \Pi_{--} P_- \right)^{-1} P^\top_- \Pi_{-+} n_+$
+
+## Results: impact on $r$ {.smaller}
 
 ::: {.notes}
-Remarkable that we only lose a few percent of sensitivity to $r$ given the very general assumption behind PD.
+How do these results translate in terms of $r$ sensitivity?
+
+Remarkably little impact given the very general assumption behind PD.
 :::
 
-Realistic instrumental noise with detector-dependent parameters.
+- 25 realisations of realistic instrumental $1/f$ noise
+- detector-dependent parameters (knee, slope, white level)
+- noise power spectrum $N_\ell^{BB}$ from reconstructed maps $\hat s^\mathrm{pd}_{QU}$
+- Fisher forecast:
+$$
+\sigma(r=0) \approx \frac{f_\text{sky}}{2} \times \sum_{\text{bins $b$}} \delta_\ell (2\ell_b+1) \Bigg( \frac{C_{\ell_b}^{BB,\text{prim}} \rvert_{r=1}}{C_{\ell_b}^{BB,\text{lens}} + \langle N_{\ell_b}^{BB} \rangle} \Bigg)^2
+$$
 
-Compute noise power spectrum $N_\ell^{BB}$ from PD maps and Fisher forecast of $\sigma(r=0)$.
+Moderate increase of error bars for typical 10% variation of parameters.
 
-Measure increase of error bars with respect to ideal forecast.
-
-| Dispersion [%] | Increase [%]      |
-|:--------------:|:------------------|
-| $0.1$          | $0.001 \pm 0.001$ |
-| $1.0$          | $0.017 \pm 0.008$ |
-| $10$           | $0.889 \pm 0.152$ |
-| $20$           | $3.977 \pm 0.526$ |
+![](assets/results.jpg)
 
 # Conclusion {background-color=#40666e}
 
@@ -793,7 +790,9 @@ Measure increase of error bars with respect to ideal forecast.
 ## A toolbox for the SciPol project
 
 ::: {.notes}
-CMB polarisation analysis mixes instrument + foregrounds + cosmology
+CMB polarisation analysis mixes instrument + foregrounds + cosmology.
+
+Instrumental effects can be freqneucy-dependent -> time-domain component separation.
 :::
 
 :::: {.columns4060}
