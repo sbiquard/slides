@@ -630,7 +630,9 @@ Atmosphere does not follow a simple linear model because fluctuations are a turb
 :::
 
 ::: {.column}
-![Emission spectrum of the atmosphere for different levels of PWV. Credit: [Morris et al. 2022](https://doi.org/10.1103/PhysRevD.105.042004)](assets/atmosphere-emission.svg){.nostretch fig-align="center" height="500px"}
+![Emission spectrum of the atmosphere for different levels of PWV. Credit: [Morris et al. 2022](https://doi.org/10.1103/PhysRevD.105.042004)](assets/atmosphere-emission.svg)
+
+![](assets/atm-10-30-10v1.gif)
 :::
 ::::
 
