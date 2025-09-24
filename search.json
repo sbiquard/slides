@@ -109,14 +109,14 @@
     "href": "thesis/index.html#basics-of-polarisation",
     "title": "Thesis defence",
     "section": "Basics of polarisation",
-    "text": "Basics of polarisation\n\nLinear polarisation from Thomson scattering \\(\\propto \\lvert \\hat\\epsilon \\cdot \\hat\\epsilon' \\rvert^2\\)\n3 Stokes parameters entirely describe linear polarisation\n\n\\(I\\) = total intensity (temperature)\n\\(Q\\) = difference in brightness between horizontal and vertical\n\\(U\\) = difference in brightness between polarisations at +45° and -45°\n\n\n\nCredit: Emma Alexander (source)"
+    "text": "Basics of polarisation\n\nLight is polarised when its electric field oscillates preferentially in a given direction (example below).\nThe CMB is polarised through Thomson scattering of photons off free electrons in the primordial plasma. The efficiency of this process depends on the angle between the incoming and outgoing polarisation directions.\nTo characterise linear polarisation, we use the Stokes parameters \\(I\\), \\(Q\\) and \\(U\\).\n\n\n\n\nThomson scattering \\(\\propto \\lvert \\hat\\epsilon \\cdot \\hat\\epsilon' \\rvert^2\\)\n3 Stokes parameters entirely describe linear polarisation\n\n\\(I\\) = total intensity (temperature)\n\\(Q\\) = difference in brightness between horizontal and vertical\n\\(U\\) = difference in brightness between +45° and -45°\n\n\n\n\n\nVertically polarised electromagnetic wave (source)\n\n\n\n\n\n\nCredit: Emma Alexander (source)"
   },
   {
     "objectID": "thesis/index.html#e-and-b-modes",
     "href": "thesis/index.html#e-and-b-modes",
     "title": "Thesis defence",
     "section": "\\(E\\) and \\(B\\) modes",
-    "text": "\\(E\\) and \\(B\\) modes\n\n\n\n\n\nCMB polarization superimposed on temperature map (smoothed to 5°) (Planck 2018 results I)\n\n\n\n\n\n\n\\(B\\) modes are only sourced by tensor perturbations!\nBy measuring CMB polarisation, we have access to \\(r\\) and inflation"
+    "text": "\\(E\\) and \\(B\\) modes\n\nPolarisation field = polar direction + amplitude at each point on the sky. The same way as temperature maps, we can make Q and U maps of the sky.\nBut Q and U depend on a choice of coordinate system, so they are not easy to interpret physically. Instead, we decompose the field into two components called \\(E\\) (parity-even) and \\(B\\) (parity-odd) patterns.\n\\(E\\) and \\(B\\) are directly related to the physical processes happening in the plasma. Remarkably, \\(B\\) modes are only sourced by tensor perturbations, GWs! (at first order)\nBy measuring CMB polarisation, specifically B modes, we have access to \\(r\\) and inflation.\n\n\n\n\n\n\nCMB polarization superimposed on temperature map (smoothed to 5°) (Planck 2018 results I)\n\n\n\n\n\n\n\\(B\\) modes are only sourced by tensor perturbations!\nBy measuring CMB polarisation, we have access to \\(r\\) and inflation"
   },
   {
     "objectID": "thesis/index.html#challenges-in-observing-cmb-polarisation",
@@ -130,14 +130,14 @@
     "href": "thesis/index.html#current-constraints-on-r",
     "title": "Thesis defence",
     "section": "Current constraints on \\(r\\)",
-    "text": "Current constraints on \\(r\\)\n\n\n\n\n\nCompilation of \\(r\\) constraints (Tristram et al., 2022)\n\n\n\n \n\nMany challenges: faint signal, obscured by foregrounds, gravitational lensing, systematics, …"
+    "text": "Current constraints on \\(r\\)\n\nFor now, no detection of primordial \\(B\\) modes has been made. We only have upper limits on the value of \\(r\\).\nThe best constraint to date is from the BICEP/Keck collaboration combined with Planck, \\(r &lt; 0.032\\) at 95% CL.\nThe figure on the right shows why this measurement is so difficult. It shows, in log scale, the power spectrum of the different components contributing to the measurement.\nTo measure \\(r\\) we target either the recombination bump at \\(\\ell \\sim 100\\) (roughly one degree) or the reionisation bump at very large scales (\\(\\ell &lt; 10\\)). In both cases we need a measurement of the CMB polarisation at intermediate to large scales.\n\n\n\n\n\n\nCompilation of \\(r\\) constraints (Tristram et al., 2022)\n\n\n\n\n\n\n\nCredit: Josquin Errard, Planck collaboration.\n\n\n\nFaint signal, obscured by foregrounds, gravitational lensing, systematics, …"
   },
   {
     "objectID": "thesis/index.html#the-simons-observatory",
     "href": "thesis/index.html#the-simons-observatory",
     "title": "Thesis defence",
     "section": "The Simons Observatory",
-    "text": "The Simons Observatory\n\n\n\nCerro Toco, Chile, 5200m altitude (“high and dry”)\n3 small (SATs) + 1 large aperture telescopes (LAT)\n60,000+ detectors\n6 frequency bands, 27-280 GHz\nSATs for polarization at large scales\n\nGoal: \\(\\sigma(r) = 0.002\\)\n\nLAT for small scales over large sky fraction\nFirst light: early 2024\n\n\n\n\nSAT in its ground shield (credit: SO collaboration)\n\n\n\n\n\n\nSimons Observatory site on Cerro Toco"
+    "text": "The Simons Observatory\n\nMeasuring \\(r\\) is one of the main science goals of the Simons Observatory.\nAs we can see from the observing site, SO builds on decades of experience in observing CMB from the ground. The observatory is located in the Atacama desert in Chile, which is high and dry, ideal for millimetre-wave observations.\nIt comprises three small aperture telescopes (SATs) dedicated to the measurement of large scale polarisation. A large aperture telescope (LAT) will observe smaller scales (high resolution) over a large fraction of the sky.\nVery broad science case, from inflation to neutrino mass and number of relativistic species, etc. But the main goal for the SATs is to reach \\(\\sigma(r) = 0.002\\).\nTo meet these ambitious goals, SO has deployed about 60,000 detectors over 6 frequency bands. Observations have started since last year, and we are analysing the data now!\n\n\n\n\nCerro Toco, Chile, 5200m altitude (“high and dry”)\n3 small (SATs) + 1 large aperture telescopes (LAT)\nLAT for small scales over large sky fraction\nSATs for polarization at large scales\n\nGoal: \\(\\sigma(r) = 0.002\\)\n\n60,000+ detectors\n6 frequency bands, 27-280 GHz\nData is coming now!\n\n\n\n\nSAT in its ground shield (credit: SO collaboration)\n\n\n\n\n\n\nSimons Observatory site on Cerro Toco"
   },
   {
     "objectID": "thesis/index.html#from-time-ordered-data-to-maps",

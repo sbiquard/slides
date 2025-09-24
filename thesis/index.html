@@ -575,23 +575,81 @@ r \equiv A_t / A_s \propto E^4_\mathrm{inf}
 <section>
 <section id="cmb-polarisation" class="title-slide slide level1 center">
 <h1>CMB polarisation</h1>
-
+<aside class="notes">
+<p>Temperature anisotropies teach us a lot about the Universe. But to understand inflation, we need to look at another property of the CMB: its polarisation.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
-<section id="basics-of-polarisation" class="slide level2">
+<section id="basics-of-polarisation" class="slide level2 smaller">
 <h2>Basics of polarisation</h2>
+<aside class="notes">
+<p>Light is polarised when its electric field oscillates preferentially in a given direction (example below).</p>
+<p>The CMB is polarised through Thomson scattering of photons off free electrons in the primordial plasma. The efficiency of this process depends on the angle between the incoming and outgoing polarisation directions.</p>
+<p>To characterise linear polarisation, we use the Stokes parameters <span class="math inline">\(I\)</span>, <span class="math inline">\(Q\)</span> and <span class="math inline">\(U\)</span>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<div class="columns7030">
+<div class="column">
 <ul>
-<li>Linear polarisation from Thomson scattering <span class="math inline">\(\propto \lvert \hat\epsilon \cdot \hat\epsilon' \rvert^2\)</span></li>
+<li>Thomson scattering <span class="math inline">\(\propto \lvert \hat\epsilon \cdot \hat\epsilon' \rvert^2\)</span></li>
 <li>3 <strong>Stokes parameters</strong> entirely describe linear polarisation
 <ul>
 <li><span class="math inline">\(I\)</span> = total intensity (temperature)</li>
 <li><span class="math inline">\(Q\)</span> = difference in brightness between horizontal and vertical</li>
-<li><span class="math inline">\(U\)</span> = difference in brightness between polarisations at +45° and -45°</li>
+<li><span class="math inline">\(U\)</span> = difference in brightness between +45° and -45°</li>
 </ul></li>
 </ul>
-
-<img data-src="assets/Stokes_params_IQU.png" class="r-stretch quarto-figure-center"><p class="caption">Credit: Emma Alexander (<a href="https://commons.wikimedia.org/wiki/File:Emmaalexander_Stokes_params.png#/media/File:Emmaalexander_Stokes_params.png">source</a>)</p></section>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="assets/Electromagnetic_wave2.svg.png"></p>
+<figcaption>Vertically polarised electromagnetic wave (<a href="https://commons.wikimedia.org/wiki/File:Electromagnetic_wave2.svg#/media/File:Electromagnetic_wave2.svg">source</a>)</figcaption>
+</figure>
+</div>
+</div><div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="assets/Stokes_params_IQU.png" class="nostretch" height="550"></p>
+<figcaption>Credit: Emma Alexander (<a href="https://commons.wikimedia.org/wiki/File:Emmaalexander_Stokes_params.png#/media/File:Emmaalexander_Stokes_params.png">source</a>)</figcaption>
+</figure>
+</div>
+</div></div>
+</section>
 <section id="e-and-b-modes" class="slide level2">
 <h2><span class="math inline">\(E\)</span> and <span class="math inline">\(B\)</span> modes</h2>
+<aside class="notes">
+<p>Polarisation field = polar direction + amplitude at each point on the sky. The same way as temperature maps, we can make Q and U maps of the sky.</p>
+<p>But Q and U depend on a choice of coordinate system, so they are not easy to interpret physically. Instead, we decompose the field into two components called <span class="math inline">\(E\)</span> (parity-even) and <span class="math inline">\(B\)</span> (parity-odd) patterns.</p>
+<p><span class="math inline">\(E\)</span> and <span class="math inline">\(B\)</span> are directly related to the physical processes happening in the plasma. Remarkably, <span class="math inline">\(B\)</span> modes are only sourced by <strong>tensor</strong> perturbations, GWs! (at first order)</p>
+<p>By measuring CMB polarisation, specifically B modes, we have access to <span class="math inline">\(r\)</span> and inflation.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <div class="columns6040">
 <div class="column">
 <div class="quarto-figure quarto-figure-center">
@@ -625,35 +683,73 @@ r \equiv A_t / A_s \propto E^4_\mathrm{inf}
 </section>
 <section id="current-constraints-on-r" class="slide level2">
 <h2>Current constraints on <span class="math inline">\(r\)</span></h2>
-<div class="columns3070">
+<aside class="notes">
+<p>For now, no detection of primordial <span class="math inline">\(B\)</span> modes has been made. We only have upper limits on the value of <span class="math inline">\(r\)</span>.</p>
+<p>The best constraint to date is from the BICEP/Keck collaboration combined with <em>Planck</em>, <span class="math inline">\(r &lt; 0.032\)</span> at 95% CL.</p>
+<p>The figure on the right shows why this measurement is so difficult. It shows, in log scale, the power spectrum of the different components contributing to the measurement.</p>
+<p>To measure <span class="math inline">\(r\)</span> we target either the recombination bump at <span class="math inline">\(\ell \sim 100\)</span> (roughly one degree) or the reionisation bump at very large scales (<span class="math inline">\(\ell &lt; 10\)</span>). In both cases we need a measurement of the CMB polarisation at intermediate to large scales.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<div class="columns">
 <div class="column">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="assets/r_constraints.png"></p>
+<p><img data-src="assets/r_constraints.png" class="nostretch" height="300"></p>
 <figcaption>Compilation of <span class="math inline">\(r\)</span> constraints (<a href="https://arxiv.org/abs/2112.07961">Tristram et al., 2022</a>)</figcaption>
 </figure>
 </div>
 </div><div class="column">
-<p><img data-src="assets/Power_Spectrum_figure_showing_foregrounds.jpg" class="nostretch quarto-figure quarto-figure-center" height="380" alt="Expected B-mode power from Galactic foregrounds (dust, synchrotron). Credit: Josquin Errard, Planck collaboration."> <!--TODO(plot): Actual measurements of BB spectrum instead?--></p>
+<!--TODO(plot): Actual measurements of BB spectrum instead?-->
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="assets/Power_Spectrum_figure_showing_foregrounds.jpg"></p>
+<figcaption>Credit: Josquin Errard, <em>Planck</em> collaboration.</figcaption>
+</figure>
+</div>
 </div></div>
-<p>Many challenges: faint signal, obscured by foregrounds, gravitational lensing, systematics, …</p>
-<!--TODO(speech): highlight scientific goals of modern CMB experiments-->
+<p>Faint signal, obscured by foregrounds, gravitational lensing, systematics, …</p>
 </section>
 <section id="the-simons-observatory" class="slide level2 smaller">
 <h2>The Simons Observatory</h2>
+<aside class="notes">
+<p>Measuring <span class="math inline">\(r\)</span> is one of the main science goals of the Simons Observatory.</p>
+<p>As we can see from the observing site, SO builds on decades of experience in observing CMB from the ground. The observatory is located in the Atacama desert in Chile, which is high and dry, ideal for millimetre-wave observations.</p>
+<p>It comprises three small aperture telescopes (SATs) dedicated to the measurement of large scale polarisation. A large aperture telescope (LAT) will observe smaller scales (high resolution) over a large fraction of the sky.</p>
+<p>Very broad science case, from inflation to neutrino mass and number of relativistic species, etc. But the main goal for the SATs is to reach <span class="math inline">\(\sigma(r) = 0.002\)</span>.</p>
+<p>To meet these ambitious goals, SO has deployed about 60,000 detectors over 6 frequency bands. Observations have started since last year, and we are analysing the data now!</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <div class="columns6040">
 <div class="column">
 <ul>
 <li>Cerro Toco, Chile, 5200m altitude (“high and dry”)</li>
 <li>3 small (SATs) + 1 large aperture telescopes (LAT)</li>
-<li>60,000+ detectors</li>
-<li>6 frequency bands, 27-280 GHz</li>
+<li>LAT for small scales over large sky fraction</li>
 <li>SATs for polarization at large scales
 <ul>
 <li>Goal: <span class="math inline">\(\sigma(r) = 0.002\)</span></li>
 </ul></li>
-<li>LAT for small scales over large sky fraction</li>
-<li>First light: early 2024</li>
+<li>60,000+ detectors</li>
+<li>6 frequency bands, 27-280 GHz</li>
+<li>Data is coming now!</li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -674,10 +770,9 @@ r \equiv A_t / A_s \propto E^4_\mathrm{inf}
 <section id="reconstruction-of-cmb-maps" class="title-slide slide level1 center" data-background-color="#40666e">
 <h1>Reconstruction of CMB maps</h1>
 <aside class="notes">
-<ul>
-<li>Transition with PhD subject</li>
-<li>data analysis -&gt; map-making (and explain why)</li>
-</ul>
+<p>All this data collected by the telescopes needs to be processed and reduced to constraints of the cosmological parameters like <span class="math inline">\(r\)</span>.</p>
+<p>The size and complexity of the data increases with each generation of experiments, and so does the difficulty of the analysis.</p>
+<p>In my thesis, I focused on a key step of this program, the reconstruction of CMB maps from the raw data.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
