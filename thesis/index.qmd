@@ -361,17 +361,52 @@ Remarkable agreement between theory and power spectrum measurements.
 
 # CMB polarisation
 
-## Basics of polarisation
+::: {.notes}
+Temperature anisotropies teach us a lot about the Universe.
+But to understand inflation, we need to look at another property of the CMB: its polarisation.
+:::
 
-- Linear polarisation from Thomson scattering $\propto \lvert \hat\epsilon \cdot \hat\epsilon' \rvert^2$
+## Basics of polarisation {.smaller}
+
+::: {.notes}
+Light is polarised when its electric field oscillates preferentially in a given direction (example below).
+
+The CMB is polarised through Thomson scattering of photons off free electrons in the primordial plasma.
+The efficiency of this process depends on the angle between the incoming and outgoing polarisation directions.
+
+To characterise linear polarisation, we use the Stokes parameters $I$, $Q$ and $U$.
+:::
+
+:::: {.columns7030}
+::: {.column}
+- Thomson scattering $\propto \lvert \hat\epsilon \cdot \hat\epsilon' \rvert^2$
 - 3 **Stokes parameters** entirely describe linear polarisation
   - $I$ = total intensity (temperature)
   - $Q$ = difference in brightness between horizontal and vertical
-  - $U$ = difference in brightness between polarisations at +45° and -45°
+  - $U$ = difference in brightness between +45° and -45°
 
-![Credit: Emma Alexander ([source](https://commons.wikimedia.org/wiki/File:Emmaalexander_Stokes_params.png#/media/File:Emmaalexander_Stokes_params.png))](assets/Stokes_params_IQU.png)
+![Vertically polarised electromagnetic wave ([source](https://commons.wikimedia.org/wiki/File:Electromagnetic_wave2.svg#/media/File:Electromagnetic_wave2.svg))](assets/Electromagnetic_wave2.svg.png)
+:::
+
+::: {.column}
+![Credit: Emma Alexander ([source](https://commons.wikimedia.org/wiki/File:Emmaalexander_Stokes_params.png#/media/File:Emmaalexander_Stokes_params.png))](assets/Stokes_params_IQU.png){.nostretch fig-align="center" height="550px"}
+:::
+::::
 
 ## $E$ and $B$ modes
+
+::: {.notes}
+Polarisation field = polar direction + amplitude at each point on the sky.
+The same way as temperature maps, we can make Q and U maps of the sky.
+
+But Q and U depend on a choice of coordinate system, so they are not easy to interpret physically.
+Instead, we decompose the field into two components called $E$ (parity-even) and $B$ (parity-odd) patterns.
+
+$E$ and $B$ are directly related to the physical processes happening in the plasma.
+Remarkably, $B$ modes are only sourced by **tensor** perturbations, GWs! (at first order)
+
+By measuring CMB polarisation, specifically B modes, we have access to $r$ and inflation.
+:::
 
 :::: {.columns6040}
 ::: {.column}
@@ -394,33 +429,60 @@ Remarkable agreement between theory and power spectrum measurements.
 
 ## Current constraints on $r$
 
-:::: {.columns3070}
+::: {.notes}
+For now, no detection of primordial $B$ modes has been made.
+We only have upper limits on the value of $r$.
+
+The best constraint to date is from the BICEP/Keck collaboration combined with *Planck*, $r < 0.032$ at 95% CL.
+
+The figure on the right shows why this measurement is so difficult.
+It shows, in log scale, the power spectrum of the different components contributing to the measurement.
+
+To measure $r$ we target either the recombination bump at $\ell \sim 100$ (roughly one degree) or the reionisation bump at very large scales ($\ell < 10$).
+In both cases we need a measurement of the CMB polarisation at intermediate to large scales.
+:::
+
+:::: {.columns}
 ::: {.column}
-![Compilation of $r$ constraints ([Tristram et al., 2022](https://arxiv.org/abs/2112.07961))](assets/r_constraints.png)
+![Compilation of $r$ constraints ([Tristram et al., 2022](https://arxiv.org/abs/2112.07961))](assets/r_constraints.png){.nostretch height="300"}
 :::
 
 ::: {.column}
-![Expected $B$-mode power from Galactic foregrounds (dust, synchrotron). Credit: Josquin Errard, _Planck_ collaboration.](assets/Power_Spectrum_figure_showing_foregrounds.jpg){.nostretch fig-align="center" height="380px"}
 <!--TODO(plot): Actual measurements of BB spectrum instead?-->
+![Credit: Josquin Errard, _Planck_ collaboration.](assets/Power_Spectrum_figure_showing_foregrounds.jpg)
 :::
 ::::
 
-Many challenges: faint signal, obscured by foregrounds, gravitational lensing, systematics, ...
-
-<!--TODO(speech): highlight scientific goals of modern CMB experiments-->
+Faint signal, obscured by foregrounds, gravitational lensing, systematics, ...
 
 ## The Simons Observatory {.smaller}
+
+::: {.notes}
+Measuring $r$ is one of the main science goals of the Simons Observatory.
+
+As we can see from the observing site, SO builds on decades of experience in observing CMB from the ground.
+The observatory is located in the Atacama desert in Chile, which is high and dry, ideal for millimetre-wave observations.
+
+It comprises three small aperture telescopes (SATs) dedicated to the measurement of large scale polarisation.
+A large aperture telescope (LAT) will observe smaller scales (high resolution) over a large fraction of the sky.
+
+Very broad science case, from inflation to neutrino mass and number of relativistic species, etc.
+But the main goal for the SATs is to reach $\sigma(r) = 0.002$.
+
+To meet these ambitious goals, SO has deployed about 60,000 detectors over 6 frequency bands.
+Observations have started since last year, and we are analysing the data now!
+:::
 
 ::: {.columns6040}
 ::: {.column}
 - Cerro Toco, Chile, 5200m altitude ("high and dry")
 - 3 small (SATs) + 1 large aperture telescopes (LAT)
-- 60,000+ detectors
-- 6 frequency bands, 27-280 GHz
+- LAT for small scales over large sky fraction
 - SATs for polarization at large scales
   - Goal: $\sigma(r) = 0.002$
-- LAT for small scales over large sky fraction
-- First light: early 2024
+- 60,000+ detectors
+- 6 frequency bands, 27-280 GHz
+- Data is coming now!
 
 ![SAT in its ground shield (credit: SO collaboration)](assets/SAT_01-scaled.jpg){.nostretch fig-align="center" height="250px"}
 :::
@@ -433,8 +495,11 @@ Many challenges: faint signal, obscured by foregrounds, gravitational lensing, s
 # Reconstruction of CMB maps {background-color="#40666e"}
 
 ::: {.notes}
-- Transition with PhD subject
-- data analysis -> map-making (and explain why)
+All this data collected by the telescopes needs to be processed and reduced to constraints of the cosmological parameters like $r$.
+
+The size and complexity of the data increases with each generation of experiments, and so does the difficulty of the analysis.
+
+In my thesis, I focused on a key step of this program, the reconstruction of CMB maps from the raw data.
 :::
 
 ## From time-ordered data to maps
