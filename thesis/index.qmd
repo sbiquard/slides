@@ -28,10 +28,10 @@ title-slide-attributes:
 
 ## Outline
 
-1. Introduction to cosmology and the CMB (?? min)
-2. Reconstruction of CMB maps (?? min)
-3. Polarisation maps from the ground (?? min)
-4. ...
+1. Introduction to cosmology and the CMB (20-25 min)
+2. Reconstruction of CMB maps (5 min)
+3. Polarisation maps from the ground (15 min)
+4. Other work and conclusion (5-10 min)
 
 # Introduction {background-color=#40666e}
 
@@ -460,8 +460,8 @@ Faint signal, obscured by foregrounds, gravitational lensing, systematics, ...
 ::: {.notes}
 Measuring $r$ is one of the main science goals of the Simons Observatory.
 
-As we can see from the observing site, SO builds on decades of experience in observing CMB from the ground.
 The observatory is located in the Atacama desert in Chile, which is high and dry, ideal for millimetre-wave observations.
+SO builds on decades of experience in observing CMB from the ground.
 
 It comprises three small aperture telescopes (SATs) dedicated to the measurement of large scale polarisation.
 A large aperture telescope (LAT) will observe smaller scales (high resolution) over a large fraction of the sky.
