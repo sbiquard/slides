@@ -4,63 +4,63 @@
     "href": "thesis/index.html#outline",
     "title": "Thesis defence",
     "section": "Outline",
-    "text": "Outline\n\nIntroduction to cosmology and the CMB\nReconstruction of CMB maps\nPolarisation maps from the ground\nOther work and conclusion"
+    "text": "Outline\n\nreconstruction: specific topic of my thesis\n\n\nIntroduction to cosmology and the CMB\nReconstruction of CMB maps\nPolarisation maps from the ground\nOther work and conclusions"
   },
   {
     "objectID": "thesis/index.html#section",
     "href": "thesis/index.html#section",
     "title": "Thesis defence",
     "section": "",
-    "text": "Let’s start here, on Earth. Our planet is part of the Solar System, and orbits the Sun. The Sun is one of approximately 400 billion stars in our Galaxy, the Milky Way.\nOur Galaxy is a disk so large that it takes light about 100,000 years to travel from one end to the other. As vast as the Milky Way is, it is only one of a trillion galaxies in our observable Universe.\nBefore astronomical telescopes, only a few nearby galaxies could be seen from Earth. But as soon as we could make detailed observations of other galaxies, astronomers noticed something strange: Distant galaxies are moving away from us.\n\n\nCredit: ESO/L.Calçada/spaceengine.org"
+    "text": "Solar System.\nSun = 1 of 400 billion stars in Milky Way.\nMW = disk 100,000 light years diameter\nTrillion galaxies in observable Universe\nAstronomical telescopes: distant galaxies moving away!\n\n\nCredit: ESO/L.Calçada/spaceengine.org"
   },
   {
     "objectID": "thesis/index.html#expansion",
     "href": "thesis/index.html#expansion",
     "title": "Thesis defence",
     "section": "Expansion",
-    "text": "Expansion\n\nWe can measure that through an effect called redshifting.\n1920s: astronomers measure redshifts of several distant galaxies. The farther away the galaxy, the faster it recedes from us.\nPlot distance vs redshift = Hubble diagram (modern version on figure). Used to measure expansion rate of the Universe.\nExpected if all galaxies are moving away from each other = U expanding in every direction.\nHere is how that kind of uniform expansion works. Say you have a spring and stretch it out. The two closest spirals went from being 1 mm apart to 1 cm apart, but the ends have gone from 1 cm to 50 in the same amount of time! They started further apart, so they moved apart faster.\nBecause of the relation between how distant a galaxy is and how fast it is receding from us, we use redshift to talk about distances. But because light takes time to travel to us from distant galaxies, we also use redshift as a way to talk about time. A galaxy with a high redshift is not only far away from us in space, it’s also far away in time: its light has taken billions of years to reach us.\nCosmology gives us an opportunity to see the history of our Universe directly. We see stars as they were tens or hundreds of years ago, and other galaxies as they were millions or billions of years ago. Can we look so far away and into the past that we see the Big Bang itself? The answer is yes.\n\n\n\n\nRedshift = wavelength of light stretched as galaxy moves away\nDistance-redshift relation: farther away = faster away\nThe Universe is expanding in every direction!\nFinite speed of light: look back in time\n\nHigh redshift = far away in space and in time.\n\n\n\n\nModern Hubble diagram using supernovae [Riess et al 2016]"
+    "text": "Expansion\n\nMeasure recession velocity through redshifting\n1920s: astronomers measure redshifts of distant galaxies\nThe farther away the galaxy, the faster it moves away\nDistance vs redshift = Hubble diagram\n(figure) measure expansion rate\nrepulsion field? No: expected all galaxies moving away from each other = U expanding in every direction\n\nUse redshift to talk about distances\nFinite speed of light: use redshift to talk about time\nCosmology = opportunity to see the history of our Universe directly\nCan we look so far away and into the past that we see the Big Bang itself? The answer is yes.\n\n\n\n\nRedshift = wavelength of light stretched as galaxy moves away\nDistance-redshift relation: farther away = faster away\nThe Universe is expanding in every direction!\nFinite speed of light: look back in time\n\nHigh redshift = far away in space and in time.\n\n\n\n\nModern Hubble diagram using supernovae [Riess et al 2016]"
   },
   {
     "objectID": "thesis/index.html#section-1",
     "href": "thesis/index.html#section-1",
     "title": "Thesis defence",
     "section": "",
-    "text": "Hot Big Bang = Universe was smaller in the past.\nReverse the expansion: everything was compressed into a very small space. Universe so dense, ordinary matter could not exist. Ultra-dense hot plasma of elementary particles.\nNow the expansion starts. Formal description = standard cosmological model (based on GR).\nNuclear reactions happening everywhere, forming the first atomic nuclei -&gt; nucleosynthesis. Photons constantly bouncing off protons and electrons, cannot travel very far.\nUniverse keeps expanding. Eventually, after about 380,000 years, the plasma has become cool enough for the first atoms to form, in a process called recombination. The Universe becomes transparent, and the photons are able to travel freely, carrying with them a snapshot of the primordial Universe.\nThis afterglow of the Big Bang is called the cosmic microwave background (CMB). From our perspective, these photons seem to come from a spherical region that we call the surface of last-scattering. This is the most distant surface of light that we can see, since beyond that the Universe is opaque.\nAfter recombination, apart from the CMB, the Universe remained dark for a while (200 million years) because there were no stars yet. However, the matter was not distributed uniformly.\nWhile the Universe kept expanding, denser regions attracted more matter, and became hotter. Hot enough to eventually trigger nuclear fusion and form the first stars, and then galaxies, clusters of galaxies, and so on.\nA few billion years ago, the expansion of the Universe started to accelerate, driven by a mysterious component that we call dark energy. It is still accelerating today.\n\n\nCredit: NASA (https://science.nasa.gov/universe/overview/)."
+    "text": "Hot Big Bang = Universe smaller in the past\nReverse expansion -&gt; U so dense that ordinary matter could not exist – hot plasma of elementary particles\nExpansion starts. Formally: standard cosmological model (based on GR)\nNuclear reactions, first atomic nuclei (nucleosynthesis)\nPhotons bouncing off protons/electrons, cannot travel very far\nUniverse keeps expanding.\n380,000 y: plasma cool enough for atoms to form (recombination)\nUniverse becomes transparent. Photons able to travel freely, carrying snapshot of primordial Universe\nAfterglow of Big Bang called the cosmic microwave background (CMB)\nCMB photons come from spherical region = surface of last-scattering\nAfter recombination, Universe remained dark (no stars yet)\nBut matter not distributed uniformly – denser regions attract matter, get hotter: nuclear fusion, first stars\nStandar model: not only ordinary matter, also Dark Matter and Dark Energy\nDark Matter essential for structure formation (galaxies & clusters)\nRecently, accelerated expansion started – driven by Dark Energy\nStill accelerating today!\n\n\nCredit: NASA (https://science.nasa.gov/universe/overview/)."
   },
   {
     "objectID": "thesis/index.html#a-witness-of-the-homogeneous-early-universe",
     "href": "thesis/index.html#a-witness-of-the-homogeneous-early-universe",
     "title": "Thesis defence",
     "section": "A witness of the homogeneous early universe",
-    "text": "A witness of the homogeneous early universe\n\nLet’s come back to the CMB.\nThere is another clue why the light really is from the primordial plasma. It has to do with its spectrum, which is the intensity of light at different wavelengths.\nIn the 1990s, the COBE satellite found that the CMB has a nearly perfect blackbody spectrum, which is what you expect from anything that glows with heat. The fact that the CMB has this spectrum is a strong confirmation of the Big Bang theory.\nThe peak of the spectrum is determined by the temperature. The temperature of the CMB when it was emitted was about 3000 K, but because of the expansion the light has been redshifted and it is now only 2.7K, in the microwave range, hence the name.\nThis temperature is remarkably uniform across the sky.\n\n\nThe blackbody spectrum of the CMB (Fixsen 1996 adapted by D. Baumann)"
+    "text": "A witness of the homogeneous early universe\n\nCome back to CMB\nOther clue why it really is from the primordial plasma: spectrum (intensity of light at different wavelengths)\n1990s: COBE satellite measured the CMB spectrum -&gt; perfect blackbody (smth glowing with heat)\nstrong confirmation of Big Bang theory!\npeak of spectrum determined by temperature\nemission: 3000 K – now 2.7 K (microwave range)\nuniform temperature across the sky! whole Universe in thermal equilibrium – paradox?\n\n\nThe blackbody spectrum of the CMB (Fixsen 1996 adapted by D. Baumann)"
   },
   {
     "objectID": "thesis/index.html#the-horizon-problem",
     "href": "thesis/index.html#the-horizon-problem",
     "title": "Thesis defence",
     "section": "The Horizon Problem",
-    "text": "The Horizon Problem\n\nBut the fact that the CMB has the same temperature everywhere we look is paradoxical.\nThe light from 2 opposite points on the LSS “meets” for the first time right now when reaching us. For them to be the same temperature, they must have been in causal contact in the past, but there simply hasn’t been enough time for that.\nThis is called the horizon problem.\n\n\nWhy is the CMB so homogeneous?\nPoints at same temperature must have been in causal contact\n\n\nThe horizon problem. Credits: D. Baumann"
+    "text": "The Horizon Problem\n\nthermal equilibrium needs causal contact – but light from opposite points on LSS “meets” for the first time\nstandard history -&gt; not enough time!\nhorizon problem\n\n\nWhy is the CMB so homogeneous?\nPoints at same temperature must have been in causal contact\n\n\nThe horizon problem. Credits: D. Baumann"
   },
   {
     "objectID": "thesis/index.html#a-solution-cosmic-inflation",
     "href": "thesis/index.html#a-solution-cosmic-inflation",
     "title": "Thesis defence",
     "section": "A solution: cosmic inflation",
-    "text": "A solution: cosmic inflation\n\nInflation = phase of accelerated expansion before the standard expansion history.\nAs illustrated in the figure, inflation is a bit like enlarging a single pixel of an image to fill the entire screen.\nThis expansion took a causally connected region of space and blew it up to a size bigger than our observable Universe.\n\nTake a causally connected region of space and blow it up to a size bigger than our observable Universe.\n\nCoordinate grid during and after inflation (Dodelson and Schmidt, 2020)"
+    "text": "A solution: cosmic inflation\n\nInflation = accelerated expansion before standard expansion\n(figure) like enlarging single pixel to fill entire screen\nexpansion took a causally connected region of space and blew it up to a size bigger than our observable Universe\nsomething the size of a fly -&gt; size of the Galaxy in fraction of second\n\nTake a causally connected region of space and blow it up to a size bigger than our observable Universe.\n\nCoordinate grid during and after inflation (Dodelson and Schmidt, 2020)"
   },
   {
     "objectID": "thesis/index.html#successes-of-inflation",
     "href": "thesis/index.html#successes-of-inflation",
     "title": "Thesis defence",
     "section": "Successes of inflation",
-    "text": "Successes of inflation\n\nSimplest way to achieve inflation = scalar field \\(\\phi\\) with potential energy \\(V(\\phi)\\) &gt;&gt; kinetic energy. ‘Slow-roll’ inflation.\nMost impressive feature = mechanism to generate initial conditions for structure formation. Quantum fluctuations \\(\\delta\\phi\\) cause different regions of space to inflate by slightly different amounts. Leads to inhomogeneities of density at the end of inflation, which later grow under the influence of gravity to form galaxies and other structures.\nBeam of observational evidence agreeing with predictions of single-field slow-roll inflation.\n\n\nSlow-roll inflation: \\(\\phi\\) with potential energy \\(V(\\phi) \\gg\\) kinetic energy.\nQuantum fluctuations \\(\\delta\\phi\\) -&gt; seeds of cosmic structure!\nMeasurements agree with slow-roll predictions: adiabatic, nearly scale-invariant perturbations, etc.\n\n\nScalar field evolution in slow-roll inflation (source)."
+    "text": "Successes of inflation\n\nachieve inflation? scalar field \\(\\phi\\) with potential energy \\(V(\\phi)\\) &gt;&gt; kinetic –&gt; slow-roll\nmechanism to generate initial conditions for structure formation! – quantum fluctuations \\(\\delta\\phi\\)\nspace inflates by different amounts -&gt; inhomogeneities at the end of inflation -&gt; later grow under the influence of gravity into galaxies and other structures\nbeam of observational evidence agreeing with predictions of single-field slow-roll inflation\n\n\n“Slow-roll” inflation: \\(\\phi\\) with potential energy \\(V(\\phi) \\gg\\) kinetic energy.\nQuantum fluctuations \\(\\delta\\phi\\) -&gt; seeds of cosmic structure!\nMeasurements agree with slow-roll predictions: type/size of perturbations, scalar tilt, etc.\n\n\nScalar field evolution in slow-roll inflation (D. Baumann)."
   },
   {
     "objectID": "thesis/index.html#primordial-gravitational-waves",
     "href": "thesis/index.html#primordial-gravitational-waves",
     "title": "Thesis defence",
     "section": "Primordial gravitational waves",
-    "text": "Primordial gravitational waves\n\nBut “Extraordinary claims require extraordinary evidence.”\nVery clean prediction of inflation: primordial gravitational waves.\nFollow slide text.\nMoreover, primordial GWs leave a unique imprint that we can look for in the CMB!\n\n\nQuantum fluctuations -&gt; perturbations of metric tensor (space-time)\nAmplitude of perturbations as a function of size\n\nscalar: \\(\\Delta^2_s(k) = A_s (k/k_*)^{n_s - 1}\\)\ntensor: \\(\\Delta^2_t(k) = A_t (k/k_*)^{n_t}\\)\n\nTensor perturbations = gravitational waves (GWs)\nTensor-to-scalar ratio: \\[\nr \\equiv A_t / A_s \\propto E^4_\\mathrm{inflation}\n\\]\nInsight into the fundamental laws of Physics at very high energies\n\n\nGWs leave a unique imprint in the CMB!"
+    "text": "Primordial gravitational waves\n\nBut “Extraordinary claims require extraordinary evidence.”\nVery clean prediction of inflation: primordial gravitational waves.\nSame GWs that are detected by interferometer on Earth, but completely different wavelength\nFollow slide text\nprimordial GWs leave unique imprint in the CMB!\n\n\nQuantum fluctuations -&gt; perturbations of metric tensor (space-time)\nAmplitude of perturbations as a function of size\n\nscalar: \\(\\Delta^2_s(k) = A_s (k/k_*)^{n_s - 1}\\)\ntensor: \\(\\Delta^2_t(k) = A_t (k/k_*)^{n_t}\\)\n\nTensor perturbations = gravitational waves (GWs)\nTensor-to-scalar ratio: \\[\nr \\equiv A_t / A_s \\propto E^4_\\mathrm{inflation}\n\\]\nInsight into the fundamental laws of Physics at very high energies\n\n\nGWs leave a unique imprint in the CMB!"
   },
   {
     "objectID": "thesis/index.html#discovery",
@@ -74,35 +74,35 @@
     "href": "thesis/index.html#temperature-anisotropies",
     "title": "Thesis defence",
     "section": "Temperature anisotropies",
-    "text": "Temperature anisotropies\n\nExperiments to measure CMB in more detail, try to find anisotropies.\nComment on figure. Remove average brightness -&gt; find dipole (motion of Earth). Remove dipole -&gt; see anisotropies!\nInflationary paradigm: relate anisotropies to initial perturbations. Overdense regions: gravity tries to compress, radiation pressure pushes back -&gt; acoustic oscillations in the plasma.\nAt last-scattering, photons coming from different regions have slightly different energy -&gt; anisotropies.\nA major contributor to the first measurement of these anisotropies was George Smoot. Associated with APC for a long time, passed away a few days ago.\n\n\n\nThe CMB is not perfectly uniform!\n\nMonopole (average temperature)\n\n\\(T \\sim 2.7\\,\\mathrm{K}\\)\n\nDipole (motion of the Earth)\n\n\\(\\Delta T / T \\sim 1 / 1000\\)\n\nAnisotropies (acoustic oscillations in the plasma)\n\n\\(\\Delta T / T \\sim 10^{-5}\\)\n\n\n\n\n\nGeorge Smoot\n\n\n\n\n\n\nCOBE-DMR maps of the sky (monopole, dipole, anisotropies). Credit: NASA/COBE Science Team"
+    "text": "Temperature anisotropies\n\nExperiments try to find anisotropies in CMB\n(figure) map = projection of sky onto flat screen\nRemove average brightness -&gt; find dipole (motion of Earth)\nRemove dipole -&gt; see anisotropies!\nRelate anisotropies to initial perturbations of photon-baryon fluid\nOverdense regions: gravity tries to compress, pressure pushes back -&gt; acoustic oscillations\nAt last-scattering, photons from different regions have slightly different energy -&gt; anisotropies\nGeorge Smoot = PI of COBE/DMR (figure)\n\n\n\nThe CMB is not perfectly uniform!\n\nMonopole (average temperature)\n\n\\(T \\sim 2.7\\,\\mathrm{K}\\)\n\nDipole (motion of the Earth)\n\n\\(\\Delta T / T \\sim 1 / 1000\\)\n\nAnisotropies (acoustic oscillations in the plasma)\n\n\\(\\Delta T / T \\sim 10^{-5}\\)\n\n\n\n\n\nGeorge Smoot\n\n\n\n\n\n\nCOBE-DMR maps of the sky (monopole, dipole, anisotropies). Credit: NASA/COBE Science Team"
   },
   {
     "objectID": "thesis/index.html#increasingly-precise-measurements",
     "href": "thesis/index.html#increasingly-precise-measurements",
     "title": "Thesis defence",
     "section": "Increasingly precise measurements",
-    "text": "Increasingly precise measurements\n\nIn the early 2000s, many experiments especially ground-based and balloon-borne improved the sensitivity and angular resolution of anisotropy measurements. But during two decades, it was two satellite missions that fuelled much of the progress in CMB science: WMAP and Planck.\nComment on the figure. Remarkable agreement between theory and power spectrum measurements.\n\n\nCMB anisotropies in a 10 square degrees sky patch, seen by three generations of satellites: COBE-DMR (1989-1993), WMAP (2001-2010) and Planck (2009-2013). Credit: NASA/JPL-Caltech/ESA."
+    "text": "Increasingly precise measurements\n\nearly 2000s: many experiments (ground, balloon) improved sensitivity and angular resolution\n(figure) unfair to COBE, but illustrates progress in instrumentation\n\n\nCMB anisotropies in a 10 square degrees sky patch, seen by three generations of satellites: COBE-DMR (1989-1993), WMAP (2001-2010) and Planck (2009-2013). Credit: NASA/JPL-Caltech/ESA."
   },
   {
     "objectID": "thesis/index.html#angular-power-spectrum",
     "href": "thesis/index.html#angular-power-spectrum",
     "title": "Thesis defence",
     "section": "Angular power spectrum",
-    "text": "Angular power spectrum\n\nCMB anisotropies are noise (acoustic oscillations) -&gt; spectral properties.\nTemporal frequency for sound -&gt; angular (spatial frequency) for CMB maps.\nFormally: spherical harmonic decomposition of the fluctuations.\nPower spectrum = variance of fluctuations at each angular scale.\n\n\nHow to characterise “noise”? Look at its spectral properties.\nSpatial/angular frequency: multipole moment \\(\\ell\\) – angular scale \\(\\theta \\sim 2\\pi / \\ell\\)\nPower spectrum \\(C_\\ell\\) = variance of fluctuations at scale \\(\\ell\\)\n\n\nPlanck power spectrum of temperature fluctuations along with best-fit model (Credit: ESA and the Planck Collaboration)"
+    "text": "Angular power spectrum\n\nHow to characterise anisotropy maps to extract scientific information?\nSpectral decomposition of anisotropies just like for sound waves\nTemporal frequency for sound -&gt; angular (spatial frequency) for maps\nFormally: spherical harmonic decomposition\nPower spectrum = variance of fluctuations at each angular scale\nAcoustic peaks = harmonics of the sound waves\n(figure) remarkable agreement with theory!\n\n\nHow to characterise “noise”? Look at its spectral properties.\nSpatial/angular frequency: multipole moment \\(\\ell\\) – angular scale \\(\\theta \\sim 2\\pi / \\ell\\)\nPower spectrum \\(C_\\ell\\) = variance of fluctuations at scale \\(\\ell\\)\n\n\nPlanck power spectrum of temperature fluctuations along with best-fit model (Credit: ESA and the Planck Collaboration)"
   },
   {
     "objectID": "thesis/index.html#basics-of-polarisation",
     "href": "thesis/index.html#basics-of-polarisation",
     "title": "Thesis defence",
     "section": "Basics of polarisation",
-    "text": "Basics of polarisation\n\nLight is polarised when its electric field oscillates preferentially in a given direction (example below).\nThe CMB is polarised through Thomson scattering of photons off free electrons in the primordial plasma. The efficiency of this process depends on the angle between the incoming and outgoing polarisation directions.\nTo characterise linear polarisation, we use the Stokes parameters \\(I\\), \\(Q\\) and \\(U\\).\nThe same way as temperature maps, we can make Q and U maps of the sky.\n\n\n\n\nThomson scattering \\(\\propto \\lvert \\hat\\epsilon \\cdot \\hat\\epsilon' \\rvert^2\\)\n3 Stokes parameters entirely describe linear polarisation\n\n\\(I\\) = total intensity (temperature)\n\\(Q\\) = difference in brightness between horizontal and vertical\n\\(U\\) = difference in brightness between +45° and -45°\n\n\n\n\n\nVertically polarised electromagnetic wave (source)\n\n\n\n\n\n\nCredit: Emma Alexander (source)"
+    "text": "Basics of polarisation\n\n(figure) Light is polarised when its electric field oscillates preferentially in a given direction\nThe CMB is polarised through Thomson scattering of photons off free electrons in the primordial plasma\nEfficiency of Thomson depends on angle between incoming and outgoing polarisation directions\nTo characterise linearly polarised light, use Stokes parameters \\(I\\) \\(Q\\) and \\(U\\)\nThe same way as total intensity maps, we can make Q and U maps of the sky\n\n\n\n\nThomson scattering \\(\\propto \\lvert \\hat\\epsilon \\cdot \\hat\\epsilon' \\rvert^2\\)\n3 Stokes parameters entirely characterise linearly polarised light\n\n\\(I\\) = total intensity\n\\(Q\\) = difference in brightness between horizontal and vertical\n\\(U\\) = difference in brightness between +45° and -45°\n\n\n\n\n\nVertically polarised electromagnetic wave (source)\n\n\n\n\n\n\nCredit: Emma Alexander (source)"
   },
   {
     "objectID": "thesis/index.html#e-and-b-modes",
     "href": "thesis/index.html#e-and-b-modes",
     "title": "Thesis defence",
     "section": "\\(E\\) and \\(B\\) modes",
-    "text": "\\(E\\) and \\(B\\) modes\n\nPolarisation field = headless vector.\nFigure: polarisation field on top of total intensity map from Planck.\nQ and U depend on coordinate system. Decomposition into \\(E\\) (parity-even) and \\(B\\) (parity-odd) patterns.\n\\(E\\) and \\(B\\) related to physical processes in the plasma.\nRemarkably, \\(B\\) modes are only sourced by tensor perturbations, GWs! (at first order)\nBy measuring CMB polarisation, specifically B modes, we have access to \\(r\\) and inflation.\n\n\n\n\n\n\nCMB polarisation superimposed on temperature map (smoothed to 5°) (Planck 2018 results I)\n\n\n\n\n\n\n\\(B\\) modes are only sourced by tensor perturbations!\nBy measuring CMB polarisation, we have access to \\(r\\) and inflation"
+    "text": "\\(E\\) and \\(B\\) modes\n\nQ and U -&gt; recover polarisation field = headless vector\n(figure) polarisation field on top of total intensity map from Planck\nQ and U depend on coordinate system\nDecomposition into \\(E\\) (parity-even) and \\(B\\) (parity-odd) patterns\n\\(E\\) and \\(B\\) related to physical processes in the plasma\nRemarkably, \\(B\\) modes are only sourced by tensor perturbations, GWs! (at first order)\nBy measuring CMB polarisation, specifically B modes, access to \\(r\\) and inflation\n\n\n\n\n\n\nCMB polarisation superimposed on temperature map (smoothed to 5°) (Planck 2018 results I)\n\n\n\n\n\n\n\\(B\\) modes are only sourced by tensor perturbations!\nBy measuring CMB polarisation, we have access to \\(r\\) and inflation"
   },
   {
     "objectID": "thesis/index.html#current-constraints-on-r",
@@ -116,21 +116,28 @@
     "href": "thesis/index.html#the-simons-observatory",
     "title": "Thesis defence",
     "section": "The Simons Observatory",
-    "text": "The Simons Observatory\n\nMeasuring \\(r\\) is one of the main science goals of the Simons Observatory.\nThe observatory is located in the Atacama desert in Chile, which is high and dry, ideal for millimetre-wave observations. SO builds on decades of experience in observing CMB from the ground.\nIt comprises three small aperture telescopes (SATs) dedicated to the measurement of large scale polarisation. A large aperture telescope (LAT) will observe smaller scales (high resolution) over a large fraction of the sky.\nVery broad science case, from inflation to neutrino mass and number of relativistic species, etc. But the main goal for the SATs is to reach \\(\\sigma(r) = 0.002\\).\nTo meet these ambitious goals, SO has deployed about 60,000 detectors over 6 frequency bands. Observations have started since last year, and we are analysing the data now!\n\n\n\n\nCerro Toco, Chile, 5200m altitude (“high and dry”)\n3 small (SATs) + 1 large aperture telescopes (LAT)\nLAT for small scales over large sky fraction\nSATs for polarisation at degree scales\n\nbaseline \\(\\sigma(r) = 0.003\\) (goal \\(0.002\\))\n\n60,000+ detectors\n6 frequency bands, 27-280 GHz\nData is coming now!\n\n\n\n\nSAT in its ground shield (credit: SO collaboration)\n\n\n\n\n\n\nSimons Observatory site on Cerro Toco"
+    "text": "The Simons Observatory\n\nMeasuring \\(r\\) is one of the main science goals of the Simons Observatory.\nInternational collaboration with 50+ institutes, 300+ members\nThe observatory is located in the Atacama desert in Chile, which is high and dry, ideal for millimetre-wave observations. SO builds on decades of experience in observing CMB from the ground.\nIt comprises three small aperture telescopes (SATs) dedicated to the measurement of large scale polarisation. A large aperture telescope (LAT) will observe smaller scales (high resolution) over a large fraction of the sky.\nVery broad science case, from inflation to neutrino mass and number of relativistic species, etc. But the main goal for the SATs is to reach \\(\\sigma(r) = 0.002\\).\nTo meet these ambitious goals, SO has deployed about 60,000 detectors over 6 frequency bands. Observations have started since last year, and we are analysing the data now!\n\n\n\n\nCerro Toco, Chile, 5200m altitude (“high and dry”)\n3 small (SATs) + 1 large aperture telescopes (LAT)\nLAT for small scales over large sky fraction\nSATs for polarisation at degree scales\n\nbaseline \\(\\sigma(r) = 0.003\\) (goal \\(0.002\\))\n\n60,000+ detectors\n6 frequency bands, 27-280 GHz\n\n\n\n\nSAT in its ground shield (credit: SO collaboration)\n\n\n\n\n\n\nSimons Observatory site on Cerro Toco"
+  },
+  {
+    "objectID": "thesis/index.html#preliminary-sat-maps",
+    "href": "thesis/index.html#preliminary-sat-maps",
+    "title": "Thesis defence",
+    "section": "Preliminary SAT maps",
+    "text": "Preliminary SAT maps\n\n\nTypical \\(+ / \\times\\) pattern in \\(Q/U\\) expected from \\(E\\) modes."
   },
   {
     "objectID": "thesis/index.html#from-time-ordered-data-to-maps",
     "href": "thesis/index.html#from-time-ordered-data-to-maps",
     "title": "Thesis defence",
     "section": "From time-ordered data to maps",
-    "text": "From time-ordered data to maps\n\nStart from figure on the right!\nLensing converts \\(E\\) -&gt; \\(B\\) and vice versa.\nCMB signal is faint: each individual data sample is noise dominated.\nTo achieve a good sensitivity across a significant sky area, CMB telescopes collect lost of measurements across the targeted area by scanning. This also helps to mitigate low-frequency instrumental noise.\nThe raw data is therefore made of time series (one/detector) called time-ordered data (TOD).\nWith knowledge of the scanning strategy (pointing information) we can reconstruct the observed sky maps -&gt; map-making.\nIt is the first step of several data reduction stages. Huge compression of the data, therefore crucial step to avoid losing information.\nAccurate modelling of noise and systematics required.\n\n\n\nmap-making = from time-ordered data (TOD) to sky maps at observed frequencies\ndata reduction step: ~6 orders of magnitude\n\n\n\n\nTraditional CMB analysis pipeline steps (credit: Josquin Errard)"
+    "text": "From time-ordered data to maps\n\nStart from figure on the right!\nLensing converts \\(E\\) -&gt; \\(B\\) and vice versa.\nCMB signal is faint: each individual data sample is noise dominated.\nTo achieve a good sensitivity across a significant sky area, CMB telescopes collect lost of measurements across the targeted area by scanning. This also helps to mitigate low-frequency instrumental noise.\nThe raw data is therefore made of time series (one/detector) called time-ordered data (TOD).\nWith knowledge of the scanning strategy (pointing information) we can reconstruct the observed sky maps -&gt; map-making.\nMap-making = key starting point of analysis pipeline\nMust preserve all information + mitigate as many systematics as possible\n\n\n\nmap-making = from time-ordered data (TOD) to sky maps at observed frequencies\ndata reduction step: ~6 orders of magnitude\n\n\n\n\nTraditional CMB analysis pipeline steps (credit: Josquin Errard)"
   },
   {
     "objectID": "thesis/index.html#linear-data-model",
     "href": "thesis/index.html#linear-data-model",
     "title": "Thesis defence",
     "section": "Linear data model",
-    "text": "Linear data model\n\nFormally: linear data model.\nWhat we recover/know/assume.\nMap-making = linear operation.\n\n\\[\nd = Ps + Tx + n\n\\]\n\nwe know \\(d\\) (the data)\nwe estimate \\(s\\) (sky maps) and marginalize over \\(x\\) (spurious signals)\nwe model \\(P\\) (pointing) and \\(T\\) (templates)\nwe assume that \\(n\\) (noise) has covariance \\(N\\)\n\n“Map-making” = linear operation \\(\\hat s = L d\\) to estimate sky maps from the data."
+    "text": "Linear data model\n\nFormally: linear data model\nInverse problem – what we recover/know/assume\nLinear estimator = mapping of data to maps\n\n\\[\nd = Ps + Tx + n\n\\]\n\nwe know \\(d\\) (the data)\nwe estimate \\(s\\) (sky maps) and marginalize over \\(x\\) (spurious signals)\nwe model \\(P\\) (pointing) and \\(T\\) (templates)\nwe assume that \\(n\\) (noise) has covariance \\(N\\)\n\n“Map-making” = linear operation \\(\\hat s = L d\\) to estimate sky maps from the data."
   },
   {
     "objectID": "thesis/index.html#unbiased-estimators",
@@ -144,56 +151,56 @@
     "href": "thesis/index.html#practical-considerations",
     "title": "Thesis defence",
     "section": "Practical considerations",
-    "text": "Practical considerations\n\nSize of the problem\n\n1,000 detectors + months of data + sampling @100 Hz -&gt; \\(n_t \\sim 10^{11}\\) samples!\nresolution + sky coverage + Stokes (I)QU -&gt; \\(n_p \\sim 10^5 - 10^8\\) sky pixels\nNumerical efficiency is key!\n\n\n\n\nNoise correlations \\(N\\) (size \\(n_t \\times n_t\\))\n\nsplit data in chunks (trade-off efficiency/quality)\nassume noise is stationary in each chunk, \\(N(t,t')=N(\\lvert t-t' \\rvert)\\)\ncharacterise in Fourier space (power spectral density, PSD)\n\n\n\n\n\nIterative solvers\n\ncan not compute/store matrices too large\n\\(\\hat s = A^{-1} b\\) -&gt; instead solve \\(A s = b\\)\npreconditioned conjugate gradient (PCG) algorithm\nconvergence speed influenced by noise correlations"
+    "text": "Practical considerations\n\nSize of the problem\n\n1,000 detectors + months of data + sampling @100 Hz -&gt; \\(n_t \\sim 10^{11}\\) samples!\nresolution + sky coverage + Stokes (I)QU -&gt; \\(n_p \\sim 10^5 - 10^8\\) sky pixels\nNumerical efficiency and parallelism are key!\n\n\n\n\nNoise correlations \\(N\\) (size \\(n_t \\times n_t\\))\n\nsplit data in chunks (trade-off efficiency/quality)\nassume noise is stationary in each chunk, \\(N(t,t')=N(\\lvert t-t' \\rvert)\\)\ncharacterise in Fourier space (power spectral density, PSD)\n\n\n\n\n\nIterative solvers\n\n\\(\\hat s = A^{-1} b\\) -&gt; instead solve \\(A s = b\\)\nstore \\(A\\) implicitly without constructing the whole matrix\npreconditioned conjugate gradient (PCG) algorithm\nconvergence speed influenced by noise correlations"
   },
   {
     "objectID": "thesis/index.html#observing-from-the-ground",
     "href": "thesis/index.html#observing-from-the-ground",
     "title": "Thesis defence",
     "section": "Observing from the ground",
-    "text": "Observing from the ground\n\nMajor challenge for map-making from the ground: atmospheric emission.\nDual-polarisation -&gt; intuitive technique to recover polarisation = pair differencing.\n\n\n\n\nMajor challenge: atmosphere\n\nmuch brighter than CMB\nloading: increase detector noise\nspatial + temporal variations\nnegligible linear polarisation\n\nHardware solutions\n\ndual-polarisation detectors\nfast polarisation modulation (HWP)\n\n\n\n\n\n\n\nCredit: SO collaboration.\n\n\n\n\n\n\nHWP illustration (source).\n\n\n\n\n\n\n\nEmission spectrum of the atmosphere for different levels of PWV. Credit: Morris et al. 2022\n\n\n\n\n\nAtmosphere simulation. Credit: R. Keskitalo & J. Borrill"
+    "text": "Observing from the ground\n\nMajor challenge for map-making from the ground: atmospheric emission\nLoading -&gt; more photons on average\nExtra effect: fluctuations because atmosphere is a turbulent medium\nHWP: change angle of polarisation with respect to orientation of the waveplate\n\n\n\n\nMajor challenge: atmosphere\n\nmuch brighter than CMB\nloading: increase detector noise\nturbulence: spatial + temporal variations\nnegligible linear polarisation\n\nHardware solutions\n\ndual-polarisation detectors\ncontinuously rotating HWP\n\n\n\n\n\n\n\nCredit: SO collaboration.\n\n\n\n\n\n\nHalf waveplate illustration (source).\n\n\n\n\n\n\n\nEmission spectrum of the atmosphere for different levels of PWV. Credit: Morris et al. 2022\n\n\n\n\n\nAtmosphere simulation. Credit: R. Keskitalo & J. Borrill"
   },
   {
     "objectID": "thesis/index.html#unbiased-polarisation-map-making",
     "href": "thesis/index.html#unbiased-polarisation-map-making",
     "title": "Thesis defence",
     "section": "Unbiased polarisation map-making",
-    "text": "Unbiased polarisation map-making\n\nTotal intensity \\(I\\) hard to recover from the ground because of atmosphere.\nFocus on polarisation instead; temperature large scales already very well measured from space (Planck).\nCompare DW and PD and see how they manage to take advantage of hardware solutions.\n\nFocus on unbiased reconstruction of polarisation (\\(Q\\) and \\(U\\)).\n\nMinimal model\n\nno specific temporal or spatial structure\nunpolarised atmosphere identical for orthogonal detectors\n\nDown-weighting (DW)\n\n\\(W = (N_\\mathrm{atm} + N_\\mathrm{instr})^{-1}\\)\nstationary noise, independent between detectors\n\nIdeal reconstruction\n\natmosphere-free data: \\(d = P s + n\\) (instr. noise only)\nGLS solution with \\(W = N_\\mathrm{instr}^{-1}\\)\nbenchmark tool"
+    "text": "Unbiased polarisation map-making\n\nTotal intensity \\(I\\) hard to recover from the ground because of atmosphere.\nFocus on polarisation instead; temperature large scales already very well measured from space (Planck).\nCompare DW and PD and see how they manage to take advantage of hardware solutions.\nvery demanding benchmark!\n\nFocus on unbiased reconstruction of polarisation (\\(Q\\) and \\(U\\)).\nData: \\(d = Ps + Tx + n\\)\n\nMinimal model\n\n\\(T\\) very general: no specific temporal or spatial structure\natmosphere identical for orthogonal detectors\n\nDown-weighting (DW)\n\nno template, \\(Tx \\rightarrow n^\\mathrm{atm}\\)\nGLS with \\(W = (N_\\mathrm{atm} + N_\\mathrm{instr})^{-1}\\)\nstationary noise, independent between detectors\n\nIdeal reconstruction\n\natmosphere-free data: \\(d = P s + n\\) (instr. noise only)\nGLS with \\(W = N_\\mathrm{instr}^{-1}\\)\nbenchmark tool"
   },
   {
     "objectID": "thesis/index.html#pair-differencing",
     "href": "thesis/index.html#pair-differencing",
     "title": "Thesis defence",
     "section": "Pair differencing",
-    "text": "Pair differencing\n\nWrite down minimal model for one pair of detectors.\nUse template filtering to estimate \\(Q\\) and \\(U\\), marginalising over \\(x\\).\nFind pair differencing!\n\nMinimal model for pair of orthogonal detectors: \\[\nd = \\begin{bmatrix} d_\\parallel \\\\ d_\\perp \\end{bmatrix}\n    = \\begin{bmatrix} T \\\\ T \\end{bmatrix} x\n    + \\begin{bmatrix} P_{QU} \\\\ -P_{QU} \\end{bmatrix} s_{QU}\n    + \\begin{bmatrix} n_\\parallel \\\\ n_\\perp \\end{bmatrix}\n\\]\nGLS template filtering estimator gives \\[\n\\hat s_{QU} = (P_{QU}^\\top N_-^{-1} P_{QU})^{-1} P_{QU}^\\top N_-^{-1} d_-\n\\] with \\(d_- \\equiv d_\\parallel - d_\\perp\\) and \\(N_-\\) the covariance of \\(n_- \\equiv n_\\parallel - n_\\perp\\).\nMinimal model equivalent to pair-differencing (PD)."
+    "text": "Pair differencing\n\nWrite down minimal model for one pair of detectors.\nUse template filtering to estimate \\(Q\\) and \\(U\\), marginalising over \\(x\\).\nFind pair differencing!\n\n\n\nMinimal model for pair of orthogonal detectors: \\[\nd = \\begin{bmatrix} d^A \\\\ d^B \\end{bmatrix}\n    = \\begin{bmatrix} T \\\\ T \\end{bmatrix} x\n    + \\begin{bmatrix} P_{QU} \\\\ -P_{QU} \\end{bmatrix} s_{QU}\n    + \\begin{bmatrix} n^A \\\\ n^B \\end{bmatrix}\n\\]\nGLS template filtering estimator gives \\[\n\\hat s_{QU} = (P_{QU}^\\top N_-^{-1} P_{QU})^{-1} P_{QU}^\\top N_-^{-1} d_-\n\\] with \\(d_- \\equiv d^A - d^B\\) and \\(N_-\\) the covariance of \\(n_- \\equiv n^A - n^B\\).\nMinimal model equivalent to pair-differencing (PD)."
   },
   {
     "objectID": "thesis/index.html#questions",
     "href": "thesis/index.html#questions",
     "title": "Thesis defence",
     "section": "Questions",
-    "text": "Questions\n\nHow do DW and PD compare out of the box?\nHow far is PD from the ideal reconstruction?\nWhat is the impact of systematic effects?"
+    "text": "Questions\n\nCompare pair differencing and down-weighting\nCompare with ideal reconstruction\nImpact of systematic effects"
   },
   {
     "objectID": "thesis/index.html#numerical-simulations",
     "href": "thesis/index.html#numerical-simulations",
     "title": "Thesis defence",
     "section": "Numerical simulations",
-    "text": "Numerical simulations\n\nTo answer these questions, I performed advanced time-domain simulations of an SO-like small aperture telescope.\nI used the toast simulation framework and adjusted it for the needs of the study.\nIn particular I implemented the interface between toast and our reconstruction library, mappraiser (see figure).\nMassively parallel implementation of the unbiased map-making estimator presented earlier, which I developed further.\n\n\nSO-like small aperture telescope\n\n350 pairs of detectors + HWP\n\nRealistic atmosphere simulation using TOAST 3 framework\nInstrumental \\(1/f\\) noise: \\(S(f) = \\mathrm{NET}^2 [1 + (f_\\mathrm{knee}/f)^\\alpha]\\)\n\nvariation of parameters around nominal values\n\nMap-making code: MAPPRAISER library\n\n\n\nOverview of the mappraiser architecture. Credit: Hamza El Bouhargani (paper)."
+    "text": "Numerical simulations\n\nTo answer these questions, I performed advanced time-domain simulations of an SO-like small aperture telescope.\nI used the toast simulation framework and adjusted it for the needs of the study.\nI used the NERSC and Jean-Zay supercomputers.\nIn particular I implemented the interface between toast and our reconstruction library, mappraiser (see figure).\nMassively parallel implementation of the unbiased map-making estimator presented earlier, which I developed further.\n\n\n\n\nSAT with 350 pairs of detectors + HWP\nAtmosphere simulation using TOAST 3 framework\nInstrumental \\(1/f\\) noise\n\n\\(S(f) = \\mathrm{NET}^2 [1 + (f_\\mathrm{knee}/f)^\\alpha]\\)\nvariation around nominal values\n\nMap-making code: MAPPRAISER library\n\n\n\n\nOverview of the mappraiser architecture. Credit: Hamza El Bouhargani (paper)."
   },
   {
     "objectID": "thesis/index.html#results-pd-vs-dw",
     "href": "thesis/index.html#results-pd-vs-dw",
     "title": "Thesis defence",
     "section": "Results: PD vs DW",
-    "text": "Results: PD vs DW\n\nIn the absence of systematics, PD is nearly optimal.\nNo need/reason to try and improve beyond that, unless a better model of atmosphere is available.\nHow precise is PD compared to ideal reconstruction (perfect model)?\n\n\n\n\ndifferent models, different assumptions\nimplicit differencing in DW (\\(W_\\parallel = W_\\perp\\)) necessary to avoid atmosphere leakage\n\n\n\n\nNoise power spectra compared to reference.\n\n\n\n\n\n\nNoise maps from PD (top) and DW (bottom) with 10% variation of noise parameters."
+    "text": "Results: PD vs DW\n\nIn the absence of systematics, PD is nearly optimal.\nNo need/reason to try and improve beyond that, unless a better model of atmosphere is available.\nHow precise is PD compared to ideal reconstruction (perfect model)?\n\n\n\n\ndifferent models, different assumptions\nimplicit differencing in DW (\\(W_A = W_B\\)) necessary to avoid atmosphere leakage\n\n\n\n\nNoise power spectra compared to ideal.\n\n\n\n\n\n\nNoise maps from PD (top) and DW (bottom) with 10% variation of noise parameters."
   },
   {
     "objectID": "thesis/index.html#results-pd-map-sensitivity",
     "href": "thesis/index.html#results-pd-map-sensitivity",
     "title": "Thesis defence",
     "section": "Results: PD map sensitivity",
-    "text": "Results: PD map sensitivity\n\nWhite noise -&gt; analytical estimate of the noise level in the maps.\nPD ideal if identical noise properties. Perturb the nominal noise model and see how much we lose.\nFigure: excess variance in \\(Q/U\\) maps as a function of the variation of noise levels.\n\n\n\nWhite instrumental noise.\n\nHow much degradation if \\(\\sigma_\\parallel \\neq \\sigma_\\perp\\)?\nExcess variance depends on \\(\\varepsilon \\equiv \\frac{\\sigma_\\parallel^2 - \\sigma_\\perp^2}{\\sigma_\\parallel^2 + \\sigma_\\perp^2}\\)\nSuboptimal propagation of noise levels after differencing\n\n\n\n\n\nAnalytical prediction (black) vs measured excess variance.\n\n\n\n\\(\\hat s^\\mathrm{ideal}_{QU} = \\hat s^\\mathrm{pd}_{QU} + \\left( P^\\top_- \\Pi_{--} P_- \\right)^{-1} P^\\top_- \\Pi_{-+} n_+\\)"
+    "text": "Results: PD map sensitivity\n\nWhite noise -&gt; analytical estimate of average noise level\nPD ideal if identical noise properties. Perturb the nominal noise model and see how much we lose.\nFigure: excess variance in \\(Q/U\\) maps as a function of the variation of noise levels.\n\n\n\nWhite instrumental noise.\n\nIdeal if \\(\\sigma_A = \\sigma_B\\)\nHow much degradation if \\(\\sigma_A \\neq \\sigma_B\\)?\nExcess variance depends on \\(\\varepsilon \\equiv \\frac{\\sigma_A^2 - \\sigma_B^2}{\\sigma_A^2 + \\sigma_B^2}\\)\nSuboptimal propagation of noise levels after differencing\n\n\n\n\n\nAnalytical prediction (black) vs measured excess variance."
   },
   {
     "objectID": "thesis/index.html#results-impact-on-r",
@@ -207,28 +214,28 @@
     "href": "thesis/index.html#results-gain-errors",
     "title": "Thesis defence",
     "section": "Results: gain errors",
-    "text": "Results: gain errors\n\n\n\nrandom gain error in pairs\nadditional noise comparable to case with uneven detector noise at low multipoles\nefficient mitigation by HWP\n\nCase-by-case analysis required for each systematic and each method\n\n\n\n\nPD noise power spectra with 0.1 and 1% gain errors."
+    "text": "Results: gain errors\n\nsystematics -&gt; possible atmosphere leakage\ngain error: one example of systematic, “case study”\njustify 1% gain error (achieved by other experiments)\nexpect similar conclusion for other effects\n\n\n\n\nrandom gain error in pairs\nadditional noise comparable to case with uneven detector noise at low multipoles\nefficient mitigation by HWP\n\nCase-by-case analysis required for each systematic and each method\n\n\n\n\nPD noise power spectra with 0.1 and 1% gain errors."
   },
   {
     "objectID": "thesis/index.html#mind-the-gap-thesis-chapter-6",
     "href": "thesis/index.html#mind-the-gap-thesis-chapter-6",
     "title": "Thesis defence",
     "section": "Mind The Gap! – thesis Chapter 6",
-    "text": "Mind The Gap! – thesis Chapter 6\n\n\n\nMotivation\n\ngaps break assumptions about the noise\ncompromise efficiency and precision of map-making methods\n\nContributions\n\nimplement gap-filling algorithm with constrained realisations in mappraiser\ndemonstrate “nested PCG” method: mathematically correct treatment of gaps\n\nResults\n\ngap-filling methods lose sensitivity\nHWP helps tremendously for polarisation\nnested PCG enables optimal recovery with increased computational cost"
+    "text": "Mind The Gap! – thesis Chapter 6\n\nEffect much larger than systematic shown before!\n\n\n\n\nMotivation\n\ngaps break assumptions about the noise\ncompromise efficiency and precision of map-making methods\n\nContributions\n\ngap-filling algorithm in mappraiser: synthetic samples\ndemonstrate “nested PCG” method: mathematically correct treatment of gaps\n\nResults\n\ngap-filling methods lose sensitivity\nHWP helps tremendously for polarisation\nnested PCG enables optimal recovery with increased computational cost\n\n\n\n\n\n\nRatio of \\(BB\\) noise spectra to the reference (No HWP)."
   },
   {
     "objectID": "thesis/index.html#a-toolbox-for-the-scipol-project",
     "href": "thesis/index.html#a-toolbox-for-the-scipol-project",
     "title": "Thesis defence",
     "section": "A toolbox for the SciPol project",
-    "text": "A toolbox for the SciPol project\n\nCMB polarisation analysis mixes instrument + foregrounds + cosmology.\nInstrumental effects can be freqneucy-dependent -&gt; time-domain component separation.\n\n\n\nDevelopment of furax with SciPol team\n\nusing jax for performance and portability (CPU/GPU)\nable to represent complex instrument models\nmap-making, component separation, atmosphere decontamination, etc. in a single framework\n\nApplications to SO data (BB analysis group)!\n\nmap-making with template filtering\nnon-ideal optical components (HWP)\n\n\n\n\n\nGeneralised data model including instrumental effects and foregrounds. Credit: Josquin Errard"
+    "text": "A toolbox for the SciPol project\n\nCMB polarisation analysis mixes instrument + foregrounds + cosmology.\nInstrumental effects can be freqneucy-dependent -&gt; time-domain component separation.\n\n\n\nDevelopment of furax (https://furax.readthedocs.io/en/) with SciPol team\n\nusing jax for performance and portability (CPU/GPU)\nable to represent complex instrument models\nmap-making, component separation, atmosphere decontamination, etc. in a single framework\n\nApplications to SO data (BB analysis group)!\n\nmap-making with template filtering\nnon-ideal optical components (HWP)\n\n\n\n\n\nGeneralised data model including instrumental effects and foregrounds. Credit: Josquin Errard"
   },
   {
-    "objectID": "thesis/index.html#conclusion",
-    "href": "thesis/index.html#conclusion",
+    "objectID": "thesis/index.html#conclusions",
+    "href": "thesis/index.html#conclusions",
     "title": "Thesis defence",
-    "section": "Conclusion",
-    "text": "Conclusion\n\nPrimordial \\(B\\) modes = window on first instants of the Universe\nPossible imprint in the large-scale CMB polarisation -&gt; SATs\nMap-making = crucial step to maximise scientific return\nGround telescopes must mitigate atmospheric contamination using dual-polarisation detectors and HWP\nNo atmospheric model leads to intuitive pair differencing\nNear-optimal sensitivity to \\(r\\) even with uneven detector properties\n\n\n\nFuture: going to University of Manchester to work on SO SAT data\nBuild a robust analysis pipeline and measure (constrain) \\(r\\)"
+    "section": "Conclusions",
+    "text": "Conclusions\n\nContext: enable ground experiments to reach sensitivity for \\(B\\) modes\nGoal: Building a robust analysis pipeline and measure (constrain) \\(r\\)\nContributions:\n\ndemonstrated near-optimal performance of pair differencing in realistic conditions\nimplemented robust treatment of timestream gaps\nmultiple software packages: mappraiser, furax, jax-healpy\n\nFuture: going to University of Manchester to apply these to SO SAT data\n\n\n\n\n\nThe SciPol team (find who’s missing)"
   },
   {
     "objectID": "thesis/index.html#calibration-study-using-el-nods",
