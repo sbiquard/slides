@@ -61,13 +61,13 @@ $selection-bg: #26351c !default;
 
   .logos-container {
     display: flex;
-    justify-content: center;
+    justify-content: right;
     align-items: center;
-    gap: 1em;  // Space between logos
-    margin-bottom: 0.5em;  // Space before the title
+    gap: 0.5em;  // Space between logos
+    margin-bottom: 0em;  // Space before the title
 
     img {
-        height: 80px;  // Fixed height for all logos
+        height: 60px;  // Fixed height for all logos
         width: auto;  // Maintain aspect ratio
         object-fit: contain;
     }
