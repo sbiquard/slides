@@ -144,10 +144,10 @@
 <section id="outline" class="slide level2">
 <h2>Outline</h2>
 <ol type="1">
-<li>Introduction to cosmology and the CMB (20-25 min)</li>
-<li>Reconstruction of CMB maps (5 min)</li>
-<li>Polarisation maps from the ground (15 min)</li>
-<li>Other work and conclusion (5-10 min)</li>
+<li>Introduction to cosmology and the CMB</li>
+<li>Reconstruction of CMB maps</li>
+<li>Polarisation maps from the ground</li>
+<li>Other work and conclusion</li>
 </ol>
 </section>
 <section id="introduction" class="title-slide slide level1 center" data-background-color="#40666e">
@@ -392,7 +392,7 @@
 </ul></li>
 <li><p>Tensor perturbations = <strong>gravitational waves</strong> (GWs)</p></li>
 <li><p>Tensor-to-scalar ratio: <span class="math display">\[
-r \equiv A_t / A_s \propto E^4_\mathrm{inf}
+r \equiv A_t / A_s \propto E^4_\mathrm{inflation}
 \]</span></p></li>
 <li><p>Insight into the fundamental laws of Physics at very high energies</p></li>
 </ul>
@@ -1117,7 +1117,7 @@ d = \begin{bmatrix} d_\parallel \\ d_\perp \end{bmatrix}
 </figure>
 </div>
 </div></div>
-<p><span class="math inline">\(\hat s^\mathrm{ideal}_{QU} = s^\mathrm{pd}_{QU} + \left( P^\top_- \Pi_{--} P_- \right)^{-1} P^\top_- \Pi_{-+} n_+\)</span></p>
+<p><span class="math inline">\(\hat s^\mathrm{ideal}_{QU} = \hat s^\mathrm{pd}_{QU} + \left( P^\top_- \Pi_{--} P_- \right)^{-1} P^\top_- \Pi_{-+} n_+\)</span></p>
 </section>
 <section id="results-impact-on-r" class="slide level2 smaller">
 <h2>Results: impact on <span class="math inline">\(r\)</span></h2>
@@ -1140,41 +1140,63 @@ d = \begin{bmatrix} d_\parallel \\ d_\perp \end{bmatrix}
 <li>detector-dependent parameters (knee, slope, white level)</li>
 <li>noise power spectrum <span class="math inline">\(N_\ell^{BB}\)</span> from reconstructed maps <span class="math inline">\(\hat s^\mathrm{pd}_{QU}\)</span></li>
 <li>Fisher forecast: <span class="math display">\[
-\sigma(r=0) \approx \frac{f_\text{sky}}{2} \times \sum_{\text{bins $b$}} \delta_\ell (2\ell_b+1) \Bigg( \frac{C_{\ell_b}^{BB,\text{prim}} \rvert_{r=1}}{C_{\ell_b}^{BB,\text{lens}} + \langle N_{\ell_b}^{BB} \rangle} \Bigg)^2
+\sigma(r=0)^{-2} \approx \frac{f_\text{sky}}{2} \times \sum_{\text{bins $b$}} \Delta_\ell (2\ell_b+1) \Bigg( \frac{C_{\ell_b}^{BB,\text{prim}} \rvert_{r=1}}{C_{\ell_b}^{BB,\text{lens}} + \langle N_{\ell_b}^{BB} \rangle} \Bigg)^2
 \]</span></li>
 </ul>
 <p>Moderate increase of error bars for typical 10% variation of parameters.</p>
 
-<img data-src="assets/results.jpg" class="r-stretch"></section></section>
+<img data-src="assets/results.jpg" class="r-stretch"></section>
+<section id="results-gain-errors" class="slide level2">
+<h2>Results: gain errors</h2>
+<div class="columns4060">
+<div class="column">
+<ul>
+<li>random gain error in pairs</li>
+<li>additional noise comparable to case with uneven detector noise at low multipoles</li>
+<li>efficient mitigation by HWP</li>
+</ul>
+<p>Case-by-case analysis required for each systematic and each method</p>
+</div><div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="assets/gain_errors_spectra_hwp.svg"></p>
+<figcaption>PD noise power spectra with 0.1 and 1% gain errors.</figcaption>
+</figure>
+</div>
+</div></div>
+</section></section>
 <section>
-<section id="conclusion" class="title-slide slide level1 center" data-background-color="#40666e">
-<h1>Conclusion</h1>
+<section id="other-work" class="title-slide slide level1 center" data-background-color="#40666e">
+<h1>Other work</h1>
 
 </section>
-<section id="summary-of-other-work" class="slide level2">
-<h2>Summary of other work</h2>
+<section id="mind-the-gap-thesis-chapter-6" class="slide level2 smaller">
+<h2>Mind The Gap! – thesis Chapter 6</h2>
+<div class="columns6040">
+<div class="column">
 <ul>
-<li><strong>Timestream gaps</strong> (thesis Chapter 6)
+<li>Motivation
 <ul>
+<li>gaps break assumptions about the noise</li>
 <li>compromise efficiency and precision of map-making methods</li>
-<li>implemented gap-filling in <code>mappraiser</code></li>
-<li>demonstrated a new method to reach optimal precision</li>
-<li>article in preparation</li>
+</ul></li>
+<li>Contributions
+<ul>
+<li>implement gap-filling algorithm with constrained realisations in <code>mappraiser</code></li>
+<li>demonstrate “nested PCG” method: mathematically correct treatment of gaps</li>
+</ul></li>
+<li>Results
+<ul>
+<li>gap-filling methods lose sensitivity</li>
+<li>HWP helps tremendously for polarisation</li>
+<li>nested PCG enables optimal recovery with increased computational cost</li>
 </ul></li>
 </ul>
-<div class="fragment">
-<ul>
-<li>Calibration study using <strong>elevation nods</strong>
-<ul>
-<li>use atmosphere as a calibrator</li>
-<li>accurate relative gains are crucial for polarisation recovery</li>
-<li>assess impact of modelling, pointing errors</li>
-<li>find a typical <span class="math inline">\(1\%\)</span> gain uncertainty using el-nods</li>
-</ul></li>
-</ul>
-</div>
+</div><div class="column">
+<p><img data-src="assets/gaps_recovery_comparison.png" class="" height="550"></p>
+</div></div>
 </section>
-<section id="a-toolbox-for-the-scipol-project" class="slide level2">
+<section id="a-toolbox-for-the-scipol-project" class="slide level2 smaller">
 <h2>A toolbox for the SciPol project</h2>
 <aside class="notes">
 <p>CMB polarisation analysis mixes instrument + foregrounds + cosmology.</p>
@@ -1194,9 +1216,14 @@ d = \begin{bmatrix} d_\parallel \\ d_\perp \end{bmatrix}
 <div class="column">
 <p>Development of <a href="https://furax.readthedocs.io/en/stable/"><code>furax</code></a> with SciPol team</p>
 <ul>
-<li><a href="https://docs.jax.dev"><code>jax</code></a> for <strong>performance</strong> and portability (CPU/GPU)</li>
+<li>using <a href="https://docs.jax.dev"><code>jax</code></a> for <strong>performance</strong> and portability (CPU/GPU)</li>
 <li>able to represent <strong>complex instrument models</strong></li>
 <li>map-making, component separation, atmosphere decontamination, etc. in a <strong>single framework</strong></li>
+</ul>
+<p>Applications to SO data (BB analysis group)!</p>
+<ul>
+<li>map-making with template filtering</li>
+<li>non-ideal optical components (HWP)</li>
 </ul>
 </div><div class="column">
 <div class="quarto-figure quarto-figure-center">
@@ -1207,7 +1234,7 @@ d = \begin{bmatrix} d_\parallel \\ d_\perp \end{bmatrix}
 </div>
 </div></div>
 </section>
-<section id="conclusion-1" class="slide level2">
+<section id="conclusion" class="slide level2 smaller">
 <h2>Conclusion</h2>
 <ul>
 <li>Primordial <span class="math inline">\(B\)</span> modes = window on first instants of the Universe</li>
@@ -1222,9 +1249,26 @@ d = \begin{bmatrix} d_\parallel \\ d_\perp \end{bmatrix}
 <li>Future: going to University of Manchester to work on SO SAT data</li>
 <li>Build a robust analysis pipeline and measure (constrain) <span class="math inline">\(r\)</span></li>
 </ul>
-
-
 </div>
+<div class="fragment">
+<p><img data-src="assets/banner_photos.png"></p>
+</div>
+</section></section>
+<section>
+<section id="backup-slides" class="title-slide slide level1 center">
+<h1>Backup slides</h1>
+
+</section>
+<section id="calibration-study-using-el-nods" class="slide level2">
+<h2>Calibration study using el-nods</h2>
+<ul>
+<li>need for accurate relative calibration</li>
+<li>use atmosphere as a calibrator</li>
+<li>assessed impact of modelling, pointing errors</li>
+<li>found a typical <span class="math inline">\(1\%\)</span> gain uncertainty using el-nods</li>
+</ul>
+
+
 </section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">

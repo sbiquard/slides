@@ -4,7 +4,7 @@
     "href": "thesis/index.html#outline",
     "title": "Thesis defence",
     "section": "Outline",
-    "text": "Outline\n\nIntroduction to cosmology and the CMB (20-25 min)\nReconstruction of CMB maps (5 min)\nPolarisation maps from the ground (15 min)\nOther work and conclusion (5-10 min)"
+    "text": "Outline\n\nIntroduction to cosmology and the CMB\nReconstruction of CMB maps\nPolarisation maps from the ground\nOther work and conclusion"
   },
   {
     "objectID": "thesis/index.html#section",
@@ -60,7 +60,7 @@
     "href": "thesis/index.html#primordial-gravitational-waves",
     "title": "Thesis defence",
     "section": "Primordial gravitational waves",
-    "text": "Primordial gravitational waves\n\nBut “Extraordinary claims require extraordinary evidence.”\nVery clean prediction of inflation: primordial gravitational waves.\nFollow slide text.\nMoreover, primordial GWs leave a unique imprint that we can look for in the CMB!\n\n\nQuantum fluctuations -&gt; perturbations of metric tensor (space-time)\nAmplitude of perturbations as a function of size\n\nscalar: \\(\\Delta^2_s(k) = A_s (k/k_*)^{n_s - 1}\\)\ntensor: \\(\\Delta^2_t(k) = A_t (k/k_*)^{n_t}\\)\n\nTensor perturbations = gravitational waves (GWs)\nTensor-to-scalar ratio: \\[\nr \\equiv A_t / A_s \\propto E^4_\\mathrm{inf}\n\\]\nInsight into the fundamental laws of Physics at very high energies\n\n\nGWs leave a unique imprint in the CMB!"
+    "text": "Primordial gravitational waves\n\nBut “Extraordinary claims require extraordinary evidence.”\nVery clean prediction of inflation: primordial gravitational waves.\nFollow slide text.\nMoreover, primordial GWs leave a unique imprint that we can look for in the CMB!\n\n\nQuantum fluctuations -&gt; perturbations of metric tensor (space-time)\nAmplitude of perturbations as a function of size\n\nscalar: \\(\\Delta^2_s(k) = A_s (k/k_*)^{n_s - 1}\\)\ntensor: \\(\\Delta^2_t(k) = A_t (k/k_*)^{n_t}\\)\n\nTensor perturbations = gravitational waves (GWs)\nTensor-to-scalar ratio: \\[\nr \\equiv A_t / A_s \\propto E^4_\\mathrm{inflation}\n\\]\nInsight into the fundamental laws of Physics at very high energies\n\n\nGWs leave a unique imprint in the CMB!"
   },
   {
     "objectID": "thesis/index.html#discovery",
@@ -193,35 +193,49 @@
     "href": "thesis/index.html#results-pd-map-sensitivity",
     "title": "Thesis defence",
     "section": "Results: PD map sensitivity",
-    "text": "Results: PD map sensitivity\n\nWhite noise -&gt; analytical estimate of the noise level in the maps.\nPD ideal if identical noise properties. Perturb the nominal noise model and see how much we lose.\nFigure: excess variance in \\(Q/U\\) maps as a function of the variation of noise levels.\n\n\n\nWhite instrumental noise.\n\nHow much degradation if \\(\\sigma_\\parallel \\neq \\sigma_\\perp\\)?\nExcess variance depends on \\(\\varepsilon \\equiv \\frac{\\sigma_\\parallel^2 - \\sigma_\\perp^2}{\\sigma_\\parallel^2 + \\sigma_\\perp^2}\\)\nSuboptimal propagation of noise levels after differencing\n\n\n\n\n\nAnalytical prediction (black) vs measured excess variance.\n\n\n\n\\(\\hat s^\\mathrm{ideal}_{QU} = s^\\mathrm{pd}_{QU} + \\left( P^\\top_- \\Pi_{--} P_- \\right)^{-1} P^\\top_- \\Pi_{-+} n_+\\)"
+    "text": "Results: PD map sensitivity\n\nWhite noise -&gt; analytical estimate of the noise level in the maps.\nPD ideal if identical noise properties. Perturb the nominal noise model and see how much we lose.\nFigure: excess variance in \\(Q/U\\) maps as a function of the variation of noise levels.\n\n\n\nWhite instrumental noise.\n\nHow much degradation if \\(\\sigma_\\parallel \\neq \\sigma_\\perp\\)?\nExcess variance depends on \\(\\varepsilon \\equiv \\frac{\\sigma_\\parallel^2 - \\sigma_\\perp^2}{\\sigma_\\parallel^2 + \\sigma_\\perp^2}\\)\nSuboptimal propagation of noise levels after differencing\n\n\n\n\n\nAnalytical prediction (black) vs measured excess variance.\n\n\n\n\\(\\hat s^\\mathrm{ideal}_{QU} = \\hat s^\\mathrm{pd}_{QU} + \\left( P^\\top_- \\Pi_{--} P_- \\right)^{-1} P^\\top_- \\Pi_{-+} n_+\\)"
   },
   {
     "objectID": "thesis/index.html#results-impact-on-r",
     "href": "thesis/index.html#results-impact-on-r",
     "title": "Thesis defence",
     "section": "Results: impact on \\(r\\)",
-    "text": "Results: impact on \\(r\\)\n\nHow do these results translate in terms of \\(r\\) sensitivity?\nRemarkably little impact given the very general assumption behind PD.\n\n\n25 realisations of realistic instrumental \\(1/f\\) noise\ndetector-dependent parameters (knee, slope, white level)\nnoise power spectrum \\(N_\\ell^{BB}\\) from reconstructed maps \\(\\hat s^\\mathrm{pd}_{QU}\\)\nFisher forecast: \\[\n\\sigma(r=0) \\approx \\frac{f_\\text{sky}}{2} \\times \\sum_{\\text{bins $b$}} \\delta_\\ell (2\\ell_b+1) \\Bigg( \\frac{C_{\\ell_b}^{BB,\\text{prim}} \\rvert_{r=1}}{C_{\\ell_b}^{BB,\\text{lens}} + \\langle N_{\\ell_b}^{BB} \\rangle} \\Bigg)^2\n\\]\n\nModerate increase of error bars for typical 10% variation of parameters."
+    "text": "Results: impact on \\(r\\)\n\nHow do these results translate in terms of \\(r\\) sensitivity?\nRemarkably little impact given the very general assumption behind PD.\n\n\n25 realisations of realistic instrumental \\(1/f\\) noise\ndetector-dependent parameters (knee, slope, white level)\nnoise power spectrum \\(N_\\ell^{BB}\\) from reconstructed maps \\(\\hat s^\\mathrm{pd}_{QU}\\)\nFisher forecast: \\[\n\\sigma(r=0)^{-2} \\approx \\frac{f_\\text{sky}}{2} \\times \\sum_{\\text{bins $b$}} \\Delta_\\ell (2\\ell_b+1) \\Bigg( \\frac{C_{\\ell_b}^{BB,\\text{prim}} \\rvert_{r=1}}{C_{\\ell_b}^{BB,\\text{lens}} + \\langle N_{\\ell_b}^{BB} \\rangle} \\Bigg)^2\n\\]\n\nModerate increase of error bars for typical 10% variation of parameters."
   },
   {
-    "objectID": "thesis/index.html#summary-of-other-work",
-    "href": "thesis/index.html#summary-of-other-work",
+    "objectID": "thesis/index.html#results-gain-errors",
+    "href": "thesis/index.html#results-gain-errors",
     "title": "Thesis defence",
-    "section": "Summary of other work",
-    "text": "Summary of other work\n\nTimestream gaps (thesis Chapter 6)\n\ncompromise efficiency and precision of map-making methods\nimplemented gap-filling in mappraiser\ndemonstrated a new method to reach optimal precision\narticle in preparation\n\n\n\n\nCalibration study using elevation nods\n\nuse atmosphere as a calibrator\naccurate relative gains are crucial for polarisation recovery\nassess impact of modelling, pointing errors\nfind a typical \\(1\\%\\) gain uncertainty using el-nods"
+    "section": "Results: gain errors",
+    "text": "Results: gain errors\n\n\n\nrandom gain error in pairs\nadditional noise comparable to case with uneven detector noise at low multipoles\nefficient mitigation by HWP\n\nCase-by-case analysis required for each systematic and each method\n\n\n\n\nPD noise power spectra with 0.1 and 1% gain errors."
+  },
+  {
+    "objectID": "thesis/index.html#mind-the-gap-thesis-chapter-6",
+    "href": "thesis/index.html#mind-the-gap-thesis-chapter-6",
+    "title": "Thesis defence",
+    "section": "Mind The Gap! – thesis Chapter 6",
+    "text": "Mind The Gap! – thesis Chapter 6\n\n\n\nMotivation\n\ngaps break assumptions about the noise\ncompromise efficiency and precision of map-making methods\n\nContributions\n\nimplement gap-filling algorithm with constrained realisations in mappraiser\ndemonstrate “nested PCG” method: mathematically correct treatment of gaps\n\nResults\n\ngap-filling methods lose sensitivity\nHWP helps tremendously for polarisation\nnested PCG enables optimal recovery with increased computational cost"
   },
   {
     "objectID": "thesis/index.html#a-toolbox-for-the-scipol-project",
     "href": "thesis/index.html#a-toolbox-for-the-scipol-project",
     "title": "Thesis defence",
     "section": "A toolbox for the SciPol project",
-    "text": "A toolbox for the SciPol project\n\nCMB polarisation analysis mixes instrument + foregrounds + cosmology.\nInstrumental effects can be freqneucy-dependent -&gt; time-domain component separation.\n\n\n\nDevelopment of furax with SciPol team\n\njax for performance and portability (CPU/GPU)\nable to represent complex instrument models\nmap-making, component separation, atmosphere decontamination, etc. in a single framework\n\n\n\n\n\nGeneralised data model including instrumental effects and foregrounds. Credit: Josquin Errard"
+    "text": "A toolbox for the SciPol project\n\nCMB polarisation analysis mixes instrument + foregrounds + cosmology.\nInstrumental effects can be freqneucy-dependent -&gt; time-domain component separation.\n\n\n\nDevelopment of furax with SciPol team\n\nusing jax for performance and portability (CPU/GPU)\nable to represent complex instrument models\nmap-making, component separation, atmosphere decontamination, etc. in a single framework\n\nApplications to SO data (BB analysis group)!\n\nmap-making with template filtering\nnon-ideal optical components (HWP)\n\n\n\n\n\nGeneralised data model including instrumental effects and foregrounds. Credit: Josquin Errard"
   },
   {
-    "objectID": "thesis/index.html#conclusion-1",
-    "href": "thesis/index.html#conclusion-1",
+    "objectID": "thesis/index.html#conclusion",
+    "href": "thesis/index.html#conclusion",
     "title": "Thesis defence",
     "section": "Conclusion",
     "text": "Conclusion\n\nPrimordial \\(B\\) modes = window on first instants of the Universe\nPossible imprint in the large-scale CMB polarisation -&gt; SATs\nMap-making = crucial step to maximise scientific return\nGround telescopes must mitigate atmospheric contamination using dual-polarisation detectors and HWP\nNo atmospheric model leads to intuitive pair differencing\nNear-optimal sensitivity to \\(r\\) even with uneven detector properties\n\n\n\nFuture: going to University of Manchester to work on SO SAT data\nBuild a robust analysis pipeline and measure (constrain) \\(r\\)"
+  },
+  {
+    "objectID": "thesis/index.html#calibration-study-using-el-nods",
+    "href": "thesis/index.html#calibration-study-using-el-nods",
+    "title": "Thesis defence",
+    "section": "Calibration study using el-nods",
+    "text": "Calibration study using el-nods\n\nneed for accurate relative calibration\nuse atmosphere as a calibrator\nassessed impact of modelling, pointing errors\nfound a typical \\(1\\%\\) gain uncertainty using el-nods"
   },
   {
     "objectID": "2024-cmb-france-6/index.html#outline",
