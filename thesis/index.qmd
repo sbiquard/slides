@@ -28,10 +28,10 @@ title-slide-attributes:
 
 ## Outline
 
-1. Introduction to cosmology and the CMB (20-25 min)
-2. Reconstruction of CMB maps (5 min)
-3. Polarisation maps from the ground (15 min)
-4. Other work and conclusion (5-10 min)
+1. Introduction to cosmology and the CMB
+2. Reconstruction of CMB maps
+3. Polarisation maps from the ground
+4. Other work and conclusion
 
 # Introduction {background-color=#40666e}
 
@@ -238,7 +238,7 @@ Moreover, primordial GWs leave a unique imprint that we can look for in the CMB!
 - Tensor perturbations = **gravitational waves** (GWs)
 - Tensor-to-scalar ratio:
 $$
-r \equiv A_t / A_s \propto E^4_\mathrm{inf}
+r \equiv A_t / A_s \propto E^4_\mathrm{inflation}
 $$
 
 - Insight into the fundamental laws of Physics at very high energies
@@ -747,7 +747,7 @@ White instrumental noise.
 :::
 ::::
 
-$\hat s^\mathrm{ideal}_{QU} = s^\mathrm{pd}_{QU} + \left( P^\top_- \Pi_{--} P_- \right)^{-1} P^\top_- \Pi_{-+} n_+$
+$\hat s^\mathrm{ideal}_{QU} = \hat s^\mathrm{pd}_{QU} + \left( P^\top_- \Pi_{--} P_- \right)^{-1} P^\top_- \Pi_{-+} n_+$
 
 ## Results: impact on $r$ {.smaller}
 
@@ -762,32 +762,53 @@ Remarkably little impact given the very general assumption behind PD.
 - noise power spectrum $N_\ell^{BB}$ from reconstructed maps $\hat s^\mathrm{pd}_{QU}$
 - Fisher forecast:
 $$
-\sigma(r=0) \approx \frac{f_\text{sky}}{2} \times \sum_{\text{bins $b$}} \delta_\ell (2\ell_b+1) \Bigg( \frac{C_{\ell_b}^{BB,\text{prim}} \rvert_{r=1}}{C_{\ell_b}^{BB,\text{lens}} + \langle N_{\ell_b}^{BB} \rangle} \Bigg)^2
+\sigma(r=0)^{-2} \approx \frac{f_\text{sky}}{2} \times \sum_{\text{bins $b$}} \Delta_\ell (2\ell_b+1) \Bigg( \frac{C_{\ell_b}^{BB,\text{prim}} \rvert_{r=1}}{C_{\ell_b}^{BB,\text{lens}} + \langle N_{\ell_b}^{BB} \rangle} \Bigg)^2
 $$
 
 Moderate increase of error bars for typical 10% variation of parameters.
 
 ![](assets/results.jpg)
 
-# Conclusion {background-color=#40666e}
+## Results: gain errors
 
-## Summary of other work
+:::: {.columns4060}
+::: {.column}
+- random gain error in pairs
+- additional noise comparable to case with uneven detector noise at low multipoles
+- efficient mitigation by HWP
 
-- **Timestream gaps** (thesis Chapter 6)
+Case-by-case analysis required for each systematic and each method
+:::
+
+::: {.column}
+![PD noise power spectra with 0.1 and 1% gain errors.](assets/gain_errors_spectra_hwp.svg)
+:::
+::::
+
+# Other work {background-color=#40666e}
+
+## Mind The Gap! -- thesis Chapter 6 {.smaller}
+
+:::: {.columns6040}
+::: {.column}
+- Motivation
+  - gaps break assumptions about the noise
   - compromise efficiency and precision of map-making methods
-  - implemented gap-filling in `mappraiser`
-  - demonstrated a new method to reach optimal precision
-  - article in preparation
+- Contributions
+  - implement gap-filling algorithm with constrained realisations in `mappraiser`
+  - demonstrate "nested PCG" method: mathematically correct treatment of gaps
+- Results
+  - gap-filling methods lose sensitivity
+  - HWP helps tremendously for polarisation
+  - nested PCG enables optimal recovery with increased computational cost
+:::
 
-. . .
+::: {.column}
+![](assets/gaps_recovery_comparison.png){.nostretch height="550px"}
+:::
+::::
 
-- Calibration study using **elevation nods**
-  - use atmosphere as a calibrator
-  - accurate relative gains are crucial for polarisation recovery
-  - assess impact of modelling, pointing errors
-  - find a typical $1\%$ gain uncertainty using el-nods
-
-## A toolbox for the SciPol project
+## A toolbox for the SciPol project {.smaller}
 
 ::: {.notes}
 CMB polarisation analysis mixes instrument + foregrounds + cosmology.
@@ -799,9 +820,14 @@ Instrumental effects can be freqneucy-dependent -> time-domain component separat
 ::: {.column}
 Development of [`furax`](https://furax.readthedocs.io/en/stable/) with SciPol team
 
-- [`jax`](https://docs.jax.dev) for **performance** and portability (CPU/GPU)
+- using [`jax`](https://docs.jax.dev) for **performance** and portability (CPU/GPU)
 - able to represent **complex instrument models**
 - map-making, component separation, atmosphere decontamination, etc. in a **single framework**
+
+Applications to SO data (BB analysis group)!
+
+- map-making with template filtering
+- non-ideal optical components (HWP)
 :::
 
 ::: {.column}
@@ -809,7 +835,7 @@ Development of [`furax`](https://furax.readthedocs.io/en/stable/) with SciPol te
 :::
 ::::
 
-## Conclusion
+## Conclusion {.smaller}
 
 - Primordial $B$ modes = window on first instants of the Universe
 - Possible imprint in the large-scale CMB polarisation -> SATs
@@ -822,3 +848,16 @@ Development of [`furax`](https://furax.readthedocs.io/en/stable/) with SciPol te
 
 - Future: going to University of Manchester to work on SO SAT data
 - Build a robust analysis pipeline and measure (constrain) $r$
+
+. . .
+
+![](assets/banner_photos.png)
+
+# Backup slides
+
+## Calibration study using el-nods
+
+- need for accurate relative calibration
+- use atmosphere as a calibrator
+- assessed impact of modelling, pointing errors
+- found a typical $1\%$ gain uncertainty using el-nods
