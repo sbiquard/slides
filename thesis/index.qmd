@@ -587,8 +587,9 @@ Minimum variance (optimal) if $W = N^{-1}$ (generalized least squares, GLS).
 ## Practical considerations {.smaller}
 
 - Size of the problem
-  - 1,000 detectors + months of data + sampling @100 Hz -> $n_t \sim 10^{11}$ samples!
+  - 1,000 detectors + months of data + sampling @100 Hz -> $n_t \sim 10^{11}$ samples (TB scale)
   - resolution + sky coverage + Stokes (I)QU -> $n_p \sim 10^5 - 10^8$ sky pixels
+  - correlations -> process data in one go
   - **Numerical efficiency** and parallelism are key!
 
 . . .
@@ -697,10 +698,10 @@ Find pair differencing!
 
 :::: {.columns7030}
 :::{.column}
-Minimal model for pair of orthogonal detectors:
+Minimal model: $T \rightarrow \mathbb I$
 $$
 d = \begin{bmatrix} d^A \\ d^B \end{bmatrix}
-    = \begin{bmatrix} T \\ T \end{bmatrix} x
+    = \begin{bmatrix} \mathbb I \\ \mathbb I \end{bmatrix} x
     + \begin{bmatrix} P_{QU} \\ -P_{QU} \end{bmatrix} s_{QU}
     + \begin{bmatrix} n^A \\ n^B \end{bmatrix}
 $$
