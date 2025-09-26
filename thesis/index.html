@@ -886,8 +886,9 @@ F_T = W \left[\mathbb I - T (T^\top W T)^{-1} T^\top W \right]
 <ul>
 <li>Size of the problem
 <ul>
-<li>1,000 detectors + months of data + sampling <span class="citation" data-cites="100">@100</span> Hz -&gt; <span class="math inline">\(n_t \sim 10^{11}\)</span> samples!</li>
+<li>1,000 detectors + months of data + sampling <span class="citation" data-cites="100">@100</span> Hz -&gt; <span class="math inline">\(n_t \sim 10^{11}\)</span> samples (TB scale)</li>
 <li>resolution + sky coverage + Stokes (I)QU -&gt; <span class="math inline">\(n_p \sim 10^5 - 10^8\)</span> sky pixels</li>
+<li>correlations -&gt; process data in one go</li>
 <li><strong>Numerical efficiency</strong> and parallelism are key!</li>
 </ul></li>
 </ul>
@@ -1056,9 +1057,9 @@ F_T = W \left[\mathbb I - T (T^\top W T)^{-1} T^\top W \right]
       }</style></aside>
 <div class="columns7030">
 <div class="column">
-<p>Minimal model for pair of orthogonal detectors: <span class="math display">\[
+<p>Minimal model: <span class="math inline">\(T \rightarrow \mathbb I\)</span> <span class="math display">\[
 d = \begin{bmatrix} d^A \\ d^B \end{bmatrix}
-    = \begin{bmatrix} T \\ T \end{bmatrix} x
+    = \begin{bmatrix} \mathbb I \\ \mathbb I \end{bmatrix} x
     + \begin{bmatrix} P_{QU} \\ -P_{QU} \end{bmatrix} s_{QU}
     + \begin{bmatrix} n^A \\ n^B \end{bmatrix}
 \]</span></p>
