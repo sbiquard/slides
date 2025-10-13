@@ -1,0 +1,5 @@
+.quarto
+_site
+site_libs
+index.html
+search.json

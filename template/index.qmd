@@ -1,0 +1,15 @@
+---
+title: "Template"
+
+author: "Simon Biquard"
+title-slide-attributes:
+  data-background-image: "assets/lsst_bg.jpg"
+  data-background-size: fill
+  data-background-opacity: "0.5"
+format:
+  revealjs:
+    theme: css/custom.scss
+    incremental: false
+    transition: slide
+    background-transition: slide
+---
