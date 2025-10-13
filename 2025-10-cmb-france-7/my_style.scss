@@ -11,6 +11,12 @@ $body-color: $jet !default;
 $link-color: $accent !default;
 $selection-bg: #26351c !default;
 
+// Fonts and font sizes
+
+$presentation-heading-color: $jet !default;
+$presentation-heading-font-weight: 300;
+$presentation-font-size-root: 32px;
+
 /*-- scss:rules --*/
 
 // Title slide customization
@@ -85,4 +91,34 @@ $selection-bg: #26351c !default;
             width: 100%;
         }
     }
+}
+
+.reveal .columns3070 > div.column:first-child {
+  width: 30%;
+}
+.reveal .columns3070 div.column:not(:first-child) {
+  width: 70%;
+}
+.reveal .columns7030 > div.column:first-child {
+  width: 70%;
+}
+.reveal .columns7030 div.column:not(:first-child) {
+  width: 30%;
+}
+.reveal .columns4060 > div.column:first-child {
+  width: 40%;
+}
+.reveal .columns4060 div.column:not(:first-child) {
+  width: 60%;
+}
+.reveal .columns6040 > div.column:first-child {
+  width: 60%;
+}
+.reveal .columns6040 div.column:not(:first-child) {
+  width: 40%;
+}
+
+// Hide slide number on title slide
+.reveal .slide-number > a[href*='title-slide'] {
+  display: none;
 }
