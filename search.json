@@ -4,112 +4,7 @@
     "href": "index.html",
     "title": "Slides",
     "section": "",
-    "text": "Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nAuthor\n\n\n\n\n\n\n\n\nSep 26, 2025\n\n\nThesis defence\n\n\nSimon Biquard\n\n\n\n\n\n\nDec 19, 2024\n\n\nFURAX: a modular JAX toolbox for solving inverse problems in science\n\n\nSimon Biquard, Pierre Chanial, Wassim Kabalan\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "2024-cmb-france-6/index.html#outline",
-    "href": "2024-cmb-france-6/index.html#outline",
-    "title": "",
-    "section": "Outline",
-    "text": "Outline\n\nMotivations and goals: why and for what?\nPresentation of the framework\nApplications in CMB science"
-  },
-  {
-    "objectID": "2024-cmb-france-6/index.html#motivations-and-goals",
-    "href": "2024-cmb-france-6/index.html#motivations-and-goals",
-    "title": "",
-    "section": "Motivations and Goals",
-    "text": "Motivations and Goals\n\nInverse problems: assuming data \\(d_{obs} = F(p)\\), find the parameters \\(p\\)\nPure Python, open source: https://github.com/CMBSciPol/furax\n\npip install furax (work in progress!)\n\nModular & extensible: Easy to experiment new ideas\nHigh-performance: JAX (see next slide)\n\n\n\n\nMaximum likelihood and template map-making as in El Bouhargani et al. 2021\nNon-ideal, frequency-dependent optical components\nProvide tools for next generation experiments (SO, CMB-S4, LiteBIRD)\n\nInterfaces with TOAST, sotodlib\nLarge data sets: multi-GPU parallelization is underway"
-  },
-  {
-    "objectID": "2024-cmb-france-6/index.html#what-is-jax",
-    "href": "2024-cmb-france-6/index.html#what-is-jax",
-    "title": "",
-    "section": "What is JAX",
-    "text": "What is JAX\nFrom the JAX website:\n\nJAX is a library for array-oriented numerical computation (à la NumPy), with automatic differentiation and JIT compilation to enable high-performance machine learning research.\n\nKey features\n\nNumPy-like interface with CPU/GPU/TPU support in local and distributed environments\nJust-in-time (JIT) compilation via Open XLA\nAutomatic differentiation\nAutomatic vectorization"
-  },
-  {
-    "objectID": "2024-cmb-france-6/index.html#pytrees",
-    "href": "2024-cmb-france-6/index.html#pytrees",
-    "title": "",
-    "section": "PyTrees",
-    "text": "PyTrees\nFURAX relies on PyTrees to represent the data.\n\nExample: random sky with 3 components\nsky = {\n  'cmb': HealpixLandscape(nside, 'IQU').normal(key1),\n  'dust': HealpixLandscape(nside, 'IQU').normal(key2),\n  'synchrotron': HealpixLandscape(nside, 'IQU').normal(key3),\n}\nHealpixLandscape(nside, 'IQU') returns an instance of StokesIQUPyTree, a container for the Stokes parameters I, Q, U.\n\n\nUse FrequencyLandscape to generalize to multiple frequencies.\nfrequencies = np.array([93, 145])\nsky = {\n  'cmb': FrequencyLandscape(nside, frequencies, 'IQU').normal(key1),\n  'dust': FrequencyLandscape(nside, frequencies, 'IQU').normal(key2),\n  'synchrotron': FrequencyLandscape(nside, frequencies, 'IQU').normal(key3),\n}"
-  },
-  {
-    "objectID": "2024-cmb-france-6/index.html#operators",
-    "href": "2024-cmb-france-6/index.html#operators",
-    "title": "",
-    "section": "Operators",
-    "text": "Operators\nThe base class AbstractLinearOperator provides a default implementation for the usual linear algebra operations.\n\n\n\n\n\n\n\n\n\nOperation\nFURAX\nComment\n\n\n\n\nAddition\nA + B\n\n\n\nComposition\nA @ B\n\n\n\nMultiplication by scalar\nk * A\nReturns the composition of a HomothetyOperator and A\n\n\nTranspose\nA.T\nThrough JAX autodiff, but can be overriden\n\n\nInverse\nA.I\nBy default, the CG solver is used, but it can be overriden or configured using a context manager\n\n\nBlock Assembly\nBlockColumnOperator([A, B]) BlockDiagonalOperator([A, B]) BlockRowOperator([A, B])\nHandle any PyTree of Operators: Block*Operator({'a': A, 'b': B})\n\n\nFlattened dense matrix\nA.as_matrix()\n\n\n\nAlgebraic reduction\nA.reduce()"
-  },
-  {
-    "objectID": "2024-cmb-france-6/index.html#operators-contd",
-    "href": "2024-cmb-france-6/index.html#operators-contd",
-    "title": "",
-    "section": "Operators (cont’d)",
-    "text": "Operators (cont’d)\n\n\n\n\n\n\n\n\n\n\n\nGeneric Operator\nDescription\n\n\n\n\nIdentityOperator\n\n\n\nHomothetyOperator\n\n\n\nDiagonalOperator\n\n\n\nBroadcastDiagonalOperator\nNon-square operator for broadcasting\n\n\nTensorOperator\nFor dense matrix operations\n\n\nIndexOperator\nCan be used for projecting skies onto time-ordered series\n\n\nMoveAxisOperator\n\n\n\nReshapeOperator\n\n\n\nRavelOperator\n\n\n\nSymmetricBandToeplitzOperator\nMethods: direct, FFT, overlap and save\n\n\nBlock*Operator\nBlock assembly operators (column, diagonal, row)\n\n\n\n\n\n\n\n\n\n\n\nApplied Operator\nDescription\n\n\n\n\nQURotationOperator\n\n\n\nHWPOperator\nIdeal HWP\n\n\nLinearPolarizerOperator\nIdeal linear polarizer\n\n\nCMBOperator\nParametrized CMB SED\n\n\nDustOperator\nParametrized dust SED\n\n\nSynchrotronOperator\nParametrized synchrotron SED"
-  },
-  {
-    "objectID": "2024-cmb-france-6/index.html#algebraic-reductions-rotations",
-    "href": "2024-cmb-france-6/index.html#algebraic-reductions-rotations",
-    "title": "",
-    "section": "Algebraic reductions: Rotations",
-    "text": "Algebraic reductions: Rotations\nClassic acquisition model with ideal linear polarizer \\(\\mathbf{M}_{\\textrm{LP}}\\), ideal half wave plate \\(\\mathbf{M}_{\\textrm{HWP}}\\), rotations \\(\\mathbf{R}\\), pointing matrix \\(\\mathbf P\\):\n\\[\n\\mathbf{H} = \\mathbf{M}_{\\textrm{LP}} \\, \\mathbf{R}_{2\\theta} \\, \\mathbf{R}_{-2\\phi} \\,\n\\mathbf{M}_{\\textrm{HWP}} \\, \\mathbf{R}_{2\\phi} \\, \\mathbf{R}_{2\\psi} \\, \\mathbf{P}\n\\]\nwhere\n\n\\(\\theta\\): polarizer angle\n\\(\\phi\\): half-wave plate angle\n\\(\\psi\\): telescope angle\n\nis reduced automatically to the much simpler\n\\[\n\\mathbf{H} = \\mathbf{M}_{\\textrm{LP}} \\, \\mathbf{R}_{-2\\theta + 4\\phi + 2\\psi}\\, \\mathbf{P}\n\\]"
-  },
-  {
-    "objectID": "2024-cmb-france-6/index.html#cmb-applications",
-    "href": "2024-cmb-france-6/index.html#cmb-applications",
-    "title": "",
-    "section": "CMB Applications",
-    "text": "CMB Applications\n\n Credits: Ema Tsang, Wassim Kabalan, Amalia Villarrubia & the whole SciPol team"
-  },
-  {
-    "objectID": "2024-cmb-france-6/index.html#generalized-map-making",
-    "href": "2024-cmb-france-6/index.html#generalized-map-making",
-    "title": "",
-    "section": "Generalized Map-Making",
-    "text": "Generalized Map-Making\n\n\n\nClassic data model\n\\[\nd = \\mathbf{P}s + n\n\\]\n\n\\(d\\): time-ordered data\n\\(\\mathbf{P}\\): pointing matrix (telescope scanning)\n\\(s\\): discretized sky signal\n\\(n\\): stochastic contribution (noise)\n\n\nOptimal (GLS) solution\n\\[\n\\widehat{s} = (\\mathbf{P}^\\top \\mathbf{N}^{-1} \\mathbf{P})^{-1} \\mathbf{P}^\\top \\mathbf{N}^{-1} d\n\\]\n\n\nGeneralized parametric data model\n\n\n\n\n\n\\[\nd_{\\nu, i, t} = \\int_{\\textrm{BP}_\\nu} d\\nu' \\mathbf{M}^{(\\gamma)}_{\\nu', i, t, p} \\mathbf{A}^{(\\beta)}_{\\nu', t, c, p} s_{c, p} + n_{\\nu, i, t}\n\\]\n\n\\(\\mathbf{M}\\): instrument matrix (pointing, HWP parameters, bandpasses, beam properties, etc.)\n\\(\\mathbf{A}\\): mixing matrix (modeling of CMB, astrophysical foregrounds, atmosphere, etc.)\n\\(\\mathbf{H} = \\mathbf{MA}\\) is the generalized pointing operator"
-  },
-  {
-    "objectID": "2024-cmb-france-6/index.html#time-domain-noise-correlations",
-    "href": "2024-cmb-france-6/index.html#time-domain-noise-correlations",
-    "title": "",
-    "section": "Time-domain noise correlations",
-    "text": "Time-domain noise correlations\n\n\nNoise correlations in a stationary period correspond to a symmetric Toeplitz matrix structure.\nSymmetricBandToeplitzOperator with optimized matrix-vector operations in \\(\\mathcal O(n \\log \\lambda)\\) (overlap-and-save method).\n\n\n\n\nImpact of gaps. Credits: B3DCMB\n\n\n\n\n\nRestoring stationarity\nTo work around this problem, one solution is to fill the gaps with synthetic samples consistent with noise.\nFurax’s GapFillingOperator computes a constrained noise realization from an estimate of the noise correlations.\n\n\n\n\n\nToy example. Only gaps are modified."
-  },
-  {
-    "objectID": "2024-cmb-france-6/index.html#non-ideal-hwp",
-    "href": "2024-cmb-france-6/index.html#non-ideal-hwp",
-    "title": "",
-    "section": "Non-Ideal HWP",
-    "text": "Non-Ideal HWP\n\n\n\nRealistic HWP operator\n\nseveral layers stacked\ntransmission + reflection of incident EM field at the boundaries\n\nCf. great presentation by Miguel Gomes yesterday!\n\n\n\n\nMueller matrix coefficients in angle-frequency space for the SO mid-frequency SAT\n\n\n\n\n\nfrequency-dependent phase shift (middle blocks)\nI-&gt;P leakage at ~0.4% (IQ, IU blocks)\nalso 2f but not very visible\n\n\n\n\nCredit: Ema Tsang"
-  },
-  {
-    "objectID": "2024-cmb-france-6/index.html#component-separation",
-    "href": "2024-cmb-france-6/index.html#component-separation",
-    "title": "",
-    "section": "Component separation",
-    "text": "Component separation\n\n\ntldr: Does everything fgbuster does, but better\n\nFurax operators efficiently represent the mixing matrix\nhardware accelerated\neasy access to gradients and hessians\n\nBeyond fgbuster\n\nAutomatic cluster detection for spectral index parameters\nVery flexible model: straight-forward extensions to other sky components, different objective functions, etc.\n\n\n\nCost of evaluating the likelihood function is reduced by a factor 10 for \\(\\textrm{nside} \\geq 64\\). \n\n\nThis will power the map-based pipeline for \\(r\\) estimation in SO (cf. presentation by Baptiste Jost earlier today).\n\n\n\n\nCredit: Wassim Kabalan"
-  },
-  {
-    "objectID": "2024-cmb-france-6/index.html#atmosphere-decontamination-time-domain-component-separation",
-    "href": "2024-cmb-france-6/index.html#atmosphere-decontamination-time-domain-component-separation",
-    "title": "",
-    "section": "Atmosphere decontamination: time-domain component separation",
-    "text": "Atmosphere decontamination: time-domain component separation\nGoal: For the Simons Observatory, characterize the observed atmospheric template from the recorded time-ordered data to separate the atmosphere from the sky signal we are after.\n\n\nDetector array scanning the sky (signal has arbitrary units)\n\n\n\n\n\n\nData Model\n\\[\nd_{\\text{atm}} = \\mathbf{A}(\\text{pwv}) \\mathbf{P}(\\vec{w}) s_{\\text{atm}} + n\n\\]\nwith parameters:\n\nWind velocity: \\(\\vec{w} = (w_x, w_y)\\)\nPrecipitable Water Vapour (PWV): ~Amplitude of atmospheric fluctuations.\n\nEstimate parameters by minimizing the spectral likelihood.\n\\[\n\\boxed{\n\\langle \\delta \\mathcal{S}_\\text{spec}(\\vec{w}, \\text{pwv} \\mid d_{\\text{atm}}) \\rangle\n= d_{\\text{atm}}^\\top \\cdot \\mathbf{AP}\n\\Big[ (\\mathbf{AP})^\\top \\mathbf{N}^{-1} (\\mathbf{AP}) \\Big]^{-1}\n(\\mathbf{AP})^\\top \\mathbf{N}^{-1} d_{\\text{atm}}\n}\n\\]\n\n\n\n\nCredit: Amalia Villarrubia Aguilar"
-  },
-  {
-    "objectID": "2024-cmb-france-6/index.html#atmosphere-decontamination-spectral-likelihood-minimization",
-    "href": "2024-cmb-france-6/index.html#atmosphere-decontamination-spectral-likelihood-minimization",
-    "title": "",
-    "section": "Atmosphere decontamination: spectral likelihood minimization",
-    "text": "Atmosphere decontamination: spectral likelihood minimization\n\n\n\nSpectral likelihood values in the \\((w_x, w_y)\\) plane for a fixed PWV value. \n\nMinimization is done by brute force: we compute \\(\\langle \\delta \\mathcal{S}_\\text{spec}(w_x, w_y \\mid \\text{pwv}_{\\text{sim}}) \\rangle\\) for 22,500 different combinations of \\((w_x, w_y)\\).\nProof of concept: we can recover the wind parameters!\nFuture work:\n\nmake the likelihood smooth (differentiable) by interpolating the pointing matrix coefficients\nuse a gradient-based minimization algorithm\n\n\n\n\nCredit: Amalia Villarrubia Aguilar"
-  },
-  {
-    "objectID": "2024-cmb-france-6/index.html#conclusion",
-    "href": "2024-cmb-france-6/index.html#conclusion",
-    "title": "",
-    "section": "Conclusion",
-    "text": "Conclusion\n\nCMB polarization analysis mixes instrument + foregrounds + cosmology\nNeed for robust and efficient tools\nWe are building a python-based toolbox\n\nusing jax for performance and portability\nable to represent complex instrument models\n\nApplications: map-making, component separation, atmosphere decontamination, etc.\nGoals for early 2025\n\nunbiased map-making + map-based pipeline for SO-SAT\ncluster component separation for LiteBIRD\n\n\nIf you are interested, check out our the repository on GitHub: CMBSciPol/furax.\nThis work is part of the ERC project SciPol (https://scipol.in2p3.fr/)."
+    "text": "Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\n\nTitle\n\n\n\nAuthor\n\n\n\n\n\n\n\n\nOct 15, 2025\n\n\nCMB-France #7\n\n\nSimon Biquard\n\n\n\n\n\n\nSep 26, 2025\n\n\nThesis defence\n\n\nSimon Biquard\n\n\n\n\n\n\nDec 19, 2024\n\n\nFURAX: a modular JAX toolbox for solving inverse problems in science\n\n\nSimon Biquard, Pierre Chanial, Wassim Kabalan\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "2025-09-phd-thesis/index.html#outline",
@@ -348,5 +243,208 @@
     "title": "Thesis defence",
     "section": "Conclusions",
     "text": "Conclusions\n\nContext: enable ground experiments to reach sensitivity for \\(B\\) modes\nGoal: Building a robust analysis pipeline and measure (constrain) \\(r\\)\nContributions:\n\ndemonstrated near-optimal performance of pair differencing in realistic conditions\nimplemented robust treatment of timestream gaps\nmultiple software packages: mappraiser, furax, jax-healpy\n\nFuture: going to University of Manchester to apply these to SO SAT data\n\n\n\n\n\nThe SciPol team (find who’s missing)"
+  },
+  {
+    "objectID": "2024-cmb-france-6/index.html#outline",
+    "href": "2024-cmb-france-6/index.html#outline",
+    "title": "",
+    "section": "Outline",
+    "text": "Outline\n\nMotivations and goals: why and for what?\nPresentation of the framework\nApplications in CMB science"
+  },
+  {
+    "objectID": "2024-cmb-france-6/index.html#motivations-and-goals",
+    "href": "2024-cmb-france-6/index.html#motivations-and-goals",
+    "title": "",
+    "section": "Motivations and Goals",
+    "text": "Motivations and Goals\n\nInverse problems: assuming data \\(d_{obs} = F(p)\\), find the parameters \\(p\\)\nPure Python, open source: https://github.com/CMBSciPol/furax\n\npip install furax (work in progress!)\n\nModular & extensible: Easy to experiment new ideas\nHigh-performance: JAX (see next slide)\n\n\n\n\nMaximum likelihood and template map-making as in El Bouhargani et al. 2021\nNon-ideal, frequency-dependent optical components\nProvide tools for next generation experiments (SO, CMB-S4, LiteBIRD)\n\nInterfaces with TOAST, sotodlib\nLarge data sets: multi-GPU parallelization is underway"
+  },
+  {
+    "objectID": "2024-cmb-france-6/index.html#what-is-jax",
+    "href": "2024-cmb-france-6/index.html#what-is-jax",
+    "title": "",
+    "section": "What is JAX",
+    "text": "What is JAX\nFrom the JAX website:\n\nJAX is a library for array-oriented numerical computation (à la NumPy), with automatic differentiation and JIT compilation to enable high-performance machine learning research.\n\nKey features\n\nNumPy-like interface with CPU/GPU/TPU support in local and distributed environments\nJust-in-time (JIT) compilation via Open XLA\nAutomatic differentiation\nAutomatic vectorization"
+  },
+  {
+    "objectID": "2024-cmb-france-6/index.html#pytrees",
+    "href": "2024-cmb-france-6/index.html#pytrees",
+    "title": "",
+    "section": "PyTrees",
+    "text": "PyTrees\nFURAX relies on PyTrees to represent the data.\n\nExample: random sky with 3 components\nsky = {\n  'cmb': HealpixLandscape(nside, 'IQU').normal(key1),\n  'dust': HealpixLandscape(nside, 'IQU').normal(key2),\n  'synchrotron': HealpixLandscape(nside, 'IQU').normal(key3),\n}\nHealpixLandscape(nside, 'IQU') returns an instance of StokesIQUPyTree, a container for the Stokes parameters I, Q, U.\n\n\nUse FrequencyLandscape to generalize to multiple frequencies.\nfrequencies = np.array([93, 145])\nsky = {\n  'cmb': FrequencyLandscape(nside, frequencies, 'IQU').normal(key1),\n  'dust': FrequencyLandscape(nside, frequencies, 'IQU').normal(key2),\n  'synchrotron': FrequencyLandscape(nside, frequencies, 'IQU').normal(key3),\n}"
+  },
+  {
+    "objectID": "2024-cmb-france-6/index.html#operators",
+    "href": "2024-cmb-france-6/index.html#operators",
+    "title": "",
+    "section": "Operators",
+    "text": "Operators\nThe base class AbstractLinearOperator provides a default implementation for the usual linear algebra operations.\n\n\n\n\n\n\n\n\n\nOperation\nFURAX\nComment\n\n\n\n\nAddition\nA + B\n\n\n\nComposition\nA @ B\n\n\n\nMultiplication by scalar\nk * A\nReturns the composition of a HomothetyOperator and A\n\n\nTranspose\nA.T\nThrough JAX autodiff, but can be overriden\n\n\nInverse\nA.I\nBy default, the CG solver is used, but it can be overriden or configured using a context manager\n\n\nBlock Assembly\nBlockColumnOperator([A, B]) BlockDiagonalOperator([A, B]) BlockRowOperator([A, B])\nHandle any PyTree of Operators: Block*Operator({'a': A, 'b': B})\n\n\nFlattened dense matrix\nA.as_matrix()\n\n\n\nAlgebraic reduction\nA.reduce()"
+  },
+  {
+    "objectID": "2024-cmb-france-6/index.html#operators-contd",
+    "href": "2024-cmb-france-6/index.html#operators-contd",
+    "title": "",
+    "section": "Operators (cont’d)",
+    "text": "Operators (cont’d)\n\n\n\n\n\n\n\n\n\n\n\nGeneric Operator\nDescription\n\n\n\n\nIdentityOperator\n\n\n\nHomothetyOperator\n\n\n\nDiagonalOperator\n\n\n\nBroadcastDiagonalOperator\nNon-square operator for broadcasting\n\n\nTensorOperator\nFor dense matrix operations\n\n\nIndexOperator\nCan be used for projecting skies onto time-ordered series\n\n\nMoveAxisOperator\n\n\n\nReshapeOperator\n\n\n\nRavelOperator\n\n\n\nSymmetricBandToeplitzOperator\nMethods: direct, FFT, overlap and save\n\n\nBlock*Operator\nBlock assembly operators (column, diagonal, row)\n\n\n\n\n\n\n\n\n\n\n\nApplied Operator\nDescription\n\n\n\n\nQURotationOperator\n\n\n\nHWPOperator\nIdeal HWP\n\n\nLinearPolarizerOperator\nIdeal linear polarizer\n\n\nCMBOperator\nParametrized CMB SED\n\n\nDustOperator\nParametrized dust SED\n\n\nSynchrotronOperator\nParametrized synchrotron SED"
+  },
+  {
+    "objectID": "2024-cmb-france-6/index.html#algebraic-reductions-rotations",
+    "href": "2024-cmb-france-6/index.html#algebraic-reductions-rotations",
+    "title": "",
+    "section": "Algebraic reductions: Rotations",
+    "text": "Algebraic reductions: Rotations\nClassic acquisition model with ideal linear polarizer \\(\\mathbf{M}_{\\textrm{LP}}\\), ideal half wave plate \\(\\mathbf{M}_{\\textrm{HWP}}\\), rotations \\(\\mathbf{R}\\), pointing matrix \\(\\mathbf P\\):\n\\[\n\\mathbf{H} = \\mathbf{M}_{\\textrm{LP}} \\, \\mathbf{R}_{2\\theta} \\, \\mathbf{R}_{-2\\phi} \\,\n\\mathbf{M}_{\\textrm{HWP}} \\, \\mathbf{R}_{2\\phi} \\, \\mathbf{R}_{2\\psi} \\, \\mathbf{P}\n\\]\nwhere\n\n\\(\\theta\\): polarizer angle\n\\(\\phi\\): half-wave plate angle\n\\(\\psi\\): telescope angle\n\nis reduced automatically to the much simpler\n\\[\n\\mathbf{H} = \\mathbf{M}_{\\textrm{LP}} \\, \\mathbf{R}_{-2\\theta + 4\\phi + 2\\psi}\\, \\mathbf{P}\n\\]"
+  },
+  {
+    "objectID": "2024-cmb-france-6/index.html#cmb-applications",
+    "href": "2024-cmb-france-6/index.html#cmb-applications",
+    "title": "",
+    "section": "CMB Applications",
+    "text": "CMB Applications\n\n Credits: Ema Tsang, Wassim Kabalan, Amalia Villarrubia & the whole SciPol team"
+  },
+  {
+    "objectID": "2024-cmb-france-6/index.html#generalized-map-making",
+    "href": "2024-cmb-france-6/index.html#generalized-map-making",
+    "title": "",
+    "section": "Generalized Map-Making",
+    "text": "Generalized Map-Making\n\n\n\nClassic data model\n\\[\nd = \\mathbf{P}s + n\n\\]\n\n\\(d\\): time-ordered data\n\\(\\mathbf{P}\\): pointing matrix (telescope scanning)\n\\(s\\): discretized sky signal\n\\(n\\): stochastic contribution (noise)\n\n\nOptimal (GLS) solution\n\\[\n\\widehat{s} = (\\mathbf{P}^\\top \\mathbf{N}^{-1} \\mathbf{P})^{-1} \\mathbf{P}^\\top \\mathbf{N}^{-1} d\n\\]\n\n\nGeneralized parametric data model\n\n\n\n\n\n\\[\nd_{\\nu, i, t} = \\int_{\\textrm{BP}_\\nu} d\\nu' \\mathbf{M}^{(\\gamma)}_{\\nu', i, t, p} \\mathbf{A}^{(\\beta)}_{\\nu', t, c, p} s_{c, p} + n_{\\nu, i, t}\n\\]\n\n\\(\\mathbf{M}\\): instrument matrix (pointing, HWP parameters, bandpasses, beam properties, etc.)\n\\(\\mathbf{A}\\): mixing matrix (modeling of CMB, astrophysical foregrounds, atmosphere, etc.)\n\\(\\mathbf{H} = \\mathbf{MA}\\) is the generalized pointing operator"
+  },
+  {
+    "objectID": "2024-cmb-france-6/index.html#time-domain-noise-correlations",
+    "href": "2024-cmb-france-6/index.html#time-domain-noise-correlations",
+    "title": "",
+    "section": "Time-domain noise correlations",
+    "text": "Time-domain noise correlations\n\n\nNoise correlations in a stationary period correspond to a symmetric Toeplitz matrix structure.\nSymmetricBandToeplitzOperator with optimized matrix-vector operations in \\(\\mathcal O(n \\log \\lambda)\\) (overlap-and-save method).\n\n\n\n\nImpact of gaps. Credits: B3DCMB\n\n\n\n\n\nRestoring stationarity\nTo work around this problem, one solution is to fill the gaps with synthetic samples consistent with noise.\nFurax’s GapFillingOperator computes a constrained noise realization from an estimate of the noise correlations.\n\n\n\n\n\nToy example. Only gaps are modified."
+  },
+  {
+    "objectID": "2024-cmb-france-6/index.html#non-ideal-hwp",
+    "href": "2024-cmb-france-6/index.html#non-ideal-hwp",
+    "title": "",
+    "section": "Non-Ideal HWP",
+    "text": "Non-Ideal HWP\n\n\n\nRealistic HWP operator\n\nseveral layers stacked\ntransmission + reflection of incident EM field at the boundaries\n\nCf. great presentation by Miguel Gomes yesterday!\n\n\n\n\nMueller matrix coefficients in angle-frequency space for the SO mid-frequency SAT\n\n\n\n\n\nfrequency-dependent phase shift (middle blocks)\nI-&gt;P leakage at ~0.4% (IQ, IU blocks)\nalso 2f but not very visible\n\n\n\n\nCredit: Ema Tsang"
+  },
+  {
+    "objectID": "2024-cmb-france-6/index.html#component-separation",
+    "href": "2024-cmb-france-6/index.html#component-separation",
+    "title": "",
+    "section": "Component separation",
+    "text": "Component separation\n\n\ntldr: Does everything fgbuster does, but better\n\nFurax operators efficiently represent the mixing matrix\nhardware accelerated\neasy access to gradients and hessians\n\nBeyond fgbuster\n\nAutomatic cluster detection for spectral index parameters\nVery flexible model: straight-forward extensions to other sky components, different objective functions, etc.\n\n\n\nCost of evaluating the likelihood function is reduced by a factor 10 for \\(\\textrm{nside} \\geq 64\\). \n\n\nThis will power the map-based pipeline for \\(r\\) estimation in SO (cf. presentation by Baptiste Jost earlier today).\n\n\n\n\nCredit: Wassim Kabalan"
+  },
+  {
+    "objectID": "2024-cmb-france-6/index.html#atmosphere-decontamination-time-domain-component-separation",
+    "href": "2024-cmb-france-6/index.html#atmosphere-decontamination-time-domain-component-separation",
+    "title": "",
+    "section": "Atmosphere decontamination: time-domain component separation",
+    "text": "Atmosphere decontamination: time-domain component separation\nGoal: For the Simons Observatory, characterize the observed atmospheric template from the recorded time-ordered data to separate the atmosphere from the sky signal we are after.\n\n\nDetector array scanning the sky (signal has arbitrary units)\n\n\n\n\n\n\nData Model\n\\[\nd_{\\text{atm}} = \\mathbf{A}(\\text{pwv}) \\mathbf{P}(\\vec{w}) s_{\\text{atm}} + n\n\\]\nwith parameters:\n\nWind velocity: \\(\\vec{w} = (w_x, w_y)\\)\nPrecipitable Water Vapour (PWV): ~Amplitude of atmospheric fluctuations.\n\nEstimate parameters by minimizing the spectral likelihood.\n\\[\n\\boxed{\n\\langle \\delta \\mathcal{S}_\\text{spec}(\\vec{w}, \\text{pwv} \\mid d_{\\text{atm}}) \\rangle\n= d_{\\text{atm}}^\\top \\cdot \\mathbf{AP}\n\\Big[ (\\mathbf{AP})^\\top \\mathbf{N}^{-1} (\\mathbf{AP}) \\Big]^{-1}\n(\\mathbf{AP})^\\top \\mathbf{N}^{-1} d_{\\text{atm}}\n}\n\\]\n\n\n\n\nCredit: Amalia Villarrubia Aguilar"
+  },
+  {
+    "objectID": "2024-cmb-france-6/index.html#atmosphere-decontamination-spectral-likelihood-minimization",
+    "href": "2024-cmb-france-6/index.html#atmosphere-decontamination-spectral-likelihood-minimization",
+    "title": "",
+    "section": "Atmosphere decontamination: spectral likelihood minimization",
+    "text": "Atmosphere decontamination: spectral likelihood minimization\n\n\n\nSpectral likelihood values in the \\((w_x, w_y)\\) plane for a fixed PWV value. \n\nMinimization is done by brute force: we compute \\(\\langle \\delta \\mathcal{S}_\\text{spec}(w_x, w_y \\mid \\text{pwv}_{\\text{sim}}) \\rangle\\) for 22,500 different combinations of \\((w_x, w_y)\\).\nProof of concept: we can recover the wind parameters!\nFuture work:\n\nmake the likelihood smooth (differentiable) by interpolating the pointing matrix coefficients\nuse a gradient-based minimization algorithm\n\n\n\n\nCredit: Amalia Villarrubia Aguilar"
+  },
+  {
+    "objectID": "2024-cmb-france-6/index.html#conclusion",
+    "href": "2024-cmb-france-6/index.html#conclusion",
+    "title": "",
+    "section": "Conclusion",
+    "text": "Conclusion\n\nCMB polarization analysis mixes instrument + foregrounds + cosmology\nNeed for robust and efficient tools\nWe are building a python-based toolbox\n\nusing jax for performance and portability\nable to represent complex instrument models\n\nApplications: map-making, component separation, atmosphere decontamination, etc.\nGoals for early 2025\n\nunbiased map-making + map-based pipeline for SO-SAT\ncluster component separation for LiteBIRD\n\n\nIf you are interested, check out our the repository on GitHub: CMBSciPol/furax.\nThis work is part of the ERC project SciPol (https://scipol.in2p3.fr/)."
+  },
+  {
+    "objectID": "2025-10-cmb-france-7/index.html#from-time-ordered-data-to-maps",
+    "href": "2025-10-cmb-france-7/index.html#from-time-ordered-data-to-maps",
+    "title": "CMB-France #7",
+    "section": "From time-ordered data to maps",
+    "text": "From time-ordered data to maps\n\nStart from figure on the right!\nLensing converts \\(E\\) → \\(B\\) and vice versa.\nCMB signal is faint: each individual data sample is noise dominated.\nTo achieve a good sensitivity across a significant sky area, CMB telescopes collect lost of measurements across the targeted area by scanning. This also helps to mitigate low-frequency instrumental noise.\nThe raw data is therefore made of time series (one/detector) called time-ordered data (TOD).\nWith knowledge of the scanning strategy (pointing information) we can reconstruct the observed sky maps → map-making.\nMap-making = key starting point of analysis pipeline\nMust preserve all information + mitigate as many systematics as possible\n\n\n\nmap-making = from time-ordered data (TOD) to sky maps at observed frequencies\ndata reduction step: ~6 orders of magnitude\n\n\n\n\nTraditional CMB analysis pipeline steps (credit: Josquin Errard)"
+  },
+  {
+    "objectID": "2025-10-cmb-france-7/index.html#linear-data-model",
+    "href": "2025-10-cmb-france-7/index.html#linear-data-model",
+    "title": "CMB-France #7",
+    "section": "Linear data model",
+    "text": "Linear data model\n\nFormally: linear data model\nInverse problem – what we recover/know/assume\nLinear estimator = mapping of data to maps\n\n\\[\nd = Ps + Tx + n\n\\]\n\nwe know \\(d\\) (the data)\nwe estimate \\(s\\) (sky maps) and marginalize over \\(x\\) (spurious signals)\nwe model \\(P\\) (pointing) and \\(T\\) (templates)\nwe assume that \\(n\\) (noise) has covariance \\(N\\)\n\n“Map-making” = linear operation \\(\\hat s = L d\\) that maps measurements to estimated sky maps."
+  },
+  {
+    "objectID": "2025-10-cmb-france-7/index.html#unbiased-estimators",
+    "href": "2025-10-cmb-france-7/index.html#unbiased-estimators",
+    "title": "CMB-France #7",
+    "section": "Unbiased estimators",
+    "text": "Unbiased estimators\n\nWeighted co-addition of the data with spurious signals filtered out.\n\nGeneric linear unbiased estimator [Poletti et al. 2017] \\[\n\\hat s = (P^\\top F_T P)^{-1} P^\\top F_T d\n\\]\nwith filtering and weighting operator \\[\nF_T = W \\left[\\mathbb I - T (T^\\top W T)^{-1} T^\\top W \\right]\n\\]\n\nfilters out unwanted signals (columns of \\(T\\))\nweights orthogonal modes by weight matrix \\(W\\)\n\nMinimum variance (optimal) if \\(W = N^{-1}\\) (generalized least squares, GLS)."
+  },
+  {
+    "objectID": "2025-10-cmb-france-7/index.html#practical-considerations",
+    "href": "2025-10-cmb-france-7/index.html#practical-considerations",
+    "title": "CMB-France #7",
+    "section": "Practical considerations",
+    "text": "Practical considerations\n\nSize of the problem\n\n1,000 detectors + months of data + sampling @100 Hz → \\(n_t \\sim 10^{11}\\) samples (TB scale)\nresolution + sky coverage + Stokes (I)QU → \\(n_p \\sim 10^5 - 10^8\\) sky pixels\ncorrelations → process data in one go\nNumerical efficiency and parallelism are key!\n\n\n\n\nNoise correlations \\(N\\) (size \\(n_t \\times n_t\\))\n\nsplit data in chunks (trade-off efficiency/quality)\nassume noise is stationary in each chunk, \\(N(t,t')=N(\\lvert t-t' \\rvert)\\)\ncharacterise in Fourier space (power spectral density, PSD)\n\n\n\n\n\nIterative solvers\n\n\\(\\hat s = A^{-1} b\\) → instead solve \\(A s = b\\)\nstore \\(A\\) implicitly without constructing the whole matrix\npreconditioned conjugate gradient (PCG) algorithm\nconvergence speed influenced by noise correlations"
+  },
+  {
+    "objectID": "2025-10-cmb-france-7/index.html#observing-from-the-ground",
+    "href": "2025-10-cmb-france-7/index.html#observing-from-the-ground",
+    "title": "CMB-France #7",
+    "section": "Observing from the ground",
+    "text": "Observing from the ground\n\nMajor challenge for map-making from the ground: atmospheric emission\nLoading → more photons on average\nExtra effect: fluctuations because atmosphere is a turbulent medium\nHWP: change angle of polarisation with respect to orientation of the waveplate\n\n\n\n\nMajor challenge: atmosphere\n\nmuch brighter than CMB\nloading: increase detector noise\nturbulence: spatial + temporal variations\nnegligible linear polarisation\n\nHardware solutions\n\ndual-polarisation detectors\ncontinuously rotating HWP\n\n\n\n\n\n\n\nCredit: SO collaboration.\n\n\n\n\n\n\nHalf waveplate illustration (source).\n\n\n\n\n\n\n\nEmission spectrum of the atmosphere for different levels of PWV [Morris et al. 2022]\n\n\n\n\n\nAtmosphere simulation. Credit: R. Keskitalo & J. Borrill"
+  },
+  {
+    "objectID": "2025-10-cmb-france-7/index.html#unbiased-polarisation-map-making",
+    "href": "2025-10-cmb-france-7/index.html#unbiased-polarisation-map-making",
+    "title": "CMB-France #7",
+    "section": "Unbiased polarisation map-making",
+    "text": "Unbiased polarisation map-making\n\nTotal intensity \\(I\\) hard to recover from the ground because of atmosphere.\nFocus on polarisation instead; temperature large scales already very well measured from space (Planck).\nCompare DW and PD and see how they manage to take advantage of hardware solutions.\nvery demanding benchmark!\n\nFocus on unbiased reconstruction of polarisation (\\(Q\\) and \\(U\\)).\nData: \\(d = Ps + Tx + n\\)\n\nMinimal model\n\n\\(T\\) very general: no specific temporal or spatial structure\natmosphere identical for orthogonal detectors\n\nDown-weighting (DW)\n\nno template, \\(Tx \\rightarrow n^\\mathrm{atm}\\)\nGLS with \\(W = (N_\\mathrm{atm} + N_\\mathrm{instr})^{-1}\\)\nstationary noise, independent between detectors\n\nIdeal reconstruction\n\natmosphere-free data: \\(d = P s + n\\) (instr. noise only)\nGLS with \\(W = N_\\mathrm{instr}^{-1}\\)\nbenchmark tool"
+  },
+  {
+    "objectID": "2025-10-cmb-france-7/index.html#pair-differencing",
+    "href": "2025-10-cmb-france-7/index.html#pair-differencing",
+    "title": "CMB-France #7",
+    "section": "Pair differencing",
+    "text": "Pair differencing\n\nWrite down minimal model for one pair of detectors.\nUse template filtering to estimate \\(Q\\) and \\(U\\), marginalising over \\(x\\).\nFind pair differencing!\n\n\n\nMinimal model: \\(T \\rightarrow \\mathbb I\\) \\[\nd = \\begin{bmatrix} d^A \\\\ d^B \\end{bmatrix}\n    = \\begin{bmatrix} \\mathbb I \\\\ \\mathbb I \\end{bmatrix} x\n    + \\begin{bmatrix} P_{QU} \\\\ -P_{QU} \\end{bmatrix} s_{QU}\n    + \\begin{bmatrix} n^A \\\\ n^B \\end{bmatrix}\n\\]\nGLS template filtering estimator gives \\[\n\\hat s_{QU} = (P_{QU}^\\top N_-^{-1} P_{QU})^{-1} P_{QU}^\\top N_-^{-1} d_-\n\\] with \\(d_- \\equiv d^A - d^B\\) and \\(N_-\\) the covariance of \\(n^A - n^B\\).\n\n\n\nMinimal model equivalent to pair-differencing (PD).\nUsed e.g. in QuAD [arXiv:0805.1944], BICEP/Keck [arXiv:1403.4302], POLARBEAR [arXiv:1403.2369], SPT-3G [arXiv:2505.02827]."
+  },
+  {
+    "objectID": "2025-10-cmb-france-7/index.html#questions",
+    "href": "2025-10-cmb-france-7/index.html#questions",
+    "title": "CMB-France #7",
+    "section": "Questions",
+    "text": "Questions\n\nCompare pair differencing and down-weighting\nCompare with ideal reconstruction\nImpact of systematic effects"
+  },
+  {
+    "objectID": "2025-10-cmb-france-7/index.html#numerical-simulations",
+    "href": "2025-10-cmb-france-7/index.html#numerical-simulations",
+    "title": "CMB-France #7",
+    "section": "Numerical simulations",
+    "text": "Numerical simulations\n\nTo answer these questions, I performed advanced time-domain simulations of an SO-like small aperture telescope.\nI used the toast simulation framework and adjusted it for the needs of the study.\nI used the NERSC and Jean-Zay supercomputers.\nIn particular I implemented the interface between toast and our reconstruction library, mappraiser (see figure).\nMassively parallel implementation of the unbiased map-making estimator presented earlier, which I developed further.\n\n\n\n\nSAT with 350 pairs of detectors + HWP\nAtmosphere simulation using TOAST 3 framework\nInstrumental \\(1/f\\) noise\n\n\\(S(f) = \\mathrm{NET}^2 [1 + (f_\\mathrm{knee}/f)^\\alpha]\\)\nvariation around nominal values\n\nMap-making code: MAPPRAISER library [arXiv:2112.03370]\n\n\n\n\nOverview of the mappraiser architecture. Credit: Hamza El Bouhargani.\n\n\n\n\n\n\nExample \\(1/f\\) power spectral density"
+  },
+  {
+    "objectID": "2025-10-cmb-france-7/index.html#results-pd-vs-dw",
+    "href": "2025-10-cmb-france-7/index.html#results-pd-vs-dw",
+    "title": "CMB-France #7",
+    "section": "Results: PD vs DW",
+    "text": "Results: PD vs DW\n\nIn the absence of systematics, PD is nearly optimal.\nNo need/reason to try and improve beyond that, unless a better model of atmosphere is available.\nHow precise is PD compared to ideal reconstruction (perfect model)?\n\n\n\n\ndifferent models, different assumptions\nimplicit differencing in DW (\\(W_A = W_B\\)) necessary to avoid atmosphere leakage\n\n\n\n\nNoise power spectra compared to ideal\n\n\n\n\n\n\nNoise maps from PD (top) and DW (bottom) with 10% variation of noise parameters"
+  },
+  {
+    "objectID": "2025-10-cmb-france-7/index.html#results-pd-map-sensitivity",
+    "href": "2025-10-cmb-france-7/index.html#results-pd-map-sensitivity",
+    "title": "CMB-France #7",
+    "section": "Results: PD map sensitivity",
+    "text": "Results: PD map sensitivity\n\nWhite noise → analytical estimate of average noise level\nPD ideal if identical noise properties. Perturb the nominal noise model and see how much we lose.\nFigure: excess variance in \\(Q/U\\) maps as a function of the variation of noise levels.\n\n\n\nWhite instrumental noise.\n\nIdeal if \\(\\sigma_A = \\sigma_B\\)\nHow much degradation if \\(\\sigma_A \\neq \\sigma_B\\)?\nExcess variance depends on \\(\\varepsilon \\equiv \\frac{\\sigma_A^2 - \\sigma_B^2}{\\sigma_A^2 + \\sigma_B^2}\\)\nSuboptimal propagation of noise levels after differencing\n\n\n\n\n\nAnalytical prediction (black) vs measured excess variance"
+  },
+  {
+    "objectID": "2025-10-cmb-france-7/index.html#results-impact-on-r",
+    "href": "2025-10-cmb-france-7/index.html#results-impact-on-r",
+    "title": "CMB-France #7",
+    "section": "Results: impact on \\(r\\)",
+    "text": "Results: impact on \\(r\\)\n\nHow do these results translate in terms of \\(r\\) sensitivity?\nRemarkably little impact given the very general assumption behind PD.\n\n\n25 realisations of realistic instrumental \\(1/f\\) noise\ndetector-dependent parameters (knee, slope, white level)\nnoise power spectrum \\(N_\\ell^{BB}\\) from reconstructed maps \\(\\hat s^\\mathrm{pd}_{QU}\\)\n\nFisher forecast \\[\n\\sigma(r=0)^{-2} \\approx \\frac{f_\\text{sky}}{2} \\times \\sum_{\\text{bins $b$}} \\Delta_\\ell (2\\ell_b+1) \\Bigg( \\frac{C_{\\ell_b}^{BB,\\text{prim}} \\rvert_{r=1}}{C_{\\ell_b}^{BB,\\text{lens}} + \\langle N_{\\ell_b}^{BB} \\rangle} \\Bigg)^2\n\\]\nModerate increase of error bars for typical 10% variation of parameters."
+  },
+  {
+    "objectID": "2025-10-cmb-france-7/index.html#results-gain-errors",
+    "href": "2025-10-cmb-france-7/index.html#results-gain-errors",
+    "title": "CMB-France #7",
+    "section": "Results: gain errors",
+    "text": "Results: gain errors\n\nsystematics → possible atmosphere leakage\ngain error: one example of systematic, “case study”\njustify 1% gain error (achieved by other experiments)\nexpect similar conclusion for other effects\n\n\n\n\nrandom gain error in pairs\nadditional noise comparable to case with uneven detector noise at low multipoles\nefficient mitigation by HWP\n\nCase-by-case analysis required for each systematic and each method\n\n\n\n\nPD noise power spectra with 0.1 and 1% gain errors."
+  },
+  {
+    "objectID": "2025-10-cmb-france-7/index.html#conclusions",
+    "href": "2025-10-cmb-france-7/index.html#conclusions",
+    "title": "CMB-France #7",
+    "section": "Conclusions",
+    "text": "Conclusions\n\nContext: enable ground experiments to reach sensitivity for \\(B\\) modes\nGoal: building a robust analysis pipeline and measure (constrain) \\(r\\)\nThis work\n\nclarifies the assumptions behind pair differencing and down-weighting approaches\ndemonstrates near-optimal performance of pair differencing in realistic conditions"
   }
 ]
