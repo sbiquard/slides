@@ -11,7 +11,7 @@ format:
     date-format: D MMMM, YYYY
     incremental: false
     slide-number: true
-    footer: Simon Biquard -- APC -- 2025-10-15
+    footer: Simon Biquard -- APC -- October 2025
     include-after-body: clean_title_slide.html
     transition: none
     template-partials:
