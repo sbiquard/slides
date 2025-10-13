@@ -13,7 +13,7 @@ format:
     highlight-style: github
     slide-number: true
     template-partials:
-      - css/title-slide.html
+      - title-slide.html
     pdf-max-pages-per-slide: 1
 output: revealjs
 
