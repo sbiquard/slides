@@ -1,0 +1,88 @@
+/*-- scss:defaults --*/
+
+// Custom colours and variables
+
+$jet: #131516;
+$accent: #107895;
+
+// colours
+//$body-bg: #f0f1eb !default;
+$body-color: $jet !default;
+$link-color: $accent !default;
+$selection-bg: #26351c !default;
+
+/*-- scss:rules --*/
+
+// Title slide customization
+
+#title-slide {
+    text-align: left;
+
+    .logos-container {
+        display: flex;
+        justify-content: right;
+        align-items: center;
+        gap: 0.5em; // Space between logos
+        margin-bottom: 0em; // Space before the title
+
+        img {
+            height: 60px; // Fixed height for all logos
+            width: auto; // Maintain aspect ratio
+            object-fit: contain;
+        }
+    }
+
+    .title {
+        color: $body-color;
+        font-size: 1.4em;
+        // font-weight: 350;
+        font-weight: 300;
+    }
+
+    .subtitle {
+        color: $accent;
+        font-style: italic;
+        margin-top: 0em;
+        font-weight: 300;
+    }
+
+    .institute,
+    .quarto-title-affiliation,
+    .quarto-title-author-email {
+        font-style: italic;
+        // font-size: 80%;
+        // color: #7F7F7F;
+    }
+
+    .author,
+    .quarto-title-author-name {
+        color: $body-color;
+        font-weight: normal;
+    }
+
+    .supervisors {
+        font-size: 0.8em;
+        font-style: italic;
+        color: $body-color;
+        margin-top: 0.5em; // Reduced from the default 1.25em
+
+        .supervision-text {
+            font-weight: 300;
+        }
+
+        .supervisor-names {
+            font-weight: normal;
+        }
+    }
+
+    .quarto-title-authors {
+        display: flex;
+        justify-content: left;
+
+        .quarto-title-author {
+            padding-left: 0em;
+            padding-right: 0em;
+            width: 100%;
+        }
+    }
+}

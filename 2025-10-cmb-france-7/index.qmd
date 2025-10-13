@@ -1,0 +1,28 @@
+---
+title: 'CMB-France #7'
+subtitle: Unbiased CMB polarization maps from the ground with minimal assumptions about atmospheric emission
+author: Simon Biquard
+date: 2025-10-15
+
+format:
+  revealjs:
+    theme: [default, title-slide.scss]
+    date-format: long
+    incremental: false
+    slide-number: true
+    transition: none
+    template-partials:
+      - title-slide.html
+
+logos:
+  - assets/logos/apc.png
+  - assets/logos/logo_scipol_banniere.png
+
+title-slide-attributes:
+  data-background-image: assets/wallpapers/scipol_landscape_1.png
+  data-background-size: cover
+---
+
+## Outline
+
+bla bla bla
