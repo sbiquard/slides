@@ -16,6 +16,7 @@ format:
     transition: none
     template-partials:
       - title-slide.html
+    pdf-max-pages-per-slide: 1
 
 title-slide-attributes:
   data-background-image: assets/wallpapers/scipol_landscape_1.png
@@ -355,7 +356,7 @@ justify 1% gain error (achieved by other experiments)
 expect similar conclusion for other effects
 :::
 
-:::: {.columns4060}
+:::: {.columns}
 ::: {.column}
 - random gain error in pairs
 - additional noise comparable to case with uneven detector noise at low multipoles
