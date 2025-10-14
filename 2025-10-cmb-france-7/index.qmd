@@ -27,7 +27,7 @@ title-slide-attributes:
   data-background-size: cover
 ---
 
-# CMB map-making in a nutshell
+# CMB map-making in a nutshell {background-color="#40666e"}
 
 ## From time-ordered data to maps
 
@@ -77,15 +77,20 @@ d = Ps + Tx + n
 $$
 
 - we *know* $d$ (the data)
-- we *estimate* $s$ (sky maps) and *marginalize* over $x$ (spurious signals)
+- we *estimate* $s$ (sky maps) and *marginalise* over $x$ (spurious signals)
 - we *model* $P$ (pointing) and $T$ (templates)
 - we *assume* that $n$ (noise) has covariance $N$
 
-$Tx \in$ {HWP-synchronous signal, scan-synchronous signal, atmosphere, ...}
+. . .
+
+$T$ examples:
+
+- "baselines" (constant offsets) → destriping
+- HWP or scan-synchronous signals
 
 . . .
 
-"Map-making" = linear operation $\hat s = L d$ that maps measurements to estimated sky maps.
+"Map-making" is a linear operation $\hat s = L d$ that maps measurements to estimated sky maps.
 
 ## Unbiased estimators
 
@@ -105,6 +110,7 @@ $$
 
 - filters out unwanted signals (columns of $T$)
 - weights orthogonal modes by weight matrix $W$
+- "single step destriper" with generalised templates
 
 Minimum variance (optimal) if $W = N^{-1}$ (generalized least squares, GLS).
 
@@ -383,8 +389,9 @@ Case-by-case analysis required for each systematic and each method
 - We want ground experiments to measure/constrain $r$
 - For this, we need a robust (and efficient) analysis pipeline
 - **This work**
-  - clarifies the assumptions behind pair differencing and down-weighting approaches
-  - demonstrates near-optimal performance of pair differencing in realistic conditions
+  - clarifies assumptions behind pair differencing and down-weighting
+  - demonstrates near-optimal performance of pair differencing with realistic instrumental noise
+  - shows why orthogonal detector pairs + HWP are a powerful combination
 - **Next steps**
-  - other systematics (pointing, beam, HWP)
+  - other systematics (pointing, beam, HWP... you name it)
   - `furax` implementation (cf. previous talks by Wuhyun & Pierre) and application to Simons Observatory SAT data
