@@ -32,7 +32,7 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-097169fb5ee7c9a0d92cd94cb71231f3.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-76248f87755dad64012cc027c52309db.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -130,14 +130,24 @@
     <div class="slides">
 
 <section id="title-slide" data-background-image="assets/wallpapers/scipol_landscape_1.png" data-background-size="cover" class="center">
-  <h1 class="title">CMB-France #7</h1>
-  <p class="subtitle">Unbiased CMB polarization maps from the ground with minimal assumptions about atmospheric emission</p>
-  <p class="author">Simon Biquard</p>
-  <p class="institute">APC/CNRS</p>
-  <p class="date">15 October, 2025</p>
+  <div class="title-content">
+    <div class="left-column">
+      <h1 class="title">CMB-France #7</h1>
+      <p class="subtitle">Unbiased CMB polarisation maps from the ground with minimal assumptions about atmospheric emission <a href="https://arxiv.org/abs/2509.16302">[arXiv:2509.16302]</a></p>
+      <p class="author">Simon Biquard</p>
+      <p class="institute">APC/CNRS – moving to University of Manchester</p>
+      <p class="date">15 October, 2025</p>
+    </div>
+    <div class="right-column">
+      <div class="logos-container">
+        <img src="assets/logos/LOGO_RIDF_2019.svg" alt="Institution logo">
+        <img src="assets/logos/logo_scipol_banniere.png" alt="Institution logo">
+      </div>
+    </div>
+  </div>
 </section>
 <section>
-<section id="cmb-map-making-in-a-nutshell" class="title-slide slide level1 center">
+<section id="cmb-map-making-in-a-nutshell" class="title-slide slide level1 center" data-background-color="#40666e">
 <h1>CMB map-making in a nutshell</h1>
 
 </section>
@@ -171,7 +181,7 @@
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="assets/mapmaking/cmb_pipeline_mapmaking_box.jpeg"></p>
-<figcaption>Traditional CMB analysis pipeline steps (credit: Josquin Errard)</figcaption>
+<figcaption>Traditional CMB analysis pipeline steps (credit: Josquin Errard).</figcaption>
 </figure>
 </div>
 </div></div>
@@ -198,11 +208,20 @@ d = Ps + Tx + n
 \]</span></p>
 <ul>
 <li>we <em>know</em> <span class="math inline">\(d\)</span> (the data)</li>
-<li>we <em>estimate</em> <span class="math inline">\(s\)</span> (sky maps) and <em>marginalize</em> over <span class="math inline">\(x\)</span> (spurious signals)</li>
+<li>we <em>estimate</em> <span class="math inline">\(s\)</span> (sky maps) and <em>marginalise</em> over <span class="math inline">\(x\)</span> (spurious signals)</li>
 <li>we <em>model</em> <span class="math inline">\(P\)</span> (pointing) and <span class="math inline">\(T\)</span> (templates)</li>
 <li>we <em>assume</em> that <span class="math inline">\(n\)</span> (noise) has covariance <span class="math inline">\(N\)</span></li>
 </ul>
-<p>“Map-making” = linear operation <span class="math inline">\(\hat s = L d\)</span> that maps measurements to estimated sky maps.</p>
+<div class="fragment">
+<p><span class="math inline">\(T\)</span> examples:</p>
+<ul>
+<li>“baselines” (constant offsets) → destriping</li>
+<li>HWP or scan-synchronous signals</li>
+</ul>
+</div>
+<div class="fragment">
+<p>“Map-making” is a linear operation <span class="math inline">\(\hat s = L d\)</span> that maps measurements to estimated sky maps.</p>
+</div>
 </section>
 <section id="unbiased-estimators" class="slide level2">
 <h2>Unbiased estimators</h2>
@@ -228,41 +247,9 @@ F_T = W \left[\mathbb I - T (T^\top W T)^{-1} T^\top W \right]
 <ul>
 <li>filters out unwanted signals (columns of <span class="math inline">\(T\)</span>)</li>
 <li>weights orthogonal modes by weight matrix <span class="math inline">\(W\)</span></li>
+<li>“single step destriper” with generalised templates</li>
 </ul>
 <p>Minimum variance (optimal) if <span class="math inline">\(W = N^{-1}\)</span> (generalized least squares, GLS).</p>
-</section>
-<section id="practical-considerations" class="slide level2 smaller">
-<h2>Practical considerations</h2>
-<ul>
-<li>Size of the problem
-<ul>
-<li>1,000 detectors + months of data + sampling <span class="citation" data-cites="100">@100</span> Hz → <span class="math inline">\(n_t \sim 10^{11}\)</span> samples (TB scale)</li>
-<li>resolution + sky coverage + Stokes (I)QU → <span class="math inline">\(n_p \sim 10^5 - 10^8\)</span> sky pixels</li>
-<li>correlations → process data in one go</li>
-<li><strong>Numerical efficiency</strong> and parallelism are key!</li>
-</ul></li>
-</ul>
-<div class="fragment">
-<ul>
-<li>Noise correlations <span class="math inline">\(N\)</span> (size <span class="math inline">\(n_t \times n_t\)</span>)
-<ul>
-<li>split data in chunks (trade-off efficiency/quality)</li>
-<li>assume noise is stationary in each chunk, <span class="math inline">\(N(t,t')=N(\lvert t-t' \rvert)\)</span></li>
-<li>characterise in Fourier space (power spectral density, PSD)</li>
-</ul></li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
-<li><strong>Iterative solvers</strong>
-<ul>
-<li><span class="math inline">\(\hat s = A^{-1} b\)</span> → instead solve <span class="math inline">\(A s = b\)</span></li>
-<li>store <span class="math inline">\(A\)</span> implicitly without constructing the whole matrix</li>
-<li>preconditioned conjugate gradient (PCG) algorithm</li>
-<li>convergence speed influenced by noise correlations</li>
-</ul></li>
-</ul>
-</div>
 </section></section>
 <section>
 <section id="polarisation-maps-from-the-ground" class="title-slide slide level1 center" data-background-color="#40666e">
@@ -281,7 +268,7 @@ F_T = W \left[\mathbb I - T (T^\top W T)^{-1} T^\top W \right]
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<p><strong>SB</strong>, Errard and Stompor, 2025 <a href="https://arxiv.org/abs/2509.16302">[arXiv:2509.16302]</a></p>
+<p><strong>SB</strong>, Errard and Stompor, 2025 [<a href="https://arxiv.org/abs/2509.16302">arXiv:2509.16302</a>, submitted to PRD]</p>
 </section>
 <section id="observing-from-the-ground" class="slide level2 smaller">
 <h2>Observing from the ground</h2>
@@ -336,14 +323,14 @@ F_T = W \left[\mathbb I - T (T^\top W T)^{-1} T^\top W \right]
 </div><div class="column">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="assets/atmosphere/atmosphere-emission.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Emission spectrum of the atmosphere for different levels of PWV [Morris et al.&nbsp;2022]"><img data-src="assets/atmosphere/atmosphere-emission.svg" height="270" alt="Emission spectrum of the atmosphere for different levels of PWV [Morris et al.&nbsp;2022]"></a></p>
-<figcaption>Emission spectrum of the atmosphere for different levels of PWV <a href="https://doi.org/10.1103/PhysRevD.105.042004">[Morris et al.&nbsp;2022]</a></figcaption>
+<p><a href="assets/atmosphere/atmosphere-emission.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Emission spectrum of the atmosphere for different levels of PWV [Morris et al.&nbsp;2022]."><img data-src="assets/atmosphere/atmosphere-emission.svg" height="270" alt="Emission spectrum of the atmosphere for different levels of PWV [Morris et al.&nbsp;2022]."></a></p>
+<figcaption>Emission spectrum of the atmosphere for different levels of PWV <a href="https://doi.org/10.1103/PhysRevD.105.042004">[Morris et al.&nbsp;2022]</a>.</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="assets/atmosphere/atm-10-30-10v1.gif"></p>
-<figcaption>Atmosphere simulation. Credit: R. Keskitalo &amp; J. Borrill</figcaption>
+<figcaption>Atmosphere simulation. Credit: R. Keskitalo &amp; J. Borrill.</figcaption>
 </figure>
 </div>
 </div></div>
@@ -420,7 +407,7 @@ d = \begin{bmatrix} d^A \\ d^B \end{bmatrix}
 <p><img data-src="assets/pair-diff/omt.jpg" class=""></p>
 </div></div>
 <p>Minimal model equivalent to <strong>pair-differencing</strong> (PD).</p>
-<p>Used e.g.&nbsp;in QuAD <a href="https://arxiv.org/abs/0805.1944">[arXiv:0805.1944]</a>, BICEP/Keck <a href="https://arxiv.org/abs/1403.4302">[arXiv:1403.4302]</a>, POLARBEAR <a href="https://arxiv.org/abs/1403.2369">[arXiv:1403.2369]</a>, SPT-3G <a href="https://arxiv.org/abs/2505.02827">[arXiv:2505.02827]</a>.</p>
+<p>Used e.g.&nbsp;in QUaD <a href="https://arxiv.org/abs/0805.1944">[arXiv:0805.1944]</a>, BICEP/Keck <a href="https://arxiv.org/abs/1403.4302">[arXiv:1403.4302]</a>, POLARBEAR <a href="https://arxiv.org/abs/1403.2369">[arXiv:1403.2369]</a>, SPT-3G <a href="https://arxiv.org/abs/2505.02827">[arXiv:2505.02827]</a>.</p>
 </section>
 <section id="questions" class="slide level2 center">
 <h2>Questions</h2>
@@ -470,8 +457,8 @@ d = \begin{bmatrix} d^A \\ d^B \end{bmatrix}
 </div><div class="column">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="assets/pair-diff/one_over_f_spectrum.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Example 1/f power spectral density"><img data-src="assets/pair-diff/one_over_f_spectrum.svg" alt="Example 1/f power spectral density"></a></p>
-<figcaption>Example <span class="math inline">\(1/f\)</span> power spectral density</figcaption>
+<p><a href="assets/pair-diff/one_over_f_spectrum.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Example 1/f power spectral density."><img data-src="assets/pair-diff/one_over_f_spectrum.svg" alt="Example 1/f power spectral density."></a></p>
+<figcaption>Example <span class="math inline">\(1/f\)</span> power spectral density.</figcaption>
 </figure>
 </div>
 </div></div>
@@ -495,21 +482,18 @@ d = \begin{bmatrix} d^A \\ d^B \end{bmatrix}
       }</style></aside>
 <div class="columns">
 <div class="column">
-<ul>
-<li>different models, different assumptions</li>
-<li><strong>implicit</strong> differencing in DW (<span class="math inline">\(W_A = W_B\)</span>) necessary to avoid atmosphere leakage</li>
-</ul>
+<p><strong>Implicit</strong> differencing in DW (<span class="math inline">\(W_A = W_B\)</span>) necessary to avoid atmosphere leakage.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="assets/pair-diff/pd_vs_dw_spectra.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Noise power spectra compared to ideal"><img data-src="assets/pair-diff/pd_vs_dw_spectra.svg" class="nostretch" height="300" alt="Noise power spectra compared to ideal"></a></p>
-<figcaption>Noise power spectra compared to ideal</figcaption>
+<p><a href="assets/pair-diff/pd_vs_dw_spectra.svg" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Noise power spectra compared to ideal."><img data-src="assets/pair-diff/pd_vs_dw_spectra.svg" class="nostretch" height="300" alt="Noise power spectra compared to ideal."></a></p>
+<figcaption>Noise power spectra compared to ideal.</figcaption>
 </figure>
 </div>
 </div><div class="column">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="assets/pair-diff/pd_vs_dw_variable_maps.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Noise maps from PD (top) and DW (bottom) with 10% variation of noise parameters"><img data-src="assets/pair-diff/pd_vs_dw_variable_maps.png" alt="Noise maps from PD (top) and DW (bottom) with 10% variation of noise parameters"></a></p>
-<figcaption>Noise maps from PD (top) and DW (bottom) with 10% variation of noise parameters</figcaption>
+<p><a href="assets/pair-diff/pd_vs_dw_variable_maps.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Noise maps from PD (top) and DW (bottom) with 10% variation of noise parameters across focal plane."><img data-src="assets/pair-diff/pd_vs_dw_variable_maps.png" alt="Noise maps from PD (top) and DW (bottom) with 10% variation of noise parameters across focal plane."></a></p>
+<figcaption>Noise maps from PD (top) and DW (bottom) with 10% variation of noise parameters across focal plane.</figcaption>
 </figure>
 </div>
 </div></div>
@@ -544,7 +528,7 @@ d = \begin{bmatrix} d^A \\ d^B \end{bmatrix}
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="assets/pair-diff/variance_increase_hwp.svg"></p>
-<figcaption>Analytical prediction (black) vs measured excess variance</figcaption>
+<figcaption>Analytical prediction (black) vs measured excess variance.</figcaption>
 </figure>
 </div>
 </div></div>
@@ -614,21 +598,65 @@ d = \begin{bmatrix} d^A \\ d^B \end{bmatrix}
 <section id="conclusions" class="slide level2">
 <h2>Conclusions</h2>
 <ul>
-<li><strong>Context</strong>: enable ground experiments to reach sensitivity for <span class="math inline">\(B\)</span> modes</li>
-<li><strong>Goal</strong>: building a robust analysis pipeline and measure (constrain) <span class="math inline">\(r\)</span></li>
+<li>We want ground experiments to measure/constrain <span class="math inline">\(r\)</span></li>
+<li>For this, we need a robust (and efficient) analysis pipeline</li>
 <li><strong>This work</strong>
 <ul>
-<li>clarifies the assumptions behind pair differencing and down-weighting approaches</li>
-<li>demonstrates near-optimal performance of pair differencing in realistic conditions</li>
+<li>clarifies assumptions behind pair differencing and down-weighting</li>
+<li>demonstrates near-optimal performance of pair differencing with realistic instrumental noise</li>
+<li>shows why orthogonal detector pairs + HWP are a powerful combination</li>
+</ul></li>
+<li><strong>Next steps</strong>
+<ul>
+<li>other systematics (pointing, beam, HWP… you name it)</li>
+<li><code>furax</code> implementation (cf.&nbsp;previous talks by Wuhyun &amp; Pierre) and application to Simons Observatory SAT data</li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="backup" class="title-slide slide level1 center">
+<h1>Backup</h1>
+
+</section>
+<section id="practical-considerations" class="slide level2 smaller">
+<h2>Practical considerations</h2>
+<ul>
+<li>Size of the problem
+<ul>
+<li><span class="math inline">\(\mathcal O(1000)\)</span> detectors + months of data + sampling <span class="citation" data-cites="100">@100</span> Hz → <span class="math inline">\(n_t \sim 10^{11}\)</span> samples (TB scale)</li>
+<li>resolution + sky coverage + Stokes (I)QU → <span class="math inline">\(n_p \sim 10^5 - 10^8\)</span> sky pixels</li>
+<li>correlations → process data in one go</li>
+<li><strong>Numerical efficiency</strong> and parallelism are key!</li>
+</ul></li>
+</ul>
+<div class="fragment">
+<ul>
+<li>Noise correlations <span class="math inline">\(N\)</span> (size <span class="math inline">\(n_t \times n_t\)</span>)
+<ul>
+<li>split data in chunks (trade-off efficiency/quality)</li>
+<li>assume noise is stationary in each chunk, <span class="math inline">\(N(t,t')=N(\lvert t-t' \rvert)\)</span></li>
+<li>characterise in Fourier space (power spectral density, PSD)</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><strong>Iterative solvers</strong>
+<ul>
+<li><span class="math inline">\(\hat s = A^{-1} b\)</span> → instead solve <span class="math inline">\(A s = b\)</span></li>
+<li>store <span class="math inline">\(A\)</span> implicitly without constructing the whole matrix</li>
+<li>preconditioned conjugate gradient (PCG) algorithm</li>
+<li>convergence speed influenced by noise correlations</li>
 </ul></li>
 </ul>
 
 
+</div>
 </section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-<p>Simon Biquard – APC – October 2025</p>
+<p>Simon Biquard – CMB-France 7 – October 2025</p>
 </div>
 </div></div>
 

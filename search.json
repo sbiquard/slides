@@ -354,35 +354,28 @@
     "href": "2025-10-cmb-france-7/index.html#from-time-ordered-data-to-maps",
     "title": "CMB-France #7",
     "section": "From time-ordered data to maps",
-    "text": "From time-ordered data to maps\n\nStart from figure on the right!\nLensing converts \\(E\\) → \\(B\\) and vice versa.\nCMB signal is faint: each individual data sample is noise dominated.\nTo achieve a good sensitivity across a significant sky area, CMB telescopes collect lost of measurements across the targeted area by scanning. This also helps to mitigate low-frequency instrumental noise.\nThe raw data is therefore made of time series (one/detector) called time-ordered data (TOD).\nWith knowledge of the scanning strategy (pointing information) we can reconstruct the observed sky maps → map-making.\nMap-making = key starting point of analysis pipeline\nMust preserve all information + mitigate as many systematics as possible\n\n\n\nmap-making = from time-ordered data (TOD) to sky maps at observed frequencies\ndata reduction step: ~6 orders of magnitude\n\n\n\n\nTraditional CMB analysis pipeline steps (credit: Josquin Errard)"
+    "text": "From time-ordered data to maps\n\nStart from figure on the right!\nLensing converts \\(E\\) → \\(B\\) and vice versa.\nCMB signal is faint: each individual data sample is noise dominated.\nTo achieve a good sensitivity across a significant sky area, CMB telescopes collect lost of measurements across the targeted area by scanning. This also helps to mitigate low-frequency instrumental noise.\nThe raw data is therefore made of time series (one/detector) called time-ordered data (TOD).\nWith knowledge of the scanning strategy (pointing information) we can reconstruct the observed sky maps → map-making.\nMap-making = key starting point of analysis pipeline\nMust preserve all information + mitigate as many systematics as possible\n\n\n\nmap-making = from time-ordered data (TOD) to sky maps at observed frequencies\ndata reduction step: ~6 orders of magnitude\n\n\n\n\nTraditional CMB analysis pipeline steps (credit: Josquin Errard)."
   },
   {
     "objectID": "2025-10-cmb-france-7/index.html#linear-data-model",
     "href": "2025-10-cmb-france-7/index.html#linear-data-model",
     "title": "CMB-France #7",
     "section": "Linear data model",
-    "text": "Linear data model\n\nFormally: linear data model\nInverse problem – what we recover/know/assume\nLinear estimator = mapping of data to maps\n\n\\[\nd = Ps + Tx + n\n\\]\n\nwe know \\(d\\) (the data)\nwe estimate \\(s\\) (sky maps) and marginalize over \\(x\\) (spurious signals)\nwe model \\(P\\) (pointing) and \\(T\\) (templates)\nwe assume that \\(n\\) (noise) has covariance \\(N\\)\n\n“Map-making” = linear operation \\(\\hat s = L d\\) that maps measurements to estimated sky maps."
+    "text": "Linear data model\n\nFormally: linear data model\nInverse problem – what we recover/know/assume\nLinear estimator = mapping of data to maps\n\n\\[\nd = Ps + Tx + n\n\\]\n\nwe know \\(d\\) (the data)\nwe estimate \\(s\\) (sky maps) and marginalise over \\(x\\) (spurious signals)\nwe model \\(P\\) (pointing) and \\(T\\) (templates)\nwe assume that \\(n\\) (noise) has covariance \\(N\\)\n\n\n\\(T\\) examples:\n\n“baselines” (constant offsets) → destriping\nHWP or scan-synchronous signals\n\n\n\n“Map-making” is a linear operation \\(\\hat s = L d\\) that maps measurements to estimated sky maps."
   },
   {
     "objectID": "2025-10-cmb-france-7/index.html#unbiased-estimators",
     "href": "2025-10-cmb-france-7/index.html#unbiased-estimators",
     "title": "CMB-France #7",
     "section": "Unbiased estimators",
-    "text": "Unbiased estimators\n\nWeighted co-addition of the data with spurious signals filtered out.\n\nGeneric linear unbiased estimator [Poletti et al. 2017] \\[\n\\hat s = (P^\\top F_T P)^{-1} P^\\top F_T d\n\\]\nwith filtering and weighting operator \\[\nF_T = W \\left[\\mathbb I - T (T^\\top W T)^{-1} T^\\top W \\right]\n\\]\n\nfilters out unwanted signals (columns of \\(T\\))\nweights orthogonal modes by weight matrix \\(W\\)\n\nMinimum variance (optimal) if \\(W = N^{-1}\\) (generalized least squares, GLS)."
-  },
-  {
-    "objectID": "2025-10-cmb-france-7/index.html#practical-considerations",
-    "href": "2025-10-cmb-france-7/index.html#practical-considerations",
-    "title": "CMB-France #7",
-    "section": "Practical considerations",
-    "text": "Practical considerations\n\nSize of the problem\n\n1,000 detectors + months of data + sampling @100 Hz → \\(n_t \\sim 10^{11}\\) samples (TB scale)\nresolution + sky coverage + Stokes (I)QU → \\(n_p \\sim 10^5 - 10^8\\) sky pixels\ncorrelations → process data in one go\nNumerical efficiency and parallelism are key!\n\n\n\n\nNoise correlations \\(N\\) (size \\(n_t \\times n_t\\))\n\nsplit data in chunks (trade-off efficiency/quality)\nassume noise is stationary in each chunk, \\(N(t,t')=N(\\lvert t-t' \\rvert)\\)\ncharacterise in Fourier space (power spectral density, PSD)\n\n\n\n\n\nIterative solvers\n\n\\(\\hat s = A^{-1} b\\) → instead solve \\(A s = b\\)\nstore \\(A\\) implicitly without constructing the whole matrix\npreconditioned conjugate gradient (PCG) algorithm\nconvergence speed influenced by noise correlations"
+    "text": "Unbiased estimators\n\nWeighted co-addition of the data with spurious signals filtered out.\n\nGeneric linear unbiased estimator [Poletti et al. 2017] \\[\n\\hat s = (P^\\top F_T P)^{-1} P^\\top F_T d\n\\]\nwith filtering and weighting operator \\[\nF_T = W \\left[\\mathbb I - T (T^\\top W T)^{-1} T^\\top W \\right]\n\\]\n\nfilters out unwanted signals (columns of \\(T\\))\nweights orthogonal modes by weight matrix \\(W\\)\n“single step destriper” with generalised templates\n\nMinimum variance (optimal) if \\(W = N^{-1}\\) (generalized least squares, GLS)."
   },
   {
     "objectID": "2025-10-cmb-france-7/index.html#observing-from-the-ground",
     "href": "2025-10-cmb-france-7/index.html#observing-from-the-ground",
     "title": "CMB-France #7",
     "section": "Observing from the ground",
-    "text": "Observing from the ground\n\nMajor challenge for map-making from the ground: atmospheric emission\nLoading → more photons on average\nExtra effect: fluctuations because atmosphere is a turbulent medium\nHWP: change angle of polarisation with respect to orientation of the waveplate\n\n\n\n\nMajor challenge: atmosphere\n\nmuch brighter than CMB\nloading: increase detector noise\nturbulence: spatial + temporal variations\nnegligible linear polarisation\n\nHardware solutions\n\ndual-polarisation detectors\ncontinuously rotating HWP\n\n\n\n\n\n\n\nCredit: SO collaboration.\n\n\n\n\n\n\nHalf waveplate illustration (source).\n\n\n\n\n\n\n\nEmission spectrum of the atmosphere for different levels of PWV [Morris et al. 2022]\n\n\n\n\n\nAtmosphere simulation. Credit: R. Keskitalo & J. Borrill"
+    "text": "Observing from the ground\n\nMajor challenge for map-making from the ground: atmospheric emission\nLoading → more photons on average\nExtra effect: fluctuations because atmosphere is a turbulent medium\nHWP: change angle of polarisation with respect to orientation of the waveplate\n\n\n\n\nMajor challenge: atmosphere\n\nmuch brighter than CMB\nloading: increase detector noise\nturbulence: spatial + temporal variations\nnegligible linear polarisation\n\nHardware solutions\n\ndual-polarisation detectors\ncontinuously rotating HWP\n\n\n\n\n\n\n\nCredit: SO collaboration.\n\n\n\n\n\n\nHalf waveplate illustration (source).\n\n\n\n\n\n\n\nEmission spectrum of the atmosphere for different levels of PWV [Morris et al. 2022].\n\n\n\n\n\nAtmosphere simulation. Credit: R. Keskitalo & J. Borrill."
   },
   {
     "objectID": "2025-10-cmb-france-7/index.html#unbiased-polarisation-map-making",
@@ -396,7 +389,7 @@
     "href": "2025-10-cmb-france-7/index.html#pair-differencing",
     "title": "CMB-France #7",
     "section": "Pair differencing",
-    "text": "Pair differencing\n\nWrite down minimal model for one pair of detectors.\nUse template filtering to estimate \\(Q\\) and \\(U\\), marginalising over \\(x\\).\nFind pair differencing!\n\n\n\nMinimal model: \\(T \\rightarrow \\mathbb I\\) \\[\nd = \\begin{bmatrix} d^A \\\\ d^B \\end{bmatrix}\n    = \\begin{bmatrix} \\mathbb I \\\\ \\mathbb I \\end{bmatrix} x\n    + \\begin{bmatrix} P_{QU} \\\\ -P_{QU} \\end{bmatrix} s_{QU}\n    + \\begin{bmatrix} n^A \\\\ n^B \\end{bmatrix}\n\\]\nGLS template filtering estimator gives \\[\n\\hat s_{QU} = (P_{QU}^\\top N_-^{-1} P_{QU})^{-1} P_{QU}^\\top N_-^{-1} d_-\n\\] with \\(d_- \\equiv d^A - d^B\\) and \\(N_-\\) the covariance of \\(n^A - n^B\\).\n\n\n\nMinimal model equivalent to pair-differencing (PD).\nUsed e.g. in QuAD [arXiv:0805.1944], BICEP/Keck [arXiv:1403.4302], POLARBEAR [arXiv:1403.2369], SPT-3G [arXiv:2505.02827]."
+    "text": "Pair differencing\n\nWrite down minimal model for one pair of detectors.\nUse template filtering to estimate \\(Q\\) and \\(U\\), marginalising over \\(x\\).\nFind pair differencing!\n\n\n\nMinimal model: \\(T \\rightarrow \\mathbb I\\) \\[\nd = \\begin{bmatrix} d^A \\\\ d^B \\end{bmatrix}\n    = \\begin{bmatrix} \\mathbb I \\\\ \\mathbb I \\end{bmatrix} x\n    + \\begin{bmatrix} P_{QU} \\\\ -P_{QU} \\end{bmatrix} s_{QU}\n    + \\begin{bmatrix} n^A \\\\ n^B \\end{bmatrix}\n\\]\nGLS template filtering estimator gives \\[\n\\hat s_{QU} = (P_{QU}^\\top N_-^{-1} P_{QU})^{-1} P_{QU}^\\top N_-^{-1} d_-\n\\] with \\(d_- \\equiv d^A - d^B\\) and \\(N_-\\) the covariance of \\(n^A - n^B\\).\n\n\n\nMinimal model equivalent to pair-differencing (PD).\nUsed e.g. in QUaD [arXiv:0805.1944], BICEP/Keck [arXiv:1403.4302], POLARBEAR [arXiv:1403.2369], SPT-3G [arXiv:2505.02827]."
   },
   {
     "objectID": "2025-10-cmb-france-7/index.html#questions",
@@ -410,21 +403,21 @@
     "href": "2025-10-cmb-france-7/index.html#numerical-simulations",
     "title": "CMB-France #7",
     "section": "Numerical simulations",
-    "text": "Numerical simulations\n\nTo answer these questions, I performed advanced time-domain simulations of an SO-like small aperture telescope.\nI used the toast simulation framework and adjusted it for the needs of the study.\nI used the NERSC and Jean-Zay supercomputers.\nIn particular I implemented the interface between toast and our reconstruction library, mappraiser (see figure).\nMassively parallel implementation of the unbiased map-making estimator presented earlier, which I developed further.\n\n\n\n\nSAT with 350 pairs of detectors + HWP\nAtmosphere simulation using TOAST 3 framework\nInstrumental \\(1/f\\) noise\n\n\\(S(f) = \\mathrm{NET}^2 [1 + (f_\\mathrm{knee}/f)^\\alpha]\\)\nvariation around nominal values\n\nMap-making code: MAPPRAISER library [arXiv:2112.03370]\n\n\n\n\nOverview of the mappraiser architecture. Credit: Hamza El Bouhargani.\n\n\n\n\n\n\nExample \\(1/f\\) power spectral density"
+    "text": "Numerical simulations\n\nTo answer these questions, I performed advanced time-domain simulations of an SO-like small aperture telescope.\nI used the toast simulation framework and adjusted it for the needs of the study.\nI used the NERSC and Jean-Zay supercomputers.\nIn particular I implemented the interface between toast and our reconstruction library, mappraiser (see figure).\nMassively parallel implementation of the unbiased map-making estimator presented earlier, which I developed further.\n\n\n\n\nSAT with 350 pairs of detectors + HWP\nAtmosphere simulation using TOAST 3 framework\nInstrumental \\(1/f\\) noise\n\n\\(S(f) = \\mathrm{NET}^2 [1 + (f_\\mathrm{knee}/f)^\\alpha]\\)\nvariation around nominal values\n\nMap-making code: MAPPRAISER library [arXiv:2112.03370]\n\n\n\n\nOverview of the mappraiser architecture. Credit: Hamza El Bouhargani.\n\n\n\n\n\n\nExample \\(1/f\\) power spectral density."
   },
   {
     "objectID": "2025-10-cmb-france-7/index.html#results-pd-vs-dw",
     "href": "2025-10-cmb-france-7/index.html#results-pd-vs-dw",
     "title": "CMB-France #7",
     "section": "Results: PD vs DW",
-    "text": "Results: PD vs DW\n\nIn the absence of systematics, PD is nearly optimal.\nNo need/reason to try and improve beyond that, unless a better model of atmosphere is available.\nHow precise is PD compared to ideal reconstruction (perfect model)?\n\n\n\n\ndifferent models, different assumptions\nimplicit differencing in DW (\\(W_A = W_B\\)) necessary to avoid atmosphere leakage\n\n\n\n\nNoise power spectra compared to ideal\n\n\n\n\n\n\nNoise maps from PD (top) and DW (bottom) with 10% variation of noise parameters"
+    "text": "Results: PD vs DW\n\nIn the absence of systematics, PD is nearly optimal.\nNo need/reason to try and improve beyond that, unless a better model of atmosphere is available.\nHow precise is PD compared to ideal reconstruction (perfect model)?\n\n\n\nImplicit differencing in DW (\\(W_A = W_B\\)) necessary to avoid atmosphere leakage.\n\n\n\nNoise power spectra compared to ideal.\n\n\n\n\n\n\nNoise maps from PD (top) and DW (bottom) with 10% variation of noise parameters across focal plane."
   },
   {
     "objectID": "2025-10-cmb-france-7/index.html#results-pd-map-sensitivity",
     "href": "2025-10-cmb-france-7/index.html#results-pd-map-sensitivity",
     "title": "CMB-France #7",
     "section": "Results: PD map sensitivity",
-    "text": "Results: PD map sensitivity\n\nWhite noise → analytical estimate of average noise level\nPD ideal if identical noise properties. Perturb the nominal noise model and see how much we lose.\nFigure: excess variance in \\(Q/U\\) maps as a function of the variation of noise levels.\n\n\n\nWhite instrumental noise.\n\nIdeal if \\(\\sigma_A = \\sigma_B\\)\nHow much degradation if \\(\\sigma_A \\neq \\sigma_B\\)?\nExcess variance depends on \\(\\varepsilon \\equiv \\frac{\\sigma_A^2 - \\sigma_B^2}{\\sigma_A^2 + \\sigma_B^2}\\)\nSuboptimal propagation of noise levels after differencing\n\n\n\n\n\nAnalytical prediction (black) vs measured excess variance"
+    "text": "Results: PD map sensitivity\n\nWhite noise → analytical estimate of average noise level\nPD ideal if identical noise properties. Perturb the nominal noise model and see how much we lose.\nFigure: excess variance in \\(Q/U\\) maps as a function of the variation of noise levels.\n\n\n\nWhite instrumental noise.\n\nIdeal if \\(\\sigma_A = \\sigma_B\\)\nHow much degradation if \\(\\sigma_A \\neq \\sigma_B\\)?\nExcess variance depends on \\(\\varepsilon \\equiv \\frac{\\sigma_A^2 - \\sigma_B^2}{\\sigma_A^2 + \\sigma_B^2}\\)\nSuboptimal propagation of noise levels after differencing\n\n\n\n\n\nAnalytical prediction (black) vs measured excess variance."
   },
   {
     "objectID": "2025-10-cmb-france-7/index.html#results-impact-on-r",
@@ -445,6 +438,13 @@
     "href": "2025-10-cmb-france-7/index.html#conclusions",
     "title": "CMB-France #7",
     "section": "Conclusions",
-    "text": "Conclusions\n\nContext: enable ground experiments to reach sensitivity for \\(B\\) modes\nGoal: building a robust analysis pipeline and measure (constrain) \\(r\\)\nThis work\n\nclarifies the assumptions behind pair differencing and down-weighting approaches\ndemonstrates near-optimal performance of pair differencing in realistic conditions"
+    "text": "Conclusions\n\nWe want ground experiments to measure/constrain \\(r\\)\nFor this, we need a robust (and efficient) analysis pipeline\nThis work\n\nclarifies assumptions behind pair differencing and down-weighting\ndemonstrates near-optimal performance of pair differencing with realistic instrumental noise\nshows why orthogonal detector pairs + HWP are a powerful combination\n\nNext steps\n\nother systematics (pointing, beam, HWP… you name it)\nfurax implementation (cf. previous talks by Wuhyun & Pierre) and application to Simons Observatory SAT data"
+  },
+  {
+    "objectID": "2025-10-cmb-france-7/index.html#practical-considerations",
+    "href": "2025-10-cmb-france-7/index.html#practical-considerations",
+    "title": "CMB-France #7",
+    "section": "Practical considerations",
+    "text": "Practical considerations\n\nSize of the problem\n\n\\(\\mathcal O(1000)\\) detectors + months of data + sampling @100 Hz → \\(n_t \\sim 10^{11}\\) samples (TB scale)\nresolution + sky coverage + Stokes (I)QU → \\(n_p \\sim 10^5 - 10^8\\) sky pixels\ncorrelations → process data in one go\nNumerical efficiency and parallelism are key!\n\n\n\n\nNoise correlations \\(N\\) (size \\(n_t \\times n_t\\))\n\nsplit data in chunks (trade-off efficiency/quality)\nassume noise is stationary in each chunk, \\(N(t,t')=N(\\lvert t-t' \\rvert)\\)\ncharacterise in Fourier space (power spectral density, PSD)\n\n\n\n\n\nIterative solvers\n\n\\(\\hat s = A^{-1} b\\) → instead solve \\(A s = b\\)\nstore \\(A\\) implicitly without constructing the whole matrix\npreconditioned conjugate gradient (PCG) algorithm\nconvergence speed influenced by noise correlations"
   }
 ]
