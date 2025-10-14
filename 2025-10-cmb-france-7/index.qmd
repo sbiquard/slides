@@ -227,7 +227,7 @@ with $d_- \equiv d^A - d^B$ and $N_-$ the covariance of $n^A - n^B$.
 
 Minimal model equivalent to **pair-differencing** (PD).
 
-Used e.g. in QuAD [[arXiv:0805.1944]](https://arxiv.org/abs/0805.1944), BICEP/Keck [[arXiv:1403.4302]](https://arxiv.org/abs/1403.4302), POLARBEAR [[arXiv:1403.2369]](https://arxiv.org/abs/1403.2369), SPT-3G [[arXiv:2505.02827]](https://arxiv.org/abs/2505.02827).
+Used e.g. in QUaD [[arXiv:0805.1944]](https://arxiv.org/abs/0805.1944), BICEP/Keck [[arXiv:1403.4302]](https://arxiv.org/abs/1403.4302), POLARBEAR [[arXiv:1403.2369]](https://arxiv.org/abs/1403.2369), SPT-3G [[arXiv:2505.02827]](https://arxiv.org/abs/2505.02827).
 
 ## Questions {.center}
 
