@@ -281,7 +281,7 @@ How precise is PD compared to ideal reconstruction (perfect model)?
 - different models, different assumptions
 - **implicit** differencing in DW ($W_A = W_B$) necessary to avoid atmosphere leakage
 
-![Noise power spectra compared to ideal.](assets/pair-diff/pd_vs_dw_spectra.svg){.lightbox .nostretch height="300px" .fragment}
+![Noise power spectra compared to ideal.](assets/pair-diff/pd_vs_dw_spectra.svg){.lightbox .nostretch height="300px"}
 :::
 ::: {.column}
 ![Noise maps from PD (top) and DW (bottom) with 10% variation of noise levels between A and B.](assets/pair-diff/pd_vs_dw_variable_maps.png){.lightbox}
