@@ -114,29 +114,6 @@ $$
 
 Minimum variance (optimal) if $W = N^{-1}$ (generalized least squares, GLS).
 
-## Practical considerations {.smaller}
-
-- Size of the problem
-  - $\mathcal O(1000)$ detectors + months of data + sampling @100 Hz → $n_t \sim 10^{11}$ samples (TB scale)
-  - resolution + sky coverage + Stokes (I)QU → $n_p \sim 10^5 - 10^8$ sky pixels
-  - correlations → process data in one go
-  - **Numerical efficiency** and parallelism are key!
-
-. . .
-
-- Noise correlations $N$ (size $n_t \times n_t$)
-  - split data in chunks (trade-off efficiency/quality)
-  - assume noise is stationary in each chunk, $N(t,t')=N(\lvert t-t' \rvert)$
-  - characterise in Fourier space (power spectral density, PSD)
-
-. . .
-
-- **Iterative solvers**
-  - $\hat s = A^{-1} b$ → instead solve $A s = b$
-  - store $A$ implicitly without constructing the whole matrix
-  - preconditioned conjugate gradient (PCG) algorithm
-  - convergence speed influenced by noise correlations
-
 # Polarisation maps from the ground {background-color="#40666e"}
 
 ::: {.notes}
@@ -395,3 +372,28 @@ Case-by-case analysis required for each systematic and each method
 - **Next steps**
   - other systematics (pointing, beam, HWP... you name it)
   - `furax` implementation (cf. previous talks by Wuhyun & Pierre) and application to Simons Observatory SAT data
+
+# Backup
+
+## Practical considerations {.smaller}
+
+- Size of the problem
+  - $\mathcal O(1000)$ detectors + months of data + sampling @100 Hz → $n_t \sim 10^{11}$ samples (TB scale)
+  - resolution + sky coverage + Stokes (I)QU → $n_p \sim 10^5 - 10^8$ sky pixels
+  - correlations → process data in one go
+  - **Numerical efficiency** and parallelism are key!
+
+. . .
+
+- Noise correlations $N$ (size $n_t \times n_t$)
+  - split data in chunks (trade-off efficiency/quality)
+  - assume noise is stationary in each chunk, $N(t,t')=N(\lvert t-t' \rvert)$
+  - characterise in Fourier space (power spectral density, PSD)
+
+. . .
+
+- **Iterative solvers**
+  - $\hat s = A^{-1} b$ → instead solve $A s = b$
+  - store $A$ implicitly without constructing the whole matrix
+  - preconditioned conjugate gradient (PCG) algorithm
+  - convergence speed influenced by noise correlations
