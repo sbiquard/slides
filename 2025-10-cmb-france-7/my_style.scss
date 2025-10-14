@@ -24,15 +24,29 @@ $presentation-font-size-root: 32px;
 #title-slide {
     text-align: left;
 
+    .title-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .left-column {
+        flex: 1;
+    }
+
+    .right-column {
+        flex: 0 0 auto;
+        padding-left: 2em;
+    }
+
     .logos-container {
         display: flex;
-        justify-content: right;
-        align-items: center;
-        gap: 0.5em; // Space between logos
-        margin-bottom: 0em; // Space before the title
+        flex-direction: column;
+        gap: 1em; // Space between logos
 
         img {
-            height: 60px; // Fixed height for all logos
+            height: 100px; // Fixed height for all logos
             width: auto; // Maintain aspect ratio
             object-fit: contain;
         }
@@ -41,14 +55,14 @@ $presentation-font-size-root: 32px;
     .title {
         color: $body-color;
         font-size: 1.4em;
-        // font-weight: 350;
         font-weight: 300;
+        margin: 0 0 0.5em 0;
     }
 
     .subtitle {
         color: $accent;
         font-style: italic;
-        margin-top: 0em;
+        margin-top: 0;
         font-weight: 300;
     }
 

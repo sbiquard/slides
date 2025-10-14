@@ -1,8 +1,8 @@
 ---
 title: 'CMB-France #7'
-subtitle: Unbiased CMB polarization maps from the ground with minimal assumptions about atmospheric emission
+subtitle: Unbiased CMB polarisation maps from the ground with minimal assumptions about atmospheric emission [[arXiv:2509.16302]](https://arxiv.org/abs/2509.16302)
 author: Simon Biquard
-institute: APC/CNRS
+institute: APC/CNRS -- moving to University of Manchester
 date: 2025-10-15
 
 format:
@@ -11,12 +11,16 @@ format:
     date-format: D MMMM, YYYY
     incremental: false
     slide-number: true
-    footer: Simon Biquard -- APC -- October 2025
+    footer: Simon Biquard -- CMB-France 7 -- October 2025
     include-after-body: clean_title_slide.html
     transition: none
     template-partials:
       - title-slide.html
     pdf-max-pages-per-slide: 1
+
+logos:
+  - assets/logos/LOGO_RIDF_2019.svg
+  - assets/logos/logo_scipol_banniere.png
 
 title-slide-attributes:
   data-background-image: assets/wallpapers/scipol_landscape_1.png
@@ -54,7 +58,7 @@ data reduction step: ~6 orders of magnitude
 :::
 
 ::: {.column}
-![Traditional CMB analysis pipeline steps (credit: Josquin Errard)](assets/mapmaking/cmb_pipeline_mapmaking_box.jpeg)
+![Traditional CMB analysis pipeline steps (credit: Josquin Errard).](assets/mapmaking/cmb_pipeline_mapmaking_box.jpeg)
 :::
 ::::
 
@@ -76,6 +80,10 @@ $$
 - we *estimate* $s$ (sky maps) and *marginalize* over $x$ (spurious signals)
 - we *model* $P$ (pointing) and $T$ (templates)
 - we *assume* that $n$ (noise) has covariance $N$
+
+$Tx \in$ {HWP-synchronous signal, scan-synchronous signal, atmosphere, ...}
+
+. . .
 
 "Map-making" = linear operation $\hat s = L d$ that maps measurements to estimated sky maps.
 
@@ -103,7 +111,7 @@ Minimum variance (optimal) if $W = N^{-1}$ (generalized least squares, GLS).
 ## Practical considerations {.smaller}
 
 - Size of the problem
-  - 1,000 detectors + months of data + sampling @100 Hz → $n_t \sim 10^{11}$ samples (TB scale)
+  - $\mathcal O(1000)$ detectors + months of data + sampling @100 Hz → $n_t \sim 10^{11}$ samples (TB scale)
   - resolution + sky coverage + Stokes (I)QU → $n_p \sim 10^5 - 10^8$ sky pixels
   - correlations → process data in one go
   - **Numerical efficiency** and parallelism are key!
@@ -131,7 +139,7 @@ All these points are part of the motivation for this study about reconstruction 
 Submitted to PRD for publication consideration.
 :::
 
-**SB**, Errard and Stompor, 2025 [[arXiv:2509.16302]](https://arxiv.org/abs/2509.16302)
+**SB**, Errard and Stompor, 2025 [[arXiv:2509.16302](https://arxiv.org/abs/2509.16302), submitted to PRD]
 
 ## Observing from the ground {.smaller}
 
@@ -168,9 +176,9 @@ HWP: change angle of polarisation with respect to orientation of the waveplate
 :::
 
 ::: {.column}
-![Emission spectrum of the atmosphere for different levels of PWV [[Morris et al. 2022]](https://doi.org/10.1103/PhysRevD.105.042004)](assets/atmosphere/atmosphere-emission.svg){.lightbox height=270}
+![Emission spectrum of the atmosphere for different levels of PWV [[Morris et al. 2022]](https://doi.org/10.1103/PhysRevD.105.042004).](assets/atmosphere/atmosphere-emission.svg){.lightbox height=270}
 
-![Atmosphere simulation. Credit: R. Keskitalo & J. Borrill](assets/atmosphere/atm-10-30-10v1.gif)
+![Atmosphere simulation. Credit: R. Keskitalo & J. Borrill.](assets/atmosphere/atm-10-30-10v1.gif)
 :::
 ::::
 
@@ -271,7 +279,7 @@ Massively parallel implementation of the unbiased map-making estimator presented
 :::
 
 ::: {.column}
-![Example $1/f$ power spectral density](assets/pair-diff/one_over_f_spectrum.svg){.lightbox}
+![Example $1/f$ power spectral density.](assets/pair-diff/one_over_f_spectrum.svg){.lightbox}
 :::
 ::::
 
@@ -290,10 +298,10 @@ How precise is PD compared to ideal reconstruction (perfect model)?
 - different models, different assumptions
 - **implicit** differencing in DW ($W_A = W_B$) necessary to avoid atmosphere leakage
 
-![Noise power spectra compared to ideal](assets/pair-diff/pd_vs_dw_spectra.svg){.lightbox .nostretch height="300px"}
+![Noise power spectra compared to ideal.](assets/pair-diff/pd_vs_dw_spectra.svg){.lightbox .nostretch height="300px" .fragment}
 :::
 ::: {.column}
-![Noise maps from PD (top) and DW (bottom) with 10% variation of noise parameters](assets/pair-diff/pd_vs_dw_variable_maps.png){.lightbox}
+![Noise maps from PD (top) and DW (bottom) with 10% variation of noise levels between A and B.](assets/pair-diff/pd_vs_dw_variable_maps.png){.lightbox}
 :::
 ::::
 
@@ -319,7 +327,7 @@ White instrumental noise.
 :::
 
 ::: {.column}
-![Analytical prediction (black) vs measured excess variance](assets/pair-diff/variance_increase_hwp.svg)
+![Analytical prediction (black) vs measured excess variance.](assets/pair-diff/variance_increase_hwp.svg)
 :::
 ::::
 
@@ -372,8 +380,11 @@ Case-by-case analysis required for each systematic and each method
 
 ## Conclusions
 
-- **Context**: enable ground experiments to reach sensitivity for $B$ modes
-- **Goal**: building a robust analysis pipeline and measure (constrain) $r$
+- We want ground experiments to measure/constrain $r$
+- For this, we need a robust (and efficient) analysis pipeline
 - **This work**
   - clarifies the assumptions behind pair differencing and down-weighting approaches
   - demonstrates near-optimal performance of pair differencing in realistic conditions
+- **Next steps**
+  - other systematics (pointing, beam, HWP)
+  - `furax` implementation (cf. previous talks by Wuhyun & Pierre) and application to Simons Observatory SAT data
