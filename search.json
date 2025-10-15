@@ -368,14 +368,14 @@
     "href": "2025-10-cmb-france-7/index.html#unbiased-estimators",
     "title": "CMB-France #7",
     "section": "Unbiased estimators",
-    "text": "Unbiased estimators\n\nWeighted co-addition of the data with spurious signals filtered out.\n\nGeneric linear unbiased estimator [Poletti et al. 2017] \\[\n\\hat s = (P^\\top F_T P)^{-1} P^\\top F_T d\n\\]\nwith filtering and weighting operator \\[\nF_T = W \\left[\\mathbb I - T (T^\\top W T)^{-1} T^\\top W \\right]\n\\]\n\nfilters out unwanted signals (columns of \\(T\\))\nweights orthogonal modes by weight matrix \\(W\\)\n“single step destriper” with generalised templates\n\nMinimum variance (optimal) if \\(W = N^{-1}\\) (generalized least squares, GLS)."
+    "text": "Unbiased estimators\n\nWeighted co-addition of the data with spurious signals filtered out.\n\nGeneric linear unbiased estimator [Poletti et al. 2017] \\[\n\\hat s = (P^\\top F_T P)^{-1} P^\\top F_T d\n\\]\nwith filtering and weighting operator \\[\nF_T = W \\left[\\mathbb I - T (T^\\top W T)^{-1} T^\\top W \\right]\n\\]\n\nfilters out unwanted signals (columns of \\(T\\))\nweights orthogonal modes by weight matrix \\(W\\)\n“single step destriper” with generalised templates\n\nMinimum variance (optimal) if \\(W = N^{-1}\\) (generalised least squares, GLS)."
   },
   {
     "objectID": "2025-10-cmb-france-7/index.html#observing-from-the-ground",
     "href": "2025-10-cmb-france-7/index.html#observing-from-the-ground",
     "title": "CMB-France #7",
     "section": "Observing from the ground",
-    "text": "Observing from the ground\n\nMajor challenge for map-making from the ground: atmospheric emission\nLoading → more photons on average\nExtra effect: fluctuations because atmosphere is a turbulent medium\nHWP: change angle of polarisation with respect to orientation of the waveplate\n\n\n\n\nMajor challenge: atmosphere\n\nmuch brighter than CMB\nloading: increase detector noise\nturbulence: spatial + temporal variations\nnegligible linear polarisation\n\nHardware solutions\n\ndual-polarisation detectors\ncontinuously rotating HWP\n\n\n\n\n\n\n\nCredit: SO collaboration.\n\n\n\n\n\n\nHalf waveplate illustration (source).\n\n\n\n\n\n\n\nEmission spectrum of the atmosphere for different levels of PWV [Morris et al. 2022].\n\n\n\n\n\nAtmosphere simulation. Credit: R. Keskitalo & J. Borrill."
+    "text": "Observing from the ground\n\nMajor challenge for map-making from the ground: atmospheric emission\nLoading → more photons on average\nExtra effect: fluctuations because atmosphere is a turbulent medium\nHWP: change angle of polarisation with respect to orientation of the waveplate\nGoal of study: assess efficiency of technical solutions to mitigate atmosphere\n\n\n\n\nMajor challenge: atmosphere\n\nmuch brighter than CMB\nloading: increase detector noise\nturbulence: spatial + temporal variations\nnegligible linear polarisation\n\nHardware solutions\n\ndual-polarisation detectors\ncontinuously rotating HWP\n\n\n\n\n\n\n\nCredit: SO collaboration.\n\n\n\n\n\n\nHalf waveplate illustration (source).\n\n\n\n\n\n\n\nEmission spectrum of the atmosphere for different levels of PWV [Morris et al. 2022].\n\n\n\n\n\nAtmosphere simulation. Credit: R. Keskitalo & J. Borrill."
   },
   {
     "objectID": "2025-10-cmb-france-7/index.html#unbiased-polarisation-map-making",
@@ -413,18 +413,11 @@
     "text": "Results: PD vs DW\n\nIn the absence of systematics, PD is nearly optimal.\nNo need/reason to try and improve beyond that, unless a better model of atmosphere is available.\nHow precise is PD compared to ideal reconstruction (perfect model)?\n\n\n\nImplicit differencing in DW (\\(W_A = W_B\\)) necessary to avoid atmosphere leakage.\n\n\n\nNoise power spectra compared to ideal.\n\n\n\n\n\n\nNoise maps from PD (top) and DW (bottom) with 10% variation of noise parameters across focal plane."
   },
   {
-    "objectID": "2025-10-cmb-france-7/index.html#results-pd-map-sensitivity",
-    "href": "2025-10-cmb-france-7/index.html#results-pd-map-sensitivity",
-    "title": "CMB-France #7",
-    "section": "Results: PD map sensitivity",
-    "text": "Results: PD map sensitivity\n\nWhite noise → analytical estimate of average noise level\nPD ideal if identical noise properties. Perturb the nominal noise model and see how much we lose.\nFigure: excess variance in \\(Q/U\\) maps as a function of the variation of noise levels.\n\n\n\nWhite instrumental noise.\n\nIdeal if \\(\\sigma_A = \\sigma_B\\)\nHow much degradation if \\(\\sigma_A \\neq \\sigma_B\\)?\nExcess variance depends on \\(\\varepsilon \\equiv \\frac{\\sigma_A^2 - \\sigma_B^2}{\\sigma_A^2 + \\sigma_B^2}\\)\nSuboptimal propagation of noise levels after differencing\n\n\n\n\n\nAnalytical prediction (black) vs measured excess variance."
-  },
-  {
     "objectID": "2025-10-cmb-france-7/index.html#results-impact-on-r",
     "href": "2025-10-cmb-france-7/index.html#results-impact-on-r",
     "title": "CMB-France #7",
     "section": "Results: impact on \\(r\\)",
-    "text": "Results: impact on \\(r\\)\n\nHow do these results translate in terms of \\(r\\) sensitivity?\nRemarkably little impact given the very general assumption behind PD.\n\n\n25 realisations of realistic instrumental \\(1/f\\) noise\ndetector-dependent parameters (knee, slope, white level)\nnoise power spectrum \\(N_\\ell^{BB}\\) from reconstructed maps \\(\\hat s^\\mathrm{pd}_{QU}\\)\n\nFisher forecast \\[\n\\sigma(r=0)^{-2} \\approx \\frac{f_\\text{sky}}{2} \\times \\sum_{\\text{bins $b$}} \\Delta_\\ell (2\\ell_b+1) \\Bigg( \\frac{C_{\\ell_b}^{BB,\\text{prim}} \\rvert_{r=1}}{C_{\\ell_b}^{BB,\\text{lens}} + \\langle N_{\\ell_b}^{BB} \\rangle} \\Bigg)^2\n\\]\nModerate increase of error bars for typical 10% variation of parameters."
+    "text": "Results: impact on \\(r\\)\n\nHow do these results translate in terms of \\(r\\) sensitivity?\nRemarkably little impact given the very general assumption behind PD.\n\n\n25 realisations of realistic instrumental \\(1/f\\) noise\ndetector-dependent parameters (knee, slope, white level)\nnoise power spectrum \\(N_\\ell^{BB}\\) from reconstructed maps \\(\\hat s^\\mathrm{pd}_{QU}\\)\n\nFisher forecast \\[\n\\sigma(r=0)^{-2} \\approx \\frac{f_\\text{sky}}{2} \\times \\sum_{\\text{bins $b$}} \\Delta_\\ell (2\\ell_b+1) \\Bigg( \\frac{C_{\\ell_b}^{BB,\\text{prim}} \\rvert_{r=1}}{C_{\\ell_b}^{BB,\\text{lens}} + \\langle N_{\\ell_b}^{BB} \\rangle} \\Bigg)^2\n\\]\nCompare \\(\\sigma(r=0)\\) from PD with ideal reconstruction:"
   },
   {
     "objectID": "2025-10-cmb-france-7/index.html#results-gain-errors",
@@ -446,5 +439,12 @@
     "title": "CMB-France #7",
     "section": "Practical considerations",
     "text": "Practical considerations\n\nSize of the problem\n\n\\(\\mathcal O(1000)\\) detectors + months of data + sampling @100 Hz → \\(n_t \\sim 10^{11}\\) samples (TB scale)\nresolution + sky coverage + Stokes (I)QU → \\(n_p \\sim 10^5 - 10^8\\) sky pixels\ncorrelations → process data in one go\nNumerical efficiency and parallelism are key!\n\n\n\n\nNoise correlations \\(N\\) (size \\(n_t \\times n_t\\))\n\nsplit data in chunks (trade-off efficiency/quality)\nassume noise is stationary in each chunk, \\(N(t,t')=N(\\lvert t-t' \\rvert)\\)\ncharacterise in Fourier space (power spectral density, PSD)\n\n\n\n\n\nIterative solvers\n\n\\(\\hat s = A^{-1} b\\) → instead solve \\(A s = b\\)\nstore \\(A\\) implicitly without constructing the whole matrix\npreconditioned conjugate gradient (PCG) algorithm\nconvergence speed influenced by noise correlations"
+  },
+  {
+    "objectID": "2025-10-cmb-france-7/index.html#results-pd-map-sensitivity",
+    "href": "2025-10-cmb-france-7/index.html#results-pd-map-sensitivity",
+    "title": "CMB-France #7",
+    "section": "Results: PD map sensitivity",
+    "text": "Results: PD map sensitivity\n\nWhite noise → analytical estimate of average noise level\nPD ideal if identical noise properties. Perturb the nominal noise model and see how much we lose.\nFigure: excess variance in \\(Q/U\\) maps as a function of the variation of noise levels.\n\n\n\nWhite instrumental noise.\n\nIdeal if \\(\\sigma_A = \\sigma_B\\)\nHow much degradation if \\(\\sigma_A \\neq \\sigma_B\\)?\nExcess variance depends on \\(\\varepsilon \\equiv \\frac{\\sigma_A^2 - \\sigma_B^2}{\\sigma_A^2 + \\sigma_B^2}\\)\nSuboptimal propagation of noise levels after differencing\n\n\n\n\n\nAnalytical prediction (black) vs measured excess variance."
   }
 ]

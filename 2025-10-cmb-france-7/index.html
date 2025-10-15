@@ -186,7 +186,7 @@
 </div>
 </div></div>
 </section>
-<section id="linear-data-model" class="slide level2">
+<section id="linear-data-model" class="slide level2 smaller">
 <h2>Linear data model</h2>
 <aside class="notes">
 <p>Formally: linear data model</p>
@@ -249,7 +249,7 @@ F_T = W \left[\mathbb I - T (T^\top W T)^{-1} T^\top W \right]
 <li>weights orthogonal modes by weight matrix <span class="math inline">\(W\)</span></li>
 <li>“single step destriper” with generalised templates</li>
 </ul>
-<p>Minimum variance (optimal) if <span class="math inline">\(W = N^{-1}\)</span> (generalized least squares, GLS).</p>
+<p>Minimum variance (optimal) if <span class="math inline">\(W = N^{-1}\)</span> (generalised least squares, GLS).</p>
 </section></section>
 <section>
 <section id="polarisation-maps-from-the-ground" class="title-slide slide level1 center" data-background-color="#40666e">
@@ -277,6 +277,7 @@ F_T = W \left[\mathbb I - T (T^\top W T)^{-1} T^\top W \right]
 <p>Loading → more photons on average</p>
 <p>Extra effect: fluctuations because atmosphere is a turbulent medium</p>
 <p>HWP: change angle of polarisation with respect to orientation of the waveplate</p>
+<p>Goal of study: assess efficiency of technical solutions to mitigate atmosphere</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -498,41 +499,6 @@ d = \begin{bmatrix} d^A \\ d^B \end{bmatrix}
 </div>
 </div></div>
 </section>
-<section id="results-pd-map-sensitivity" class="slide level2">
-<h2>Results: PD map sensitivity</h2>
-<aside class="notes">
-<p>White noise → analytical estimate of <em>average</em> noise level</p>
-<p>PD ideal if identical noise properties. Perturb the nominal noise model and see how much we lose.</p>
-<p>Figure: excess variance in <span class="math inline">\(Q/U\)</span> maps as a function of the variation of noise levels.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<div class="columns4060">
-<div class="column">
-<p>White instrumental noise.</p>
-<ul>
-<li>Ideal if <span class="math inline">\(\sigma_A = \sigma_B\)</span></li>
-<li>How much degradation if <span class="math inline">\(\sigma_A \neq \sigma_B\)</span>?</li>
-<li>Excess variance depends on <span class="math inline">\(\varepsilon \equiv \frac{\sigma_A^2 - \sigma_B^2}{\sigma_A^2 + \sigma_B^2}\)</span></li>
-<li>Suboptimal propagation of noise levels after differencing</li>
-</ul>
-</div><div class="column">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="assets/pair-diff/variance_increase_hwp.svg"></p>
-<figcaption>Analytical prediction (black) vs measured excess variance.</figcaption>
-</figure>
-</div>
-</div></div>
-</section>
 <section id="results-impact-on-r" class="slide level2 smaller">
 <h2>Results: impact on <span class="math inline">\(r\)</span></h2>
 <aside class="notes">
@@ -557,7 +523,7 @@ d = \begin{bmatrix} d^A \\ d^B \end{bmatrix}
 <p>Fisher forecast <span class="math display">\[
 \sigma(r=0)^{-2} \approx \frac{f_\text{sky}}{2} \times \sum_{\text{bins $b$}} \Delta_\ell (2\ell_b+1) \Bigg( \frac{C_{\ell_b}^{BB,\text{prim}} \rvert_{r=1}}{C_{\ell_b}^{BB,\text{lens}} + \langle N_{\ell_b}^{BB} \rangle} \Bigg)^2
 \]</span></p>
-<p>Moderate increase of error bars for typical 10% variation of parameters.</p>
+<p>Compare <span class="math inline">\(\sigma(r=0)\)</span> from PD with ideal reconstruction:</p>
 <p><img data-src="assets/pair-diff/results_forecast.png" class="absolute" style="left: 300px; height: 200px; "></p>
 </section>
 <section id="results-gain-errors" class="slide level2">
@@ -649,9 +615,44 @@ d = \begin{bmatrix} d^A \\ d^B \end{bmatrix}
 <li>convergence speed influenced by noise correlations</li>
 </ul></li>
 </ul>
-
-
 </div>
+</section>
+<section id="results-pd-map-sensitivity" class="slide level2">
+<h2>Results: PD map sensitivity</h2>
+<aside class="notes">
+<p>White noise → analytical estimate of <em>average</em> noise level</p>
+<p>PD ideal if identical noise properties. Perturb the nominal noise model and see how much we lose.</p>
+<p>Figure: excess variance in <span class="math inline">\(Q/U\)</span> maps as a function of the variation of noise levels.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<div class="columns4060">
+<div class="column">
+<p>White instrumental noise.</p>
+<ul>
+<li>Ideal if <span class="math inline">\(\sigma_A = \sigma_B\)</span></li>
+<li>How much degradation if <span class="math inline">\(\sigma_A \neq \sigma_B\)</span>?</li>
+<li>Excess variance depends on <span class="math inline">\(\varepsilon \equiv \frac{\sigma_A^2 - \sigma_B^2}{\sigma_A^2 + \sigma_B^2}\)</span></li>
+<li>Suboptimal propagation of noise levels after differencing</li>
+</ul>
+</div><div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="assets/pair-diff/variance_increase_hwp.svg"></p>
+<figcaption>Analytical prediction (black) vs measured excess variance.</figcaption>
+</figure>
+</div>
+</div></div>
+
+
 </section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
