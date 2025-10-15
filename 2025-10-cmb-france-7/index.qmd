@@ -395,6 +395,10 @@ White instrumental noise.
 :::
 ::::
 
+##
+
+![Excess noise spectrum in pair differencing with/without HWP in EE and BB.](assets/pair-diff/var_increase_spectra_instr_relative.svg)
+
 ## Results: impact on $r$ (HWP/no HWP)
 
 ![](assets/pair-diff/results_forecast_full.png)
