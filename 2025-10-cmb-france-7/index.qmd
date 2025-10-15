@@ -358,14 +358,10 @@ Case-by-case analysis required for each systematic and each method
   - correlations → process data in one go
   - **Numerical efficiency** and parallelism are key!
 
-. . .
-
 - Noise correlations $N$ (size $n_t \times n_t$)
   - split data in chunks (trade-off efficiency/quality)
   - assume noise is stationary in each chunk, $N(t,t')=N(\lvert t-t' \rvert)$
   - characterise in Fourier space (power spectral density, PSD)
-
-. . .
 
 - **Iterative solvers**
   - $\hat s = A^{-1} b$ → instead solve $A s = b$
@@ -398,3 +394,7 @@ White instrumental noise.
 ![Analytical prediction (black) vs measured excess variance.](assets/pair-diff/variance_increase_hwp.svg)
 :::
 ::::
+
+## Results: impact on $r$ (HWP/no HWP)
+
+![](assets/pair-diff/results_forecast_full.png)
