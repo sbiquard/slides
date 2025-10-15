@@ -431,14 +431,14 @@
     "href": "2025-10-cmb-france-7/index.html#conclusions",
     "title": "CMB-France #7",
     "section": "Conclusions",
-    "text": "Conclusions\n\nWe want ground experiments to measure/constrain \\(r\\)\nFor this, we need a robust (and efficient) analysis pipeline\nThis work\n\nclarifies assumptions behind pair differencing and down-weighting\ndemonstrates near-optimal performance of pair differencing with realistic instrumental noise\nshows why orthogonal detector pairs + HWP are a powerful combination\n\nNext steps\n\nother systematics (pointing, beam, HWP… you name it)\nfurax implementation (cf. previous talks by Wuhyun & Pierre) and application to Simons Observatory SAT data"
+    "text": "Conclusions\n\nWe want ground experiments to measure/constrain \\(r\\)\nWe need a robust (and efficient) pipeline that mitigates contaminants\nThis work\n\nclarifies assumptions behind pair differencing\ndemonstrates its near-optimal performance with realistic instrumental noise\nshows why orthogonal detector pairs + HWP are a powerful combination\n\nNext steps\n\nother systematics (pointing, beam, HWP… you name it)\nfurax implementation (cf. previous talks by Wuhyun & Pierre) and application to Simons Observatory SAT data"
   },
   {
     "objectID": "2025-10-cmb-france-7/index.html#practical-considerations",
     "href": "2025-10-cmb-france-7/index.html#practical-considerations",
     "title": "CMB-France #7",
     "section": "Practical considerations",
-    "text": "Practical considerations\n\nSize of the problem\n\n\\(\\mathcal O(1000)\\) detectors + months of data + sampling @100 Hz → \\(n_t \\sim 10^{11}\\) samples (TB scale)\nresolution + sky coverage + Stokes (I)QU → \\(n_p \\sim 10^5 - 10^8\\) sky pixels\ncorrelations → process data in one go\nNumerical efficiency and parallelism are key!\n\n\n\n\nNoise correlations \\(N\\) (size \\(n_t \\times n_t\\))\n\nsplit data in chunks (trade-off efficiency/quality)\nassume noise is stationary in each chunk, \\(N(t,t')=N(\\lvert t-t' \\rvert)\\)\ncharacterise in Fourier space (power spectral density, PSD)\n\n\n\n\n\nIterative solvers\n\n\\(\\hat s = A^{-1} b\\) → instead solve \\(A s = b\\)\nstore \\(A\\) implicitly without constructing the whole matrix\npreconditioned conjugate gradient (PCG) algorithm\nconvergence speed influenced by noise correlations"
+    "text": "Practical considerations\n\nSize of the problem\n\n\\(\\mathcal O(1000)\\) detectors + months of data + sampling @100 Hz → \\(n_t \\sim 10^{11}\\) samples (TB scale)\nresolution + sky coverage + Stokes (I)QU → \\(n_p \\sim 10^5 - 10^8\\) sky pixels\ncorrelations → process data in one go\nNumerical efficiency and parallelism are key!\n\nNoise correlations \\(N\\) (size \\(n_t \\times n_t\\))\n\nsplit data in chunks (trade-off efficiency/quality)\nassume noise is stationary in each chunk, \\(N(t,t')=N(\\lvert t-t' \\rvert)\\)\ncharacterise in Fourier space (power spectral density, PSD)\n\nIterative solvers\n\n\\(\\hat s = A^{-1} b\\) → instead solve \\(A s = b\\)\nstore \\(A\\) implicitly without constructing the whole matrix\npreconditioned conjugate gradient (PCG) algorithm\nconvergence speed influenced by noise correlations"
   },
   {
     "objectID": "2025-10-cmb-france-7/index.html#results-pd-map-sensitivity",
@@ -446,5 +446,12 @@
     "title": "CMB-France #7",
     "section": "Results: PD map sensitivity",
     "text": "Results: PD map sensitivity\n\nWhite noise → analytical estimate of average noise level\nPD ideal if identical noise properties. Perturb the nominal noise model and see how much we lose.\nFigure: excess variance in \\(Q/U\\) maps as a function of the variation of noise levels.\n\n\n\nWhite instrumental noise.\n\nIdeal if \\(\\sigma_A = \\sigma_B\\)\nHow much degradation if \\(\\sigma_A \\neq \\sigma_B\\)?\nExcess variance depends on \\(\\varepsilon \\equiv \\frac{\\sigma_A^2 - \\sigma_B^2}{\\sigma_A^2 + \\sigma_B^2}\\)\nSuboptimal propagation of noise levels after differencing\n\n\n\n\n\nAnalytical prediction (black) vs measured excess variance."
+  },
+  {
+    "objectID": "2025-10-cmb-france-7/index.html#results-impact-on-r-hwpno-hwp",
+    "href": "2025-10-cmb-france-7/index.html#results-impact-on-r-hwpno-hwp",
+    "title": "CMB-France #7",
+    "section": "Results: impact on \\(r\\) (HWP/no HWP)",
+    "text": "Results: impact on \\(r\\) (HWP/no HWP)"
   }
 ]

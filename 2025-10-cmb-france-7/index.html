@@ -565,11 +565,11 @@ d = \begin{bmatrix} d^A \\ d^B \end{bmatrix}
 <h2>Conclusions</h2>
 <ul>
 <li>We want ground experiments to measure/constrain <span class="math inline">\(r\)</span></li>
-<li>For this, we need a robust (and efficient) analysis pipeline</li>
+<li>We need a robust (and efficient) pipeline that mitigates contaminants</li>
 <li><strong>This work</strong>
 <ul>
-<li>clarifies assumptions behind pair differencing and down-weighting</li>
-<li>demonstrates near-optimal performance of pair differencing with realistic instrumental noise</li>
+<li>clarifies assumptions behind pair differencing</li>
+<li>demonstrates its near-optimal performance with realistic instrumental noise</li>
 <li>shows why orthogonal detector pairs + HWP are a powerful combination</li>
 </ul></li>
 <li><strong>Next steps</strong>
@@ -594,19 +594,12 @@ d = \begin{bmatrix} d^A \\ d^B \end{bmatrix}
 <li>correlations → process data in one go</li>
 <li><strong>Numerical efficiency</strong> and parallelism are key!</li>
 </ul></li>
-</ul>
-<div class="fragment">
-<ul>
 <li>Noise correlations <span class="math inline">\(N\)</span> (size <span class="math inline">\(n_t \times n_t\)</span>)
 <ul>
 <li>split data in chunks (trade-off efficiency/quality)</li>
 <li>assume noise is stationary in each chunk, <span class="math inline">\(N(t,t')=N(\lvert t-t' \rvert)\)</span></li>
 <li>characterise in Fourier space (power spectral density, PSD)</li>
 </ul></li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
 <li><strong>Iterative solvers</strong>
 <ul>
 <li><span class="math inline">\(\hat s = A^{-1} b\)</span> → instead solve <span class="math inline">\(A s = b\)</span></li>
@@ -615,7 +608,6 @@ d = \begin{bmatrix} d^A \\ d^B \end{bmatrix}
 <li>convergence speed influenced by noise correlations</li>
 </ul></li>
 </ul>
-</div>
 </section>
 <section id="results-pd-map-sensitivity" class="slide level2">
 <h2>Results: PD map sensitivity</h2>
@@ -651,9 +643,13 @@ d = \begin{bmatrix} d^A \\ d^B \end{bmatrix}
 </figure>
 </div>
 </div></div>
+</section>
+<section id="results-impact-on-r-hwpno-hwp" class="slide level2">
+<h2>Results: impact on <span class="math inline">\(r\)</span> (HWP/no HWP)</h2>
 
 
-</section></section>
+
+<img data-src="assets/pair-diff/results_forecast_full.png" class="r-stretch"></section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
