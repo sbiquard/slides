@@ -339,10 +339,10 @@ Case-by-case analysis required for each systematic and each method
 ## Conclusions
 
 - We want ground experiments to measure/constrain $r$
-- For this, we need a robust (and efficient) analysis pipeline
+- We need a robust (and efficient) pipeline that mitigates contaminants
 - **This work**
-  - clarifies assumptions behind pair differencing and down-weighting
-  - demonstrates near-optimal performance of pair differencing with realistic instrumental noise
+  - clarifies assumptions behind pair differencing
+  - demonstrates its near-optimal performance with realistic instrumental noise
   - shows why orthogonal detector pairs + HWP are a powerful combination
 - **Next steps**
   - other systematics (pointing, beam, HWP... you name it)
