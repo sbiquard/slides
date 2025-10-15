@@ -1,0 +1,138 @@
+/*-- scss:defaults --*/
+
+// Custom colours and variables
+
+$jet: #131516;
+$accent: #107895;
+
+// colours
+//$body-bg: #f0f1eb !default;
+$body-color: $jet !default;
+$link-color: $accent !default;
+$selection-bg: #26351c !default;
+
+// Fonts and font sizes
+
+$presentation-heading-color: $jet !default;
+$presentation-heading-font-weight: 300;
+$presentation-font-size-root: 32px;
+
+/*-- scss:rules --*/
+
+// Title slide customization
+
+#title-slide {
+    text-align: left;
+
+    .title-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .left-column {
+        flex: 1;
+    }
+
+    .right-column {
+        flex: 0 0 auto;
+        padding-left: 2em;
+    }
+
+    .logos-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1em; // Space between logos
+
+        img {
+            height: 100px; // Fixed height for all logos
+            width: auto; // Maintain aspect ratio
+            object-fit: contain;
+        }
+    }
+
+    .title {
+        color: $body-color;
+        font-size: 1.4em;
+        font-weight: 300;
+        margin: 0 0 0.5em 0;
+    }
+
+    .subtitle {
+        color: $accent;
+        font-style: italic;
+        margin-top: 0;
+        font-weight: 300;
+    }
+
+    .institute,
+    .quarto-title-affiliation,
+    .quarto-title-author-email {
+        font-style: italic;
+        // font-size: 80%;
+        // color: #7F7F7F;
+    }
+
+    .author,
+    .quarto-title-author-name {
+        color: $body-color;
+        font-weight: normal;
+    }
+
+    .supervisors {
+        font-size: 0.8em;
+        font-style: italic;
+        color: $body-color;
+        margin-top: 0.5em; // Reduced from the default 1.25em
+
+        .supervision-text {
+            font-weight: 300;
+        }
+
+        .supervisor-names {
+            font-weight: normal;
+        }
+    }
+
+    .quarto-title-authors {
+        display: flex;
+        justify-content: left;
+
+        .quarto-title-author {
+            padding-left: 0em;
+            padding-right: 0em;
+            width: 100%;
+        }
+    }
+}
+
+.reveal .columns3070 > div.column:first-child {
+  width: 30%;
+}
+.reveal .columns3070 div.column:not(:first-child) {
+  width: 70%;
+}
+.reveal .columns7030 > div.column:first-child {
+  width: 70%;
+}
+.reveal .columns7030 div.column:not(:first-child) {
+  width: 30%;
+}
+.reveal .columns4060 > div.column:first-child {
+  width: 40%;
+}
+.reveal .columns4060 div.column:not(:first-child) {
+  width: 60%;
+}
+.reveal .columns6040 > div.column:first-child {
+  width: 60%;
+}
+.reveal .columns6040 div.column:not(:first-child) {
+  width: 40%;
+}
+
+// Hide slide number on title slide
+.reveal .slide-number > a[href*='title-slide'] {
+  display: none;
+}

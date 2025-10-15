@@ -1,0 +1,8 @@
+project:
+  type: website
+  output-dir: .
+website:
+  title: Unbiased CMB polarization maps from the ground with minimal assumptions about atmospheric emission
+  navbar:
+    left:
+      - href: index.qmd
