@@ -62,7 +62,7 @@ data reduction step: ~6 orders of magnitude
 :::
 ::::
 
-## Linear data model
+## Linear data model {.smaller}
 
 ::: {.notes}
 Formally: linear data model
@@ -112,7 +112,7 @@ $$
 - weights orthogonal modes by weight matrix $W$
 - "single step destriper" with generalised templates
 
-Minimum variance (optimal) if $W = N^{-1}$ (generalized least squares, GLS).
+Minimum variance (optimal) if $W = N^{-1}$ (generalised least squares, GLS).
 
 # Polarisation maps from the ground {background-color="#40666e"}
 
@@ -134,6 +134,8 @@ Loading → more photons on average
 Extra effect: fluctuations because atmosphere is a turbulent medium
 
 HWP: change angle of polarisation with respect to orientation of the waveplate
+
+Goal of study: assess efficiency of technical solutions to mitigate atmosphere
 :::
 
 :::: {.columns6040}
@@ -287,32 +289,6 @@ How precise is PD compared to ideal reconstruction (perfect model)?
 :::
 ::::
 
-## Results: PD map sensitivity
-
-::: {.notes}
-White noise → analytical estimate of *average* noise level
-
-PD ideal if identical noise properties.
-Perturb the nominal noise model and see how much we lose.
-
-Figure: excess variance in $Q/U$ maps as a function of the variation of noise levels.
-:::
-
-:::: {.columns4060}
-::: {.column}
-White instrumental noise.
-
-- Ideal if $\sigma_A = \sigma_B$
-- How much degradation if $\sigma_A \neq \sigma_B$?
-- Excess variance depends on $\varepsilon \equiv \frac{\sigma_A^2 - \sigma_B^2}{\sigma_A^2 + \sigma_B^2}$
-- Suboptimal propagation of noise levels after differencing
-:::
-
-::: {.column}
-![Analytical prediction (black) vs measured excess variance.](assets/pair-diff/variance_increase_hwp.svg)
-:::
-::::
-
 ## Results: impact on $r$ {.smaller}
 
 ::: {.notes}
@@ -330,7 +306,7 @@ $$
 \sigma(r=0)^{-2} \approx \frac{f_\text{sky}}{2} \times \sum_{\text{bins $b$}} \Delta_\ell (2\ell_b+1) \Bigg( \frac{C_{\ell_b}^{BB,\text{prim}} \rvert_{r=1}}{C_{\ell_b}^{BB,\text{lens}} + \langle N_{\ell_b}^{BB} \rangle} \Bigg)^2
 $$
 
-Moderate increase of error bars for typical 10% variation of parameters.
+Compare $\sigma(r=0)$ from PD with ideal reconstruction:
 
 ![](assets/pair-diff/results_forecast.png){.absolute left=300 height=200}
 
@@ -396,3 +372,29 @@ Case-by-case analysis required for each systematic and each method
   - store $A$ implicitly without constructing the whole matrix
   - preconditioned conjugate gradient (PCG) algorithm
   - convergence speed influenced by noise correlations
+
+## Results: PD map sensitivity
+
+::: {.notes}
+White noise → analytical estimate of *average* noise level
+
+PD ideal if identical noise properties.
+Perturb the nominal noise model and see how much we lose.
+
+Figure: excess variance in $Q/U$ maps as a function of the variation of noise levels.
+:::
+
+:::: {.columns4060}
+::: {.column}
+White instrumental noise.
+
+- Ideal if $\sigma_A = \sigma_B$
+- How much degradation if $\sigma_A \neq \sigma_B$?
+- Excess variance depends on $\varepsilon \equiv \frac{\sigma_A^2 - \sigma_B^2}{\sigma_A^2 + \sigma_B^2}$
+- Suboptimal propagation of noise levels after differencing
+:::
+
+::: {.column}
+![Analytical prediction (black) vs measured excess variance.](assets/pair-diff/variance_increase_hwp.svg)
+:::
+::::
